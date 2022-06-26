@@ -1,0 +1,18 @@
+.menu-left,
+.menu-right {
+  display: grid;
+  justify-items: center;
+  align-items:center;
+  align-content: center;
+  
+  grid-gap: 5px;
+
+  background-color: #f3f3f3;
+  border: 1px solid #d2d2d2;
+}
+.menu-left {
+  grid-template-rows: 40px 40px;
+}
+.menu-right {
+  grid-template-rows: 40px;
+}

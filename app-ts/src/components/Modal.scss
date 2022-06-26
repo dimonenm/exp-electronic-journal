@@ -1,0 +1,49 @@
+.modal {
+  display: grid;
+
+  background-color: #f3f3f3;
+  border: 1px solid #d2d2d2;
+}
+
+.modal-create {
+  display: grid;
+  grid-template-rows: 30px;
+
+  width: 370px;
+
+  background-color: #f3f3f3;
+  border: 1px solid #d2d2d2;
+
+  transition: all 500ms ease;
+}
+.modal-search {
+  display: grid;
+  
+  width: 370px;
+  
+  background-color: #f3f3f3;
+  border: 1px solid #d2d2d2;
+
+  transition: all 500ms ease;
+}
+
+.modal-info {
+  display: grid;
+
+  width: 455px;
+
+  background-color: #f3f3f3;
+  border: 1px solid #d2d2d2;
+
+  transition: all 500ms ease;
+}
+
+.modal-hidden {
+  width: 0;
+  background-color: #f3f3f3;
+  border: 1px solid #d2d2d2;
+
+  opacity: 0;
+
+  transition: all 500ms ease;
+}

@@ -1,27 +1,31 @@
-import logo from './images/logo.svg';
+import Container from './containers/Container';
 import './App.css';
-import TestComponent from './components/TestComponent'
+import Header from './containers/Header';
+import Main from './containers/Main';
+import Menu from './components/Menu';
+import Btn from './components/Btn';
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <TestComponent text="HELLO" />
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <TestComponent text="WORLD" />
-        <TestComponent text="!!!" />
-      </header>
+
+      <Container>
+        <Header>Электронный журнал 0.0.1</Header>
+        <Main>
+          <Menu>
+            <Btn type="create"></Btn>
+            <Btn type="search"></Btn>
+          </Menu>
+          <div>Modal</div>
+          <div>Content</div>
+          <div>grid</div>
+          <Menu>
+            <Btn type="info"></Btn>
+          </Menu>
+        </Main>
+      </Container>
+
     </div>
   );
 }

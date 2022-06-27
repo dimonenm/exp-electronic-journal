@@ -1,8 +1,11 @@
-.modal-title{
+.modal-title {
   display: grid;
   justify-items: center;
   align-items: center;
-  
+
+  grid-column-start: 1;
+  grid-column-end: 3;
+
   height: 30px;
 
   margin-top: 5px;

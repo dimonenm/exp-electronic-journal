@@ -4,6 +4,8 @@ import Header from './containers/Header';
 import Main from './containers/Main';
 import Menu from './components/Menu';
 import Btn from './components/Btn';
+import Gallery from './containers/Gallery';
+import Card from './components/Card';
 
 
 function App() {
@@ -18,7 +20,358 @@ function App() {
             <Btn type="search"></Btn>
           </Menu>
           <div>Modal</div>
-          <div>Content</div>
+          <Gallery>
+            <Card
+              number="1"
+              type="Почерк"
+              numberOfMaterial="у.д. №1200000000000"
+              dateOfIncoming="поступил 00.00.2022"
+              dateOfComplite="окончание 00.00.2022"
+              executor="Р.Н. Халилов" result="результативная" />
+            <Card
+              number="1"
+              type="Почерк"
+              numberOfMaterial="у.д. №1200000000000"
+              dateOfIncoming="поступил 00.00.2022"
+              dateOfComplite="окончание 00.00.2022"
+              executor="Р.Н. Халилов" result="результативная" />
+            <Card
+              number="1"
+              type="Почерк"
+              numberOfMaterial="у.д. №1200000000000"
+              dateOfIncoming="поступил 00.00.2022"
+              dateOfComplite="окончание 00.00.2022"
+              executor="Р.Н. Халилов" result="результативная" />
+            <Card
+              number="1"
+              type="Почерк"
+              numberOfMaterial="у.д. №1200000000000"
+              dateOfIncoming="поступил 00.00.2022"
+              dateOfComplite="окончание 00.00.2022"
+              executor="Р.Н. Халилов" result="результативная" />
+            <Card
+              number="1"
+              type="Почерк"
+              numberOfMaterial="у.д. №1200000000000"
+              dateOfIncoming="поступил 00.00.2022"
+              dateOfComplite="окончание 00.00.2022"
+              executor="Р.Н. Халилов" result="результативная" />
+            <Card
+              number="1"
+              type="Почерк"
+              numberOfMaterial="у.д. №1200000000000"
+              dateOfIncoming="поступил 00.00.2022"
+              dateOfComplite="окончание 00.00.2022"
+              executor="Р.Н. Халилов" result="результативная" />
+            <Card
+              number="1"
+              type="Почерк"
+              numberOfMaterial="у.д. №1200000000000"
+              dateOfIncoming="поступил 00.00.2022"
+              dateOfComplite="окончание 00.00.2022"
+              executor="Р.Н. Халилов" result="результативная" />
+            <Card
+              number="1"
+              type="Почерк"
+              numberOfMaterial="у.д. №1200000000000"
+              dateOfIncoming="поступил 00.00.2022"
+              dateOfComplite="окончание 00.00.2022"
+              executor="Р.Н. Халилов" result="результативная" />
+            <Card
+              number="1"
+              type="Почерк"
+              numberOfMaterial="у.д. №1200000000000"
+              dateOfIncoming="поступил 00.00.2022"
+              dateOfComplite="окончание 00.00.2022"
+              executor="Р.Н. Халилов" result="результативная" />
+            <Card
+              number="1"
+              type="Почерк"
+              numberOfMaterial="у.д. №1200000000000"
+              dateOfIncoming="поступил 00.00.2022"
+              dateOfComplite="окончание 00.00.2022"
+              executor="Р.Н. Халилов" result="результативная" />
+            <Card
+              number="1"
+              type="Почерк"
+              numberOfMaterial="у.д. №1200000000000"
+              dateOfIncoming="поступил 00.00.2022"
+              dateOfComplite="окончание 00.00.2022"
+              executor="Р.Н. Халилов" result="результативная" />
+            <Card
+              number="1"
+              type="Почерк"
+              numberOfMaterial="у.д. №1200000000000"
+              dateOfIncoming="поступил 00.00.2022"
+              dateOfComplite="окончание 00.00.2022"
+              executor="Р.Н. Халилов" result="результативная" />
+            <Card
+              number="1"
+              type="Почерк"
+              numberOfMaterial="у.д. №1200000000000"
+              dateOfIncoming="поступил 00.00.2022"
+              dateOfComplite="окончание 00.00.2022"
+              executor="Р.Н. Халилов" result="результативная" />
+            <Card
+              number="1"
+              type="Почерк"
+              numberOfMaterial="у.д. №1200000000000"
+              dateOfIncoming="поступил 00.00.2022"
+              dateOfComplite="окончание 00.00.2022"
+              executor="Р.Н. Халилов" result="результативная" />
+            <Card
+              number="1"
+              type="Почерк"
+              numberOfMaterial="у.д. №1200000000000"
+              dateOfIncoming="поступил 00.00.2022"
+              dateOfComplite="окончание 00.00.2022"
+              executor="Р.Н. Халилов" result="результативная" />
+            <Card
+              number="1"
+              type="Почерк"
+              numberOfMaterial="у.д. №1200000000000"
+              dateOfIncoming="поступил 00.00.2022"
+              dateOfComplite="окончание 00.00.2022"
+              executor="Р.Н. Халилов" result="результативная" />
+            <Card
+              number="1"
+              type="Почерк"
+              numberOfMaterial="у.д. №1200000000000"
+              dateOfIncoming="поступил 00.00.2022"
+              dateOfComplite="окончание 00.00.2022"
+              executor="Р.Н. Халилов" result="результативная" />
+            <Card
+              number="1"
+              type="Почерк"
+              numberOfMaterial="у.д. №1200000000000"
+              dateOfIncoming="поступил 00.00.2022"
+              dateOfComplite="окончание 00.00.2022"
+              executor="Р.Н. Халилов" result="результативная" />
+            <Card
+              number="1"
+              type="Почерк"
+              numberOfMaterial="у.д. №1200000000000"
+              dateOfIncoming="поступил 00.00.2022"
+              dateOfComplite="окончание 00.00.2022"
+              executor="Р.Н. Халилов" result="результативная" />
+            <Card
+              number="1"
+              type="Почерк"
+              numberOfMaterial="у.д. №1200000000000"
+              dateOfIncoming="поступил 00.00.2022"
+              dateOfComplite="окончание 00.00.2022"
+              executor="Р.Н. Халилов" result="результативная" />
+            <Card
+              number="1"
+              type="Почерк"
+              numberOfMaterial="у.д. №1200000000000"
+              dateOfIncoming="поступил 00.00.2022"
+              dateOfComplite="окончание 00.00.2022"
+              executor="Р.Н. Халилов" result="результативная" />
+            <Card
+              number="1"
+              type="Почерк"
+              numberOfMaterial="у.д. №1200000000000"
+              dateOfIncoming="поступил 00.00.2022"
+              dateOfComplite="окончание 00.00.2022"
+              executor="Р.Н. Халилов" result="результативная" />
+            <Card
+              number="1"
+              type="Почерк"
+              numberOfMaterial="у.д. №1200000000000"
+              dateOfIncoming="поступил 00.00.2022"
+              dateOfComplite="окончание 00.00.2022"
+              executor="Р.Н. Халилов" result="результативная" />
+            <Card
+              number="1"
+              type="Почерк"
+              numberOfMaterial="у.д. №1200000000000"
+              dateOfIncoming="поступил 00.00.2022"
+              dateOfComplite="окончание 00.00.2022"
+              executor="Р.Н. Халилов" result="результативная" />
+            <Card
+              number="1"
+              type="Почерк"
+              numberOfMaterial="у.д. №1200000000000"
+              dateOfIncoming="поступил 00.00.2022"
+              dateOfComplite="окончание 00.00.2022"
+              executor="Р.Н. Халилов" result="результативная" />
+            <Card
+              number="1"
+              type="Почерк"
+              numberOfMaterial="у.д. №1200000000000"
+              dateOfIncoming="поступил 00.00.2022"
+              dateOfComplite="окончание 00.00.2022"
+              executor="Р.Н. Халилов" result="результативная" />
+            <Card
+              number="1"
+              type="Почерк"
+              numberOfMaterial="у.д. №1200000000000"
+              dateOfIncoming="поступил 00.00.2022"
+              dateOfComplite="окончание 00.00.2022"
+              executor="Р.Н. Халилов" result="результативная" />
+            <Card
+              number="1"
+              type="Почерк"
+              numberOfMaterial="у.д. №1200000000000"
+              dateOfIncoming="поступил 00.00.2022"
+              dateOfComplite="окончание 00.00.2022"
+              executor="Р.Н. Халилов" result="результативная" />
+            <Card
+              number="1"
+              type="Почерк"
+              numberOfMaterial="у.д. №1200000000000"
+              dateOfIncoming="поступил 00.00.2022"
+              dateOfComplite="окончание 00.00.2022"
+              executor="Р.Н. Халилов" result="результативная" />
+            <Card
+              number="1"
+              type="Почерк"
+              numberOfMaterial="у.д. №1200000000000"
+              dateOfIncoming="поступил 00.00.2022"
+              dateOfComplite="окончание 00.00.2022"
+              executor="Р.Н. Халилов" result="результативная" />
+            <Card
+              number="1"
+              type="Почерк"
+              numberOfMaterial="у.д. №1200000000000"
+              dateOfIncoming="поступил 00.00.2022"
+              dateOfComplite="окончание 00.00.2022"
+              executor="Р.Н. Халилов" result="результативная" />
+            <Card
+              number="1"
+              type="Почерк"
+              numberOfMaterial="у.д. №1200000000000"
+              dateOfIncoming="поступил 00.00.2022"
+              dateOfComplite="окончание 00.00.2022"
+              executor="Р.Н. Халилов" result="результативная" />
+            <Card
+              number="1"
+              type="Почерк"
+              numberOfMaterial="у.д. №1200000000000"
+              dateOfIncoming="поступил 00.00.2022"
+              dateOfComplite="окончание 00.00.2022"
+              executor="Р.Н. Халилов" result="результативная" />
+            <Card
+              number="1"
+              type="Почерк"
+              numberOfMaterial="у.д. №1200000000000"
+              dateOfIncoming="поступил 00.00.2022"
+              dateOfComplite="окончание 00.00.2022"
+              executor="Р.Н. Халилов" result="результативная" />
+            <Card
+              number="1"
+              type="Почерк"
+              numberOfMaterial="у.д. №1200000000000"
+              dateOfIncoming="поступил 00.00.2022"
+              dateOfComplite="окончание 00.00.2022"
+              executor="Р.Н. Халилов" result="результативная" />
+            <Card
+              number="1"
+              type="Почерк"
+              numberOfMaterial="у.д. №1200000000000"
+              dateOfIncoming="поступил 00.00.2022"
+              dateOfComplite="окончание 00.00.2022"
+              executor="Р.Н. Халилов" result="результативная" />
+            <Card
+              number="1"
+              type="Почерк"
+              numberOfMaterial="у.д. №1200000000000"
+              dateOfIncoming="поступил 00.00.2022"
+              dateOfComplite="окончание 00.00.2022"
+              executor="Р.Н. Халилов" result="результативная" />
+            <Card
+              number="1"
+              type="Почерк"
+              numberOfMaterial="у.д. №1200000000000"
+              dateOfIncoming="поступил 00.00.2022"
+              dateOfComplite="окончание 00.00.2022"
+              executor="Р.Н. Халилов" result="результативная" />
+            <Card
+              number="1"
+              type="Почерк"
+              numberOfMaterial="у.д. №1200000000000"
+              dateOfIncoming="поступил 00.00.2022"
+              dateOfComplite="окончание 00.00.2022"
+              executor="Р.Н. Халилов" result="результативная" />
+            <Card
+              number="1"
+              type="Почерк"
+              numberOfMaterial="у.д. №1200000000000"
+              dateOfIncoming="поступил 00.00.2022"
+              dateOfComplite="окончание 00.00.2022"
+              executor="Р.Н. Халилов" result="результативная" />
+            <Card
+              number="1"
+              type="Почерк"
+              numberOfMaterial="у.д. №1200000000000"
+              dateOfIncoming="поступил 00.00.2022"
+              dateOfComplite="окончание 00.00.2022"
+              executor="Р.Н. Халилов" result="результативная" />
+            <Card
+              number="1"
+              type="Почерк"
+              numberOfMaterial="у.д. №1200000000000"
+              dateOfIncoming="поступил 00.00.2022"
+              dateOfComplite="окончание 00.00.2022"
+              executor="Р.Н. Халилов" result="результативная" />
+            <Card
+              number="1"
+              type="Почерк"
+              numberOfMaterial="у.д. №1200000000000"
+              dateOfIncoming="поступил 00.00.2022"
+              dateOfComplite="окончание 00.00.2022"
+              executor="Р.Н. Халилов" result="результативная" />
+            <Card
+              number="1"
+              type="Почерк"
+              numberOfMaterial="у.д. №1200000000000"
+              dateOfIncoming="поступил 00.00.2022"
+              dateOfComplite="окончание 00.00.2022"
+              executor="Р.Н. Халилов" result="результативная" />
+            <Card
+              number="1"
+              type="Почерк"
+              numberOfMaterial="у.д. №1200000000000"
+              dateOfIncoming="поступил 00.00.2022"
+              dateOfComplite="окончание 00.00.2022"
+              executor="Р.Н. Халилов" result="результативная" />
+            <Card
+              number="1"
+              type="Почерк"
+              numberOfMaterial="у.д. №1200000000000"
+              dateOfIncoming="поступил 00.00.2022"
+              dateOfComplite="окончание 00.00.2022"
+              executor="Р.Н. Халилов" result="результативная" />
+            <Card
+              number="1"
+              type="Почерк"
+              numberOfMaterial="у.д. №1200000000000"
+              dateOfIncoming="поступил 00.00.2022"
+              dateOfComplite="окончание 00.00.2022"
+              executor="Р.Н. Халилов" result="результативная" />
+            <Card
+              number="1"
+              type="Почерк"
+              numberOfMaterial="у.д. №1200000000000"
+              dateOfIncoming="поступил 00.00.2022"
+              dateOfComplite="окончание 00.00.2022"
+              executor="Р.Н. Халилов" result="результативная" />
+            <Card
+              number="1"
+              type="Почерк"
+              numberOfMaterial="у.д. №1200000000000"
+              dateOfIncoming="поступил 00.00.2022"
+              dateOfComplite="окончание 00.00.2022"
+              executor="Р.Н. Халилов" result="результативная" />
+            <Card
+              number="1"
+              type="Почерк"
+              numberOfMaterial="у.д. №1200000000000"
+              dateOfIncoming="поступил 00.00.2022"
+              dateOfComplite="окончание 00.00.2022"
+              executor="Р.Н. Халилов" result="результативная" />
+          </Gallery>
           <div>grid</div>
           <Menu>
             <Btn type="info"></Btn>

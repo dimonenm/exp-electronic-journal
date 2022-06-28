@@ -7,6 +7,9 @@ const Btn = ({ type }) => {
     function searchClickHandler() {
         console.log("search");
     }
+    function infoClickHandler() {
+        console.log("info");
+    }
     if (type === "create") {
         return (
             <div className='btn' onClick={createClickHandler}>
@@ -17,6 +20,13 @@ const Btn = ({ type }) => {
     if (type === "search") {
         return (
             <div className='btn' onClick={searchClickHandler}>
+                Btn
+            </div>
+        )
+    }
+    if (type === "info") {
+        return (
+            <div className='btn' onClick={infoClickHandler}>
                 Btn
             </div>
         )

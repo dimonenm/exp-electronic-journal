@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import ModalTitle from './ModalTitle';
 import './Modal.scss'
 import Input from './Input';
+import ModalButton from './ModalButton';
 
 interface ModalProps {
   type: string
@@ -34,6 +35,8 @@ const Modal: FC<ModalProps> = ({ type }) => {
         <Input type='text' title='№ уг. дела'/>
         <Input type='select' title='Исполнитель' listName='executor' />
         <Input type='select' title='Результат пров-ки' listName='resultOfVerification' />
+        <ModalButton type='add' text='Добавить'/>
+        <ModalButton type='cancel' text='Отменить'/>
       </div>
     );
   }

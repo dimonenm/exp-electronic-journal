@@ -7,7 +7,7 @@
 
 .modal-create {
   display: grid;
-  grid-template-rows: 30px 50px 50px 50px 50px 50px 50px 50px 50px 35px 50px 50px 50px;
+  grid-template-rows: 30px 50px 50px 50px 50px 50px 50px 50px 50px 35px 50px 50px 50px 60px;
   grid-template-columns: 150px 150px;
   grid-gap: 10px;
   justify-content: center;
@@ -17,7 +17,7 @@
   background-color: #f3f3f3;
   border: 1px solid #d2d2d2;
 
-  transition: all 500ms ease;
+  transition: all 200ms linear;
 }
 .modal-search {
   display: grid;
@@ -27,7 +27,7 @@
   background-color: #f3f3f3;
   border: 1px solid #d2d2d2;
 
-  transition: all 500ms ease;
+  transition: all 200ms linear;
 }
 
 .modal-info {
@@ -38,7 +38,7 @@
   background-color: #f3f3f3;
   border: 1px solid #d2d2d2;
 
-  transition: all 500ms ease;
+  transition: all 200ms linear;
 }
 
 .modal-hidden {
@@ -48,5 +48,5 @@
 
   opacity: 0;
 
-  transition: all 500ms ease;
+  transition: all 200ms linear;
 }

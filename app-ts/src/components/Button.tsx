@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
 import './Button.scss'
 
-interface ButtonProps {
+interface IButtonProps {
   type: string,
   clickHendler: () => void
 }
-const Button: FC<ButtonProps> = ({ type, clickHendler }) => {
+const Button: FC<IButtonProps> = ({ type, clickHendler }) => {
   if (type === 'create') {
     return (
       <div className='btn-create' onClick={clickHendler}></div>
@@ -21,9 +21,7 @@ const Button: FC<ButtonProps> = ({ type, clickHendler }) => {
       <div className='btn-info' onClick={clickHendler}></div>
     );    
   }
-  return (
-    <div></div>
-  );    
+  return null    
 };
 
 export default Button;

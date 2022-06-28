@@ -1,0 +1,19 @@
+.modal-button{
+  display: grid;
+  justify-items: center;
+  align-items:center;
+  
+  height: 50px;
+  width: 150px;
+
+  margin-top: 10px;
+
+  background-color:#2B579A;
+
+  font-size: 24px;
+  color: #fff;
+}
+
+.modal-button:hover{
+  background-color:#3E6DB5;
+}

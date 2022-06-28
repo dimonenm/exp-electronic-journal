@@ -7,10 +7,27 @@ import Menu from './components/Menu';
 import Modal from './components/Modal';
 import Button from './components/Button';
 import { IModal } from './types/types';
+import Gallery from './containers/Gallery';
+import Card from './components/Card';
 
 const App = () => {
 
-  const [modal, setModal] = useState<IModal>({type: null})
+  let arr = [];
+  for (let i = 0; i < 150; i++){
+    let num = `№ ${i+1}`
+    arr.push(<Card
+      number={num} 
+      type='Почерк-я'
+      numberOfMaterial='у.д. №1200000000000'
+      dateOfIncoming='поступил 00.00.2022'
+      dateOfComplite='окончание 00.00.2022'
+      executor='Арзяков Д.Н.'
+      result='Результативная'
+    />)
+  }
+  arr.reverse()
+
+  const [modal, setModal] = useState<IModal>({ type: null })
 
   function createClickHendler() {
     if (modal.type !== 'create') {
@@ -55,7 +72,9 @@ const App = () => {
           <Button type='search' clickHendler={searchClickHendler} />
         </Menu>
         <Modal type={modal.type === 'create' ? 'create' : modal.type === 'search' ? 'search' : 'hidden'} />
-        main
+        <Gallery>
+          {arr}
+        </Gallery>
         <Modal type={modal.type === 'info' ? 'info' : 'hidden'} />
         <Menu type='right'>
           <Button type='info' clickHendler={infoClickHendler} />

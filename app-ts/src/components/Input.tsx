@@ -4,10 +4,11 @@ import './Input.scss'
 interface IInputProps {
   type: string,
   listName?: string,
-  title: string
+  title: string,
+  onChangeHandler?: (value: string) => void
 }
 
-const Input: FC<IInputProps> = ({ type, listName, title }) => {
+const Input: FC<IInputProps> = ({ type, listName, title, onChangeHandler }) => {
   let input
   if (type === 'text') {
     input = <input type="text" className='input-text' />
@@ -17,7 +18,10 @@ const Input: FC<IInputProps> = ({ type, listName, title }) => {
   }
   if (type === 'select') {
     if (listName === 'typeOfService') {
-      input = <select className='select'>
+      input = <select className='select' onChange={(event) => {
+        const newValue = event.target.value
+        onChangeHandler(newValue)
+      }}>
         <option>не указано</option>
         <option>МВД</option>
         <option>ГСУ СК</option>
@@ -154,6 +158,16 @@ const Input: FC<IInputProps> = ({ type, listName, title }) => {
         <option>Отсутствие сов-я</option>
       </select>
     }
+  }
+  if (type === 'empty') {
+    return (
+      <div className='input'>
+        <div className='input-title'>
+          {null}
+        </div>
+        {null}
+      </div>
+    );
   }
   return (
     <div className='input'>

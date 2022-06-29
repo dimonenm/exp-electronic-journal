@@ -11,8 +11,11 @@ interface ModalProps {
 
 const Modal: FC<ModalProps> = ({ type }) => {
   const [typeOfService, setTypeOfService] = useState<ITypeOfService>({ type: null })
+  const [typeOfMaterial, setTypeOfMaterial] = useState<ITypeOfService>({ type: null })
 
   let unitOfService
+  let article
+
   if (typeOfService.type === 'МВД') {
     unitOfService = <Input type='select' title='Орган инициатора' listName='unitOfService' listType='police' />
   } else if (typeOfService.type === 'ГСУ СК') {
@@ -22,9 +25,20 @@ const Modal: FC<ModalProps> = ({ type }) => {
     unitOfService = <Input type='empty' title='empty' />
   }
 
+  if (typeOfMaterial.type === 'УД') {
+    article = <Input type='select' title='Статья' listName='article' />
+  } else {
+    article = <Input type='empty' title='empty' />
+  }
+
 
   function onChangeTypeOfServiceHandler(value: string) {
     setTypeOfService((prev) => ({
+      ...prev, type: value
+    }))
+  }
+  function onChangeTypeOfMaterialHandler(value: string) {
+    setTypeOfMaterial((prev) => ({
       ...prev, type: value
     }))
   }
@@ -37,9 +51,9 @@ const Modal: FC<ModalProps> = ({ type }) => {
         <Input type='date' title='Дата поступления' />
         <Input type='select' title='Вид службы' listName='typeOfService' onChangeTypeOfServiceHandler={onChangeTypeOfServiceHandler} />
         {unitOfService}
-        <Input type='select' title='Вид материала' listName='typeOfMaterial' />
-        <Input type='select' title='Статья' listName='article' />
+        <Input type='select' title='Вид материала' listName='typeOfMaterial' onChangeTypeOfMaterialHandler={onChangeTypeOfMaterialHandler} />
         <Input type='text' title='№ материала' />
+        {article}
         <Input type='select' title='Вид экспертизы' listName='typeOfExpertise' />
         <Input type='select' title='Исполнитель' listName='executor' />
         <Input type='date' title='Дата вын. ходат-ва' />

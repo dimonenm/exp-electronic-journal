@@ -7,9 +7,10 @@ interface IInputProps {
   listType?: string,
   title: string,
   onChangeTypeOfServiceHandler?: (value: string) => void
+  onChangeTypeOfMaterialHandler?: (value: string) => void
 }
 
-const Input: FC<IInputProps> = ({ type, listName, listType, title, onChangeTypeOfServiceHandler }) => {
+const Input: FC<IInputProps> = ({ type, listName, listType, title, onChangeTypeOfServiceHandler, onChangeTypeOfMaterialHandler }) => {
   let input
   if (type === 'text') {
     input = <input type="text" className='input-text' />
@@ -21,7 +22,6 @@ const Input: FC<IInputProps> = ({ type, listName, listType, title, onChangeTypeO
     if (listName === 'typeOfService') {
       input = <select className='select' onChange={(event) => {
         const newValue = event.target.value
-        console.log('Input newValue', newValue);
         onChangeTypeOfServiceHandler?.(newValue)
       }}>
         <option>не указано</option>
@@ -103,7 +103,9 @@ const Input: FC<IInputProps> = ({ type, listName, listType, title, onChangeTypeO
     }
 
     if (listName === 'typeOfMaterial') {
-      input = <select className='select'>
+      input = <select className='select' onChange={(event) => {
+        onChangeTypeOfMaterialHandler?.(event.target.value)
+      }}>
         <option>не указано</option>
         <option>УД</option>
         <option>КУСП</option>

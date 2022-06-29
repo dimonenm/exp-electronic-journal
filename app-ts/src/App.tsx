@@ -16,6 +16,7 @@ const App = () => {
   for (let i = 0; i < 150; i++){
     let num = `№ ${i+1}`
     arr.push(<Card
+      key={num}
       number={num} 
       type='Почерк-я'
       numberOfMaterial='у.д. №1200000000000'

@@ -10,13 +10,24 @@ interface ModalProps {
 }
 
 const Modal: FC<ModalProps> = ({ type }) => {
-  const [typeOfService, setTypeOfService] = useState<ITypeOfService>({type: null})
+  const [typeOfService, setTypeOfService] = useState<ITypeOfService>({ type: null })
 
-  function onChangeHandler(value: string) {
-  setTypeOfService((prev) => ({
-    ...prev, type: value
-  }))
-}
+  let unitOfService
+  if (typeOfService.type === 'МВД') {
+    unitOfService = <Input type='select' title='Орган инициатора' listName='unitOfService' listType='police' />
+  } else if (typeOfService.type === 'ГСУ СК') {
+    unitOfService = <Input type='select' title='Орган инициатора' listName='unitOfService' listType='investigation' />
+  }
+  else {
+    unitOfService = <Input type='empty' title='empty' />
+  }
+
+
+  function onChangeTypeOfServiceHandler(value: string) {
+    setTypeOfService((prev) => ({
+      ...prev, type: value
+    }))
+  }
 
   if (type === 'create') {
     return (
@@ -24,8 +35,8 @@ const Modal: FC<ModalProps> = ({ type }) => {
         <ModalTitle>Создание новой экспертизы</ModalTitle>
         <Input type='text' title='№ по порядку' />
         <Input type='date' title='Дата поступления' />
-        <Input type='select' title='Вид службы' listName='typeOfService' onChangeHandler={onChangeHandler} />
-        <Input type='select' title='Орган инициатора' listName='unitOfService' />
+        <Input type='select' title='Вид службы' listName='typeOfService' onChangeTypeOfServiceHandler={onChangeTypeOfServiceHandler} />
+        {unitOfService}
         <Input type='select' title='Вид материала' listName='typeOfMaterial' />
         <Input type='select' title='Статья' listName='article' />
         <Input type='text' title='№ материала' />

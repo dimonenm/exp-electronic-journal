@@ -17,6 +17,7 @@ export interface IExp{
   article: string | null,
   typeOfExpertise: string | null,
   executor: string | null,
+  difficult: string | null,
   datePetitionStart: string | null,
   datePetitionEnd: string | null,
   dateProlongationStart: string | null,

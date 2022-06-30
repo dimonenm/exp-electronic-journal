@@ -135,6 +135,15 @@ const Input: FC<IInputProps> = ({ type, listName, listType, title, onChangeTypeO
       </select>
     }
 
+    if (listName === 'difficultOfExpertise') {
+      input = <select className='select'>
+        <option>не указано</option>
+        <option>Простая</option>
+        <option>Средней слож-ти</option>
+        <option>Сложная</option>
+      </select>
+    }
+
     if (listName === 'executor') {
       input = <select className='select'>
         <option>не указано</option>

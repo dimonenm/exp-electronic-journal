@@ -4,6 +4,9 @@ export interface IModal{
 export interface ITypeOfService {
   type: string | null
 }
+export interface ITypeOfMaterial {
+  type: string | null
+}
 export interface IExp{
   id: string | null,
   dateOfReceipt: string | null,

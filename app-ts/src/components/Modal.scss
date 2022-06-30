@@ -7,7 +7,7 @@
 
 .modal-create {
   display: grid;
-  grid-template-rows: 30px repeat(8, 50px) 35px repeat(3, 50px) 60px;
+  grid-template-rows: 30px repeat(9, 50px) 60px;
   grid-template-columns: 150px 150px;
   grid-gap: 10px;
   justify-content: center;
@@ -21,15 +21,18 @@
 }
 .modal-search {
   display: grid;
-  grid-template-rows: 30px repeat(8, 50px) 35px repeat(3, 50px) 60px;
+  grid-template-rows: 30px repeat(14, 50px) 60px;
   grid-template-columns: 150px 150px;
   grid-gap: 10px;
   justify-content: center;
 
+  max-height: calc(100vh - 52px);
   width: 370px;
 
   background-color: #f3f3f3;
   border: 1px solid #d2d2d2;
+
+  overflow: auto;
 
   transition: all 200ms linear;
 }

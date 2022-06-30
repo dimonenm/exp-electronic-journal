@@ -6,18 +6,93 @@ import Main from './containers/Main';
 import Menu from './components/Menu';
 import Modal from './components/Modal';
 import Button from './components/Button';
-import { IModal } from './types/types';
+import { IModal, IExp } from './types/types';
 import Gallery from './containers/Gallery';
 import Card from './components/Card';
 
 const App = () => {
 
+  const [dbExps, setDbExps] = useState<IExp[]>([])
+
+  function addDbExps() {
+    for (let i = 0; i < 5; i++) {
+      const dateOfReceipt = new Date()
+      const dateOfReceiptStr = `${dateOfReceipt.getDate()}.${dateOfReceipt.getMonth()}.${dateOfReceipt.getFullYear()}}`
+      const typeOfServiceRand = Math.random()
+      const typeOfService = typeOfServiceRand < 0.25 ?
+        'МВД' : typeOfServiceRand >= 0.25 && typeOfServiceRand < 0.5 ?
+        'ГСУ СК' : typeOfServiceRand >= 0.5 && typeOfServiceRand < 0.75 ?
+        'ФСБ' : typeOfServiceRand >= 0.75 ?
+        'Суд' : null
+          
+      let unitOfService = null
+      if (typeOfService === 'МВД') {
+        const unitOfServiceRand = Math.random()
+        unitOfService = unitOfServiceRand < 0.25 ?
+          'ОМВД России по г. Евпатории' : unitOfServiceRand >= 0.25 && unitOfServiceRand < 0.5 ?
+            'ОМВД России по г. Феодосии' : unitOfServiceRand >= 0.5 && unitOfServiceRand < 0.75 ?
+              'ОМВД России по г. Судаку' : unitOfServiceRand >= 0.75 ?
+                'ОМВД России по г. Алуште' : null        
+      }
+      if (typeOfService === 'ГСУ СК') {
+        const unitOfServiceRand = Math.random()
+        unitOfService = unitOfServiceRand < 0.25 ?
+          'СО по г. Евпатории' : unitOfServiceRand >= 0.25 && unitOfServiceRand < 0.5 ?
+            'СО по г. Феодосия' : unitOfServiceRand >= 0.5 && unitOfServiceRand < 0.75 ?
+              'СО по г. Судак' : unitOfServiceRand >= 0.75 ?
+                'СО по г. Алушта' : null        
+      }
+      
+      const typeOfMaterialRand = Math.random()
+      const typeOfMaterial = typeOfMaterialRand < 0.33 ?
+        'УД' : typeOfMaterialRand >= 0.33 && typeOfMaterialRand < 0.66 ?
+            'КУСП' : typeOfMaterialRand >= 0.66 ?
+              'КРСП' : null
+      
+      const numberOfMaterial = null
+      const article = null
+      const typeOfExpertise = null
+      const executor = null
+      const datePetitionStart = null
+      const datePetitionEnd = null
+      const dateProlongationStart = null
+      const dateProlongationEnd = null
+      const result = null
+      const dateExpEnd = null
+      const dateExpComplete = null
+      const exp: IExp = {
+        id: `${i}`,
+        dateOfReceipt: dateOfReceiptStr,
+        typeOfService: typeOfService,
+        unitOfService: unitOfService,
+        typeOfMaterial: typeOfMaterial,
+        numberOfMaterial: null,
+        article: null,
+        typeOfExpertise: null,
+        executor: null,
+        datePetitionStart: null,
+        datePetitionEnd: null,
+        dateProlongationStart: null,
+        dateProlongationEnd: null,
+        result: null,
+        dateExpEnd: null,
+        dateExpComplete: null,
+        dateVerificationStart: null,
+        dateVerificationEnd: null,
+        numberVerification: null,
+        verificationNumberOfMaterial: null,
+        verificationExecutor: null,
+        verificationResult: null,
+      }
+    }
+  }
+  addDbExps()
   let arr = [];
-  for (let i = 0; i < 150; i++){
-    let num = `№ ${i+1}`
+  for (let i = 0; i < 150; i++) {
+    let num = `№ ${i + 1}`
     arr.push(<Card
       key={num}
-      number={num} 
+      number={num}
       type='Почерк-я'
       numberOfMaterial='у.д. №1200000000000'
       dateOfIncoming='поступил 00.00.2022'

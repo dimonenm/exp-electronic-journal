@@ -7,13 +7,16 @@ import Btn from './components/Btn';
 import Gallery from './containers/Gallery';
 import Card from './components/Card';
 import Modal from './components/Modal';
+import { useState } from 'react';
 
 
 function App() {
+  const [modal, setModal] = useState({ type: null })
   let cardArr = []
-  for (let i = 0; i < 100; i++){
+  for (let i = 0; i < 100; i++) {
     cardArr.push(<Card
-      number="1"
+      key={i}
+      number={i}
       type="Почерк"
       numberOfMaterial="у.д. №1200000000000"
       dateOfIncoming="поступил 00.00.2022"
@@ -27,16 +30,16 @@ function App() {
         <Header>Электронный журнал 0.0.1</Header>
         <Main>
           <Menu>
-            <Btn type="create"></Btn>
-            <Btn type="search"></Btn>
+            <Btn type="create" setModal={setModal} modal={modal}></Btn>
+            <Btn type="search" setModal={setModal} modal={modal}></Btn>
           </Menu>
-          <Modal>Modal</Modal>
+          <Modal type={modal.type === 'create' ? 'create' : modal.type === 'search' ? 'search' : 'hidden'}></Modal>
           <Gallery>
             {cardArr}
           </Gallery>
-          <Modal>Modal</Modal>
+          <Modal type={modal.type === 'info' ? 'info' : 'hidden'}></Modal>
           <Menu>
-            <Btn type="info"></Btn>
+            <Btn type="info" setModal={setModal} modal={modal}>info</Btn>
           </Menu>
         </Main>
       </Container>

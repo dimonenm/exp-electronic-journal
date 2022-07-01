@@ -178,12 +178,16 @@ const App = () => {
           <Button type='create' clickHendler={createClickHendler} />
           <Button type='search' clickHendler={searchClickHendler} />
         </Menu>
-        <Modal type={modal.type === 'create' ? 'create' : modal.type === 'search' ? 'search' : 'hidden'} />
+        <Modal
+          type={modal.type === 'create' ? 'create' : modal.type === 'search' ? 'search' : 'hidden'}
+          dbExps={dbExps}
+          setDbExps={setDbExps}
+        />
         <Gallery>
           {dbExps.map((item) => {
             return (<Card
               key={item.id}
-              number={`${item.id}`}
+              number={`№ ${item.id}`}
               type={`${item.typeOfMaterial}`}
               numberOfMaterial={`${item.numberOfMaterial}`}
               dateOfIncoming='поступил 00.00.2022'
@@ -193,7 +197,10 @@ const App = () => {
             />)
           }).reverse() }
         </Gallery>
-        <Modal type={modal.type === 'info' ? 'info' : 'hidden'} />
+        <Modal
+          type={modal.type === 'info' ? 'info' : 'hidden'}
+          dbExps={dbExps}
+        />
         <Menu type='right'>
           <Button type='info' clickHendler={infoClickHendler} />
         </Menu>

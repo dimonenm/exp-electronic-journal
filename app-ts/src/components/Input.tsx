@@ -6,6 +6,8 @@ interface IInputProps {
   listName?: string,
   listType?: string,
   title: string,
+  name: string,
+  value?: string,
   onChangeTypeOfServiceHandler?: (value: string) => void
   onChangeTypeOfMaterialHandler?: (value: string) => void
 }

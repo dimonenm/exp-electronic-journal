@@ -21,7 +21,7 @@ export interface IExp{
   datePetitionStart: string | null,
   datePetitionEnd: string | null,
   dateProlongationStart: string | null,
-  dateProlongationEnd: string | null,
+  valueOfProlongation: string | null,
   result: string | null,
   dateExpEnd: string | null,
   dateExpComplete: string | null,

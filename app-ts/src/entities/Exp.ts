@@ -1,121 +1,125 @@
 import { IExp } from "../types/types";
 
-export default class Exp implements IExp{
-  id: string | null
-  dateOfReceipt: string | null
-  typeOfService: string | null
-  unitOfService: string | null
-  typeOfMaterial: string | null
-  numberOfMaterial: string | null
-  article: string | null
-  typeOfExpertise: string | null
-  executor: string | null
-  difficult: string | null
-  datePetitionStart: string | null
-  datePetitionEnd: string | null
-  dateProlongationStart: string | null
-  valueOfProlongation: string | null
-  result: string | null
-  dateExpEnd: string | null
-  dateExpComplete: string | null
-  dateVerificationStart: string | null
-  dateVerificationEnd: string | null
-  numberVerification: string | null
-  verificationNumberOfMaterial: string | null
-  verificationExecutor: string | null
-  verificationResult: string | null
-  constructor() {
-    this.id = null
-    this.dateOfReceipt = null
-    this.typeOfService = null
-    this.unitOfService = null
-    this.typeOfMaterial = null
-    this.numberOfMaterial = null
-    this.article = null
-    this.typeOfExpertise = null
-    this.executor = null
-    this.difficult = null
-    this.datePetitionStart = null
-    this.datePetitionEnd = null
-    this.dateProlongationStart = null
-    this.valueOfProlongation = null
-    this.result = null
-    this.dateExpEnd = null
-    this.dateExpComplete = null
-    this.dateVerificationStart = null
-    this.dateVerificationEnd = null
-    this.numberVerification = null
-    this.verificationNumberOfMaterial = null
-    this.verificationExecutor = null
-    this.verificationResult = null    
+export default class Exp implements IExp {
+  id: string
+  dateOfReceipt: string
+  typeOfService: string
+  unitOfService: string
+  typeOfMaterial: string
+  numberOfMaterial: string
+  article: string
+  typeOfExpertise: string
+  executor: string
+  difficult: string
+  datePetitionStart: string
+  datePetitionEnd: string
+  dateProlongationStart: string
+  valueOfProlongation: string
+  result: string
+  dateExpEnd: string
+  dateExpComplete: string
+  dateVerificationStart: string
+  dateVerificationEnd: string
+  numberVerification: string
+  verificationNumberOfMaterial: string
+  verificationExecutor: string
+  verificationResult: string
+  constructor(oldExp?: Exp, id?: string) {
+    if (oldExp)
+      this.id = oldExp?.getId() || ''
+    else if (id)
+      this.id = id || ''
+    else this.id = ''
+    this.dateOfReceipt = oldExp?.getDateOfReceipt() || ''
+    this.typeOfService = oldExp?.getTypeOfService() || ''
+    this.unitOfService = oldExp?.getUnitOfService() || ''
+    this.typeOfMaterial = oldExp?.getTypeOfMaterial() || ''
+    this.numberOfMaterial = oldExp?.getNumberOfMaterial() || ''
+    this.article = oldExp?.getArticle() || ''
+    this.typeOfExpertise = oldExp?.getTypeOfExpertise() || ''
+    this.executor = oldExp?.getExecutor() || ''
+    this.difficult = oldExp?.getDifficult() || ''
+    this.datePetitionStart = oldExp?.getDatePetitionStart() || ''
+    this.datePetitionEnd = oldExp?.getDatePetitionEnd() || ''
+    this.dateProlongationStart = oldExp?.getDateProlongationStart() || ''
+    this.valueOfProlongation = oldExp?.getValueOfProlongation() || ''
+    this.result = oldExp?.getResult() || ''
+    this.dateExpEnd = oldExp?.getDateExpEnd() || ''
+    this.dateExpComplete = oldExp?.getDateExpComplete() || ''
+    this.dateVerificationStart = oldExp?.getDateVerificationStart() || ''
+    this.dateVerificationEnd = oldExp?.getDateVerificationEnd() || ''
+    this.numberVerification = oldExp?.getNumberVerification() || ''
+    this.verificationNumberOfMaterial = oldExp?.getVerificationNumberOfMaterial() || ''
+    this.verificationExecutor = oldExp?.getVerificationExecutor() || ''
+    this.verificationResult = oldExp?.getVerificationResult() || ''
   }
-  getId():string | null{
+  getId(): string | null {
     return this.id
   }
-  getDateOfReceipt():string | null{
+  getDateOfReceipt(): string | null {
     return this.dateOfReceipt
   }
-  getTypeOfService():string | null{
+  getTypeOfService(): string | null {
     return this.typeOfService
   }
-  getUnitOfService():string | null{
+  getUnitOfService(): string | null {
     return this.unitOfService
   }
-  getTypeOfMaterial():string | null{
+  getTypeOfMaterial(): string | null {
     return this.typeOfMaterial
   }
-  getNumberOfMaterial():string | null{
+  getNumberOfMaterial(): string | null {
     return this.numberOfMaterial
   }
-  getArticle():string | null{
+  getArticle(): string | null {
     return this.article
   }
-  getTypeOfExpertise():string | null{
+  getTypeOfExpertise(): string | null {
     return this.typeOfExpertise
   }
-  getExecutor():string | null{
+  getExecutor(): string | null {
     return this.executor
   }
-  getDifficult():string | null{
+  getDifficult(): string | null {
     return this.difficult
   }
-  getDatePetitionStart():string | null{
+  getDatePetitionStart(): string | null {
     return this.datePetitionStart
   }
-  getDatePetitionEnd():string | null{
+  getDatePetitionEnd(): string | null {
     return this.datePetitionEnd
   }
-  getDateProlongationStart():string | null{
+  getDateProlongationStart(): string | null {
     return this.dateProlongationStart
   }
-  getValueOfProlongation():string | null{
+  getValueOfProlongation(): string | null {
     return this.valueOfProlongation
   }
-  getResult():string | null{
+  getResult(): string | null {
     return this.result
   }
-  getDateExpEnd():string | null{
+  getDateExpEnd(): string | null {
     return this.dateExpEnd
   }
-  getDateExpComplete():string | null{
+  getDateExpComplete(): string | null {
     return this.dateExpComplete
   }
-  getDateVerificationStart():string | null{
+  getDateVerificationStart(): string | null {
     return this.dateVerificationStart
   }
-  getDateVerificationEnd():string | null{
+  getDateVerificationEnd(): string | null {
     return this.dateVerificationEnd
   }
-  getNumberVerification():string | null{
+  getNumberVerification(): string | null {
     return this.numberVerification
   }
-  getVerificationNumberOfMaterial():string | null{
+  getVerificationNumberOfMaterial(): string | null {
     return this.verificationNumberOfMaterial
   }
-  getVerificationExecutor():string | null{
+  getVerificationExecutor(): string | null {
     return this.verificationExecutor
   }
-  getVerificationResult():string | null{
+  getVerificationResult(): string | null {
     return this.verificationResult
   }
   setId(value: string): void {

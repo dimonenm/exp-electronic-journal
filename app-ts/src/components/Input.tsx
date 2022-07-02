@@ -8,23 +8,43 @@ interface IInputProps {
   title: string,
   name: string,
   value?: string,
+  onChangeIdHandler?: (value: string) => void
+  onChangDateOfReceiptHandler?: (value: string) => void
   onChangeTypeOfServiceHandler?: (value: string) => void
   onChangeTypeOfMaterialHandler?: (value: string) => void
 }
 
-const Input: FC<IInputProps> = ({ type, listName, listType, title, onChangeTypeOfServiceHandler, onChangeTypeOfMaterialHandler }) => {
+const Input: FC<IInputProps> = ({
+  type,
+  listName,
+  listType,
+  title,
+  name,
+  value,
+  onChangeIdHandler,
+  onChangDateOfReceiptHandler,
+  onChangeTypeOfServiceHandler,
+  onChangeTypeOfMaterialHandler }) => {
   let input
   if (type === 'text') {
-    input = <input type="text" className='input-text' />
+    input = <input type="text" className='input-text' defaultValue={value} onChange={(event) => { onChangeIdHandler?.(event.target.value) }} />
   }
   if (type === 'date') {
-    input = <input type="date" className='input-date' />
+    if (name === 'dateOfReceipt') { 
+      input = <input type="date" className='input-date' onChange={(event) => {
+        const date = new Date(event.target.value)
+        console.log(event.target.value);
+        console.log('date: ', date);
+        onChangDateOfReceiptHandler?.(event.target.value)
+      }} />
+    } else {
+      input = <input type="date" className='input-date' />
+    }
   }
   if (type === 'select') {
     if (listName === 'typeOfService') {
       input = <select className='select' onChange={(event) => {
-        const newValue = event.target.value
-        onChangeTypeOfServiceHandler?.(newValue)
+        onChangeTypeOfServiceHandler?.(event.target.value)
       }}>
         <option>не указано</option>
         <option>МВД</option>

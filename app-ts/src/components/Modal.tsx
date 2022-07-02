@@ -4,6 +4,7 @@ import './Modal.scss'
 import Input from './Input';
 import ModalButton from './ModalButton';
 import { ITypeOfService, ITypeOfMaterial, IExp } from '../types/types';
+import Exp from '../entities/Exp';
 
 interface ModalProps {
   type: string
@@ -14,15 +15,27 @@ interface ModalProps {
 const Modal: FC<ModalProps> = ({ type, dbExps, setDbExps }) => {
 
   const [modalDbExps, setModalDbExps] = useState<IExp[]>(dbExps)
+  const [expStorage, setExpStorage] = useState<Exp>(new Exp(undefined,`${modalDbExps.length + 1}`))
+  console.log('expStorage: ', expStorage);
+
 
   const [typeOfService, setTypeOfService] = useState<ITypeOfService>({ type: null })
   const [typeOfMaterial, setTypeOfMaterial] = useState<ITypeOfMaterial>({ type: null })
   const [typeOfServiceSearch, setTypeOfServiceSearch] = useState<ITypeOfService>({ type: null })
   const [typeOfMaterialSearch, setTypeOfMaterialSearch] = useState<ITypeOfMaterial>({ type: null })
 
-  
 
 
+  function onChangeIdHandler(value: string) {
+    const localExp = new Exp(expStorage)
+    localExp.setId(value)
+    setExpStorage(localExp)
+  }
+  function onChangDateOfReceiptHandler(value: string) {
+    const localExp = new Exp(expStorage)
+    localExp.setDateOfReceipt(value)
+    setExpStorage(localExp)
+  }
   function onChangeTypeOfServiceHandler(value: string) {
     setTypeOfService((prev) => ({
       ...prev, type: value
@@ -69,24 +82,24 @@ const Modal: FC<ModalProps> = ({ type, dbExps, setDbExps }) => {
     return (
       <div className='modal-create'>
         <ModalTitle>Создание новой экспертизы</ModalTitle>
-        <Input type='text' title='№ по порядку' name='id' value={`${modalDbExps.length}`} />
-        <Input type='date' title='Дата поступления' name='dateOfReceipt' />
+        <Input type='text' title='№ по порядку' name='id' value={`${expStorage.getId()}`} onChangeIdHandler={onChangeIdHandler} />
+        <Input type='date' title='Дата поступления' name='dateOfReceipt' onChangDateOfReceiptHandler={onChangDateOfReceiptHandler} />
         <Input type='select' title='Вид службы' name='typeOfService' listName='typeOfService' onChangeTypeOfServiceHandler={onChangeTypeOfServiceHandler} />
         {unitOfService}
         <Input type='select' title='Вид материала' name='typeOfMaterial' listName='typeOfMaterial' onChangeTypeOfMaterialHandler={onChangeTypeOfMaterialHandler} />
-        <Input type='text' title='№ материала' name='numberOfMaterial'/>
+        <Input type='text' title='№ материала' name='numberOfMaterial' />
         {article}
         <Input type='select' title='Вид экспертизы' name='typeOfExpertise' listName='typeOfExpertise' />
         <Input type='select' title='Сложность эксп-зы' name='difficultOfExpertise' listName='difficultOfExpertise' />
         <Input type='select' title='Исполнитель' name='executor' />
-        <Input type='date' title='Дата вын. ходат-ва' name='datePetitionStart'/>
-        <Input type='date' title='Дата удов. ходат-ва' name='datePetitionEnd'/>
-        <Input type='date' title='Дата продления' name='dateProlongationStart'/>
-        <Input type='text' title='Срок продления' name='valueOfProlongation'/>
+        <Input type='date' title='Дата вын. ходат-ва' name='datePetitionStart' />
+        <Input type='date' title='Дата удов. ходат-ва' name='datePetitionEnd' />
+        <Input type='date' title='Дата продления' name='dateProlongationStart' />
+        <Input type='text' title='Срок продления' name='valueOfProlongation' />
         <Input type='select' title='Результат эксп-зы' name='result' listName='result' />
-        <Input type='date' title='Дата окончания' name='dateExpEnd'/>
-        <Input type='date' title='Дата завершения' name='dateExpComplete'/>
-        <Input type='empty' title='empty' name='empty'/>
+        <Input type='date' title='Дата окончания' name='dateExpEnd' />
+        <Input type='date' title='Дата завершения' name='dateExpComplete' />
+        <Input type='empty' title='empty' name='empty' />
         <ModalButton type='add' text='Добавить' />
         <ModalButton type='cancel' text='Отменить' />
       </div>
@@ -125,7 +138,7 @@ const Modal: FC<ModalProps> = ({ type, dbExps, setDbExps }) => {
         <Input type='select' title='По виду эксп-зы' name='byTypeOfExpertise' listName='typeOfExpertise' />
         <Input type='select' title='По слож-ти эксп-зы' name='byDifficultOfExpertise' listName='difficultOfExpertise' />
         <Input type='select' title='По исполнителю' name='byExecutor' listName='executor' />
-        <Input type='select' title='По рез-ту эксп-зы' name='byResult' listName='result' />        
+        <Input type='select' title='По рез-ту эксп-зы' name='byResult' listName='result' />
         <Input type='empty' title='empty' name='empty' />
         <Input type='date' title='По дате окон-я с' name='byDateExpEndStart' />
         <Input type='date' title='По дате окон-я по' name='byDateExpEndEnd' />

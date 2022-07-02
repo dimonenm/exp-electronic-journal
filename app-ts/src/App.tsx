@@ -93,7 +93,7 @@ const App = () => {
       const datePetitionStart = null
       const datePetitionEnd = null
       const dateProlongationStart = null
-      const dateProlongationEnd = null
+      const valueOfProlongation = '5'
 
       const resultRand = Math.random()
       const result = resultRand < 0.25 ?
@@ -118,7 +118,7 @@ const App = () => {
         datePetitionStart: datePetitionStart,
         datePetitionEnd: datePetitionEnd,
         dateProlongationStart: dateProlongationStart,
-        dateProlongationEnd: dateProlongationEnd,
+        valueOfProlongation: valueOfProlongation,
         result: result,
         dateExpEnd: dateExpEnd,
         dateExpComplete: dateExpComplete,

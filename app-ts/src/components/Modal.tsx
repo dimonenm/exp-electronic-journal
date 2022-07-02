@@ -57,7 +57,7 @@ const Modal: FC<ModalProps> = ({ type, dbExps, setDbExps }) => {
       unitOfService = <Input type='select' title='Орган инициатора' name='unitOfService' listName='unitOfService' listType='investigation' />
     }
     else {
-      unitOfService = <Input type='empty' title='empty' />
+      unitOfService = <Input type='empty' title='empty' name='empty' />
     }
 
     if (typeOfMaterial.type === 'УД') {
@@ -132,14 +132,14 @@ const Modal: FC<ModalProps> = ({ type, dbExps, setDbExps }) => {
         <Input type='date' title='По дате завер-я с' name='byDateExpCompleteStart' />
         <Input type='date' title='По дате завер-я по' name='byDateExpCompleteEnd' />
         <ModalTitle>Справка о проверке</ModalTitle>
-        <Input type='date' title='По дате назн-я с' />
-        <Input type='date' title='По дате назн-я по' />
-        <Input type='date' title='По дате вып-я с' />
-        <Input type='date' title='По дате вып-я по' />
-        <Input type='text' title='По № проверки' />
-        <Input type='text' title='По № уг. дела' />
-        <Input type='select' title='По исполнителю' listName='executor' />
-        <Input type='select' title='По рез-ту пров-ки' listName='resultOfVerification' />
+        <Input type='date' title='По дате назн-я с' name='byDateVerificationStartStart' />
+        <Input type='date' title='По дате назн-я по' name='byDateVerificationStartEnd' />
+        <Input type='date' title='По дате вып-я с' name='byDateVerificationEndStart' />
+        <Input type='date' title='По дате вып-я по' name='byDateVerificationEndEnd' />
+        <Input type='text' title='По № проверки' name='byNumberVerification' />
+        <Input type='text' title='По № уг. дела' name='byVerificationNumberOfMaterial' />
+        <Input type='select' title='По исполнителю' name='byVerificationExecutor' listName='executor' />
+        <Input type='select' title='По рез-ту пров-ки' name='byVerificationResult' listName='resultOfVerification' />
         <ModalButton type='clear' text='Сбросить' />
       </div>
     );
@@ -155,28 +155,28 @@ const Modal: FC<ModalProps> = ({ type, dbExps, setDbExps }) => {
     return (
       <div className='modal-update'>
         <ModalTitle>Создание новой экспертизы</ModalTitle>
-        <Input type='text' title='№ по порядку' />
-        <Input type='date' title='Дата поступления' />
-        <Input type='select' title='Вид службы' listName='typeOfService' />
-        <Input type='select' title='Орган инициатора' listName='unitOfService' />
-        <Input type='select' title='Вид материала' listName='typeOfMaterial' />
-        <Input type='select' title='Статья' listName='article' />
-        <Input type='select' title='Вид экспертизы' listName='typeOfExpertise' />
-        <Input type='select' title='Исполнитель' listName='executor' />
-        <Input type='date' title='Дата вын. ходат-ва' />
-        <Input type='date' title='Дата удов. ходат-ва' />
-        <Input type='date' title='Дата продления' />
-        <Input type='date' title='Дата окон-я прод-я' />
-        <Input type='select' title='Результат эксп-зы' listName='result' />
-        <Input type='date' title='Дата окончания' />
-        <Input type='date' title='Дата завершения' />
+        <Input type='text' title='№ по порядку' name='id' />
+        <Input type='date' title='Дата поступления' name='dateOfReceipt' />
+        <Input type='select' title='Вид службы' name='typeOfService' listName='typeOfService' />
+        <Input type='select' title='Орган инициатора' name='unitOfService' listName='unitOfService' />
+        <Input type='select' title='Вид материала' name='typeOfMaterial' listName='typeOfMaterial' />
+        <Input type='select' title='Статья' name='article' listName='article' />
+        <Input type='select' title='Вид экспертизы' name='typeOfExpertise' listName='typeOfExpertise' />
+        <Input type='select' title='Исполнитель' name='executor' listName='executor' />
+        <Input type='date' title='Дата вын. ходат-ва' name='datePetitionStart' />
+        <Input type='date' title='Дата удов. ходат-ва' name='datePetitionEnd' />
+        <Input type='date' title='Дата продления' name='dateProlongationStart' />
+        <Input type='date' title='Срок продления' name='valueOfProlongation' />
+        <Input type='select' title='Результат эксп-зы' name='result' listName='result' />
+        <Input type='date' title='Дата окончания' name='dateExpEnd' />
+        <Input type='date' title='Дата завершения' name='dateExpComplete' />
         <ModalTitle>Справка о проверке</ModalTitle>
-        <Input type='date' title='Дата назначения' />
-        <Input type='date' title='Дата выполнения' />
-        <Input type='text' title='№ проверки' />
-        <Input type='text' title='№ уг. дела' />
-        <Input type='select' title='Исполнитель' listName='executor' />
-        <Input type='select' title='Результат пров-ки' listName='resultOfVerification' />
+        <Input type='date' title='Дата назначения' name='dateVerificationStart' />
+        <Input type='date' title='Дата выполнения' name='dateVerificationEnd' />
+        <Input type='text' title='№ проверки' name='numberVerification' />
+        <Input type='text' title='№ уг. дела' name='verificationNumberOfMaterial' />
+        <Input type='select' title='Исполнитель' name='verificationExecutor' listName='executor' />
+        <Input type='select' title='Результат пров-ки' name='verificationResult' listName='resultOfVerification' />
         <ModalButton type='update' text='Изменить' />
         <ModalButton type='cancel' text='Отменить' />
       </div>

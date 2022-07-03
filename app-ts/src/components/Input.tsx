@@ -11,7 +11,20 @@ interface IInputProps {
   onChangeIdHandler?: (value: string) => void
   onChangDateOfReceiptHandler?: (value: string) => void
   onChangeTypeOfServiceHandler?: (value: string) => void
+  onChangeUnitOfServiceHandler?: (value: string) => void
   onChangeTypeOfMaterialHandler?: (value: string) => void
+  onChangeNumberOfMaterialHandler?: (value: string) => void
+  onChangeArticleHandler?: (value: string) => void
+  onChangeTypeOfExpertiseHandler?: (value: string) => void
+  onChangeDifficultOfExpertiseHandler?: (value: string) => void
+  onChangeExecutorHandler?: (value: string) => void
+  onChangeDatePetitionStartHandler?: (value: string) => void
+  onChangeDatePetitionEndHandler?: (value: string) => void
+  onChangeDateProlongationStartHandler?: (value: string) => void
+  onChangeValueOfProlongationHandler?: (value: string) => void
+  onChangeResultHandler?: (value: string) => void
+  onChangeDateExpEndHandler?: (value: string) => void
+  onChangeDateExpCompleteHandler?: (value: string) => void
 }
 
 const Input: FC<IInputProps> = ({
@@ -24,22 +37,65 @@ const Input: FC<IInputProps> = ({
   onChangeIdHandler,
   onChangDateOfReceiptHandler,
   onChangeTypeOfServiceHandler,
-  onChangeTypeOfMaterialHandler }) => {
+  onChangeUnitOfServiceHandler,
+  onChangeTypeOfMaterialHandler,
+  onChangeNumberOfMaterialHandler,
+  onChangeArticleHandler,
+  onChangeTypeOfExpertiseHandler,
+  onChangeDifficultOfExpertiseHandler,
+  onChangeExecutorHandler,
+  onChangeDatePetitionStartHandler,
+  onChangeDatePetitionEndHandler,
+  onChangeDateProlongationStartHandler,
+  onChangeValueOfProlongationHandler,
+  onChangeResultHandler,
+  onChangeDateExpEndHandler,
+  onChangeDateExpCompleteHandler }) => {
   let input
   if (type === 'text') {
-    input = <input type="text" className='input-text' defaultValue={value} onChange={(event) => { onChangeIdHandler?.(event.target.value) }} />
+    if (name === 'id')
+      input = <input type="text" className='input-text' defaultValue={value} onChange={(event) => { onChangeIdHandler?.(event.target.value) }} />
+    if (name === 'numberOfMaterial')
+      input = <input type="text" className='input-text' onChange={(event) => { onChangeNumberOfMaterialHandler?.(event.target.value) }} />
+    if (name === 'valueOfProlongation')
+      input = <input type="text" className='input-text' onChange={(event) => { onChangeValueOfProlongationHandler?.(event.target.value) }} />
   }
   if (type === 'date') {
-    if (name === 'dateOfReceipt') { 
+    if (name === 'dateOfReceipt') {
       input = <input type="date" className='input-date' onChange={(event) => {
-        const date = new Date(event.target.value)
-        console.log(event.target.value);
-        console.log('date: ', date);
         onChangDateOfReceiptHandler?.(event.target.value)
       }} />
-    } else {
-      input = <input type="date" className='input-date' />
     }
+    if (name === 'datePetitionStart') {
+      input = <input type="date" className='input-date' onChange={(event) => {
+        onChangeDatePetitionStartHandler?.(event.target.value)
+      }} />
+    }
+    if (name === 'datePetitionEnd') {
+      input = <input type="date" className='input-date' onChange={(event) => {
+        onChangeDatePetitionEndHandler?.(event.target.value)
+      }} />
+    }
+    if (name === 'dateProlongationStart') {
+      input = <input type="date" className='input-date' onChange={(event) => {
+        onChangeDateProlongationStartHandler?.(event.target.value)
+      }} />
+    }
+    if (name === 'dateExpEnd') {
+      input = <input type="date" className='input-date' onChange={(event) => {
+        onChangeDateExpEndHandler?.(event.target.value)
+      }} />
+    }
+    if (name === 'dateExpComplete') {
+      input = <input type="date" className='input-date' onChange={(event) => {
+        onChangeDateExpCompleteHandler?.(event.target.value)
+      }} />
+    }
+
+
+    // else {
+    //   input = <input type="date" className='input-date' />
+    // }
   }
   if (type === 'select') {
     if (listName === 'typeOfService') {
@@ -53,10 +109,11 @@ const Input: FC<IInputProps> = ({
         <option>Суд</option>
       </select>
     }
-
     if (listName === 'unitOfService') {
       if (listType === 'police') {
-        input = <select className='select'>
+        input = <select className='select' onChange={(event) => {
+          onChangeUnitOfServiceHandler?.(event.target.value)
+        }}>
           <option>не указано</option>
           <option>ОМВД России по г. Евпатории</option>
           <option>ОМВД России по г. Феодосии</option>
@@ -92,7 +149,9 @@ const Input: FC<IInputProps> = ({
         </select>
       }
       if (listType === 'investigation') {
-        input = <select className='select'>
+        input = <select className='select' onChange={(event) => {
+          onChangeUnitOfServiceHandler?.(event.target.value)
+        }}>
           <option>не указано</option>
           <option>ГСУ СК РФ по РК и г. Севастополю</option>
           <option>СО по г. Евпатории</option>
@@ -123,7 +182,6 @@ const Input: FC<IInputProps> = ({
         </select>
       }
     }
-
     if (listName === 'typeOfMaterial') {
       input = <select className='select' onChange={(event) => {
         onChangeTypeOfMaterialHandler?.(event.target.value)
@@ -134,9 +192,10 @@ const Input: FC<IInputProps> = ({
         <option>КРСП</option>
       </select>
     }
-
     if (listName === 'article') {
-      input = <select className='select'>
+      input = <select className='select' onChange={(event) => {
+        onChangeArticleHandler?.(event.target.value)
+      }} >
         <option>не указано</option>
         <option>ст. 101 УК РФ</option>
         <option>ст. 105 УК РФ</option>
@@ -146,9 +205,10 @@ const Input: FC<IInputProps> = ({
         <option>ст. 264 УК РФ</option>
       </select>
     }
-
     if (listName === 'typeOfExpertise') {
-      input = <select className='select'>
+      input = <select className='select' onChange={(event) => {
+        onChangeTypeOfExpertiseHandler?.(event.target.value)
+      }}>
         <option>не указано</option>
         <option>Портретная</option>
         <option>Почерковедческая</option>
@@ -156,18 +216,20 @@ const Input: FC<IInputProps> = ({
         <option>ТКЭД ден.</option>
       </select>
     }
-
     if (listName === 'difficultOfExpertise') {
-      input = <select className='select'>
+      input = <select className='select' onChange={(event) => {
+        onChangeDifficultOfExpertiseHandler?.(event.target.value)
+      }}>
         <option>не указано</option>
         <option>Простая</option>
         <option>Средней слож-ти</option>
         <option>Сложная</option>
       </select>
     }
-
     if (listName === 'executor') {
-      input = <select className='select'>
+      input = <select className='select' onChange={(event) => {
+        onChangeExecutorHandler?.(event.target.value)
+      }}>
         <option>не указано</option>
         <option>Польченко Т.В.</option>
         <option>Поволодцкий Д.Г.</option>
@@ -183,7 +245,9 @@ const Input: FC<IInputProps> = ({
       </select>
     }
     if (listName === 'result') {
-      input = <select className='select'>
+      input = <select className='select' onChange={(event) => {
+        onChangeResultHandler?.(event.target.value)
+      }}>
         <option>не указано</option>
         <option>Результативная</option>
         <option>Не результативная</option>

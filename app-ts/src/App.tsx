@@ -12,8 +12,9 @@ import Card from './components/Card';
 
 const App = () => {
 
-  // const [dbExps, setDbExps] = useState<IExp[]>([])
-  const [dbExps, setDbExps] = useState<IExp[]>(addDbExps(50))
+  const [dbExps, setDbExps] = useState<IExp[]>([])
+  // const [dbExps, setDbExps] = useState<IExp[]>((): IExp[] => { return addDbExps(50)})
+  console.log('dbExps: ', dbExps);
 
   function addDbExps(count: number) {
 
@@ -169,6 +170,9 @@ const App = () => {
       }))
     }
   }
+  function addBtnClickHendler() {
+    setModal(() => ({ type: null }))
+  }
 
   return (
     <Container>
@@ -182,6 +186,7 @@ const App = () => {
           type={modal.type === 'create' ? 'create' : modal.type === 'search' ? 'search' : 'hidden'}
           dbExps={dbExps}
           setDbExps={setDbExps}
+          addBtnClickHendler={addBtnClickHendler}
         />
         <Gallery>
           {dbExps.map((item) => {
@@ -195,11 +200,12 @@ const App = () => {
               executor={`${item.executor}`}
               result={`${item.result}`}
             />)
-          }).reverse() }
+          }).reverse()}
         </Gallery>
         <Modal
           type={modal.type === 'info' ? 'info' : 'hidden'}
           dbExps={dbExps}
+          addBtnClickHendler={addBtnClickHendler}
         />
         <Menu type='right'>
           <Button type='info' clickHendler={infoClickHendler} />

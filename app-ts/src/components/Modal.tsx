@@ -3,20 +3,21 @@ import ModalTitle from './ModalTitle';
 import './Modal.scss'
 import Input from './Input';
 import ModalButton from './ModalButton';
-import { ITypeOfService, ITypeOfMaterial, IExp } from '../types/types';
+import { ITypeOfService, ITypeOfMaterial, IExp, IModal } from '../types/types';
 import Exp from '../entities/Exp';
 
 interface ModalProps {
   type: string
   dbExps: IExp[]
   setDbExps?: React.Dispatch<IExp[]>
+  addBtnClickHendler: () => void
 }
 
-const Modal: FC<ModalProps> = ({ type, dbExps, setDbExps }) => {
+const Modal: FC<ModalProps> = ({ type, dbExps, setDbExps, addBtnClickHendler }) => {
 
-  const [modalDbExps] = useState<IExp[]>(dbExps)
+  const [modalDbExps, setmodalDbExps] = useState<IExp[]>(dbExps)
+  console.log('modalDbExps: ', modalDbExps);
   const [expStorage, setExpStorage] = useState<Exp>(new Exp(undefined, `${modalDbExps.length + 1}`))
-  console.log('expStorage: ', expStorage);
 
 
   const [typeOfServiceSearch, setTypeOfServiceSearch] = useState<ITypeOfService>({ type: null })
@@ -24,92 +25,99 @@ const Modal: FC<ModalProps> = ({ type, dbExps, setDbExps }) => {
 
 
 
-  function onChangeIdHandler(value: string) {
+  function onChangeIdHandler(value: string): void {
     const localExp = new Exp(expStorage)
     localExp.setId(value)
     setExpStorage(localExp)
   }
-  function onChangDateOfReceiptHandler(value: string) {
+  function onChangDateOfReceiptHandler(value: string): void {
     const localExp = new Exp(expStorage)
     localExp.setDateOfReceipt(value)
     setExpStorage(localExp)
   }
-  function onChangeTypeOfServiceHandler(value: string) {
+  function onChangeTypeOfServiceHandler(value: string): void {
     const localExp = new Exp(expStorage)
     localExp.setTypeOfService(value)
     setExpStorage(localExp)
   }
-  function onChangeUnitOfServiceHandler(value: string) {
+  function onChangeUnitOfServiceHandler(value: string): void {
     const localExp = new Exp(expStorage)
     localExp.setUnitOfService(value)
     setExpStorage(localExp)
   }
-  function onChangeTypeOfMaterialHandler(value: string) {
+  function onChangeTypeOfMaterialHandler(value: string): void {
     const localExp = new Exp(expStorage)
     localExp.setTypeOfMaterial(value)
     setExpStorage(localExp)
   }
-  function onChangeNumberOfMaterialHandler(value: string) {
+  function onChangeNumberOfMaterialHandler(value: string): void {
     const localExp = new Exp(expStorage)
     localExp.setNumberOfMaterial(value)
     setExpStorage(localExp)
   }
-  function onChangeArticleHandler(value: string) {
+  function onChangeArticleHandler(value: string): void {
     const localExp = new Exp(expStorage)
     localExp.setArticle(value)
     setExpStorage(localExp)
   }
-  function onChangeTypeOfExpertiseHandler(value: string) {
+  function onChangeTypeOfExpertiseHandler(value: string): void {
     const localExp = new Exp(expStorage)
     localExp.setTypeOfExpertise(value)
     setExpStorage(localExp)
   }
-  function onChangeDifficultOfExpertiseHandler(value: string) {
+  function onChangeDifficultOfExpertiseHandler(value: string): void {
     const localExp = new Exp(expStorage)
     localExp.setDifficult(value)
     setExpStorage(localExp)
   }
-  function onChangeExecutorHandler(value: string) {
+  function onChangeExecutorHandler(value: string): void {
     const localExp = new Exp(expStorage)
     localExp.setExecutor(value)
     setExpStorage(localExp)
   }
-  function onChangeDatePetitionStartHandler(value: string) {
+  function onChangeDatePetitionStartHandler(value: string): void {
     const localExp = new Exp(expStorage)
     localExp.setDatePetitionStart(value)
     setExpStorage(localExp)
   }
-  function onChangeDatePetitionEndHandler(value: string) {
+  function onChangeDatePetitionEndHandler(value: string): void {
     const localExp = new Exp(expStorage)
     localExp.setDatePetitionEnd(value)
     setExpStorage(localExp)
   }
-  function onChangeDateProlongationStartHandler(value: string) {
+  function onChangeDateProlongationStartHandler(value: string): void {
     const localExp = new Exp(expStorage)
     localExp.setDateProlongationStart(value)
     setExpStorage(localExp)
   }
-  function onChangeValueOfProlongationHandler(value: string) {
+  function onChangeValueOfProlongationHandler(value: string): void {
     const localExp = new Exp(expStorage)
     localExp.setValueOfProlongation(value)
     setExpStorage(localExp)
   }
-  function onChangeResultHandler(value: string) {
+  function onChangeResultHandler(value: string): void {
     const localExp = new Exp(expStorage)
     localExp.setResult(value)
     setExpStorage(localExp)
   }
-  function onChangeDateExpEndHandler(value: string) {
+  function onChangeDateExpEndHandler(value: string): void {
     const localExp = new Exp(expStorage)
     localExp.setDateExpEnd(value)
     setExpStorage(localExp)
   }
-  function onChangeDateExpCompleteHandler(value: string) {
+  function onChangeDateExpCompleteHandler(value: string): void {
     const localExp = new Exp(expStorage)
     localExp.setDateExpComplete(value)
     setExpStorage(localExp)
   }
-
+  function onClickBtnAddHandler(): void {
+    const localExpArr = [...modalDbExps]
+    localExpArr.push(expStorage);
+    setDbExps?.(localExpArr)
+    setmodalDbExps?.(localExpArr)
+    setExpStorage(new Exp(undefined, `${localExpArr.length + 1}`))
+    addBtnClickHendler()
+  }
 
 
   function onChangeTypeOfServiceSearchHandler(value: string) {
@@ -163,7 +171,7 @@ const Modal: FC<ModalProps> = ({ type, dbExps, setDbExps }) => {
         <Input type='date' title='Дата окончания' name='dateExpEnd' onChangeDateExpEndHandler={onChangeDateExpEndHandler} />
         <Input type='date' title='Дата завершения' name='dateExpComplete' onChangeDateExpCompleteHandler={onChangeDateExpCompleteHandler} />
         <Input type='empty' title='empty' name='empty' />
-        <ModalButton type='add' text='Добавить' />
+        <ModalButton type='add' text='Добавить' onClickBtnAddHandler={onClickBtnAddHandler} />
         <ModalButton type='cancel' text='Отменить' />
       </div>
     );

@@ -14,8 +14,8 @@ const App = () => {
 
   const [dbExps, setDbExps] = useState<IExp[]>([])
   // const [dbExps, setDbExps] = useState<IExp[]>((): IExp[] => { return addDbExps(50)})
-  console.log('dbExps: ', dbExps);
-
+  
+/* генератор экспертиз для базы
   function addDbExps(count: number) {
 
     let arr: IExp[] = []
@@ -134,13 +134,25 @@ const App = () => {
     }
     return arr
   }
-
+*/
+  
   const [modal, setModal] = useState<IModal>({ type: null })
 
   function createClickHendler() {
     if (modal.type !== 'create') {
       setModal((prev) => ({
         ...prev, type: 'create'
+      }))
+    } else {
+      setModal((prev) => ({
+        ...prev, type: null
+      }))
+    }
+  }
+  function updateClickHendler() {
+    if (modal.type !== 'update') {
+      setModal((prev) => ({
+        ...prev, type: 'update'
       }))
     } else {
       setModal((prev) => ({
@@ -170,9 +182,6 @@ const App = () => {
       }))
     }
   }
-  function addBtnClickHendler() {
-    setModal(() => ({ type: null }))
-  }
 
   return (
     <Container>
@@ -183,10 +192,10 @@ const App = () => {
           <Button type='search' clickHendler={searchClickHendler} />
         </Menu>
         <Modal
-          type={modal.type === 'create' ? 'create' : modal.type === 'search' ? 'search' : 'hidden'}
+          type={modal.type === 'create' ? 'create' : modal.type === 'search' ? 'search' : modal.type === 'update' ? 'update' : 'hidden'}
           dbExps={dbExps}
           setDbExps={setDbExps}
-          addBtnClickHendler={addBtnClickHendler}
+          setModal={setModal}
         />
         <Gallery>
           {dbExps.map((item) => {
@@ -199,13 +208,14 @@ const App = () => {
               dateOfComplite='окончание 00.00.2022'
               executor={`${item.executor}`}
               result={`${item.result}`}
+              updateClickHendler={updateClickHendler}
             />)
           }).reverse()}
         </Gallery>
         <Modal
           type={modal.type === 'info' ? 'info' : 'hidden'}
           dbExps={dbExps}
-          addBtnClickHendler={addBtnClickHendler}
+          setModal={setModal}
         />
         <Menu type='right'>
           <Button type='info' clickHendler={infoClickHendler} />

@@ -5,9 +5,10 @@ interface IModalButtonProps {
   type: string,
   text: string,
   onClickBtnAddHandler?: () => void
+  onClickBtnCancelHandler?: () => void
 }
 
-const ModalButton: FC<IModalButtonProps> = ({ type, text, onClickBtnAddHandler }) => {
+const ModalButton: FC<IModalButtonProps> = ({ type, text, onClickBtnAddHandler, onClickBtnCancelHandler }) => {
   if (type === 'add') {
     return (
       <div className='modal-button' onClick={onClickBtnAddHandler}>
@@ -17,7 +18,7 @@ const ModalButton: FC<IModalButtonProps> = ({ type, text, onClickBtnAddHandler }
   }
   if (type === 'cancel') {
     return (
-      <div className='modal-button'>
+      <div className='modal-button' onClick={onClickBtnCancelHandler}>
         {text}
       </div>
     );

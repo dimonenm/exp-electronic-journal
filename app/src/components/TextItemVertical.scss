@@ -1,0 +1,10 @@
+.modal-info-text-item-vertical {
+    display: grid;
+    width: 150px;
+    height: 20px;
+    font-size: 16px;
+    align-items: center;
+    justify-items: start;
+    // margin-bottom: 5px;
+    transform: rotate(-90deg);
+}

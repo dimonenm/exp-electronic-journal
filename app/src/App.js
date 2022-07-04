@@ -8,10 +8,14 @@ import Gallery from './containers/Gallery';
 import Card from './components/Card';
 import Modal from './components/Modal';
 import { useState } from 'react';
+import InfoTitle from './components/InfoTitle';
+import TextItem from './components/TextItem';
+import TextItemWrapper from './components/TextItemWrapper';
+import TextItemVertical from './components/TextItemVertical';
 
 
 function App() {
-  debugger
+  
   const [modal, setModal] = useState({ type: null })
   const [expState] = useState(addDbExps(1))
 
@@ -146,7 +150,7 @@ function App() {
           executor={`${item.executor}`} result={`${item.result}`} />)
     }
   ).reverse()
-  
+
   return (
     <div className="App">
 
@@ -161,7 +165,36 @@ function App() {
           <Gallery>
             {cardArr}
           </Gallery>
-          <Modal type={modal.type === 'info' ? 'info' : 'hidden'}></Modal>
+          <Modal type={modal.type === 'info' ? 'info' : 'hidden'}>
+            <InfoTitle text="Количество назначенных экспертиз" />
+            <TextItem text="Почерковедческих: "/>
+            <TextItem text="36" />
+            <TextItem text="ТКЭД: "/>
+            <TextItem text="153" />
+            <TextItem text="Портретных: "/>
+            <TextItem text="6" />
+            <TextItem text="Всего: " />
+            <TextItem text="195" />
+            <InfoTitle text="Количество результативных экспертиз" />
+            <TextItem text="Почерковедческих: " />
+            <TextItem text="12" />
+            <TextItem text="ТКЭД: " />
+            <TextItem text="153" />
+            <TextItem text="Портретных: " />
+            <TextItem text="1" />
+            <TextItem text="Всего: " />
+            <TextItem text="166" />
+            <InfoTitle text="Количество экспертиз по статьям" />
+            <TextItemWrapper>
+              <TextItem />
+              <TextItemVertical text="Всего: " />
+              <TextItemVertical text="Почерко-ких" />
+              <TextItemVertical text="ТКЭД" />
+              <TextItemVertical text="Портретных" />
+              <TextItemVertical text="Проверок" />
+            </TextItemWrapper>
+            <InfoTitle text="Количество экспертиз по исполнителям"/>
+          </Modal>
           <Menu>
             <Btn type="info" setModal={setModal} modal={modal}>info</Btn>
           </Menu>

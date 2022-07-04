@@ -3,13 +3,14 @@ import './ModalButton.scss'
 
 interface IModalButtonProps {
   type: string,
-  text: string
+  text: string,
+  onClickBtnAddHandler?: () => void
 }
 
-const ModalButton: FC<IModalButtonProps> = ({ type, text }) => {
+const ModalButton: FC<IModalButtonProps> = ({ type, text, onClickBtnAddHandler }) => {
   if (type === 'add') {
     return (
-      <div className='modal-button'>
+      <div className='modal-button' onClick={onClickBtnAddHandler}>
         {text}
       </div>
     );

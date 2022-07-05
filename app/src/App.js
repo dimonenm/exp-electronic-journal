@@ -15,7 +15,7 @@ import TextItemVertical from './components/TextItemVertical';
 
 
 function App() {
-  
+
   const [modal, setModal] = useState({ type: null })
   const [expState] = useState(addDbExps(1))
 
@@ -137,6 +137,24 @@ function App() {
     }
     return arr
   }
+  const date = "2022-07-05"
+  function dateFromUsToRu(incomingStr) {
+    let result
+    let splits = incomingStr.split("-")
+    result = `${splits[2]}.${splits[1]}.${splits[0]}`
+    return result
+  }
+  function dateFromRutoUs(incomingStr) {
+    let result
+    let splits = incomingStr.split(".")
+    result = `${splits[2]}-${splits[1]}-${splits[0]}`
+    return result
+  }
+  // function dateAddDays(incomingDate, countOfDays) {
+  //   let splits = incomingStr.split("-")
+  // }
+
+  
   let cardArr = expState.map(
     (item) => {
       return (
@@ -167,11 +185,11 @@ function App() {
           </Gallery>
           <Modal type={modal.type === 'info' ? 'info' : 'hidden'}>
             <InfoTitle text="Количество назначенных экспертиз" />
-            <TextItem text="Почерковедческих: "/>
+            <TextItem text="Почерковедческих: " />
             <TextItem text="36" />
-            <TextItem text="ТКЭД: "/>
+            <TextItem text="ТКЭД: " />
             <TextItem text="153" />
-            <TextItem text="Портретных: "/>
+            <TextItem text="Портретных: " />
             <TextItem text="6" />
             <TextItem text="Всего: " />
             <TextItem text="195" />
@@ -193,7 +211,7 @@ function App() {
               <TextItemVertical text="Портретных" />
               <TextItemVertical text="Проверок" />
             </TextItemWrapper>
-            <InfoTitle text="Количество экспертиз по исполнителям"/>
+            <InfoTitle text="Количество экспертиз по исполнителям" />
           </Modal>
           <Menu>
             <Btn type="info" setModal={setModal} modal={modal}>info</Btn>

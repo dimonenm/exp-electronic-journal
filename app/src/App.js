@@ -138,22 +138,25 @@ function App() {
     return arr
   }
   const date = "2022-07-05"
-  function dateFromUsToRu(incomingStr) {
-    let result
-    let splits = incomingStr.split("-")
-    result = `${splits[2]}.${splits[1]}.${splits[0]}`
-    return result
-  }
-  function dateFromRutoUs(incomingStr) {
-    let result
-    let splits = incomingStr.split(".")
-    result = `${splits[2]}-${splits[1]}-${splits[0]}`
-    return result
-  }
-  // function dateAddDays(incomingDate, countOfDays) {
+  // function dateFromUsToRu(incomingStr) {
+  //   let result
   //   let splits = incomingStr.split("-")
+  //   result = `${splits[2]}.${splits[1]}.${splits[0]}`
+  //   return result
   // }
-
+  // function dateFromRutoUs(incomingStr) {
+  //   let result
+  //   let splits = incomingStr.split(".")
+  //   result = `${splits[2]}-${splits[1]}-${splits[0]}`
+  //   return result
+  // }
+  function dateAddDays(incomingDate, countOfDays) {
+    let date = new Date(incomingDate)
+    date.setDate(date.getDate() + countOfDays)
+    date.setHours(0)
+    console.log(date.toLocaleDateString());
+  }
+  dateAddDays(date, 27);
   
   let cardArr = expState.map(
     (item) => {

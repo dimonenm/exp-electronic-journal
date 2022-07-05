@@ -1,5 +1,6 @@
 export interface IModal{
   type: string | null
+  idOfExp: string | null
 }
 export interface ITypeOfService {
   type: string | null

@@ -1,35 +1,29 @@
 import React, { FC, useState } from 'react';
-import ModalTitle from './ModalTitle';
-import Input from './Input';
 import ModalButton from './ModalButton';
 import ModalCreate from './ModalCreate';
 import './Modal.scss'
-import { IExp, IModal } from '../types/types';
+import { IModal } from '../types/types';
 import Exp from '../entities/Exp';
 import ModalUpdate from './ModalUpdate';
 
 interface ModalProps {
   type: string
-  dbExps: IExp[]
-  setDbExps?: React.Dispatch<IExp[]>
+  dbExps: Exp[]
+  setDbExps?: React.Dispatch<Exp[]>
   setModal: React.Dispatch<IModal>
 }
 
 const Modal: FC<ModalProps> = ({ type, dbExps, setDbExps, setModal }) => {
 
-  const [modalDbExps, setModalDbExps] = useState<IExp[]>(dbExps)
-  const [expStorage, setExpStorage] = useState<Exp>(new Exp(undefined, `${modalDbExps.length + 1}`))
-
-
+  const [expStorage, setExpStorage] = useState<Exp>(new Exp(undefined, `${dbExps.length + 1}`))
 
   if (type === 'create') {
     return (
       <div className='modal-create'>
         <ModalCreate
-          modalDbExps={modalDbExps}
+          dbExps={dbExps}
           expStorage={expStorage}
           setExpStorage={setExpStorage}
-          setModalDbExps={setModalDbExps}
           setDbExps={setDbExps}
           setModal={setModal}
         />
@@ -37,14 +31,12 @@ const Modal: FC<ModalProps> = ({ type, dbExps, setDbExps, setModal }) => {
     );
   }
   if (type === 'update') {
-    console.log('modal - ', type);
     return (
       <div className='modal-update'>
         <ModalUpdate
-          modalDbExps={modalDbExps}
+          dbExps={dbExps}
           expStorage={expStorage}
           setExpStorage={setExpStorage}
-          setModalDbExps={setModalDbExps}
           setDbExps={setDbExps}
           setModal={setModal}
         />

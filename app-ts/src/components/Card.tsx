@@ -9,13 +9,15 @@ interface IInputProps {
     dateOfComplite: string,
     executor: string,
     result: string,
-    updateClickHendler: () => void
+    updateClickHendler: (value: string) => void
 }
 
 const Card: FC<IInputProps> = ({ number, type, numberOfMaterial, dateOfIncoming, dateOfComplite, executor, result, updateClickHendler }) => {
     return (
-        <div className='card' onClick={updateClickHendler}>
-            <div className='card-half-row'>{number}</div>
+        <div className='card' onClick={() => {
+            updateClickHendler(number)
+        }}>
+            <div className='card-half-row'>{`№ ${number}`}</div>
             <div className='card-half-row'>{type}</div>
             <div className='card-row'>{numberOfMaterial}</div>
             <div className='card-row'>{dateOfIncoming}</div>

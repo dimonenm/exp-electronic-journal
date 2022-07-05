@@ -8,14 +8,16 @@ import ModalUpdate from './ModalUpdate';
 
 interface ModalProps {
   type: string
+  idOfExp?: string | null
   dbExps: Exp[]
   setDbExps?: React.Dispatch<Exp[]>
   setModal: React.Dispatch<IModal>
 }
 
-const Modal: FC<ModalProps> = ({ type, dbExps, setDbExps, setModal }) => {
+const Modal: FC<ModalProps> = ({ type, idOfExp, dbExps, setDbExps, setModal }) => {
 
   const [expStorage, setExpStorage] = useState<Exp>(new Exp(undefined, `${dbExps.length + 1}`))
+  console.log('expStorage: ', expStorage);
 
   if (type === 'create') {
     return (
@@ -31,6 +33,12 @@ const Modal: FC<ModalProps> = ({ type, dbExps, setDbExps, setModal }) => {
     );
   }
   if (type === 'update') {
+    const exp = dbExps.find((item) => {
+      if (item.getId() === idOfExp) return item
+      return false
+    })
+    setExpStorage(exp ? exp : new Exp(undefined, `${dbExps.length + 1}`))
+    
     return (
       <div className='modal-update'>
         <ModalUpdate

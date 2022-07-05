@@ -194,6 +194,7 @@ const App = () => {
         </Menu>
         <Modal
           type={modal.type === 'create' ? 'create' : modal.type === 'search' ? 'search' : modal.type === 'update' ? 'update' : 'hidden'}
+          idOfExp={modal.idOfExp}
           dbExps={dbExps}
           setDbExps={setDbExps}
           setModal={setModal}

@@ -12,6 +12,7 @@ import InfoTitle from './components/InfoTitle';
 import TextItem from './components/TextItem';
 import TextItemWrapper from './components/TextItemWrapper';
 import TextItemVertical from './components/TextItemVertical';
+import LineItem from './components/LineItem';
 
 
 function App() {
@@ -213,6 +214,8 @@ function App() {
               <TextItemVertical text="ТКЭД" />
               <TextItemVertical text="Портретных" />
               <TextItemVertical text="Проверок" />
+              <TextItem text="Всего: " />
+              <LineItem/>
             </TextItemWrapper>
             <InfoTitle text="Количество экспертиз по исполнителям" />
           </Modal>

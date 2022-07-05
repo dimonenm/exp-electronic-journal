@@ -5,6 +5,7 @@
     grid-template-rows: repeat(auto-fill, 120px);
     grid-gap: 10px;
     padding: 10px;
-    overflow-y: scroll;
+    overflow-y: auto;
+    height: calc(100vh - 70px);
     
 }

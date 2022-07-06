@@ -214,7 +214,14 @@ function App() {
               <TextItemVertical text="ТКЭД" />
               <TextItemVertical text="Портретных" />
               <TextItemVertical text="Проверок" />
+              <LineItem/>
               <TextItem text="Всего: " />
+              <LineItem/>
+              <TextItem text="ст. 158 УК РФ:" />
+              <LineItem/>
+              <TextItem text="ст. 186, 187 УК РФ:" />
+              <LineItem/>
+              <TextItem text="ст. 264 УК РФ:" />
               <LineItem/>
             </TextItemWrapper>
             <InfoTitle text="Количество экспертиз по исполнителям" />

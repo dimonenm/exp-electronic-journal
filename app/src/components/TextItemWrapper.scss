@@ -1,8 +1,9 @@
 .modal-info-text-item-wrapper{
     display: grid;
     grid-template-columns: 200px repeat(5, 40px);
-    grid-template-rows: 100px 1px 20px 1px 20px 1px 20px 1px 20px;
+    grid-template-rows: 100px 1px 20px 1px 20px 1px 20px 1px 20px 1px;
     row-gap: 3px;
+    align-items: center;
     grid-column-start: 1;
     grid-column-end: 3;
     column-gap: 5px;

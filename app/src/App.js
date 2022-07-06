@@ -8,24 +8,21 @@ import Gallery from './containers/Gallery';
 import Card from './components/Card';
 import Modal from './components/Modal';
 import { useState } from 'react';
-import InfoTitle from './components/InfoTitle';
-import TextItem from './components/TextItem';
-import TextItemWrapper from './components/TextItemWrapper';
-import TextItemVertical from './components/TextItemVertical';
+
 
 
 function App() {
-  
+
   const [modal, setModal] = useState({ type: null })
-  const [expState] = useState(addDbExps(1))
+  const [expState] = useState(addDbExps(50))
 
   function addDbExps(count) {
 
     let arr = []
 
     for (let i = 0; i < count; i++) {
-      const dateOfReceipt = new Date()
-      const dateOfReceiptStr = `${dateOfReceipt.getDate()}.${dateOfReceipt.getMonth()}.${dateOfReceipt.getFullYear()}}`
+      // const dateOfReceipt = new Date()
+      const dateOfReceiptStr = "2022-07-06"
       const typeOfServiceRand = Math.random()
       const typeOfService = typeOfServiceRand < 0.25 ?
         'МВД' : typeOfServiceRand >= 0.25 && typeOfServiceRand < 0.5 ?
@@ -137,6 +134,27 @@ function App() {
     }
     return arr
   }
+  const date = "2022-07-05"
+  // function dateFromUsToRu(incomingStr) {
+  //   let result
+  //   let splits = incomingStr.split("-")
+  //   result = `${splits[2]}.${splits[1]}.${splits[0]}`
+  //   return result
+  // }
+  // function dateFromRutoUs(incomingStr) {
+  //   let result
+  //   let splits = incomingStr.split(".")
+  //   result = `${splits[2]}-${splits[1]}-${splits[0]}`
+  //   return result
+  // }
+  function dateAddDays(incomingDate, countOfDays) {
+    let date = new Date(incomingDate)
+    date.setDate(date.getDate() + countOfDays)
+    date.setHours(0)
+    console.log(date.toLocaleDateString());
+  }
+  dateAddDays(date, 27);
+  
   let cardArr = expState.map(
     (item) => {
       return (
@@ -165,38 +183,11 @@ function App() {
           <Gallery>
             {cardArr}
           </Gallery>
-          <Modal type={modal.type === 'info' ? 'info' : 'hidden'}>
-            <InfoTitle text="Количество назначенных экспертиз" />
-            <TextItem text="Почерковедческих: "/>
-            <TextItem text="36" />
-            <TextItem text="ТКЭД: "/>
-            <TextItem text="153" />
-            <TextItem text="Портретных: "/>
-            <TextItem text="6" />
-            <TextItem text="Всего: " />
-            <TextItem text="195" />
-            <InfoTitle text="Количество результативных экспертиз" />
-            <TextItem text="Почерковедческих: " />
-            <TextItem text="12" />
-            <TextItem text="ТКЭД: " />
-            <TextItem text="153" />
-            <TextItem text="Портретных: " />
-            <TextItem text="1" />
-            <TextItem text="Всего: " />
-            <TextItem text="166" />
-            <InfoTitle text="Количество экспертиз по статьям" />
-            <TextItemWrapper>
-              <TextItem />
-              <TextItemVertical text="Всего: " />
-              <TextItemVertical text="Почерко-ких" />
-              <TextItemVertical text="ТКЭД" />
-              <TextItemVertical text="Портретных" />
-              <TextItemVertical text="Проверок" />
-            </TextItemWrapper>
-            <InfoTitle text="Количество экспертиз по исполнителям"/>
+          <Modal type={modal.type === 'info' ? 'info' : 'hidden'} expState={expState}>
+           
           </Modal>
           <Menu>
-            <Btn type="info" setModal={setModal} modal={modal}>info</Btn>
+            <Btn type="info" setModal={setModal} modal={modal}></Btn>
           </Menu>
         </Main>
       </Container>

@@ -8,26 +8,21 @@ import Gallery from './containers/Gallery';
 import Card from './components/Card';
 import Modal from './components/Modal';
 import { useState } from 'react';
-import InfoTitle from './components/InfoTitle';
-import TextItem from './components/TextItem';
-import TextItemWrapper from './components/TextItemWrapper';
-import TextItemVertical from './components/TextItemVertical';
-import LineItem from './components/LineItem';
-import ValueItem from './components/ValueItem';
+
 
 
 function App() {
 
   const [modal, setModal] = useState({ type: null })
-  const [expState] = useState(addDbExps(1))
+  const [expState] = useState(addDbExps(50))
 
   function addDbExps(count) {
 
     let arr = []
 
     for (let i = 0; i < count; i++) {
-      const dateOfReceipt = new Date()
-      const dateOfReceiptStr = `${dateOfReceipt.getDate()}.${dateOfReceipt.getMonth()}.${dateOfReceipt.getFullYear()}}`
+      // const dateOfReceipt = new Date()
+      const dateOfReceiptStr = "2022-07-06"
       const typeOfServiceRand = Math.random()
       const typeOfService = typeOfServiceRand < 0.25 ?
         'МВД' : typeOfServiceRand >= 0.25 && typeOfServiceRand < 0.5 ?
@@ -188,145 +183,11 @@ function App() {
           <Gallery>
             {cardArr}
           </Gallery>
-          <Modal type={modal.type === 'info' ? 'info' : 'hidden'}>
-            <InfoTitle text="Количество назначенных экспертиз" />
-            <TextItem text="Почерковедческих: " />
-            <TextItem text="36" />
-            <TextItem text="ТКЭД: " />
-            <TextItem text="153" />
-            <TextItem text="Портретных: " />
-            <TextItem text="6" />
-            <TextItem text="Всего: " />
-            <TextItem text="195" />
-            <InfoTitle text="Количество результативных экспертиз" />
-            <TextItem text="Почерковедческих: " />
-            <TextItem text="12" />
-            <TextItem text="ТКЭД: " />
-            <TextItem text="153" />
-            <TextItem text="Портретных: " />
-            <TextItem text="1" />
-            <TextItem text="Всего: " />
-            <TextItem text="166" />
-            <InfoTitle text="Количество экспертиз по статьям" />
-            <TextItemWrapper>
-              <TextItem />
-              <TextItemVertical text="Всего: " />
-              <TextItemVertical text="Почерко-ких" />
-              <TextItemVertical text="ТКЭД" />
-              <TextItemVertical text="Портретных" />
-              <TextItemVertical text="Проверок" />
-              <LineItem/>
-              <TextItem text="Всего: " />
-              <ValueItem text="166" />
-              <ValueItem text="12" />
-              <ValueItem text="153" />
-              <ValueItem text="1" />
-              <ValueItem text="153" />
-              <LineItem/>
-              <TextItem text="ст. 158 УК РФ:" />
-              <LineItem/>
-              <TextItem text="ст. 186, 187 УК РФ:" />
-              <LineItem/>
-              <TextItem text="ст. 264 УК РФ:" />
-              <LineItem />
-            </TextItemWrapper>
-            <InfoTitle text="Количество экспертиз по исполнителям" />
-            <TextItemWrapper>
-              <TextItem />
-              <TextItemVertical text="Всего: " />
-              <TextItemVertical text="Почерко-ких" />
-              <TextItemVertical text="ТКЭД" />
-              <TextItemVertical text="Портретных" />
-              <TextItemVertical text="Проверок" />
-              <LineItem />
-              <TextItem text="Всего: " />
-              <ValueItem text="166" />
-              <ValueItem text="12" />
-              <ValueItem text="153" />
-              <ValueItem text="1" />
-              <ValueItem text="153" />
-              <LineItem />
-              <TextItem text="Польченко Т.В.:" />
-              <ValueItem text="32" />
-              <ValueItem text="4" />
-              <ValueItem text="28" />
-              <ValueItem text="" />
-              <ValueItem text="" />
-              <LineItem />
-              <TextItem text="Поволодцкий Д.Г.:" />
-              <ValueItem text="25" />
-              <ValueItem text="" />
-              <ValueItem text="25" />
-              <ValueItem text="" />
-              <ValueItem text="99" />
-              <LineItem />
-              <TextItem text="Васильев И.С.:" />
-              <ValueItem text="25" />
-              <ValueItem text="2" />
-              <ValueItem text="25" />
-              <ValueItem text="" />
-              <ValueItem text="" />
-              <LineItem />
-              <TextItem text="Арзяков Д.Н.:" />
-              <ValueItem text="2" />
-              <ValueItem text="2" />
-              <ValueItem text="" />
-              <ValueItem text="" />
-              <ValueItem text="" />
-              <LineItem />
-              <TextItem text="Халилов Р.Н.:" />
-              <ValueItem text="25" />
-              <ValueItem text="" />
-              <ValueItem text="25" />
-              <ValueItem text="" />
-              <ValueItem text="54" />
-              <LineItem />
-              <TextItem text="Балабанов А.А.:" />
-              <ValueItem text="26" />
-              <ValueItem text="" />
-              <ValueItem text="25" />
-              <ValueItem text="1" />
-              <ValueItem text="" />
-              <LineItem />
-              <TextItem text="Дружинина Е.Ю.:" />
-              <ValueItem text="2" />
-              <ValueItem text="2" />
-              <ValueItem text="" />
-              <ValueItem text="" />
-              <ValueItem text="" />
-              <LineItem />
-              <TextItem text="Еноткин А.А.:" />
-              <ValueItem text="2" />
-              <ValueItem text="2" />
-              <ValueItem text="" />
-              <ValueItem text="" />
-              <ValueItem text="" />
-              <LineItem />
-              <TextItem text="Киселев А.С.: " />
-              <ValueItem text="25" />
-              <ValueItem text="" />
-              <ValueItem text="25" />
-              <ValueItem text="" />
-              <ValueItem text="" />
-              <LineItem />
-              <TextItem text="Марчук В.А.: " />
-              <ValueItem text="2" />
-              <ValueItem text="" />
-              <ValueItem text="65" />
-              <ValueItem text="" />
-              <ValueItem text="70" />
-              <LineItem />
-              <TextItem text="Черногоров А.Ю.: " />
-              <ValueItem text="" />
-              <ValueItem text="" />
-              <ValueItem text="20" />
-              <ValueItem text="" />
-              <ValueItem text="" />
-              <LineItem />
-            </TextItemWrapper>
+          <Modal type={modal.type === 'info' ? 'info' : 'hidden'} expState={expState}>
+           
           </Modal>
           <Menu>
-            <Btn type="info" setModal={setModal} modal={modal}>info</Btn>
+            <Btn type="info" setModal={setModal} modal={modal}></Btn>
           </Menu>
         </Main>
       </Container>

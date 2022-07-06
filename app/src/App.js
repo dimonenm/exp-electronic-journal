@@ -13,6 +13,7 @@ import TextItem from './components/TextItem';
 import TextItemWrapper from './components/TextItemWrapper';
 import TextItemVertical from './components/TextItemVertical';
 import LineItem from './components/LineItem';
+import ValueItem from './components/ValueItem';
 
 
 function App() {
@@ -216,15 +217,113 @@ function App() {
               <TextItemVertical text="Проверок" />
               <LineItem/>
               <TextItem text="Всего: " />
+              <ValueItem text="166" />
+              <ValueItem text="12" />
+              <ValueItem text="153" />
+              <ValueItem text="1" />
+              <ValueItem text="153" />
               <LineItem/>
               <TextItem text="ст. 158 УК РФ:" />
               <LineItem/>
               <TextItem text="ст. 186, 187 УК РФ:" />
               <LineItem/>
               <TextItem text="ст. 264 УК РФ:" />
-              <LineItem/>
+              <LineItem />
             </TextItemWrapper>
             <InfoTitle text="Количество экспертиз по исполнителям" />
+            <TextItemWrapper>
+              <TextItem />
+              <TextItemVertical text="Всего: " />
+              <TextItemVertical text="Почерко-ких" />
+              <TextItemVertical text="ТКЭД" />
+              <TextItemVertical text="Портретных" />
+              <TextItemVertical text="Проверок" />
+              <LineItem />
+              <TextItem text="Всего: " />
+              <ValueItem text="166" />
+              <ValueItem text="12" />
+              <ValueItem text="153" />
+              <ValueItem text="1" />
+              <ValueItem text="153" />
+              <LineItem />
+              <TextItem text="Польченко Т.В.:" />
+              <ValueItem text="32" />
+              <ValueItem text="4" />
+              <ValueItem text="28" />
+              <ValueItem text="" />
+              <ValueItem text="" />
+              <LineItem />
+              <TextItem text="Поволодцкий Д.Г.:" />
+              <ValueItem text="25" />
+              <ValueItem text="" />
+              <ValueItem text="25" />
+              <ValueItem text="" />
+              <ValueItem text="99" />
+              <LineItem />
+              <TextItem text="Васильев И.С.:" />
+              <ValueItem text="25" />
+              <ValueItem text="2" />
+              <ValueItem text="25" />
+              <ValueItem text="" />
+              <ValueItem text="" />
+              <LineItem />
+              <TextItem text="Арзяков Д.Н.:" />
+              <ValueItem text="2" />
+              <ValueItem text="2" />
+              <ValueItem text="" />
+              <ValueItem text="" />
+              <ValueItem text="" />
+              <LineItem />
+              <TextItem text="Халилов Р.Н.:" />
+              <ValueItem text="25" />
+              <ValueItem text="" />
+              <ValueItem text="25" />
+              <ValueItem text="" />
+              <ValueItem text="54" />
+              <LineItem />
+              <TextItem text="Балабанов А.А.:" />
+              <ValueItem text="26" />
+              <ValueItem text="" />
+              <ValueItem text="25" />
+              <ValueItem text="1" />
+              <ValueItem text="" />
+              <LineItem />
+              <TextItem text="Дружинина Е.Ю.:" />
+              <ValueItem text="2" />
+              <ValueItem text="2" />
+              <ValueItem text="" />
+              <ValueItem text="" />
+              <ValueItem text="" />
+              <LineItem />
+              <TextItem text="Еноткин А.А.:" />
+              <ValueItem text="2" />
+              <ValueItem text="2" />
+              <ValueItem text="" />
+              <ValueItem text="" />
+              <ValueItem text="" />
+              <LineItem />
+              <TextItem text="Киселев А.С.: " />
+              <ValueItem text="25" />
+              <ValueItem text="" />
+              <ValueItem text="25" />
+              <ValueItem text="" />
+              <ValueItem text="" />
+              <LineItem />
+              <TextItem text="Марчук В.А.: " />
+              <ValueItem text="2" />
+              <ValueItem text="" />
+              <ValueItem text="65" />
+              <ValueItem text="" />
+              <ValueItem text="70" />
+              <LineItem />
+              <TextItem text="Черногоров А.Ю.: " />
+              <ValueItem text="" />
+              <ValueItem text="" />
+              <ValueItem text="20" />
+              <ValueItem text="" />
+              <ValueItem text="" />
+              <LineItem />
+            </TextItemWrapper>
           </Modal>
           <Menu>
             <Btn type="info" setModal={setModal} modal={modal}>info</Btn>

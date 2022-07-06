@@ -13,16 +13,9 @@ import Card from './components/Card';
 
 const App = () => {
 
-  // function f(inDate: string, countOfDays: number) {
-  //   const count = countOfDays * 24 * 60 * 60 * 1000; 
-  //   const date = new Date(inDate)
-  //   date.setHours(0)
-  //   const newDate = new Date(+date + count)
-  //   return `${newDate.getFullYear()}-${newDate.getMonth() + 1 < 10 ? '0' + (newDate.getMonth() + 1) : newDate.getMonth() + 1}-${newDate.getDate() < 10 ? '0' + newDate.getDate() : newDate.getDate()}`    
-  // }
-
   // const [dbExps, setDbExps] = useState<IExp[]>([])
   const [dbExps, setDbExps] = useState<Exp[]>((): Exp[] => { return addDbExps(10) })
+  const [modal, setModal] = useState<IModal>({ type: null, idOfExp: null })
 
   // генератор экспертиз для базы
   function addDbExps(count: number) {
@@ -135,8 +128,6 @@ const App = () => {
     }
     return arr
   }
-
-  const [modal, setModal] = useState<IModal>({ type: null, idOfExp: null })
 
   function createClickHendler() {
     if (modal.type !== 'create') {

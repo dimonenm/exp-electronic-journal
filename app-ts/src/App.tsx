@@ -30,8 +30,7 @@ const App = () => {
     let arr: Exp[] = []
 
     for (let i = 0; i < count; i++) {
-      const dateOfReceipt = new Date()
-      const dateOfReceiptStr = `${dateOfReceipt.getFullYear()}-${dateOfReceipt.getMonth()}-${dateOfReceipt.getDate()}}`
+      const dateOfReceipt = '2022-07-05'
       const typeOfServiceRand = Math.random()
       const typeOfService = typeOfServiceRand < 0.25 ?
         'МВД' : typeOfServiceRand >= 0.25 && typeOfServiceRand < 0.5 ?
@@ -116,7 +115,7 @@ const App = () => {
       const dateExpComplete = '2022-07-05'
       const exp = new Exp()
       exp.setId(`${i + 1}`)
-      exp.setDateOfReceipt(dateOfReceiptStr)
+      exp.setDateOfReceipt(dateOfReceipt)
       exp.setTypeOfService(typeOfService)
       exp.setUnitOfService(unitOfService)
       exp.setTypeOfMaterial(typeOfMaterial)

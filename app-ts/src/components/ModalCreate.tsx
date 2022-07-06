@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import ModalTitle from './ModalTitle';
 import Input from './Input';
 import ModalButton from './ModalButton';
@@ -7,13 +7,14 @@ import Exp from '../entities/Exp';
 
 interface ModalCreateProps {
   dbExps: Exp[],
-  expStorage: Exp,
-  setExpStorage: React.Dispatch<Exp>,
   setDbExps: React.Dispatch<Exp[]> | undefined,
   setModal: React.Dispatch<IModal>
 }
 
-const ModalCreate: FC<ModalCreateProps> = ({ dbExps, expStorage, setExpStorage, setDbExps, setModal }) => {
+const ModalCreate: FC<ModalCreateProps> = ({ dbExps, setDbExps, setModal }) => {
+
+  const [expStorage, setExpStorage] = useState<Exp>(new Exp(undefined, `${dbExps.length + 1}`))
+
   let unitOfService
   let article
 

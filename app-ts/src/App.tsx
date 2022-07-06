@@ -128,6 +128,14 @@ const App = () => {
     }
     return arr
   }
+  function dateFromUsToRu(incomingStr: string | null) {
+    let result = 'н/д'
+    if (incomingStr) {
+      let splits = incomingStr.split("-")
+      result = `${splits[2]}.${splits[1]}.${splits[0]}`
+    }
+    return result
+  }
 
   function createClickHendler() {
     if (modal.type !== 'create') {
@@ -140,7 +148,7 @@ const App = () => {
       }))
     }
   }
-  function updateClickHendler(number: string) {
+  function updateClickHendler(number: string | null) {
     if (modal.type !== 'update') {
       setModal((prev) => ({
         ...prev, type: 'update', idOfExp: number
@@ -193,13 +201,13 @@ const App = () => {
           {dbExps.map((item) => {
             return (<Card
               key={item.getId()}
-              number={item.id}
-              type={`${item.typeOfMaterial}`}
-              numberOfMaterial={`${item.numberOfMaterial}`}
-              dateOfIncoming='поступил 00.00.2022'
-              dateOfComplite='окончание 00.00.2022'
-              executor={`${item.executor}`}
-              result={`${item.result}`}
+              number={item.getId()}
+              type={`${item.getTypeOfMaterial()}`}
+              numberOfMaterial={`${item.getNumberOfMaterial()}`}
+              dateOfIncoming={`поступила ${dateFromUsToRu(item.getDateOfReceipt())}`}
+              dateOfComplite={item.getDateExpComplete() ? `завершена ${dateFromUsToRu(item.getDateExpComplete())}` : 'завершена н/д'}
+              executor={`${item.getExecutor()}`}
+              result={item.getResult() ? `${item.getResult()}`: 'в производстве'}
               updateClickHendler={updateClickHendler}
             />)
           }).reverse()}

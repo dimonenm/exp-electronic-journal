@@ -37,7 +37,8 @@
     transition: all 500ms ease;
     grid-template-rows: 50px repeat(4, 25px) 50px repeat(4, 25px);
     grid-template-columns: 1fr 1fr;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .modal-hidden {

@@ -2,19 +2,18 @@ import React, { FC } from 'react';
 import ModalTitle from './ModalTitle';
 import Input from './Input';
 import ModalButton from './ModalButton';
-import { IExp, IModal } from '../types/types';
+import { IModal } from '../types/types';
 import Exp from '../entities/Exp';
 
 interface ModalCreateProps {
-  modalDbExps: IExp[],
+  dbExps: Exp[],
   expStorage: Exp,
   setExpStorage: React.Dispatch<Exp>,
-  setModalDbExps: React.Dispatch<IExp[]>,
-  setDbExps: React.Dispatch<IExp[]> | undefined,
+  setDbExps: React.Dispatch<Exp[]> | undefined,
   setModal: React.Dispatch<IModal>
 }
 
-const ModalCreate: FC<ModalCreateProps> = ({ modalDbExps, expStorage, setExpStorage, setModalDbExps, setDbExps, setModal }) => {
+const ModalCreate: FC<ModalCreateProps> = ({ dbExps, expStorage, setExpStorage, setDbExps, setModal }) => {
   let unitOfService
   let article
 
@@ -104,16 +103,15 @@ const ModalCreate: FC<ModalCreateProps> = ({ modalDbExps, expStorage, setExpStor
     setExpStorage(localExp)
   }
   function onClickBtnAddHandler(): void {
-    const localExpArr = [...modalDbExps]
+    const localExpArr = [...dbExps]
     localExpArr.push(expStorage);
     setDbExps?.(localExpArr)
-    setModalDbExps?.(localExpArr)
     setExpStorage(new Exp(undefined, `${localExpArr.length + 1}`))
-    setModal({ type: null })
+    setModal({ type: null, idOfExp:null })
   }
   function onClickBtnCancelHandler(): void {
     setExpStorage(new Exp())
-    setModal({ type: null })
+    setModal({ type: null, idOfExp: null })
   }
 
   if (expStorage.getTypeOfService() === 'МВД') {

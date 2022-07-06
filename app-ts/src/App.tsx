@@ -6,23 +6,32 @@ import Main from './containers/Main';
 import Menu from './components/Menu';
 import Modal from './components/Modal';
 import Button from './components/Button';
-import { IModal, IExp } from './types/types';
+import { IModal } from './types/types';
+import Exp from './entities/Exp';
 import Gallery from './containers/Gallery';
 import Card from './components/Card';
 
 const App = () => {
 
-  const [dbExps, setDbExps] = useState<IExp[]>([])
-  // const [dbExps, setDbExps] = useState<IExp[]>((): IExp[] => { return addDbExps(50)})
-  
-/* генератор экспертиз для базы
+  // function f(inDate: string, countOfDays: number) {
+  //   const count = countOfDays * 24 * 60 * 60 * 1000; 
+  //   const date = new Date(inDate)
+  //   date.setHours(0)
+  //   const newDate = new Date(+date + count)
+  //   return `${newDate.getFullYear()}-${newDate.getMonth() + 1 < 10 ? '0' + (newDate.getMonth() + 1) : newDate.getMonth() + 1}-${newDate.getDate() < 10 ? '0' + newDate.getDate() : newDate.getDate()}`    
+  // }
+
+  // const [dbExps, setDbExps] = useState<IExp[]>([])
+  const [dbExps, setDbExps] = useState<Exp[]>((): Exp[] => { return addDbExps(10) })
+
+  // генератор экспертиз для базы
   function addDbExps(count: number) {
 
-    let arr: IExp[] = []
+    let arr: Exp[] = []
 
     for (let i = 0; i < count; i++) {
       const dateOfReceipt = new Date()
-      const dateOfReceiptStr = `${dateOfReceipt.getDate()}.${dateOfReceipt.getMonth()}.${dateOfReceipt.getFullYear()}}`
+      const dateOfReceiptStr = `${dateOfReceipt.getFullYear()}-${dateOfReceipt.getMonth()}-${dateOfReceipt.getDate()}}`
       const typeOfServiceRand = Math.random()
       const typeOfService = typeOfServiceRand < 0.25 ?
         'МВД' : typeOfServiceRand >= 0.25 && typeOfServiceRand < 0.5 ?
@@ -91,9 +100,9 @@ const App = () => {
           'Средней слож-ти' : difficultRand >= 0.66 ?
             'Сложная' : ''
 
-      const datePetitionStart = ''
-      const datePetitionEnd = ''
-      const dateProlongationStart = ''
+      const datePetitionStart = '2022-07-05'
+      const datePetitionEnd = '2022-07-05'
+      const dateProlongationStart = '2022-07-05'
       const valueOfProlongation = '5'
 
       const resultRand = Math.random()
@@ -103,82 +112,74 @@ const App = () => {
             'Без исполнения' : resultRand >= 0.75 ?
               'Сообщение о невозм.' : ''
 
-      const dateExpEnd = ''
-      const dateExpComplete = ''
-      const exp: IExp = {
-        id: `${i + 1}`,
-        dateOfReceipt: dateOfReceiptStr,
-        typeOfService: typeOfService,
-        unitOfService: unitOfService,
-        typeOfMaterial: typeOfMaterial,
-        numberOfMaterial: numberOfMaterial,
-        article: article,
-        typeOfExpertise: typeOfExpertise,
-        executor: executor,
-        difficult: difficult,
-        datePetitionStart: datePetitionStart,
-        datePetitionEnd: datePetitionEnd,
-        dateProlongationStart: dateProlongationStart,
-        valueOfProlongation: valueOfProlongation,
-        result: result,
-        dateExpEnd: dateExpEnd,
-        dateExpComplete: dateExpComplete,
-        dateVerificationStart: '',
-        dateVerificationEnd: '',
-        numberVerification: '',
-        verificationNumberOfMaterial: '',
-        verificationExecutor: '',
-        verificationResult: '',
-      }
+      const dateExpEnd = '2022-07-05'
+      const dateExpComplete = '2022-07-05'
+      const exp = new Exp()
+      exp.setId(`${i + 1}`)
+      exp.setDateOfReceipt(dateOfReceiptStr)
+      exp.setTypeOfService(typeOfService)
+      exp.setUnitOfService(unitOfService)
+      exp.setTypeOfMaterial(typeOfMaterial)
+      exp.setNumberOfMaterial(numberOfMaterial)
+      exp.setArticle(article)
+      exp.setTypeOfExpertise(typeOfExpertise)
+      exp.setExecutor(executor)
+      exp.setDifficult(difficult)
+      exp.setDatePetitionStart(datePetitionStart)
+      exp.setDatePetitionEnd(datePetitionEnd)
+      exp.setDateProlongationStart(dateProlongationStart)
+      exp.setValueOfProlongation(valueOfProlongation)
+      exp.setResult(result)
+      exp.setDateExpEnd(dateExpEnd)
+      exp.setDateExpComplete(dateExpComplete)
       arr.push(exp)
     }
     return arr
   }
-*/
-  
-  const [modal, setModal] = useState<IModal>({ type: null })
+
+  const [modal, setModal] = useState<IModal>({ type: null, idOfExp: null })
 
   function createClickHendler() {
     if (modal.type !== 'create') {
       setModal((prev) => ({
-        ...prev, type: 'create'
+        ...prev, type: 'create', idOfExp: null
       }))
     } else {
       setModal((prev) => ({
-        ...prev, type: null
+        ...prev, type: null, idOfExp: null
       }))
     }
   }
-  function updateClickHendler() {
+  function updateClickHendler(number: string) {
     if (modal.type !== 'update') {
       setModal((prev) => ({
-        ...prev, type: 'update'
+        ...prev, type: 'update', idOfExp: number
       }))
     } else {
       setModal((prev) => ({
-        ...prev, type: null
+        ...prev, type: null, idOfExp: null
       }))
     }
   }
   function searchClickHendler() {
     if (modal.type !== 'search') {
       setModal((prev) => ({
-        ...prev, type: 'search'
+        ...prev, type: 'search', idOfExp: null
       }))
     } else {
       setModal((prev) => ({
-        ...prev, type: null
+        ...prev, type: null, idOfExp: null
       }))
     }
   }
   function infoClickHendler() {
     if (modal.type !== 'info') {
       setModal((prev) => ({
-        ...prev, type: 'info'
+        ...prev, type: 'info', idOfExp: null
       }))
     } else {
       setModal((prev) => ({
-        ...prev, type: null
+        ...prev, type: null, idOfExp: null
       }))
     }
   }
@@ -193,6 +194,7 @@ const App = () => {
         </Menu>
         <Modal
           type={modal.type === 'create' ? 'create' : modal.type === 'search' ? 'search' : modal.type === 'update' ? 'update' : 'hidden'}
+          idOfExp={modal.idOfExp}
           dbExps={dbExps}
           setDbExps={setDbExps}
           setModal={setModal}
@@ -200,8 +202,8 @@ const App = () => {
         <Gallery>
           {dbExps.map((item) => {
             return (<Card
-              key={item.id}
-              number={`№ ${item.id}`}
+              key={item.getId()}
+              number={item.id}
               type={`${item.typeOfMaterial}`}
               numberOfMaterial={`${item.numberOfMaterial}`}
               dateOfIncoming='поступил 00.00.2022'

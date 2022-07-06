@@ -13,16 +13,9 @@ import Card from './components/Card';
 
 const App = () => {
 
-  // function f(inDate: string, countOfDays: number) {
-  //   const count = countOfDays * 24 * 60 * 60 * 1000; 
-  //   const date = new Date(inDate)
-  //   date.setHours(0)
-  //   const newDate = new Date(+date + count)
-  //   return `${newDate.getFullYear()}-${newDate.getMonth() + 1 < 10 ? '0' + (newDate.getMonth() + 1) : newDate.getMonth() + 1}-${newDate.getDate() < 10 ? '0' + newDate.getDate() : newDate.getDate()}`    
-  // }
-
   // const [dbExps, setDbExps] = useState<IExp[]>([])
   const [dbExps, setDbExps] = useState<Exp[]>((): Exp[] => { return addDbExps(10) })
+  const [modal, setModal] = useState<IModal>({ type: null, idOfExp: null })
 
   // генератор экспертиз для базы
   function addDbExps(count: number) {
@@ -30,8 +23,7 @@ const App = () => {
     let arr: Exp[] = []
 
     for (let i = 0; i < count; i++) {
-      const dateOfReceipt = new Date()
-      const dateOfReceiptStr = `${dateOfReceipt.getFullYear()}-${dateOfReceipt.getMonth()}-${dateOfReceipt.getDate()}}`
+      const dateOfReceipt = '2022-07-05'
       const typeOfServiceRand = Math.random()
       const typeOfService = typeOfServiceRand < 0.25 ?
         'МВД' : typeOfServiceRand >= 0.25 && typeOfServiceRand < 0.5 ?
@@ -116,7 +108,7 @@ const App = () => {
       const dateExpComplete = '2022-07-05'
       const exp = new Exp()
       exp.setId(`${i + 1}`)
-      exp.setDateOfReceipt(dateOfReceiptStr)
+      exp.setDateOfReceipt(dateOfReceipt)
       exp.setTypeOfService(typeOfService)
       exp.setUnitOfService(unitOfService)
       exp.setTypeOfMaterial(typeOfMaterial)
@@ -136,8 +128,14 @@ const App = () => {
     }
     return arr
   }
-
-  const [modal, setModal] = useState<IModal>({ type: null, idOfExp: null })
+  function dateFromUsToRu(incomingStr: string | null) {
+    let result = 'н/д'
+    if (incomingStr) {
+      let splits = incomingStr.split("-")
+      result = `${splits[2]}.${splits[1]}.${splits[0]}`
+    }
+    return result
+  }
 
   function createClickHendler() {
     if (modal.type !== 'create') {
@@ -150,7 +148,7 @@ const App = () => {
       }))
     }
   }
-  function updateClickHendler(number: string) {
+  function updateClickHendler(number: string | null) {
     if (modal.type !== 'update') {
       setModal((prev) => ({
         ...prev, type: 'update', idOfExp: number
@@ -203,13 +201,13 @@ const App = () => {
           {dbExps.map((item) => {
             return (<Card
               key={item.getId()}
-              number={item.id}
-              type={`${item.typeOfMaterial}`}
-              numberOfMaterial={`${item.numberOfMaterial}`}
-              dateOfIncoming='поступил 00.00.2022'
-              dateOfComplite='окончание 00.00.2022'
-              executor={`${item.executor}`}
-              result={`${item.result}`}
+              number={item.getId()}
+              type={`${item.getTypeOfMaterial()}`}
+              numberOfMaterial={`${item.getNumberOfMaterial()}`}
+              dateOfIncoming={`поступила ${dateFromUsToRu(item.getDateOfReceipt())}`}
+              dateOfComplite={item.getDateExpComplete() ? `завершена ${dateFromUsToRu(item.getDateExpComplete())}` : 'завершена н/д'}
+              executor={`${item.getExecutor()}`}
+              result={item.getResult() ? `${item.getResult()}`: 'в производстве'}
               updateClickHendler={updateClickHendler}
             />)
           }).reverse()}

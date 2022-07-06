@@ -2,14 +2,14 @@ import React, { FC } from 'react';
 import "./Card.scss"
 
 interface IInputProps {
-    number: string,
+    number: string | null,
     type: string,
     numberOfMaterial: string,
     dateOfIncoming: string,
     dateOfComplite: string,
     executor: string,
     result: string,
-    updateClickHendler: (value: string) => void
+    updateClickHendler: (value: string | null) => void
 }
 
 const Card: FC<IInputProps> = ({ number, type, numberOfMaterial, dateOfIncoming, dateOfComplite, executor, result, updateClickHendler }) => {

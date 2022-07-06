@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import ModalButton from './ModalButton';
 import ModalCreate from './ModalCreate';
 import './Modal.scss'
@@ -16,64 +16,26 @@ interface ModalProps {
 
 const Modal: FC<ModalProps> = ({ type, idOfExp, dbExps, setDbExps, setModal }) => {
 
-  const [expStorage, setExpStorage] = useState<Exp>(new Exp(undefined, `${dbExps.length + 1}`))
-  console.log('expStorage: ', expStorage);
-
   if (type === 'create') {
     return (
       <div className='modal-create'>
         <ModalCreate
           dbExps={dbExps}
-          expStorage={expStorage}
-          setExpStorage={setExpStorage}
           setDbExps={setDbExps}
           setModal={setModal}
         />
       </div>
     );
   }
-  if (type === 'update') {
-    const exp = dbExps.find((item) => {
-      if (item.getId() === idOfExp) return item
-      return false
-    })
-    setExpStorage(exp ? exp : new Exp(undefined, `${dbExps.length + 1}`))
-    
+  if (type === 'update') {    
     return (
       <div className='modal-update'>
         <ModalUpdate
           dbExps={dbExps}
-          expStorage={expStorage}
-          setExpStorage={setExpStorage}
+          idOfExp={idOfExp}
           setDbExps={setDbExps}
           setModal={setModal}
         />
-
-        {/* <ModalTitle>Создание новой экспертизы</ModalTitle>
-        <Input type='text' title='№ по порядку' name='id' />
-        <Input type='date' title='Дата поступления' name='dateOfReceipt' />
-        <Input type='select' title='Вид службы' name='typeOfService' listName='typeOfService' />
-        <Input type='select' title='Орган инициатора' name='unitOfService' listName='unitOfService' />
-        <Input type='select' title='Вид материала' name='typeOfMaterial' listName='typeOfMaterial' />
-        <Input type='select' title='Статья' name='article' listName='article' />
-        <Input type='select' title='Вид экспертизы' name='typeOfExpertise' listName='typeOfExpertise' />
-        <Input type='select' title='Исполнитель' name='executor' listName='executor' />
-        <Input type='date' title='Дата вын. ходат-ва' name='datePetitionStart' />
-        <Input type='date' title='Дата удов. ходат-ва' name='datePetitionEnd' />
-        <Input type='date' title='Дата продления' name='dateProlongationStart' />
-        <Input type='date' title='Срок продления' name='valueOfProlongation' />
-        <Input type='select' title='Результат эксп-зы' name='result' listName='result' />
-        <Input type='date' title='Дата окончания' name='dateExpEnd' />
-        <Input type='date' title='Дата завершения' name='dateExpComplete' />
-        <ModalTitle>Справка о проверке</ModalTitle>
-        <Input type='date' title='Дата назначения' name='dateVerificationStart' />
-        <Input type='date' title='Дата выполнения' name='dateVerificationEnd' />
-        <Input type='text' title='№ проверки' name='numberVerification' />
-        <Input type='text' title='№ уг. дела' name='verificationNumberOfMaterial' />
-        <Input type='select' title='Исполнитель' name='verificationExecutor' listName='executor' />
-        <Input type='select' title='Результат пров-ки' name='verificationResult' listName='resultOfVerification' />
-        <ModalButton type='update' text='Изменить' />
-        <ModalButton type='cancel' text='Отменить' /> */}
       </div>
     );
   }

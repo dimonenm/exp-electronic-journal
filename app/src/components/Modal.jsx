@@ -35,6 +35,18 @@ const Modal = ({ type, expState }) => {
         let countUdOfTkedTotal = 0
         let countUdOfPortret = 0
         let countUdTotal = 0
+        let countOfUd101Pocherk = 0
+        let countOfUd101Tked = 0
+        let countOfUd101Portret = 0
+        let countOfUd101Total = 0
+        let countOfUd105Pocherk = 0
+        let countOfUd105Tked = 0
+        let countOfUd105Portret = 0
+        let countOfUd105Total = 0
+        let countOfUd158Pocherk = 0
+        let countOfUd158Tked = 0
+        let countOfUd158Portret = 0
+        let countOfUd158Total = 0
 
         expState.forEach((item) => {
             if (item.typeOfExpertise === "Почерк") {
@@ -45,7 +57,16 @@ const Modal = ({ type, expState }) => {
                 if (item.typeOfMaterial === "УД") {
                     countUdOfPocherk += 1
                 }
-
+                if (item.article === "ст. 101 УК РФ") {
+                    countOfUd101Pocherk += 1
+                }
+                if (item.article === "ст. 105 УК РФ") {
+                    countOfUd105Pocherk += 1
+                }
+                if (item.article === "ст. 158, 159, 160 УК РФ") {
+                    countOfUd158Pocherk += 1
+                }
+                
             }
             if (item.typeOfExpertise === "ТКЭД общ." || item.typeOfExpertise === "ТКЭД ден.") {
                 countOfTkedTotal += 1
@@ -54,6 +75,15 @@ const Modal = ({ type, expState }) => {
                 }
                 if (item.typeOfMaterial === "УД") {
                     countUdOfTkedTotal += 1
+                }
+                if (item.article === "ст. 101 УК РФ") {
+                    countOfUd101Tked += 1
+                }
+                if (item.article === "ст. 105 УК РФ") {
+                    countOfUd105Tked += 1
+                }
+                if (item.article === "ст. 158, 159, 160 УК РФ") {
+                    countOfUd158Tked += 1
                 }
             }
             if (item.typeOfExpertise === "Портретная") {
@@ -64,9 +94,21 @@ const Modal = ({ type, expState }) => {
                 if (item.result === "Результативная") {
                     countUdOfPortret += 1
                 }
+                if (item.article === "ст. 101 УК РФ") {
+                    countOfUd101Portret += 1
+                }
+                if (item.article === "ст. 105 УК РФ") {
+                    countOfUd105Portret += 1
+                }
+                if (item.article === "ст. 158, 159, 160 УК РФ") {
+                    countOfUd158Portret += 1
+                }
             }
             countResTotal = countResOfPocherk + countResOfTkedTotal + countResOfPortret
             countUdTotal = countUdOfPocherk + countUdOfTkedTotal + countUdOfPortret
+            countOfUd101Total = countOfUd101Pocherk + countOfUd101Tked + countOfUd101Portret
+            countOfUd105Total = countOfUd105Pocherk + countOfUd105Tked + countOfUd105Portret
+            countOfUd158Total = countOfUd158Pocherk + countOfUd158Tked + countOfUd158Portret
         })
 
         return (
@@ -105,9 +147,27 @@ const Modal = ({ type, expState }) => {
                     <ValueItem text={countUdOfPortret} />
                     <ValueItem text="153" />
                     <LineItem />
-                    <TextItem text="ст. 158 УК РФ:" />
+                    <TextItem text="ст. 101 УК РФ:" />
+                    <ValueItem text={countOfUd101Total} />
+                    <ValueItem text={countOfUd101Pocherk} />
+                    <ValueItem text={countOfUd101Tked}/>
+                    <ValueItem text={countOfUd101Portret}/>
+                    <LineItem />
+                    <TextItem text="ст. 105 УК РФ:" />
+                    <ValueItem text={countOfUd105Total} />
+                    <ValueItem text={countOfUd105Pocherk} />
+                    <ValueItem text={countOfUd105Tked} />
+                    <ValueItem text={countOfUd105Portret} />
+                    <LineItem />
+                    <TextItem text="ст. 158, 159, 160 УК РФ:" />
+                    <ValueItem text={countOfUd158Total} />
+                    <ValueItem text={countOfUd158Pocherk} />
+                    <ValueItem text={countOfUd158Tked} />
+                    <ValueItem text={countOfUd158Portret} />
                     <LineItem />
                     <TextItem text="ст. 186, 187 УК РФ:" />
+                    <LineItem />
+                    <TextItem text="ст. 222 УК РФ:" />
                     <LineItem />
                     <TextItem text="ст. 264 УК РФ:" />
                     <LineItem />

@@ -1,11 +1,10 @@
 import React, { FC } from 'react';
-import ModalButton from './ModalButton';
 import ModalCreate from './ModalCreate';
+import ModalUpdate from './ModalUpdate';
+import ModalSearch from './ModalSearch';
 import './Modal.scss'
 import { IModal } from '../types/types';
 import Exp from '../entities/Exp';
-import ModalUpdate from './ModalUpdate';
-import ModalSearch from './ModalSearch';
 
 interface ModalProps {
   type: string
@@ -44,7 +43,9 @@ const Modal: FC<ModalProps> = ({ type, idOfExp, dbExps, setDbExps, setModal }) =
     
     return (
       <div className='modal-search'>
-        <ModalSearch />
+        <ModalSearch
+          setModal={setModal}
+        />
       </div>
     );
   }
@@ -57,9 +58,7 @@ const Modal: FC<ModalProps> = ({ type, idOfExp, dbExps, setDbExps, setModal }) =
   }
   if (type === 'hidden') {
     return (
-      <div className='modal-hidden'>
-
-      </div>
+      <div className='modal-hidden'></div>
     );
   }
   return null

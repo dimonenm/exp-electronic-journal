@@ -16,6 +16,7 @@ const App = () => {
   // const [dbExps, setDbExps] = useState<IExp[]>([])
   const [dbExps, setDbExps] = useState<Exp[]>((): Exp[] => { return addDbExps(10) })
   const [modal, setModal] = useState<IModal>({ type: null, idOfExp: null })
+  const [searchExp, setSearchExp] = useState<Exp>(new Exp())
 
   let cardsArr
 

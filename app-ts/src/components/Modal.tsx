@@ -5,6 +5,7 @@ import './Modal.scss'
 import { IModal } from '../types/types';
 import Exp from '../entities/Exp';
 import ModalUpdate from './ModalUpdate';
+import ModalSearch from './ModalSearch';
 
 interface ModalProps {
   type: string
@@ -43,7 +44,7 @@ const Modal: FC<ModalProps> = ({ type, idOfExp, dbExps, setDbExps, setModal }) =
     
     return (
       <div className='modal-search'>
-        <ModalButton type='clear' text='Сбросить' />
+        <ModalSearch />
       </div>
     );
   }

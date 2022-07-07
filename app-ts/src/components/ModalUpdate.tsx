@@ -142,8 +142,10 @@ const ModalUpdate: FC<ModalUpdateProps> = ({ dbExps, idOfExp, setDbExps, setModa
   }
 
   function onClickBtnUpdateHandler(): void {
+    console.log('expStorage.getId()', expStorage.getId());
+    console.log('idOfExp', idOfExp);
     const localExpArr = dbExps.map((item) => {
-      if (item.getId() === expStorage.getId())
+      if (item.getId() === expStorage.getId() && idOfExp === expStorage.getId())
         return expStorage
       return item
     })

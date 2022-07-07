@@ -17,6 +17,40 @@ const App = () => {
   const [dbExps, setDbExps] = useState<Exp[]>((): Exp[] => { return addDbExps(10) })
   const [modal, setModal] = useState<IModal>({ type: null, idOfExp: null })
 
+  let cardsArr
+
+  if (dbExps.length) {
+    cardsArr = dbExps.map((item) => {
+      if (modal.idOfExp && modal.idOfExp === item.getId()) {
+        return (<Card
+          key={item.getId()}
+          active={true}
+          number={item.getId()}
+          type={`${item.getTypeOfMaterial()}`}
+          numberOfMaterial={`${item.getNumberOfMaterial()}`}
+          dateOfIncoming={`поступила ${dateFromUsToRu(item.getDateOfReceipt())}`}
+          dateOfComplite={item.getDateExpComplete() ? `завершена ${dateFromUsToRu(item.getDateExpComplete())}` : 'завершена н/д'}
+          executor={`${item.getExecutor()}`}
+          result={item.getResult() ? `${item.getResult()}` : 'в производстве'}
+          updateClickHendler={updateClickHendler}
+        />)
+      }
+      return (<Card
+        key={item.getId()}
+        active={false}
+        number={item.getId()}
+        type={`${item.getTypeOfMaterial()}`}
+        numberOfMaterial={`${item.getNumberOfMaterial()}`}
+        dateOfIncoming={`поступила ${dateFromUsToRu(item.getDateOfReceipt())}`}
+        dateOfComplite={item.getDateExpComplete() ? `завершена ${dateFromUsToRu(item.getDateExpComplete())}` : 'завершена н/д'}
+        executor={`${item.getExecutor()}`}
+        result={item.getResult() ? `${item.getResult()}` : 'в производстве'}
+        updateClickHendler={updateClickHendler}
+      />)
+    }).reverse()    
+  }
+
+
   // генератор экспертиз для базы
   function addDbExps(count: number) {
 
@@ -157,6 +191,11 @@ const App = () => {
       setModal((prev) => ({
         ...prev, type: null, idOfExp: null
       }))
+      setTimeout(() => {
+        setModal((prev) => ({
+          ...prev, type: 'update', idOfExp: number
+        }))        
+      },200)
     }
   }
   function searchClickHendler() {
@@ -198,19 +237,7 @@ const App = () => {
           setModal={setModal}
         />
         <Gallery>
-          {dbExps.map((item) => {
-            return (<Card
-              key={item.getId()}
-              number={item.getId()}
-              type={`${item.getTypeOfMaterial()}`}
-              numberOfMaterial={`${item.getNumberOfMaterial()}`}
-              dateOfIncoming={`поступила ${dateFromUsToRu(item.getDateOfReceipt())}`}
-              dateOfComplite={item.getDateExpComplete() ? `завершена ${dateFromUsToRu(item.getDateExpComplete())}` : 'завершена н/д'}
-              executor={`${item.getExecutor()}`}
-              result={item.getResult() ? `${item.getResult()}`: 'в производстве'}
-              updateClickHendler={updateClickHendler}
-            />)
-          }).reverse()}
+          {cardsArr}
         </Gallery>
         <Modal
           type={modal.type === 'info' ? 'info' : 'hidden'}

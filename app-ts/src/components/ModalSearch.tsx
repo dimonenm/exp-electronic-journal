@@ -56,6 +56,11 @@ const ModalSearch: FC<ModalSearchProps> = ({searchExp, setModal, setSearchExp}) 
     localExp.setNumberOfMaterial(value)
     setSearchExp?.(localExp)
   }
+  function onChangeArticleHandler(value: string): void {
+    const localExp = new SearchExp(searchExp)
+    localExp.setArticle(value)
+    setSearchExp?.(localExp)
+  }
 
   if (searchExp && searchExp.getTypeOfService() === 'МВД') {
     unitOfService = <InputSearch type='select' title='Орган инициатора' name='unitOfService' value={`${searchExp?.getUnitOfService()}`} listName='unitOfService' listType='police' onChangeUnitOfServiceHandler={onChangeUnitOfServiceHandler} />
@@ -66,8 +71,8 @@ const ModalSearch: FC<ModalSearchProps> = ({searchExp, setModal, setSearchExp}) 
     unitOfService = <InputSearch type='empty' title='empty' name='empty' />
   }
 
-  if (searchExp.getTypeOfMaterial() === 'УД') {
-    article = <InputSearch type='select' title='Статья' name='article' value={`${expStorage?.getArticle()}`} listName='article' onChangeArticleHandler={onChangeArticleHandler} />
+  if (searchExp && searchExp.getTypeOfMaterial() === 'УД') {
+    article = <InputSearch type='select' title='Статья' name='article' value={`${searchExp?.getArticle()}`} listName='article' onChangeArticleHandler={onChangeArticleHandler} />
   } else {
     article = <InputSearch type='empty' title='empty' name='empty' />
   }

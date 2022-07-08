@@ -5,16 +5,19 @@ import ModalSearch from './ModalSearch';
 import './Modal.scss'
 import { IModal } from '../types/types';
 import Exp from '../entities/Exp';
+import SearchExp from '../entities/SearchExp';
 
 interface ModalProps {
   type: string
   idOfExp?: string | null
   dbExps: Exp[]
+  searchExp?: SearchExp
   setDbExps?: React.Dispatch<Exp[]>
   setModal: React.Dispatch<IModal>
+  setSearchExp?: React.Dispatch<SearchExp>
 }
 
-const Modal: FC<ModalProps> = ({ type, idOfExp, dbExps, setDbExps, setModal }) => {
+const Modal: FC<ModalProps> = ({ type, idOfExp, dbExps, searchExp, setDbExps, setModal, setSearchExp }) => {
 
   if (type === 'create') {
     return (
@@ -44,7 +47,9 @@ const Modal: FC<ModalProps> = ({ type, idOfExp, dbExps, setDbExps, setModal }) =
     return (
       <div className='modal-search'>
         <ModalSearch
+          searchExp={searchExp}
           setModal={setModal}
+          setSearchExp={setSearchExp}
         />
       </div>
     );

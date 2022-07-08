@@ -10,13 +10,14 @@ import { IModal } from './types/types';
 import Exp from './entities/Exp';
 import Gallery from './containers/Gallery';
 import Card from './components/Card';
+import SearchExp from './entities/SearchExp';
 
 const App = () => {
 
   // const [dbExps, setDbExps] = useState<IExp[]>([])
   const [dbExps, setDbExps] = useState<Exp[]>((): Exp[] => { return addDbExps(10) })
   const [modal, setModal] = useState<IModal>({ type: null, idOfExp: null })
-  const [searchExp, setSearchExp] = useState<Exp>(new Exp())
+  const [searchExp, setSearchExp] = useState<SearchExp>(new SearchExp())
 
   let cardsArr
 
@@ -236,6 +237,8 @@ const App = () => {
           dbExps={dbExps}
           setDbExps={setDbExps}
           setModal={setModal}
+          searchExp={searchExp}
+          setSearchExp={setSearchExp}
         />
         <Gallery>
           {cardsArr}

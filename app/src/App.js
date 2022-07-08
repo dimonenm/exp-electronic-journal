@@ -65,11 +65,13 @@ function App() {
       let article = null
       if (typeOfMaterial === 'УД') {
         const articleRand = Math.random()
-        article = articleRand < 0.25 ?
-          'ст. 101 УК РФ' : articleRand >= 0.25 && articleRand < 0.5 ?
-            'ст. 105 УК РФ' : articleRand >= 0.5 && articleRand < 0.75 ?
-              'ст. 158, 159, 160 УК РФ' : articleRand >= 0.75 ?
-                'ст. 186, 187 УК РФ' : null
+        article = articleRand < 0.17 ?
+          'ст. 101 УК РФ' : articleRand >= 0.17 && articleRand < 0.34 ?
+            'ст. 105 УК РФ' : articleRand >= 0.34 && articleRand < 0.51 ?
+              'ст. 158, 159, 160 УК РФ' : articleRand >= 0.51 && articleRand < 0.68 ?
+                'ст. 186, 187 УК РФ' : articleRand >= 0.68 && articleRand < 0.85 ?
+                  'ст. 222 УК РФ' : articleRand >= 0.85 ?
+                    'ст. 264 УК РФ' : null
       }
 
       const typeOfExpertiseRand = Math.random()
@@ -154,7 +156,7 @@ function App() {
     console.log(date.toLocaleDateString());
   }
   dateAddDays(date, 27);
-  
+
   let cardArr = expState.map(
     (item) => {
       return (
@@ -178,13 +180,15 @@ function App() {
           <Menu>
             <Btn type="create" setModal={setModal} modal={modal}></Btn>
             <Btn type="search" setModal={setModal} modal={modal}></Btn>
+            <Btn type="download" />
+            <Btn type="save" expState={expState} />
           </Menu>
           <Modal type={modal.type === 'create' ? 'create' : modal.type === 'search' ? 'search' : 'hidden'}></Modal>
           <Gallery>
             {cardArr}
           </Gallery>
           <Modal type={modal.type === 'info' ? 'info' : 'hidden'} expState={expState}>
-           
+
           </Modal>
           <Menu>
             <Btn type="info" setModal={setModal} modal={modal}></Btn>

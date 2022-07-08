@@ -22,22 +22,19 @@ app.get("/get-db", (req, res) => {
     // res.send("строка")
 })
 app.post("/set-db", (req, res) => {
-    console.log(req.data);
-    if (!req.data) {
+// res.send(req.body)
+    if (!req.body) {
         res.send("данные не поступили")
     }
-    
-    fs.writeFile("./db/db.json", req.data, (error) => {
-        if (error) {
 
+    fs.writeFile("./db/db.json", JSON.stringify(req.body), (error) => {
+        if (error) {
             console.log(error);
         } else {
-            console.log("данные сохранены");
+            res.send("данные сохранены")
         }
     })
 
-
-    // res.send("строка")
 })
 
 app.listen(PORT, () => { console.log("сервер запущен"); })

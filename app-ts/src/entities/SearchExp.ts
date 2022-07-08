@@ -16,8 +16,10 @@ export default class SearchExp {
   dateProlongationStart: string
   valueOfProlongation: string
   result: string
-  dateExpEnd: string
-  dateExpComplete: string
+  dateExpEndStart: string
+  dateExpEndEnd: string
+  dateExpCompleteStart: string
+  dateExpCompleteEnd: string
   dateVerificationStart: string
   dateVerificationEnd: string
   numberVerification: string
@@ -32,24 +34,26 @@ export default class SearchExp {
     this.typeOfService = oldExp?.getTypeOfService() || ''
     this.unitOfService = oldExp?.getUnitOfService() || ''
     this.typeOfMaterial = oldExp?.getTypeOfMaterial() || ''
-    this.numberOfMaterial = ''
-    this.article = ''
-    this.typeOfExpertise = ''
-    this.executor = ''
-    this.difficult = ''
-    this.datePetitionStart = ''
-    this.datePetitionEnd = ''
-    this.dateProlongationStart = ''
-    this.valueOfProlongation = ''
-    this.result = ''
-    this.dateExpEnd = ''
-    this.dateExpComplete = ''
-    this.dateVerificationStart = ''
-    this.dateVerificationEnd = ''
-    this.numberVerification = ''
-    this.verificationNumberOfMaterial = ''
-    this.verificationExecutor = ''
-    this.verificationResult = ''
+    this.numberOfMaterial = oldExp?.getNumberOfMaterial() || ''
+    this.article = oldExp?.getArticle() || ''
+    this.typeOfExpertise = oldExp?.getTypeOfExpertise() || ''
+    this.executor = oldExp?.getExecutor() || ''
+    this.difficult = oldExp?.getDifficult() || ''
+    this.datePetitionStart = oldExp?.getDatePetitionStart() || ''
+    this.datePetitionEnd = oldExp?.getDatePetitionEnd() || ''
+    this.dateProlongationStart = oldExp?.getDateProlongationStart() || ''
+    this.valueOfProlongation = oldExp?.getValueOfProlongation() || ''
+    this.result = oldExp?.getResult() || ''
+    this.dateExpEndStart = oldExp?.getDateExpEndStart() || ''
+    this.dateExpEndEnd = oldExp?.getDateExpEndEnd() || ''
+    this.dateExpCompleteStart = oldExp?.getDateExpCompleteStart() || ''
+    this.dateExpCompleteEnd = oldExp?.getDateExpCompleteEnd() || ''
+    this.dateVerificationStart = oldExp?.getDateVerificationStart() || ''
+    this.dateVerificationEnd = oldExp?.getDateVerificationEnd() || ''
+    this.numberVerification = oldExp?.getNumberVerification() || ''
+    this.verificationNumberOfMaterial = oldExp?.getVerificationNumberOfMaterial() || ''
+    this.verificationExecutor = oldExp?.getVerificationExecutor() || ''
+    this.verificationResult = oldExp?.getVerificationResult() || ''
   }
   getIdStart(): string | null {
     return this.idStart
@@ -102,11 +106,17 @@ export default class SearchExp {
   getResult(): string | null {
     return this.result
   }
-  getDateExpEnd(): string | null {
-    return this.dateExpEnd
+  getDateExpEndStart(): string | null {
+    return this.dateExpEndStart
   }
-  getDateExpComplete(): string | null {
-    return this.dateExpComplete
+  getDateExpEndEnd(): string | null {
+    return this.dateExpEndEnd
+  }
+  getDateExpCompleteStart(): string | null {
+    return this.dateExpCompleteStart
+  }
+  getDateExpCompleteEnd(): string | null {
+    return this.dateExpCompleteEnd
   }
   getDateVerificationStart(): string | null {
     return this.dateVerificationStart
@@ -177,11 +187,17 @@ export default class SearchExp {
   setResult(value: string): void {
     this.result = value
   }
-  setDateExpEnd(value: string): void {
-    this.dateExpEnd = value
+  setDateExpEndStart(value: string): void {
+    this.dateExpEndStart = value
   }
-  setDateExpComplete(value: string): void {
-    this.dateExpComplete = value
+  setDateExpEndEnd(value: string): void {
+    this.dateExpEndEnd = value
+  }
+  setDateExpCompleteStart(value: string): void {
+    this.dateExpCompleteStart = value
+  }
+  setDateExpCompleteEnd(value: string): void {
+    this.dateExpCompleteEnd = value
   }
   setDateVerificationStart(value: string): void {
     this.dateVerificationStart = value

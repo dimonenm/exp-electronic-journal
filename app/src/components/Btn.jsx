@@ -32,9 +32,8 @@ const Btn = ({ type, setModal, modal, expState }) => {
         console.log(req);
     }
     function saveClickHandler() {
-        let str = [JSON.stringify(expState)]
-        console.log(str);
-        axios.post('http://localhost:3001/set-db', { str })           
+        let str = JSON.stringify(expState)
+        axios.post('http://localhost:3001/set-db', {str})           
             .then(function (response) {
                 console.log(response);
             })

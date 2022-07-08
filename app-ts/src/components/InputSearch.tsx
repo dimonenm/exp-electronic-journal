@@ -25,8 +25,10 @@ interface IInputSearchProps {
   onChangeDateProlongationStartHandler?: (value: string) => void
   onChangeValueOfProlongationHandler?: (value: string) => void
   onChangeResultHandler?: (value: string) => void
-  onChangeDateExpEndHandler?: (value: string) => void
-  onChangeDateExpCompleteHandler?: (value: string) => void
+  onChangeDateExpEndStartHandler?: (value: string) => void
+  onChangeDateExpEndEndHandler?: (value: string) => void
+  onChangeDateExpCompleteStartHandler?: (value: string) => void
+  onChangeDateExpCompleteEndHandler?: (value: string) => void
   onChangeDateVerificationStartHandler?: (value: string) => void
   onChangeDateVerificationEndHandler?: (value: string) => void
   onChangeNumberVerificationHandler?: (value: string) => void
@@ -59,8 +61,10 @@ const InputSearch: FC<IInputSearchProps> = ({
   onChangeDateProlongationStartHandler,
   onChangeValueOfProlongationHandler,
   onChangeResultHandler,
-  onChangeDateExpEndHandler,
-  onChangeDateExpCompleteHandler,
+  onChangeDateExpEndStartHandler,
+  onChangeDateExpEndEndHandler,
+  onChangeDateExpCompleteStartHandler,
+  onChangeDateExpCompleteEndHandler,
   onChangeDateVerificationStartHandler,
   onChangeDateVerificationEndHandler,
   onChangeNumberVerificationHandler,
@@ -108,14 +112,24 @@ const InputSearch: FC<IInputSearchProps> = ({
         onChangeDateProlongationStartHandler?.(event.target.value)
       }} />
     }
-    if (name === 'dateExpEnd') {
+    if (name === 'dateExpEndStart') {
       input = <input type="date" className='input-date' defaultValue={value} onChange={(event) => {
-        onChangeDateExpEndHandler?.(event.target.value)
+        onChangeDateExpEndStartHandler?.(event.target.value)
       }} />
     }
-    if (name === 'dateExpComplete') {
+    if (name === 'dateExpEndEnd') {
       input = <input type="date" className='input-date' defaultValue={value} onChange={(event) => {
-        onChangeDateExpCompleteHandler?.(event.target.value)
+        onChangeDateExpEndEndHandler?.(event.target.value)
+      }} />
+    }
+    if (name === 'dateExpCompleteStart') {
+      input = <input type="date" className='input-date' defaultValue={value} onChange={(event) => {
+        onChangeDateExpCompleteStartHandler?.(event.target.value)
+      }} />
+    }
+    if (name === 'dateExpCompleteEnd') {
+      input = <input type="date" className='input-date' defaultValue={value} onChange={(event) => {
+        onChangeDateExpCompleteEndHandler?.(event.target.value)
       }} />
     }
     if (name === 'dateVerificationStart') {

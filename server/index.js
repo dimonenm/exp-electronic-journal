@@ -22,19 +22,24 @@ app.get("/get-db", (req, res) => {
     // res.send("строка")
 })
 app.post("/set-db", (req, res) => {
-    console.log(req.data);
-    if (!req.data) {
+    console.log(req.body);
+    if (!req.body) {
         res.send("данные не поступили")
+    } else {
+        res.send(req.body)
     }
+    // if (!req.data) {
+    //     res.send("данные не поступили")
+    // }
     
-    fs.writeFile("./db/db.json", req.data, (error) => {
-        if (error) {
+    // fs.writeFile("./db/db.json", req.data, (error) => {
+    //     if (error) {
 
-            console.log(error);
-        } else {
-            console.log("данные сохранены");
-        }
-    })
+    //         console.log(error);
+    //     } else {
+    //         console.log("данные сохранены");
+    //     }
+    // })
 
 
     // res.send("строка")

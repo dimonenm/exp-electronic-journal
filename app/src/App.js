@@ -14,7 +14,7 @@ import { useState } from 'react';
 function App() {
 
   const [modal, setModal] = useState({ type: null })
-  const [expState] = useState(addDbExps(50))
+  const [expState] = useState(addDbExps(100))
 
   function addDbExps(count) {
 

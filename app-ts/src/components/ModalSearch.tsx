@@ -88,7 +88,7 @@ const ModalSearch: FC<ModalSearchProps> = ({searchExp, setModal, setSearchExp}) 
       {unitOfService}
       <InputSearch type='select' title='Вид материала' name='typeOfMaterial' value={`${searchExp?.getTypeOfMaterial()}`} listName='typeOfMaterial' onChangeTypeOfMaterialHandler={onChangeTypeOfMaterialHandler} />
       <InputSearch type='text' title='№ материала' name='numberOfMaterial' value={`${searchExp?.getNumberOfMaterial()}`} onChangeNumberOfMaterialHandler={onChangeNumberOfMaterialHandler} />
-
+      {article}
     </>
   );
 };

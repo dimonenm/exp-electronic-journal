@@ -13,8 +13,13 @@ import { useState } from 'react';
 
 function App() {
 
+  let toDay = new Date()
   const [modal, setModal] = useState({ type: null })
-  const [expState] = useState(addDbExps(50))
+  const [expState] = useState(addDbExps(100))
+  function dayGenerator(from, to) {
+    return (from + Math.random() * (to - from));
+  }
+
 
   function addDbExps(count) {
 
@@ -22,7 +27,7 @@ function App() {
 
     for (let i = 0; i < count; i++) {
       // const dateOfReceipt = new Date()
-      const dateOfReceiptStr = "2022-07-06"
+      const dateOfReceiptStr = dateAddDays(new Date(), dayGenerator(1, toDay.getDate()), false);
       const typeOfServiceRand = Math.random()
       const typeOfService = typeOfServiceRand < 0.25 ?
         'МВД' : typeOfServiceRand >= 0.25 && typeOfServiceRand < 0.5 ?
@@ -82,11 +87,20 @@ function App() {
               'ТКЭД ден.' : null
 
       const executorRand = Math.random()
-      const executor = executorRand < 0.25 ?
-        'Польченко Т.В.' : executorRand >= 0.25 && executorRand < 0.5 ?
-          'Поволодцкий Д.Г.' : executorRand >= 0.5 && executorRand < 0.75 ?
-            'Васильев И.С.' : executorRand >= 0.75 ?
-              'Балабанов А.А.' : null
+      const executor = executorRand < 0.09 ?
+        'Польченко Т.В.' : executorRand >= 0.09 && executorRand < 0.18 ?
+          'Поволодцкий Д.Г.' : executorRand >= 0.18 && executorRand < 0.27 ?
+            'Васильев И.С.' : executorRand >= 0.27 && executorRand < 0.36 ?
+              'Арзяков Д.Н.' : executorRand >= 0.36 && executorRand < 0.45 ?
+                'Халилов Р.Н.' : executorRand >= 0.45 && executorRand < 0.54 ?
+                  'Балабанов А.А.' : executorRand >= 0.54 && executorRand < 0.63 ?
+                    'Дружинина Е.Ю.' : executorRand >= 0.63 && executorRand < 0.72 ?
+                      'Еноткин А.А.' : executorRand >= 0.72 && executorRand < 0.81 ?
+                        'Киселев А.С.' : executorRand >= 0.81 && executorRand < 0.9 ?
+                          'Марчук В.А.' : executorRand >= 0.99 ?
+                            'Черногоров А.Ю.' : null
+
+
       const difficultRand = Math.random()
       const difficult = difficultRand < 0.33 ?
         'Простая' : difficultRand >= 0.33 && difficultRand < 0.66 ?
@@ -137,35 +151,44 @@ function App() {
     return arr
   }
   const date = "2022-07-05"
-  // function dateFromUsToRu(incomingStr) {
-  //   let result
-  //   let splits = incomingStr.split("-")
-  //   result = `${splits[2]}.${splits[1]}.${splits[0]}`
-  //   return result
-  // }
-  // function dateFromRutoUs(incomingStr) {
-  //   let result
-  //   let splits = incomingStr.split(".")
-  //   result = `${splits[2]}-${splits[1]}-${splits[0]}`
-  //   return result
-  // }
-  function dateAddDays(incomingDate, countOfDays) {
-    let date = new Date(incomingDate)
-    date.setDate(date.getDate() + countOfDays)
-    date.setHours(0)
-    console.log(date.toLocaleDateString());
+  function dateFromUsToRu(incomingStr) {
+    let result
+    let splits = incomingStr.split("-")
+    result = `${splits[2]}.${splits[1]}.${splits[0]}`
+    return result
   }
-  dateAddDays(date, 27);
+  function dateFromRutoUs(incomingStr) {
+    let result
+    let splits = incomingStr.split(".")
+    result = `${splits[2]}-${splits[1]}-${splits[0]}`
+    return result
+  }
+
+  function dateAddDays(incomingDate, countOfDays, plusMinus) {
+    let date = new Date(incomingDate)
+
+    if (plusMinus === true) {
+      date.setDate(date.getDate() + countOfDays)
+    } else {
+      date.setDate(date.getDate() - countOfDays)
+    }
+    date.setHours(0)
+    return dateFromRutoUs(date.toLocaleDateString())
+  }
+
+
+
 
   let cardArr = expState.map(
     (item) => {
+      let str = `поступил ${dateFromUsToRu(item.dateOfReceipt)}`
       return (
         <Card
           key={item.id}
           number={`${item.id}`}
           type={`${item.typeOfExpertise}`}
           numberOfMaterial={`${item.numberOfMaterial}`}
-          dateOfIncoming="поступил 00.00.2022"
+          dateOfIncoming={str}
           dateOfComplite="окончание 00.00.2022"
           executor={`${item.executor}`} result={`${item.result}`} />)
     }

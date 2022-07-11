@@ -13,16 +13,21 @@ import { useState } from 'react';
 
 function App() {
 
+  let toDay = new Date()
   const [modal, setModal] = useState({ type: null })
   const [expState] = useState(addDbExps(100))
+  function dayGenerator(from, to) {
+    return (from + Math.random() * (to - from));
+  }
 
+// console.log(dayGenerator(5,25));
   function addDbExps(count) {
 
     let arr = []
 
     for (let i = 0; i < count; i++) {
       // const dateOfReceipt = new Date()
-      const dateOfReceiptStr = "2022-07-06"
+      const dateOfReceiptStr = dateAddDays(new Date(), dayGenerator(1, toDay.getDate()), false);
       const typeOfServiceRand = Math.random()
       const typeOfService = typeOfServiceRand < 0.25 ?
         'МВД' : typeOfServiceRand >= 0.25 && typeOfServiceRand < 0.5 ?
@@ -146,35 +151,44 @@ function App() {
     return arr
   }
   const date = "2022-07-05"
-  // function dateFromUsToRu(incomingStr) {
-  //   let result
-  //   let splits = incomingStr.split("-")
-  //   result = `${splits[2]}.${splits[1]}.${splits[0]}`
-  //   return result
-  // }
-  // function dateFromRutoUs(incomingStr) {
-  //   let result
-  //   let splits = incomingStr.split(".")
-  //   result = `${splits[2]}-${splits[1]}-${splits[0]}`
-  //   return result
-  // }
-  function dateAddDays(incomingDate, countOfDays) {
-    let date = new Date(incomingDate)
-    date.setDate(date.getDate() + countOfDays)
-    date.setHours(0)
-    console.log(date.toLocaleDateString());
+  function dateFromUsToRu(incomingStr) {
+    let result
+    let splits = incomingStr.split("-")
+    result = `${splits[2]}.${splits[1]}.${splits[0]}`
+    return result
   }
-  dateAddDays(date, 27);
+  function dateFromRutoUs(incomingStr) {
+    let result
+    let splits = incomingStr.split(".")
+    result = `${splits[2]}-${splits[1]}-${splits[0]}`
+    return result
+  }
+  
+  function dateAddDays(incomingDate, countOfDays, plusMinus) {
+    let date = new Date(incomingDate)
+    
+    if (plusMinus === true) {
+      date.setDate(date.getDate() + countOfDays)
+    } else {
+      date.setDate(date.getDate() - countOfDays)
+    }
+    date.setHours(0)
+    return dateFromRutoUs(date.toLocaleDateString())
+  }
+  
+    
+ 
 
   let cardArr = expState.map(
     (item) => {
+      let str = `поступил ${dateFromUsToRu(item.dateOfReceipt)}`
       return (
         <Card
           key={item.id}
           number={`${item.id}`}
           type={`${item.typeOfExpertise}`}
           numberOfMaterial={`${item.numberOfMaterial}`}
-          dateOfIncoming="поступил 00.00.2022"
+          dateOfIncoming={str}
           dateOfComplite="окончание 00.00.2022"
           executor={`${item.executor}`} result={`${item.result}`} />)
     }

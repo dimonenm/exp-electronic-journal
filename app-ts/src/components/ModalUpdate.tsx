@@ -143,7 +143,7 @@ const ModalUpdate: FC<ModalUpdateProps> = ({ dbExps, idOfExp, setDbExps, setModa
 
   function onClickBtnUpdateHandler(): void {
     const localExpArr = dbExps.map((item) => {
-      if (item.getId() === expStorage.getId())
+      if (item.getId() === expStorage.getId() && idOfExp === expStorage.getId())
         return expStorage
       return item
     })
@@ -151,7 +151,6 @@ const ModalUpdate: FC<ModalUpdateProps> = ({ dbExps, idOfExp, setDbExps, setModa
     setModal({ type: null, idOfExp: null })
   }
   function onClickBtnCancelHandler(): void {
-    // setExpStorage(new Exp())
     setModal({ type: null, idOfExp: null })
   }
 

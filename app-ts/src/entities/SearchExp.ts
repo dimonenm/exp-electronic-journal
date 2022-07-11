@@ -1,8 +1,8 @@
-import { IExp } from "../types/types";
-
-export default class Exp implements IExp {
-  id: string
-  dateOfReceipt: string
+export default class SearchExp {
+  idStart: string
+  idEnd: string
+  dateOfReceiptStart: string
+  dateOfReceiptEnd: string
   typeOfService: string
   unitOfService: string
   typeOfMaterial: string
@@ -16,21 +16,22 @@ export default class Exp implements IExp {
   dateProlongationStart: string
   valueOfProlongation: string
   result: string
-  dateExpEnd: string
-  dateExpComplete: string
-  dateVerificationStart: string
+  dateExpEndStart: string
+  dateExpEndEnd: string
+  dateExpCompleteStart: string
+  dateExpCompleteEnd: string
+  dateVerificationStartStart: string
+  dateVerificationStartEnd: string
   dateVerificationEnd: string
   numberVerification: string
   verificationNumberOfMaterial: string
   verificationExecutor: string
   verificationResult: string
-  constructor(oldExp?: Exp, id?: string) {
-    if (oldExp)
-      this.id = oldExp?.getId() || ''
-    else if (id)
-      this.id = id || ''
-    else this.id = ''
-    this.dateOfReceipt = oldExp?.getDateOfReceipt() || ''
+  constructor(oldExp?: SearchExp) {
+    this.idStart = oldExp?.getIdStart() || ''
+    this.idEnd = oldExp?.getIdEnd() || ''
+    this.dateOfReceiptStart = oldExp?.getDateOfReceiptStart() || ''
+    this.dateOfReceiptEnd = oldExp?.getDateOfReceiptEnd() || ''
     this.typeOfService = oldExp?.getTypeOfService() || ''
     this.unitOfService = oldExp?.getUnitOfService() || ''
     this.typeOfMaterial = oldExp?.getTypeOfMaterial() || ''
@@ -44,20 +45,29 @@ export default class Exp implements IExp {
     this.dateProlongationStart = oldExp?.getDateProlongationStart() || ''
     this.valueOfProlongation = oldExp?.getValueOfProlongation() || ''
     this.result = oldExp?.getResult() || ''
-    this.dateExpEnd = oldExp?.getDateExpEnd() || ''
-    this.dateExpComplete = oldExp?.getDateExpComplete() || ''
-    this.dateVerificationStart = oldExp?.getDateVerificationStart() || ''
+    this.dateExpEndStart = oldExp?.getDateExpEndStart() || ''
+    this.dateExpEndEnd = oldExp?.getDateExpEndEnd() || ''
+    this.dateExpCompleteStart = oldExp?.getDateExpCompleteStart() || ''
+    this.dateExpCompleteEnd = oldExp?.getDateExpCompleteEnd() || ''
+    this.dateVerificationStartStart = oldExp?.getDateVerificationStartStart() || ''
+    this.dateVerificationStartEnd = oldExp?.getDateVerificationStartEnd() || ''
     this.dateVerificationEnd = oldExp?.getDateVerificationEnd() || ''
     this.numberVerification = oldExp?.getNumberVerification() || ''
     this.verificationNumberOfMaterial = oldExp?.getVerificationNumberOfMaterial() || ''
     this.verificationExecutor = oldExp?.getVerificationExecutor() || ''
     this.verificationResult = oldExp?.getVerificationResult() || ''
   }
-  getId(): string {
-    return this.id
+  getIdStart(): string {
+    return this.idStart
   }
-  getDateOfReceipt(): string {
-    return this.dateOfReceipt
+  getIdEnd(): string {
+    return this.idEnd
+  }
+  getDateOfReceiptStart(): string {
+    return this.dateOfReceiptStart
+  }
+  getDateOfReceiptEnd(): string {
+    return this.dateOfReceiptEnd
   }
   getTypeOfService(): string {
     return this.typeOfService
@@ -98,14 +108,23 @@ export default class Exp implements IExp {
   getResult(): string {
     return this.result
   }
-  getDateExpEnd(): string {
-    return this.dateExpEnd
+  getDateExpEndStart(): string {
+    return this.dateExpEndStart
   }
-  getDateExpComplete(): string {
-    return this.dateExpComplete
+  getDateExpEndEnd(): string {
+    return this.dateExpEndEnd
   }
-  getDateVerificationStart(): string {
-    return this.dateVerificationStart
+  getDateExpCompleteStart(): string {
+    return this.dateExpCompleteStart
+  }
+  getDateExpCompleteEnd(): string {
+    return this.dateExpCompleteEnd
+  }
+  getDateVerificationStartStart(): string {
+    return this.dateVerificationStartStart
+  }
+  getDateVerificationStartEnd(): string {
+    return this.dateVerificationStartEnd
   }
   getDateVerificationEnd(): string {
     return this.dateVerificationEnd
@@ -122,11 +141,17 @@ export default class Exp implements IExp {
   getVerificationResult(): string {
     return this.verificationResult
   }
-  setId(value: string): void {
-    this.id = value
+  setIdStart(value: string): void {
+    this.idStart = value
   }
-  setDateOfReceipt(value: string): void {
-    this.dateOfReceipt = value
+  setIdEnd(value: string): void {
+    this.idEnd = value
+  }
+  setDateOfReceiptStart(value: string): void {
+    this.dateOfReceiptStart = value
+  }
+  setDateOfReceiptEnd(value: string): void {
+    this.dateOfReceiptEnd = value
   }
   setTypeOfService(value: string): void {
     this.typeOfService = value
@@ -167,14 +192,23 @@ export default class Exp implements IExp {
   setResult(value: string): void {
     this.result = value
   }
-  setDateExpEnd(value: string): void {
-    this.dateExpEnd = value
+  setDateExpEndStart(value: string): void {
+    this.dateExpEndStart = value
   }
-  setDateExpComplete(value: string): void {
-    this.dateExpComplete = value
+  setDateExpEndEnd(value: string): void {
+    this.dateExpEndEnd = value
   }
-  setDateVerificationStart(value: string): void {
-    this.dateVerificationStart = value
+  setDateExpCompleteStart(value: string): void {
+    this.dateExpCompleteStart = value
+  }
+  setDateExpCompleteEnd(value: string): void {
+    this.dateExpCompleteEnd = value
+  }
+  setDateVerificationStartStart(value: string): void {
+    this.dateVerificationStartStart = value
+  }
+  setDateVerificationStartEnd(value: string): void {
+    this.dateVerificationStartEnd = value
   }
   setDateVerificationEnd(value: string): void {
     this.dateVerificationEnd = value
@@ -190,6 +224,39 @@ export default class Exp implements IExp {
   }
   setVerificationResult(value: string): void {
     this.verificationResult = value
+  }
+  isSearchExp(): boolean{
+    if (
+      this.idStart !== '' ||
+    this.idEnd !== '' ||
+    this.dateOfReceiptStart !== '' ||
+    this.dateOfReceiptEnd !== '' ||
+    this.typeOfService !== '' ||
+    this.unitOfService !== '' ||
+    this.typeOfMaterial !== '' ||
+    this.numberOfMaterial !== '' ||
+    this.article !== '' ||
+    this.typeOfExpertise !== '' ||
+    this.executor !== '' ||
+    this.difficult !== '' ||
+    this.datePetitionStart !== '' ||
+    this.datePetitionEnd !== '' ||
+    this.dateProlongationStart !== '' ||
+    this.valueOfProlongation !== '' ||
+    this.result !== '' ||
+    this.dateExpEndStart !== '' ||
+    this.dateExpEndEnd !== '' ||
+    this.dateExpCompleteStart !== '' ||
+    this.dateExpCompleteEnd !== '' ||
+    this.dateVerificationStartStart !== '' ||
+    this.dateVerificationStartEnd !== '' ||
+    this.dateVerificationEnd !== '' ||
+    this.numberVerification !== '' ||
+    this.verificationNumberOfMaterial !== '' ||
+    this.verificationExecutor !== '' ||
+    this.verificationResult !== ''
+    ) return true
+    else return false
   }
 
 }

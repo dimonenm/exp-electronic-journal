@@ -33,7 +33,7 @@ const Btn = ({ type, setModal, modal, expState }) => {
     }
     function saveClickHandler() {
         
-        // console.log(str);
+      
         axios.post('http://localhost:3001/set-db', { expState })           
             .then(function (response) {
                 console.log(response);

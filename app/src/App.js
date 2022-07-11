@@ -20,7 +20,7 @@ function App() {
     return (from + Math.random() * (to - from));
   }
 
-// console.log(dayGenerator(5,25));
+
   function addDbExps(count) {
 
     let arr = []
@@ -163,10 +163,10 @@ function App() {
     result = `${splits[2]}-${splits[1]}-${splits[0]}`
     return result
   }
-  
+
   function dateAddDays(incomingDate, countOfDays, plusMinus) {
     let date = new Date(incomingDate)
-    
+
     if (plusMinus === true) {
       date.setDate(date.getDate() + countOfDays)
     } else {
@@ -175,9 +175,9 @@ function App() {
     date.setHours(0)
     return dateFromRutoUs(date.toLocaleDateString())
   }
-  
-    
- 
+
+
+
 
   let cardArr = expState.map(
     (item) => {

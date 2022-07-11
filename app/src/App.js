@@ -82,11 +82,20 @@ function App() {
               'ТКЭД ден.' : null
 
       const executorRand = Math.random()
-      const executor = executorRand < 0.25 ?
-        'Польченко Т.В.' : executorRand >= 0.25 && executorRand < 0.5 ?
-          'Поволодцкий Д.Г.' : executorRand >= 0.5 && executorRand < 0.75 ?
-            'Васильев И.С.' : executorRand >= 0.75 ?
-              'Балабанов А.А.' : null
+      const executor = executorRand < 0.09 ?
+        'Польченко Т.В.' : executorRand >= 0.09 && executorRand < 0.18 ?
+          'Поволодцкий Д.Г.' : executorRand >= 0.18 && executorRand < 0.27 ?
+            'Васильев И.С.' : executorRand >= 0.27 && executorRand < 0.36 ?
+              'Арзяков Д.Н.' : executorRand >= 0.36 && executorRand < 0.45 ?
+                'Халилов Р.Н.' : executorRand >= 0.45 && executorRand < 0.54 ?
+                  'Балабанов А.А.' : executorRand >= 0.54 && executorRand < 0.63 ?
+                    'Дружинина Е.Ю.' : executorRand >= 0.63 && executorRand < 0.72 ?
+                      'Еноткин А.А.' : executorRand >= 0.72 && executorRand < 0.81 ?
+                        'Киселев А.С.' : executorRand >= 0.81 && executorRand < 0.9 ?
+                          'Марчук В.А.' : executorRand >= 0.99 ?
+                            'Черногоров А.Ю.' : null
+
+
       const difficultRand = Math.random()
       const difficult = difficultRand < 0.33 ?
         'Простая' : difficultRand >= 0.33 && difficultRand < 0.66 ?
@@ -180,8 +189,8 @@ function App() {
           <Menu>
             <Btn type="create" setModal={setModal} modal={modal}></Btn>
             <Btn type="search" setModal={setModal} modal={modal}></Btn>
-            <Btn type="download" />
-            <Btn type="save" expState={expState} />
+            {/* <Btn type="download" />
+            <Btn type="save" expState={expState} /> */}
           </Menu>
           <Modal type={modal.type === 'create' ? 'create' : modal.type === 'search' ? 'search' : 'hidden'}></Modal>
           <Gallery>

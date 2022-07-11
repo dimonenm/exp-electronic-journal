@@ -47,6 +47,26 @@ const Modal = ({ type, expState }) => {
         let countOfUd158Tked = 0
         let countOfUd158Portret = 0
         let countOfUd158Total = 0
+        let countOfUd186Pocherk = 0
+        let countOfUd186Tked = 0
+        let countOfUd186Portret = 0
+        let countOfUd186Total = 0
+        let countOfUd222Pocherk = 0
+        let countOfUd222Tked = 0
+        let countOfUd222Portret = 0
+        let countOfUd222Total = 0
+        let countOfUd264Pocherk = 0
+        let countOfUd264Tked = 0
+        let countOfUd264Portret = 0
+        let countOfUd264Total = 0
+        let countOfPolchenkoPocherk = 0
+        let countOfPolchenkoTked = 0
+        let countOfPolchenkoPortret = 0
+        let countOfPolchenkoTotal = 0
+        let countOfPovolodtskiyPocherk = 0
+        let countOfPovolodtskiyTked = 0
+        let countOfPovolodtskiyPortret = 0
+        let countOfPovolodtskiyTotal = 0
 
         expState.forEach((item) => {
             if (item.typeOfExpertise === "Почерк") {
@@ -65,6 +85,21 @@ const Modal = ({ type, expState }) => {
                 }
                 if (item.article === "ст. 158, 159, 160 УК РФ") {
                     countOfUd158Pocherk += 1
+                }
+                if (item.article === "ст. 186, 187 УК РФ") {
+                    countOfUd186Pocherk += 1
+                }
+                if (item.article === "ст. 222 УК РФ") {
+                    countOfUd222Pocherk += 1
+                }
+                if (item.article === "ст. 264 УК РФ") {
+                    countOfUd264Pocherk += 1
+                }
+                if (item.executor === "Польченко Т.В.") {
+                    countOfPolchenkoPocherk += 1
+                }
+                if (item.executor === "Поволодцкий Д.Г.") {
+                    countOfPovolodtskiyPocherk += 1
                 }
                 
             }
@@ -85,6 +120,21 @@ const Modal = ({ type, expState }) => {
                 if (item.article === "ст. 158, 159, 160 УК РФ") {
                     countOfUd158Tked += 1
                 }
+                if (item.article === "ст. 186, 187 УК РФ") {
+                    countOfUd186Tked += 1
+                }
+                if (item.article === "ст. 222 УК РФ") {
+                    countOfUd222Tked += 1
+                }
+                if (item.article === "ст. 264 УК РФ") {
+                    countOfUd264Tked += 1
+                }
+                if (item.executor === "Польченко Т.В.") {
+                    countOfPolchenkoTked += 1
+                }
+                if (item.executor === "Поволодцкий Д.Г.") {
+                    countOfPovolodtskiyTked += 1
+                }
             }
             if (item.typeOfExpertise === "Портретная") {
                 countOfPortret += 1
@@ -103,12 +153,32 @@ const Modal = ({ type, expState }) => {
                 if (item.article === "ст. 158, 159, 160 УК РФ") {
                     countOfUd158Portret += 1
                 }
+                if (item.article === "ст. 186, 187 УК РФ") {
+                    countOfUd186Portret += 1
+                }
+                if (item.article === "ст. 222 УК РФ") {
+                    countOfUd222Portret += 1
+                }
+                if (item.article === "ст. 264 УК РФ") {
+                    countOfUd264Portret += 1
+                }
+                if (item.executor === "Польченко Т.В.") {
+                    countOfPolchenkoPortret += 1
+                }
+                if (item.executor === "Поволодцкий Д.Г.") {
+                    countOfPovolodtskiyPortret += 1
+                }
             }
             countResTotal = countResOfPocherk + countResOfTkedTotal + countResOfPortret
             countUdTotal = countUdOfPocherk + countUdOfTkedTotal + countUdOfPortret
             countOfUd101Total = countOfUd101Pocherk + countOfUd101Tked + countOfUd101Portret
             countOfUd105Total = countOfUd105Pocherk + countOfUd105Tked + countOfUd105Portret
             countOfUd158Total = countOfUd158Pocherk + countOfUd158Tked + countOfUd158Portret
+            countOfUd186Total = countOfUd186Pocherk + countOfUd186Tked + countOfUd186Portret
+            countOfUd222Total = countOfUd222Pocherk + countOfUd222Tked + countOfUd222Portret
+            countOfUd264Total = countOfUd264Pocherk + countOfUd264Tked + countOfUd264Portret
+            countOfPolchenkoTotal = countOfPolchenkoPocherk + countOfPolchenkoTked + countOfPolchenkoPortret
+            countOfPovolodtskiyTotal = countOfPovolodtskiyPocherk + countOfPovolodtskiyTked + countOfPovolodtskiyPortret
         })
 
         return (
@@ -166,10 +236,22 @@ const Modal = ({ type, expState }) => {
                     <ValueItem text={countOfUd158Portret} />
                     <LineItem />
                     <TextItem text="ст. 186, 187 УК РФ:" />
+                    <ValueItem text={countOfUd186Total} />
+                    <ValueItem text={countOfUd186Pocherk} />
+                    <ValueItem text={countOfUd186Tked} />
+                    <ValueItem text={countOfUd186Portret} />
                     <LineItem />
                     <TextItem text="ст. 222 УК РФ:" />
+                    <ValueItem text={countOfUd222Total} />
+                    <ValueItem text={countOfUd222Pocherk} />
+                    <ValueItem text={countOfUd222Tked} />
+                    <ValueItem text={countOfUd222Portret} />
                     <LineItem />
                     <TextItem text="ст. 264 УК РФ:" />
+                    <ValueItem text={countOfUd264Total} />
+                    <ValueItem text={countOfUd264Pocherk} />
+                    <ValueItem text={countOfUd264Tked} />
+                    <ValueItem text={countOfUd264Portret} />
                     <LineItem />
                 </TextItemWrapper>
                 <InfoTitle text="Количество экспертиз по исполнителям" />
@@ -189,18 +271,16 @@ const Modal = ({ type, expState }) => {
                     <ValueItem text="153" />
                     <LineItem />
                     <TextItem text="Польченко Т.В.:" />
-                    <ValueItem text="32" />
-                    <ValueItem text="4" />
-                    <ValueItem text="28" />
-                    <ValueItem text="" />
-                    <ValueItem text="" />
+                    <ValueItem text={countOfPolchenkoTotal} />
+                    <ValueItem text={countOfPolchenkoPocherk} />
+                    <ValueItem text={countOfPolchenkoTked} />
+                    <ValueItem text={countOfPolchenkoPortret} />
                     <LineItem />
                     <TextItem text="Поволодцкий Д.Г.:" />
-                    <ValueItem text="25" />
-                    <ValueItem text="" />
-                    <ValueItem text="25" />
-                    <ValueItem text="" />
-                    <ValueItem text="99" />
+                    <ValueItem text={countOfPovolodtskiyTotal} />
+                    <ValueItem text={countOfPovolodtskiyPocherk} />
+                    <ValueItem text={countOfPovolodtskiyTked} />
+                    <ValueItem text={countOfPovolodtskiyPortret} />
                     <LineItem />
                     <TextItem text="Васильев И.С.:" />
                     <ValueItem text="25" />

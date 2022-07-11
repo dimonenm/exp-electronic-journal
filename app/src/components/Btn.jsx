@@ -1,6 +1,6 @@
 import React from 'react';
 import "./Btn.scss"
-import axios from 'axios'
+// import axios from 'axios'
 const Btn = ({ type, setModal, modal, expState }) => {
     function createClickHandler() {
         console.log(modal.type);
@@ -27,21 +27,21 @@ const Btn = ({ type, setModal, modal, expState }) => {
             setModal({ type: null })
         }
     }
-    function downloadClickHandler() {
-        let req = axios.get("http://localhost:3001/get-db")
-        console.log(req);
-    }
-    function saveClickHandler() {
+    // function downloadClickHandler() {
+    //     let req = axios.get("http://localhost:3001/get-db")
+    //     console.log(req);
+    // }
+    // function saveClickHandler() {
         
-        // console.log(str);
-        axios.post('http://localhost:3001/set-db', { expState })           
-            .then(function (response) {
-                console.log(response);
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-    }
+    //     // console.log(str);
+    //     axios.post('http://localhost:3001/set-db', { expState })           
+    //         .then(function (response) {
+    //             console.log(response);
+    //         })
+    //         .catch(function (error) {
+    //             console.log(error);
+    //         });
+    // }
 
     if (type === "create") {
         return (

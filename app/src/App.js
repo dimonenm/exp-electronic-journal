@@ -203,8 +203,8 @@ function App() {
           <Menu>
             <Btn type="create" setModal={setModal} modal={modal}></Btn>
             <Btn type="search" setModal={setModal} modal={modal}></Btn>
-            {/* <Btn type="download" />
-            <Btn type="save" expState={expState} /> */}
+            <Btn type="download" />
+            <Btn type="save" expState={expState} />
           </Menu>
           <Modal type={modal.type === 'create' ? 'create' : modal.type === 'search' ? 'search' : 'hidden'}></Modal>
           <Gallery>

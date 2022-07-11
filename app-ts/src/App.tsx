@@ -10,12 +10,75 @@ import { IModal } from './types/types';
 import Exp from './entities/Exp';
 import Gallery from './containers/Gallery';
 import Card from './components/Card';
+import SearchExp from './entities/SearchExp';
 
 const App = () => {
 
   // const [dbExps, setDbExps] = useState<IExp[]>([])
   const [dbExps, setDbExps] = useState<Exp[]>((): Exp[] => { return addDbExps(10) })
   const [modal, setModal] = useState<IModal>({ type: null, idOfExp: null })
+  const [searchExp, setSearchExp] = useState<SearchExp>(new SearchExp())
+  console.log('searchExp: ', searchExp);
+
+
+  let searchCardsArr
+  let cardsArr
+
+  if (searchExp.isSearchExp()) {
+    if (searchExp.getIdStart() !== '' || searchExp.getIdEnd() !== '') {
+      if (searchExp.getIdStart() !== '' && searchExp.getIdEnd() !== '') {
+        searchCardsArr = dbExps.filter((item) => {
+          if (item.getId() >= searchExp.getIdStart() && item.getId() <= searchExp.getIdEnd()) return true
+          return false
+        })
+      } else if (searchExp.getIdStart() !== '') {
+        searchCardsArr = dbExps.filter((item) => {
+          if (item.getId() >= searchExp.getIdStart()) return true
+          return false
+        })
+      }else if (searchExp.getIdEnd() !== '') {
+        searchCardsArr = dbExps.filter((item) => {
+          if (item.getId() <= searchExp.getIdEnd()) return true
+          return false
+        })
+      }
+    }
+  }
+  console.log('searchCardsArr', searchCardsArr);
+
+  
+
+  if (dbExps.length) {
+    cardsArr = dbExps.map((item) => {
+      if (modal.idOfExp && modal.idOfExp === item.getId()) {
+        return (<Card
+          key={item.getId()}
+          active={true}
+          number={item.getId()}
+          type={`${item.getTypeOfMaterial()}`}
+          numberOfMaterial={`${item.getNumberOfMaterial()}`}
+          dateOfIncoming={`поступила ${dateFromUsToRu(item.getDateOfReceipt())}`}
+          dateOfComplite={item.getDateExpComplete() ? `завершена ${dateFromUsToRu(item.getDateExpComplete())}` : 'завершена н/д'}
+          executor={`${item.getExecutor()}`}
+          result={item.getResult() ? `${item.getResult()}` : 'в производстве'}
+          updateClickHendler={updateClickHendler}
+        />)
+      }
+      return (<Card
+        key={item.getId()}
+        active={false}
+        number={item.getId()}
+        type={`${item.getTypeOfMaterial()}`}
+        numberOfMaterial={`${item.getNumberOfMaterial()}`}
+        dateOfIncoming={`поступила ${dateFromUsToRu(item.getDateOfReceipt())}`}
+        dateOfComplite={item.getDateExpComplete() ? `завершена ${dateFromUsToRu(item.getDateExpComplete())}` : 'завершена н/д'}
+        executor={`${item.getExecutor()}`}
+        result={item.getResult() ? `${item.getResult()}` : 'в производстве'}
+        updateClickHendler={updateClickHendler}
+      />)
+    }).reverse()    
+  }
+
 
   // генератор экспертиз для базы
   function addDbExps(count: number) {
@@ -157,6 +220,11 @@ const App = () => {
       setModal((prev) => ({
         ...prev, type: null, idOfExp: null
       }))
+      setTimeout(() => {
+        setModal((prev) => ({
+          ...prev, type: 'update', idOfExp: number
+        }))        
+      },200)
     }
   }
   function searchClickHendler() {
@@ -196,26 +264,18 @@ const App = () => {
           dbExps={dbExps}
           setDbExps={setDbExps}
           setModal={setModal}
+          searchExp={searchExp}
+          setSearchExp={setSearchExp}
         />
         <Gallery>
-          {dbExps.map((item) => {
-            return (<Card
-              key={item.getId()}
-              number={item.getId()}
-              type={`${item.getTypeOfMaterial()}`}
-              numberOfMaterial={`${item.getNumberOfMaterial()}`}
-              dateOfIncoming={`поступила ${dateFromUsToRu(item.getDateOfReceipt())}`}
-              dateOfComplite={item.getDateExpComplete() ? `завершена ${dateFromUsToRu(item.getDateExpComplete())}` : 'завершена н/д'}
-              executor={`${item.getExecutor()}`}
-              result={item.getResult() ? `${item.getResult()}`: 'в производстве'}
-              updateClickHendler={updateClickHendler}
-            />)
-          }).reverse()}
+          {cardsArr}
         </Gallery>
         <Modal
           type={modal.type === 'info' ? 'info' : 'hidden'}
           dbExps={dbExps}
+          searchExp={searchExp}
           setModal={setModal}
+          setSearchExp={setSearchExp}
         />
         <Menu type='right'>
           <Button type='info' clickHendler={infoClickHendler} />

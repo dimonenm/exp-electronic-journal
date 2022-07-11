@@ -22,10 +22,13 @@ app.get("/get-db", (req, res) => {
     // res.send("строка")
 })
 app.post("/set-db", (req, res) => {
-// res.send(req.body)
+
     if (!req.body) {
         res.send("данные не поступили")
+    } else {
+        res.send(req.body)
     }
+
 
     fs.writeFile("./db/db.json", JSON.stringify(req.body), (error) => {
         if (error) {
@@ -35,6 +38,7 @@ app.post("/set-db", (req, res) => {
         }
     })
 
+   
 })
 
 app.listen(PORT, () => { console.log("сервер запущен"); })

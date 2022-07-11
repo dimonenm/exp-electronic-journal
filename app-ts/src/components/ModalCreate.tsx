@@ -105,10 +105,16 @@ const ModalCreate: FC<ModalCreateProps> = ({ dbExps, setDbExps, setModal }) => {
   }
   function onClickBtnAddHandler(): void {
     const localExpArr = [...dbExps]
-    localExpArr.push(expStorage);
-    setDbExps?.(localExpArr)
-    setExpStorage(new Exp(undefined, `${localExpArr.length + 1}`))
-    setModal({ type: null, idOfExp:null })
+    let isUniqId = true
+    localExpArr.forEach((item) => {
+      if (item.getId() === expStorage.getId()) isUniqId = false
+    })
+    if (isUniqId) {
+      localExpArr.push(expStorage);
+      setDbExps?.(localExpArr)
+      setExpStorage(new Exp(undefined, `${localExpArr.length + 1}`))
+      setModal({ type: null, idOfExp: null })
+    }    
   }
   function onClickBtnCancelHandler(): void {
     setExpStorage(new Exp())

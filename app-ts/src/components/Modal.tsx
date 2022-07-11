@@ -11,10 +11,10 @@ interface ModalProps {
   type: string
   idOfExp?: string | null
   dbExps: Exp[]
-  searchExp?: SearchExp
+  searchExp: SearchExp
   setDbExps?: React.Dispatch<Exp[]>
   setModal: React.Dispatch<IModal>
-  setSearchExp?: React.Dispatch<SearchExp>
+  setSearchExp: React.Dispatch<SearchExp>
 }
 
 const Modal: FC<ModalProps> = ({ type, idOfExp, dbExps, searchExp, setDbExps, setModal, setSearchExp }) => {

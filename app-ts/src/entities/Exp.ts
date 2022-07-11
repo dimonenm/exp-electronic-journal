@@ -53,73 +53,73 @@ export default class Exp implements IExp {
     this.verificationExecutor = oldExp?.getVerificationExecutor() || ''
     this.verificationResult = oldExp?.getVerificationResult() || ''
   }
-  getId(): string | null {
+  getId(): string {
     return this.id
   }
-  getDateOfReceipt(): string | null {
+  getDateOfReceipt(): string {
     return this.dateOfReceipt
   }
-  getTypeOfService(): string | null {
+  getTypeOfService(): string {
     return this.typeOfService
   }
-  getUnitOfService(): string | null {
+  getUnitOfService(): string {
     return this.unitOfService
   }
-  getTypeOfMaterial(): string | null {
+  getTypeOfMaterial(): string {
     return this.typeOfMaterial
   }
-  getNumberOfMaterial(): string | null {
+  getNumberOfMaterial(): string {
     return this.numberOfMaterial
   }
-  getArticle(): string | null {
+  getArticle(): string {
     return this.article
   }
-  getTypeOfExpertise(): string | null {
+  getTypeOfExpertise(): string {
     return this.typeOfExpertise
   }
-  getExecutor(): string | null {
+  getExecutor(): string {
     return this.executor
   }
-  getDifficult(): string | null {
+  getDifficult(): string {
     return this.difficult
   }
-  getDatePetitionStart(): string | null {
+  getDatePetitionStart(): string {
     return this.datePetitionStart
   }
-  getDatePetitionEnd(): string | null {
+  getDatePetitionEnd(): string {
     return this.datePetitionEnd
   }
-  getDateProlongationStart(): string | null {
+  getDateProlongationStart(): string {
     return this.dateProlongationStart
   }
-  getValueOfProlongation(): string | null {
+  getValueOfProlongation(): string {
     return this.valueOfProlongation
   }
-  getResult(): string | null {
+  getResult(): string {
     return this.result
   }
-  getDateExpEnd(): string | null {
+  getDateExpEnd(): string {
     return this.dateExpEnd
   }
-  getDateExpComplete(): string | null {
+  getDateExpComplete(): string {
     return this.dateExpComplete
   }
-  getDateVerificationStart(): string | null {
+  getDateVerificationStart(): string {
     return this.dateVerificationStart
   }
-  getDateVerificationEnd(): string | null {
+  getDateVerificationEnd(): string {
     return this.dateVerificationEnd
   }
-  getNumberVerification(): string | null {
+  getNumberVerification(): string {
     return this.numberVerification
   }
-  getVerificationNumberOfMaterial(): string | null {
+  getVerificationNumberOfMaterial(): string {
     return this.verificationNumberOfMaterial
   }
-  getVerificationExecutor(): string | null {
+  getVerificationExecutor(): string {
     return this.verificationExecutor
   }
-  getVerificationResult(): string | null {
+  getVerificationResult(): string {
     return this.verificationResult
   }
   setId(value: string): void {

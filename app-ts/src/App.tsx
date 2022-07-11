@@ -18,8 +18,35 @@ const App = () => {
   const [dbExps, setDbExps] = useState<Exp[]>((): Exp[] => { return addDbExps(10) })
   const [modal, setModal] = useState<IModal>({ type: null, idOfExp: null })
   const [searchExp, setSearchExp] = useState<SearchExp>(new SearchExp())
+  console.log('searchExp: ', searchExp);
 
+
+  let searchCardsArr
   let cardsArr
+
+  if (searchExp.isSearchExp()) {
+    if (searchExp.getIdStart() !== '' || searchExp.getIdEnd() !== '') {
+      if (searchExp.getIdStart() !== '' && searchExp.getIdEnd() !== '') {
+        searchCardsArr = dbExps.filter((item) => {
+          if (item.getId() >= searchExp.getIdStart() && item.getId() <= searchExp.getIdEnd()) return true
+          return false
+        })
+      } else if (searchExp.getIdStart() !== '') {
+        searchCardsArr = dbExps.filter((item) => {
+          if (item.getId() >= searchExp.getIdStart()) return true
+          return false
+        })
+      }else if (searchExp.getIdEnd() !== '') {
+        searchCardsArr = dbExps.filter((item) => {
+          if (item.getId() <= searchExp.getIdEnd()) return true
+          return false
+        })
+      }
+    }
+  }
+  console.log('searchCardsArr', searchCardsArr);
+
+  
 
   if (dbExps.length) {
     cardsArr = dbExps.map((item) => {
@@ -246,7 +273,9 @@ const App = () => {
         <Modal
           type={modal.type === 'info' ? 'info' : 'hidden'}
           dbExps={dbExps}
+          searchExp={searchExp}
           setModal={setModal}
+          setSearchExp={setSearchExp}
         />
         <Menu type='right'>
           <Button type='info' clickHendler={infoClickHendler} />

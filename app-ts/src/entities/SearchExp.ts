@@ -20,7 +20,8 @@ export default class SearchExp {
   dateExpEndEnd: string
   dateExpCompleteStart: string
   dateExpCompleteEnd: string
-  dateVerificationStart: string
+  dateVerificationStartStart: string
+  dateVerificationStartEnd: string
   dateVerificationEnd: string
   numberVerification: string
   verificationNumberOfMaterial: string
@@ -48,92 +49,96 @@ export default class SearchExp {
     this.dateExpEndEnd = oldExp?.getDateExpEndEnd() || ''
     this.dateExpCompleteStart = oldExp?.getDateExpCompleteStart() || ''
     this.dateExpCompleteEnd = oldExp?.getDateExpCompleteEnd() || ''
-    this.dateVerificationStart = oldExp?.getDateVerificationStart() || ''
+    this.dateVerificationStartStart = oldExp?.getDateVerificationStartStart() || ''
+    this.dateVerificationStartEnd = oldExp?.getDateVerificationStartEnd() || ''
     this.dateVerificationEnd = oldExp?.getDateVerificationEnd() || ''
     this.numberVerification = oldExp?.getNumberVerification() || ''
     this.verificationNumberOfMaterial = oldExp?.getVerificationNumberOfMaterial() || ''
     this.verificationExecutor = oldExp?.getVerificationExecutor() || ''
     this.verificationResult = oldExp?.getVerificationResult() || ''
   }
-  getIdStart(): string | null {
+  getIdStart(): string {
     return this.idStart
   }
-  getIdEnd(): string | null {
+  getIdEnd(): string {
     return this.idEnd
   }
-  getDateOfReceiptStart(): string | null {
+  getDateOfReceiptStart(): string {
     return this.dateOfReceiptStart
   }
-  getDateOfReceiptEnd(): string | null {
+  getDateOfReceiptEnd(): string {
     return this.dateOfReceiptEnd
   }
-  getTypeOfService(): string | null {
+  getTypeOfService(): string {
     return this.typeOfService
   }
-  getUnitOfService(): string | null {
+  getUnitOfService(): string {
     return this.unitOfService
   }
-  getTypeOfMaterial(): string | null {
+  getTypeOfMaterial(): string {
     return this.typeOfMaterial
   }
-  getNumberOfMaterial(): string | null {
+  getNumberOfMaterial(): string {
     return this.numberOfMaterial
   }
-  getArticle(): string | null {
+  getArticle(): string {
     return this.article
   }
-  getTypeOfExpertise(): string | null {
+  getTypeOfExpertise(): string {
     return this.typeOfExpertise
   }
-  getExecutor(): string | null {
+  getExecutor(): string {
     return this.executor
   }
-  getDifficult(): string | null {
+  getDifficult(): string {
     return this.difficult
   }
-  getDatePetitionStart(): string | null {
+  getDatePetitionStart(): string {
     return this.datePetitionStart
   }
-  getDatePetitionEnd(): string | null {
+  getDatePetitionEnd(): string {
     return this.datePetitionEnd
   }
-  getDateProlongationStart(): string | null {
+  getDateProlongationStart(): string {
     return this.dateProlongationStart
   }
-  getValueOfProlongation(): string | null {
+  getValueOfProlongation(): string {
     return this.valueOfProlongation
   }
-  getResult(): string | null {
+  getResult(): string {
     return this.result
   }
-  getDateExpEndStart(): string | null {
+  getDateExpEndStart(): string {
     return this.dateExpEndStart
   }
-  getDateExpEndEnd(): string | null {
+  getDateExpEndEnd(): string {
     return this.dateExpEndEnd
   }
-  getDateExpCompleteStart(): string | null {
+  getDateExpCompleteStart(): string {
     return this.dateExpCompleteStart
   }
-  getDateExpCompleteEnd(): string | null {
+  getDateExpCompleteEnd(): string {
     return this.dateExpCompleteEnd
   }
-  getDateVerificationStart(): string | null {
-    return this.dateVerificationStart
+  getDateVerificationStartStart(): string {
+    return this.dateVerificationStartStart
   }
-  getDateVerificationEnd(): string | null {
+  getDateVerificationStartEnd(): string {
+    return this.dateVerificationStartEnd
+  }
+  getDateVerificationEnd(): string {
     return this.dateVerificationEnd
   }
-  getNumberVerification(): string | null {
+  getNumberVerification(): string {
     return this.numberVerification
   }
-  getVerificationNumberOfMaterial(): string | null {
+  getVerificationNumberOfMaterial(): string {
     return this.verificationNumberOfMaterial
   }
-  getVerificationExecutor(): string | null {
+  getVerificationExecutor(): string {
     return this.verificationExecutor
   }
-  getVerificationResult(): string | null {
+  getVerificationResult(): string {
     return this.verificationResult
   }
   setIdStart(value: string): void {
@@ -199,8 +204,11 @@ export default class SearchExp {
   setDateExpCompleteEnd(value: string): void {
     this.dateExpCompleteEnd = value
   }
-  setDateVerificationStart(value: string): void {
-    this.dateVerificationStart = value
+  setDateVerificationStartStart(value: string): void {
+    this.dateVerificationStartStart = value
+  }
+  setDateVerificationStartEnd(value: string): void {
+    this.dateVerificationStartEnd = value
   }
   setDateVerificationEnd(value: string): void {
     this.dateVerificationEnd = value
@@ -216,6 +224,39 @@ export default class SearchExp {
   }
   setVerificationResult(value: string): void {
     this.verificationResult = value
+  }
+  isSearchExp(): boolean{
+    if (
+      this.idStart !== '' ||
+    this.idEnd !== '' ||
+    this.dateOfReceiptStart !== '' ||
+    this.dateOfReceiptEnd !== '' ||
+    this.typeOfService !== '' ||
+    this.unitOfService !== '' ||
+    this.typeOfMaterial !== '' ||
+    this.numberOfMaterial !== '' ||
+    this.article !== '' ||
+    this.typeOfExpertise !== '' ||
+    this.executor !== '' ||
+    this.difficult !== '' ||
+    this.datePetitionStart !== '' ||
+    this.datePetitionEnd !== '' ||
+    this.dateProlongationStart !== '' ||
+    this.valueOfProlongation !== '' ||
+    this.result !== '' ||
+    this.dateExpEndStart !== '' ||
+    this.dateExpEndEnd !== '' ||
+    this.dateExpCompleteStart !== '' ||
+    this.dateExpCompleteEnd !== '' ||
+    this.dateVerificationStartStart !== '' ||
+    this.dateVerificationStartEnd !== '' ||
+    this.dateVerificationEnd !== '' ||
+    this.numberVerification !== '' ||
+    this.verificationNumberOfMaterial !== '' ||
+    this.verificationExecutor !== '' ||
+    this.verificationResult !== ''
+    ) return true
+    else return false
   }
 
 }

@@ -29,7 +29,8 @@ interface IInputSearchProps {
   onChangeDateExpEndEndHandler?: (value: string) => void
   onChangeDateExpCompleteStartHandler?: (value: string) => void
   onChangeDateExpCompleteEndHandler?: (value: string) => void
-  onChangeDateVerificationStartHandler?: (value: string) => void
+  onChangeDateVerificationStartStartHandler?: (value: string) => void
+  onChangeDateVerificationStartEndHandler?: (value: string) => void
   onChangeDateVerificationEndHandler?: (value: string) => void
   onChangeNumberVerificationHandler?: (value: string) => void
   onChangeVerificationNumberOfMaterialHandler?: (value: string) => void
@@ -65,7 +66,8 @@ const InputSearch: FC<IInputSearchProps> = ({
   onChangeDateExpEndEndHandler,
   onChangeDateExpCompleteStartHandler,
   onChangeDateExpCompleteEndHandler,
-  onChangeDateVerificationStartHandler,
+  onChangeDateVerificationStartStartHandler,
+  onChangeDateVerificationStartEndHandler,
   onChangeDateVerificationEndHandler,
   onChangeNumberVerificationHandler,
   onChangeVerificationNumberOfMaterialHandler,
@@ -132,9 +134,14 @@ const InputSearch: FC<IInputSearchProps> = ({
         onChangeDateExpCompleteEndHandler?.(event.target.value)
       }} />
     }
-    if (name === 'dateVerificationStart') {
+    if (name === 'dateVerificationStartStart') {
       input = <input type="date" className='input-date' defaultValue={value} onChange={(event) => {
-        onChangeDateVerificationStartHandler?.(event.target.value)
+        onChangeDateVerificationStartStartHandler?.(event.target.value)
+      }} />
+    }
+    if (name === 'dateVerificationStartEnd') {
+      input = <input type="date" className='input-date' defaultValue={value} onChange={(event) => {
+        onChangeDateVerificationStartEndHandler?.(event.target.value)
       }} />
     }
     if (name === 'dateVerificationEnd') {

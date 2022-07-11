@@ -7,9 +7,10 @@ interface IModalButtonProps {
   onClickBtnAddHandler?: () => void
   onClickBtnUpdateHandler?: () => void
   onClickBtnCancelHandler?: () => void
+  onClickBtnClearHandler?: () => void
 }
 
-const ModalButton: FC<IModalButtonProps> = ({ type, text, onClickBtnAddHandler, onClickBtnUpdateHandler, onClickBtnCancelHandler }) => {
+const ModalButton: FC<IModalButtonProps> = ({ type, text, onClickBtnAddHandler, onClickBtnUpdateHandler, onClickBtnCancelHandler, onClickBtnClearHandler }) => {
   if (type === 'add') {
     return (
       <div className='modal-button' onClick={onClickBtnAddHandler}>
@@ -33,7 +34,7 @@ const ModalButton: FC<IModalButtonProps> = ({ type, text, onClickBtnAddHandler, 
   }
   if (type === 'clear') {
     return (
-      <div className='modal-button'>
+      <div className='modal-button' onClick={onClickBtnClearHandler}>
         {text}
       </div>
     );

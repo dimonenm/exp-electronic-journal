@@ -21,56 +21,74 @@ const App = () => {
   // console.log('searchExp: ', searchExp);
 
 
-  let searchCardsArr: Exp[] = []
+  let searchCardsArr: JSX.Element[] = []
+  let searchArr: Exp[] = []
   let cardsArr
 
   if (searchExp.isSearchExp()) {
+    searchArr = dbExps.map((item) => {
+      return item
+    })
     if (searchExp.getIdStart() !== '' || searchExp.getIdEnd() !== '') {
       if (searchExp.getIdStart() !== '' && searchExp.getIdEnd() !== '') {
-        if (searchCardsArr.length) {
-          searchCardsArr = searchCardsArr.filter((item) => {
-            if (+item.getId() >= +searchExp.getIdStart() && +item.getId() <= +searchExp.getIdEnd()) return true
-            return false
-          })
-        } else {
-          searchCardsArr = dbExps.filter((item) => {
-            if (+item.getId() >= +searchExp.getIdStart() && +item.getId() <= +searchExp.getIdEnd()) return true
-            return false
-          })
-        }
+        searchArr = searchArr.filter((item) => {
+          if (+item.getId() >= +searchExp.getIdStart() && +item.getId() <= +searchExp.getIdEnd()) return true
+          return false
+        })
       }
       else if (searchExp.getIdStart() !== '') {
-        if (searchCardsArr.length) {
-          searchCardsArr = searchCardsArr.filter((item) => {
-            if (+item.getId() >= +searchExp.getIdStart()) return true
-            return false
-          })
-        } else {
-          searchCardsArr = dbExps.filter((item) => {
-            if (+item.getId() >= +searchExp.getIdStart()) return true
-            return false
-          })
-        }
-      }else if (searchExp.getIdEnd() !== '') {
-        if (searchCardsArr.length) {
-          searchCardsArr = searchCardsArr.filter((item) => {
-            if (+item.getId() <= +searchExp.getIdStart()) return true
-            return false
-          })
-        } else {
-          searchCardsArr = dbExps.filter((item) => {
-            if (+item.getId() <= +searchExp.getIdStart()) return true
-            return false
-          })
-        }
+        searchArr = searchArr.filter((item) => {
+          if (+item.getId() >= +searchExp.getIdStart()) return true
+          return false
+        })
+      }
+      else if (searchExp.getIdEnd() !== '') {
+        searchArr = searchArr.filter((item) => {
+          if (+item.getId() <= +searchExp.getIdStart()) return true
+          return false
+        })
       }
     }
+    if (searchExp.getTypeOfService() !== '') {
+      searchArr = searchArr.filter((item) => {
+        if (item.getTypeOfService() === searchExp.getTypeOfService()) return true
+        return false
+      })
+    }
   }
-  console.log('searchCardsArr', searchCardsArr);
-
+  console.log('searchArr', searchArr);
   
 
-  if (dbExps.length) {
+  if (searchArr.length) {
+    searchCardsArr = searchArr.map((item) => {
+      if (modal.idOfExp && modal.idOfExp === item.getId()) {
+        return (<Card
+          key={item.getId()}
+          active={true}
+          number={item.getId()}
+          type={`${item.getTypeOfMaterial()}`}
+          numberOfMaterial={`${item.getNumberOfMaterial()}`}
+          dateOfIncoming={`поступила ${dateFromUsToRu(item.getDateOfReceipt())}`}
+          dateOfComplite={item.getDateExpComplete() ? `завершена ${dateFromUsToRu(item.getDateExpComplete())}` : 'завершена н/д'}
+          executor={`${item.getExecutor()}`}
+          result={item.getResult() ? `${item.getResult()}` : 'в производстве'}
+          updateClickHendler={updateClickHendler}
+        />)
+      }
+      return (<Card
+        key={item.getId()}
+        active={false}
+        number={item.getId()}
+        type={`${item.getTypeOfMaterial()}`}
+        numberOfMaterial={`${item.getNumberOfMaterial()}`}
+        dateOfIncoming={`поступила ${dateFromUsToRu(item.getDateOfReceipt())}`}
+        dateOfComplite={item.getDateExpComplete() ? `завершена ${dateFromUsToRu(item.getDateExpComplete())}` : 'завершена н/д'}
+        executor={`${item.getExecutor()}`}
+        result={item.getResult() ? `${item.getResult()}` : 'в производстве'}
+        updateClickHendler={updateClickHendler}
+      />)
+    }).reverse()
+  }else if (dbExps.length) {
     cardsArr = dbExps.map((item) => {
       if (modal.idOfExp && modal.idOfExp === item.getId()) {
         return (<Card
@@ -98,7 +116,7 @@ const App = () => {
         result={item.getResult() ? `${item.getResult()}` : 'в производстве'}
         updateClickHendler={updateClickHendler}
       />)
-    }).reverse()    
+    }).reverse()
   }
 
 
@@ -245,8 +263,8 @@ const App = () => {
       setTimeout(() => {
         setModal((prev) => ({
           ...prev, type: 'update', idOfExp: number
-        }))        
-      },200)
+        }))
+      }, 200)
     }
   }
   function searchClickHendler() {
@@ -290,7 +308,7 @@ const App = () => {
           setSearchExp={setSearchExp}
         />
         <Gallery>
-          {cardsArr}
+          {searchCardsArr.length ? searchCardsArr : cardsArr}
         </Gallery>
         <Modal
           type={modal.type === 'info' ? 'info' : 'hidden'}

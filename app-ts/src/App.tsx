@@ -15,32 +15,54 @@ import SearchExp from './entities/SearchExp';
 const App = () => {
 
   // const [dbExps, setDbExps] = useState<IExp[]>([])
-  const [dbExps, setDbExps] = useState<Exp[]>((): Exp[] => { return addDbExps(10) })
+  const [dbExps, setDbExps] = useState<Exp[]>((): Exp[] => { return addDbExps(20) })
   const [modal, setModal] = useState<IModal>({ type: null, idOfExp: null })
   const [searchExp, setSearchExp] = useState<SearchExp>(new SearchExp())
-  console.log('searchExp: ', searchExp);
+  // console.log('searchExp: ', searchExp);
 
 
-  let searchCardsArr
+  let searchCardsArr: Exp[] = []
   let cardsArr
 
   if (searchExp.isSearchExp()) {
     if (searchExp.getIdStart() !== '' || searchExp.getIdEnd() !== '') {
       if (searchExp.getIdStart() !== '' && searchExp.getIdEnd() !== '') {
-        searchCardsArr = dbExps.filter((item) => {
-          if (item.getId() >= searchExp.getIdStart() && item.getId() <= searchExp.getIdEnd()) return true
-          return false
-        })
-      } else if (searchExp.getIdStart() !== '') {
-        searchCardsArr = dbExps.filter((item) => {
-          if (item.getId() >= searchExp.getIdStart()) return true
-          return false
-        })
+        if (searchCardsArr.length) {
+          searchCardsArr = searchCardsArr.filter((item) => {
+            if (+item.getId() >= +searchExp.getIdStart() && +item.getId() <= +searchExp.getIdEnd()) return true
+            return false
+          })
+        } else {
+          searchCardsArr = dbExps.filter((item) => {
+            if (+item.getId() >= +searchExp.getIdStart() && +item.getId() <= +searchExp.getIdEnd()) return true
+            return false
+          })
+        }
+      }
+      else if (searchExp.getIdStart() !== '') {
+        if (searchCardsArr.length) {
+          searchCardsArr = searchCardsArr.filter((item) => {
+            if (+item.getId() >= +searchExp.getIdStart()) return true
+            return false
+          })
+        } else {
+          searchCardsArr = dbExps.filter((item) => {
+            if (+item.getId() >= +searchExp.getIdStart()) return true
+            return false
+          })
+        }
       }else if (searchExp.getIdEnd() !== '') {
-        searchCardsArr = dbExps.filter((item) => {
-          if (item.getId() <= searchExp.getIdEnd()) return true
-          return false
-        })
+        if (searchCardsArr.length) {
+          searchCardsArr = searchCardsArr.filter((item) => {
+            if (+item.getId() <= +searchExp.getIdStart()) return true
+            return false
+          })
+        } else {
+          searchCardsArr = dbExps.filter((item) => {
+            if (+item.getId() <= +searchExp.getIdStart()) return true
+            return false
+          })
+        }
       }
     }
   }

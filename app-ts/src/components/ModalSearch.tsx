@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import Exp from '../entities/Exp';
 import SearchExp from '../entities/SearchExp';
 import { IModal } from '../types/types';
 import InputSearch from './InputSearch';
@@ -7,11 +8,12 @@ import ModalTitle from './ModalTitle';
 
 interface ModalSearchProps{
   searchExp: SearchExp,
+  searchArr?: Exp[],
   setModal: React.Dispatch<IModal>,
   setSearchExp: React.Dispatch<SearchExp>,
 }
 
-const ModalSearch: FC<ModalSearchProps> = ({searchExp, setModal, setSearchExp}) => {
+const ModalSearch: FC<ModalSearchProps> = ({ searchExp, searchArr, setModal, setSearchExp}) => {
 
   let unitOfService
   let article
@@ -178,7 +180,8 @@ const ModalSearch: FC<ModalSearchProps> = ({searchExp, setModal, setSearchExp}) 
       </>
     )
   } else {
-    verification = <InputSearch type='empty' title='empty' name='empty' />
+    // verification = <InputSearch type='empty' title='empty' name='empty' />
+    
   }
 
   return (
@@ -209,6 +212,7 @@ const ModalSearch: FC<ModalSearchProps> = ({searchExp, setModal, setSearchExp}) 
       <InputSearch type='date' title='По дате завер-я с' name='dateExpCompleteStart' value={`${searchExp?.getDateExpCompleteStart()}`} onChangeDateExpCompleteStartHandler={onChangeDateExpCompleteStartHandler} />
       <InputSearch type='date' title='По дате завер-я по' name='dateExpCompleteEnd' value={`${searchExp?.getDateExpCompleteEnd()}`} onChangeDateExpCompleteEndHandler={onChangeDateExpCompleteEndHandler} />
       {verification}
+      <InputSearch type='searchResult' title='empty' name='empty' value={`${searchArr?.length}`} />
       <ModalButton type='clear' text='Сбросить' onClickBtnClearHandler={onClickBtnClearHandler} />
     </>
   );

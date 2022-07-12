@@ -44,18 +44,40 @@ const App = () => {
       }
       else if (searchExp.getIdEnd() !== '') {
         searchArr = searchArr.filter((item) => {
-          if (+item.getId() <= +searchExp.getIdStart()) return true
+          if (+item.getId() <= +searchExp.getIdEnd()) return true
           return false
         })
       }
     }
-    if (searchExp.getTypeOfService() !== '') {
+    if (searchExp.getDateOfReceiptStart() !== '' || searchExp.getDateOfReceiptEnd() !== '') {
+      if (searchExp.getDateOfReceiptStart() !== '' && searchExp.getDateOfReceiptEnd() !== '') {
+        searchArr = searchArr.filter((item) => {
+          if (item.getDateOfReceipt() >= searchExp.getDateOfReceiptStart() && item.getDateOfReceipt() <= searchExp.getDateOfReceiptEnd()) return true
+          return false
+        })
+      }
+      else if (searchExp.getDateOfReceiptStart() !== '') {
+        searchArr = searchArr.filter((item) => {
+          if (item.getDateOfReceipt() >= searchExp.getDateOfReceiptStart()) return true
+          return false
+        })
+      }
+      else if (searchExp.getDateOfReceiptEnd() !== '') {
+        searchArr = searchArr.filter((item) => {
+          if (item.getDateOfReceipt() <= searchExp.getDateOfReceiptEnd()) return true
+          return false
+        })
+      }
+
+    }
+    if (searchExp.getTypeOfService() !== '' && searchExp.getTypeOfService() !== 'не указано') {
       searchArr = searchArr.filter((item) => {
         if (item.getTypeOfService() === searchExp.getTypeOfService()) return true
         return false
       })
     }
   }
+  console.log('searchExp', searchExp);
   console.log('searchArr', searchArr);
   
 
@@ -126,7 +148,7 @@ const App = () => {
     let arr: Exp[] = []
 
     for (let i = 0; i < count; i++) {
-      const dateOfReceipt = '2022-07-05'
+      const dateOfReceipt = dateAddDays(new Date(), dayGenerator(1, new Date().getDate()), false);
       const typeOfServiceRand = Math.random()
       const typeOfService = typeOfServiceRand < 0.25 ?
         'МВД' : typeOfServiceRand >= 0.25 && typeOfServiceRand < 0.5 ?
@@ -239,6 +261,27 @@ const App = () => {
     }
     return result
   }
+  function dateFromRutoUs(incomingStr: string) {
+    let result
+    let splits = incomingStr.split(".")
+    result = `${splits[2]}-${splits[1]}-${splits[0]}`
+    return result
+  }
+  function dateAddDays(incomingDate: Date, countOfDays: number, plusMinus: boolean) {
+    let date = new Date(incomingDate)
+
+    if (plusMinus === true) {
+      date.setDate(date.getDate() + countOfDays)
+    } else {
+      date.setDate(date.getDate() - countOfDays)
+    }
+    date.setHours(0)
+    return dateFromRutoUs(date.toLocaleDateString())
+  }
+  function dayGenerator(from: number, to: number) {
+    return (from + Math.random() * (to - from));
+  }
+
 
   function createClickHendler() {
     if (modal.type !== 'create') {
@@ -304,6 +347,7 @@ const App = () => {
           dbExps={dbExps}
           setDbExps={setDbExps}
           setModal={setModal}
+          searchArr={searchArr}
           searchExp={searchExp}
           setSearchExp={setSearchExp}
         />

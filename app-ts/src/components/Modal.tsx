@@ -12,12 +12,13 @@ interface ModalProps {
   idOfExp?: string | null
   dbExps: Exp[]
   searchExp: SearchExp
+  searchArr?: Exp[]
   setDbExps?: React.Dispatch<Exp[]>
   setModal: React.Dispatch<IModal>
   setSearchExp: React.Dispatch<SearchExp>
 }
 
-const Modal: FC<ModalProps> = ({ type, idOfExp, dbExps, searchExp, setDbExps, setModal, setSearchExp }) => {
+const Modal: FC<ModalProps> = ({ type, idOfExp, dbExps, searchExp, searchArr, setDbExps, setModal, setSearchExp }) => {
 
   if (type === 'create') {
     return (
@@ -48,6 +49,7 @@ const Modal: FC<ModalProps> = ({ type, idOfExp, dbExps, searchExp, setDbExps, se
       <div className='modal-search'>
         <ModalSearch
           searchExp={searchExp}
+          searchArr={searchArr}
           setModal={setModal}
           setSearchExp={setSearchExp}
         />

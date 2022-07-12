@@ -15,7 +15,7 @@ import SearchExp from './entities/SearchExp';
 const App = () => {
 
   // const [dbExps, setDbExps] = useState<IExp[]>([])
-  const [dbExps, setDbExps] = useState<Exp[]>((): Exp[] => { return addDbExps(20) })
+  const [dbExps, setDbExps] = useState<Exp[]>((): Exp[] => { return addDbExps(200) })
   const [modal, setModal] = useState<IModal>({ type: null, idOfExp: null })
   const [searchExp, setSearchExp] = useState<SearchExp>(new SearchExp())
   // console.log('searchExp: ', searchExp);
@@ -76,9 +76,57 @@ const App = () => {
         return false
       })
     }
+    if (searchExp.getUnitOfService() !== '' && searchExp.getUnitOfService() !== 'не указано') {
+      searchArr = searchArr.filter((item) => {
+        if (item.getUnitOfService() === searchExp.getUnitOfService()) return true
+        return false
+      })
+    }
+    if (searchExp.getTypeOfMaterial() !== '' && searchExp.getTypeOfMaterial() !== 'не указано') {
+      searchArr = searchArr.filter((item) => {
+        if (item.getTypeOfMaterial() === searchExp.getTypeOfMaterial()) return true
+        return false
+      })
+    }
+    if (searchExp.getNumberOfMaterial() !== '') {
+      searchArr = searchArr.filter((item) => {
+        if (new RegExp(searchExp.getNumberOfMaterial()).test(item.getNumberOfMaterial())) return true
+        return false
+      })
+    }
+    if (searchExp.getArticle() !== '' && searchExp.getArticle() !== 'не указано') {
+      searchArr = searchArr.filter((item) => {
+        if (item.getArticle() === searchExp.getArticle()) return true
+        return false
+      })
+    }
+    if (searchExp.getTypeOfExpertise() !== '' && searchExp.getTypeOfExpertise() !== 'не указано') {
+      searchArr = searchArr.filter((item) => {
+        if (item.getTypeOfExpertise() === searchExp.getTypeOfExpertise()) return true
+        return false
+      })
+    }
+    if (searchExp.getDifficult() !== '' && searchExp.getDifficult() !== 'не указано') {
+      searchArr = searchArr.filter((item) => {
+        if (item.getDifficult() === searchExp.getDifficult()) return true
+        return false
+      })
+    }
+    if (searchExp.getExecutor() !== '' && searchExp.getExecutor() !== 'не указано') {
+      searchArr = searchArr.filter((item) => {
+        if (item.getExecutor() === searchExp.getExecutor()) return true
+        return false
+      })
+    }
+    if (searchExp.getResult() !== '' && searchExp.getResult() !== 'не указано') {
+      searchArr = searchArr.filter((item) => {
+        if (item.getResult() === searchExp.getResult()) return true
+        return false
+      })
+    }
   }
-  console.log('searchExp', searchExp);
-  console.log('searchArr', searchArr);
+  // console.log('searchExp', searchExp);
+  // console.log('searchArr', searchArr);
   
 
   if (searchArr.length) {
@@ -335,7 +383,7 @@ const App = () => {
 
   return (
     <Container>
-      <Header>Электронный журнал 0.0.1</Header>
+      <Header logoText='Электронный журнал 0.0.1'/>
       <Main>
         <Menu type='left'>
           <Button type='create' clickHendler={createClickHendler} />

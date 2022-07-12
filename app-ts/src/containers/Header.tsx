@@ -2,15 +2,15 @@ import React, { FC } from 'react';
 import './Header.scss'
 
 interface HeaderProps {
-  children: React.ReactNode
+  logoText: string
 }
 
-const Header:FC<HeaderProps> = ({children}) => {
+const Header: FC<HeaderProps> = ({ logoText }) => {
   return (
     <div className='header'>
-      {children}
+      {logoText}
     </div>
   );
 };
 
-export default Header;
+export default React.memo(Header);

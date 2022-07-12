@@ -16,6 +16,25 @@ function App() {
   let toDay = new Date()
   const [modal, setModal] = useState({ type: null })
   const [expState] = useState(addDbExps(100))
+  const searchParameters = { idStart: "20", idEnd: "", dateStart: "", dateEnd: "" }
+  function expFilter(expArr, serchParameters) {
+    let resArr = []
+    for (let i = 0; i < expArr.length; i++) {
+      resArr[i] = {}
+      Object.assign(resArr[i], expArr[i])
+    }
+    resArr = resArr.filter((item) => {
+      if (+item.id >= +searchParameters.idStart) {
+        return true
+      }
+      return false
+    });
+    
+    return resArr
+  }
+  console.log("expState :", expState);
+  console.log('expFilter: ', expFilter(expState, searchParameters));
+
   function dayGenerator(from, to) {
     return (from + Math.random() * (to - from));
   }

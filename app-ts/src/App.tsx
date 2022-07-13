@@ -124,6 +124,90 @@ const App = () => {
         return false
       })
     }
+    if (searchExp.getDateExpEndStart() !== '' || searchExp.getDateExpEndEnd() !== '') {
+      if (searchExp.getDateExpEndStart() !== '' && searchExp.getDateExpEndEnd() !== '') {
+        searchArr = searchArr.filter((item) => {
+          if (item.getDateExpEnd() >= searchExp.getDateExpEndStart() && item.getDateExpEnd() <= searchExp.getDateExpEndEnd()) return true
+          return false
+        })
+      }
+      else if (searchExp.getDateExpEndStart() !== '') {
+        searchArr = searchArr.filter((item) => {
+          if (item.getDateExpEnd() >= searchExp.getDateExpEndStart()) return true
+          return false
+        })
+      }
+      else if (searchExp.getDateExpEndEnd() !== '') {
+        searchArr = searchArr.filter((item) => {
+          if (item.getDateExpEnd() <= searchExp.getDateExpEndEnd()) return true
+          return false
+        })
+      }
+    }
+    if (searchExp.getDateExpCompleteStart() !== '' || searchExp.getDateExpCompleteEnd() !== '') {
+      if (searchExp.getDateExpCompleteStart() !== '' && searchExp.getDateExpCompleteEnd() !== '') {
+        searchArr = searchArr.filter((item) => {
+          if (item.getDateExpComplete() >= searchExp.getDateExpCompleteStart() && item.getDateExpComplete() <= searchExp.getDateExpCompleteEnd()) return true
+          return false
+        })
+      }
+      else if (searchExp.getDateExpCompleteStart() !== '') {
+        searchArr = searchArr.filter((item) => {
+          if (item.getDateExpComplete() >= searchExp.getDateExpCompleteStart()) return true
+          return false
+        })
+      }
+      else if (searchExp.getDateExpCompleteEnd() !== '') {
+        searchArr = searchArr.filter((item) => {
+          if (item.getDateExpComplete() <= searchExp.getDateExpCompleteEnd()) return true
+          return false
+        })
+      }
+    }
+    if (searchExp.getDateVerificationStartStart() !== '' || searchExp.getDateVerificationStartEnd() !== '') {
+      if (searchExp.getDateVerificationStartStart() !== '' && searchExp.getDateVerificationStartEnd() !== '') {
+        searchArr = searchArr.filter((item) => {
+          if (item.getDateVerificationStart() >= searchExp.getDateVerificationStartStart() && item.getDateVerificationStart() <= searchExp.getDateVerificationStartEnd()) return true
+          return false
+        })
+      }
+      else if (searchExp.getDateVerificationStartStart() !== '') {
+        searchArr = searchArr.filter((item) => {
+          if (item.getDateVerificationStart() >= searchExp.getDateVerificationStartStart()) return true
+          return false
+        })
+      }
+      else if (searchExp.getDateVerificationStartEnd() !== '') {
+        searchArr = searchArr.filter((item) => {
+          if (item.getDateVerificationStart() <= searchExp.getDateVerificationStartEnd()) return true
+          return false
+        })
+      }
+    }
+    if (searchExp.getNumberVerification() !== '') {
+      searchArr = searchArr.filter((item) => {
+        if (new RegExp(searchExp.getNumberVerification()).test(item.getNumberVerification())) return true
+        return false
+      })
+    }
+    if (searchExp.getVerificationNumberOfMaterial() !== '') {
+      searchArr = searchArr.filter((item) => {
+        if (new RegExp(searchExp.getVerificationNumberOfMaterial()).test(item.getVerificationNumberOfMaterial())) return true
+        return false
+      })
+    }
+    if (searchExp.getVerificationExecutor() !== '' && searchExp.getVerificationExecutor() !== 'не указано') {
+      searchArr = searchArr.filter((item) => {
+        if (item.getVerificationExecutor() === searchExp.getVerificationExecutor()) return true
+        return false
+      })
+    }
+    if (searchExp.getVerificationResult() !== '' && searchExp.getVerificationResult() !== 'не указано') {
+      searchArr = searchArr.filter((item) => {
+        if (item.getVerificationResult() === searchExp.getVerificationResult()) return true
+        return false
+      })
+    }
   }
   // console.log('searchExp', searchExp);
   // console.log('searchArr', searchArr);
@@ -277,8 +361,8 @@ const App = () => {
             'Без исполнения' : resultRand >= 0.75 ?
               'Сообщение о невозм.' : ''
 
-      const dateExpEnd = '2022-07-05'
-      const dateExpComplete = '2022-07-05'
+      const dateExpEnd = dateAddDays(new Date(), dayGenerator(1, new Date().getDate()), false)
+      const dateExpComplete = dateAddDays(new Date(), dayGenerator(1, new Date().getDate()), false)
       const exp = new Exp()
       exp.setId(`${i + 1}`)
       exp.setDateOfReceipt(dateOfReceipt)

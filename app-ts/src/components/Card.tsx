@@ -14,7 +14,6 @@ interface IInputProps {
 }
 
 const Card: FC<IInputProps> = ({ number, type, active, numberOfMaterial, dateOfIncoming, dateOfComplite, executor, result, updateClickHendler }) => {
-  console.log('Card');
   if (active) {
     return (
       <div className='card card-active' onClick={() => {

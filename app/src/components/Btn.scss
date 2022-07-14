@@ -1,6 +1,29 @@
-.btn{
+.btn-create{
     height: 40px;
     width: 40px;
-    border: 1px solid #d2d2d2;
-    background-color: #2B579A;
+    // border: 1px solid #d2d2d2;
+    background-image: url("../images/document.svg");
+}
+.btn-create:active{
+    transform: scale(0.9);
+}
+.btn-search{
+    height: 40px;
+    width: 40px;
+    // border: 1px solid #d2d2d2;
+    background-image: url("../images/filesearch.svg")
+    // background-color: #2B579A;
+}
+.btn-search:active{
+    transform: scale(0.9);
+}
+.btn-info{
+    height: 40px;
+    width: 40px;
+    // border: 1px solid #d2d2d2;
+    background-image: url("../images/document-verified.svg")
+    // background-color: #2B579A;
+}
+.btn-info:active{
+    transform: scale(0.9);
 }

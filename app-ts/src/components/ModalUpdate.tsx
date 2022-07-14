@@ -4,6 +4,7 @@ import Input from './Input';
 import ModalButton from './ModalButton';
 import { IModal } from '../types/types';
 import Exp from '../entities/Exp';
+import { dateAddReduceDays } from '../services/services';
 
 interface ModalUpdateProps {
   dbExps: Exp[],
@@ -14,12 +15,19 @@ interface ModalUpdateProps {
 
 const ModalUpdate: FC<ModalUpdateProps> = ({ dbExps, idOfExp, setDbExps, setModal }) => {
 
+  const [expStorage, setExpStorage] = useState<Exp>(new Exp())
   const localUpdateExp = dbExps.find((item) => {
     if (item.getId() === idOfExp) return true
     return false
   })
+  console.log('idOfExp', idOfExp);
+  
+  // if (localUpdateExp) {
+  //   setExpStorage(localUpdateExp)
+  // }
 
-  const [expStorage, setExpStorage] = useState<Exp>(new Exp(localUpdateExp))
+  // const [expStorage, setExpStorage] = useState<Exp>(()=>new Exp(localUpdateExp))
+  console.log('expStorage: ', expStorage);
 
   let unitOfService
   let article
@@ -33,6 +41,9 @@ const ModalUpdate: FC<ModalUpdateProps> = ({ dbExps, idOfExp, setDbExps, setModa
   function onChangDateOfReceiptHandler(value: string): void {
     const localExp = new Exp(expStorage)
     localExp.setDateOfReceipt(value)
+    if (localExp.getDatePetitionStart() === '' && localExp.getDatePetitionEnd() === '' && localExp.getDateProlongationStart() === '') {
+      localExp.setDateExpEnd(dateAddReduceDays(value, 15, true))
+    }
     setExpStorage(localExp)
   }
   function onChangeTypeOfServiceHandler(value: string): void {
@@ -78,11 +89,17 @@ const ModalUpdate: FC<ModalUpdateProps> = ({ dbExps, idOfExp, setDbExps, setModa
   function onChangeDatePetitionStartHandler(value: string): void {
     const localExp = new Exp(expStorage)
     localExp.setDatePetitionStart(value)
+    if (localExp.getDatePetitionEnd() === '' && localExp.getDateProlongationStart() === '') {
+      localExp.setDateExpEnd(dateAddReduceDays(value, 20, true))
+    }
     setExpStorage(localExp)
   }
   function onChangeDatePetitionEndHandler(value: string): void {
     const localExp = new Exp(expStorage)
     localExp.setDatePetitionEnd(value)
+    if (localExp.getDateProlongationStart() === '') {
+      localExp.setDateExpEnd(dateAddReduceDays(value, 15, true))
+    }
     setExpStorage(localExp)
   }
   function onChangeDateProlongationStartHandler(value: string): void {
@@ -93,6 +110,9 @@ const ModalUpdate: FC<ModalUpdateProps> = ({ dbExps, idOfExp, setDbExps, setModa
   function onChangeValueOfProlongationHandler(value: string): void {
     const localExp = new Exp(expStorage)
     localExp.setValueOfProlongation(value)
+    if (localExp.getDateProlongationStart() !== '') {
+      localExp.setDateExpEnd(dateAddReduceDays(localExp.getDateProlongationStart(), +value, true))
+    }
     setExpStorage(localExp)
   }
   function onChangeResultHandler(value: string): void {

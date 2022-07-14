@@ -18,7 +18,6 @@ const App = () => {
   const [dbExps, setDbExps] = useState<Exp[]>((): Exp[] => { return addDbExps(200) })
   const [modal, setModal] = useState<IModal>({ type: null, idOfExp: null })
   const [searchExp, setSearchExp] = useState<SearchExp>(new SearchExp())
-  // console.log('searchExp: ', searchExp);
 
 
   let searchCardsArr: JSX.Element[] = []
@@ -211,7 +210,7 @@ const App = () => {
   }
   // console.log('searchExp', searchExp);
   // console.log('searchArr', searchArr);
-  
+
 
   if (searchArr.length) {
     searchCardsArr = searchArr.map((item) => {
@@ -242,7 +241,7 @@ const App = () => {
         updateClickHendler={updateClickHendler}
       />)
     }).reverse()
-  }else if (dbExps.length) {
+  } else if (dbExps.length) {
     cardsArr = dbExps.map((item) => {
       if (modal.idOfExp && modal.idOfExp === item.getId()) {
         return (<Card
@@ -427,19 +426,25 @@ const App = () => {
     }
   }
   function updateClickHendler(number: string | null) {
+    // debugger
     if (modal.type !== 'update') {
+      console.log('!==', number);
       setModal((prev) => ({
         ...prev, type: 'update', idOfExp: number
       }))
     } else {
+      console.log('===', number);
       setModal((prev) => ({
-        ...prev, type: null, idOfExp: null
+        ...prev, type: 'update', idOfExp: number
       }))
-      setTimeout(() => {
-        setModal((prev) => ({
-          ...prev, type: 'update', idOfExp: number
-        }))
-      }, 200)
+      // setModal((prev) => ({
+      //   ...prev, type: 'reset', idOfExp: null
+      // }))
+      // setTimeout(() => {
+      //   setModal((prev) => ({
+      //     ...prev, type: 'update', idOfExp: number
+      //   }))
+      // }, 0)
     }
   }
   function searchClickHendler() {
@@ -467,14 +472,14 @@ const App = () => {
 
   return (
     <Container>
-      <Header logoText='Электронный журнал 0.0.1'/>
+      <Header logoText='Электронный журнал 0.0.1' />
       <Main>
         <Menu type='left'>
           <Button type='create' clickHendler={createClickHendler} />
           <Button type='search' clickHendler={searchClickHendler} />
         </Menu>
         <Modal
-          type={modal.type === 'create' ? 'create' : modal.type === 'search' ? 'search' : modal.type === 'update' ? 'update' : 'hidden'}
+          type={modal.type === 'create' ? 'create' : modal.type === 'search' ? 'search' : modal.type === 'update' ? 'update' : modal.type === 'reset' ? 'reset' : 'hidden'}
           idOfExp={modal.idOfExp}
           dbExps={dbExps}
           setDbExps={setDbExps}

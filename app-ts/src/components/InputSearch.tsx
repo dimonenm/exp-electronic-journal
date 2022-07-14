@@ -346,6 +346,15 @@ const InputSearch: FC<IInputSearchProps> = ({
       </div>
     );
   }
+  if (type === 'searchResult') {
+    return (
+      <div className='input'>
+        <div className='input-title'>
+          {`Количество совпадений - ${value}`}
+        </div>
+      </div>
+    );
+  }
   return (
     <div className='input'>
       <div className='input-title'>

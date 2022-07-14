@@ -15,40 +15,234 @@ import SearchExp from './entities/SearchExp';
 const App = () => {
 
   // const [dbExps, setDbExps] = useState<IExp[]>([])
-  const [dbExps, setDbExps] = useState<Exp[]>((): Exp[] => { return addDbExps(10) })
+  const [dbExps, setDbExps] = useState<Exp[]>((): Exp[] => { return addDbExps(200) })
   const [modal, setModal] = useState<IModal>({ type: null, idOfExp: null })
   const [searchExp, setSearchExp] = useState<SearchExp>(new SearchExp())
-  console.log('searchExp: ', searchExp);
+  // console.log('searchExp: ', searchExp);
 
 
-  let searchCardsArr
+  let searchCardsArr: JSX.Element[] = []
+  let searchArr: Exp[] = []
   let cardsArr
 
   if (searchExp.isSearchExp()) {
+    searchArr = dbExps.map((item) => {
+      return item
+    })
     if (searchExp.getIdStart() !== '' || searchExp.getIdEnd() !== '') {
       if (searchExp.getIdStart() !== '' && searchExp.getIdEnd() !== '') {
-        searchCardsArr = dbExps.filter((item) => {
-          if (item.getId() >= searchExp.getIdStart() && item.getId() <= searchExp.getIdEnd()) return true
+        searchArr = searchArr.filter((item) => {
+          if (+item.getId() >= +searchExp.getIdStart() && +item.getId() <= +searchExp.getIdEnd()) return true
           return false
         })
-      } else if (searchExp.getIdStart() !== '') {
-        searchCardsArr = dbExps.filter((item) => {
-          if (item.getId() >= searchExp.getIdStart()) return true
+      }
+      else if (searchExp.getIdStart() !== '') {
+        searchArr = searchArr.filter((item) => {
+          if (+item.getId() >= +searchExp.getIdStart()) return true
           return false
         })
-      }else if (searchExp.getIdEnd() !== '') {
-        searchCardsArr = dbExps.filter((item) => {
-          if (item.getId() <= searchExp.getIdEnd()) return true
+      }
+      else if (searchExp.getIdEnd() !== '') {
+        searchArr = searchArr.filter((item) => {
+          if (+item.getId() <= +searchExp.getIdEnd()) return true
           return false
         })
       }
     }
-  }
-  console.log('searchCardsArr', searchCardsArr);
+    if (searchExp.getDateOfReceiptStart() !== '' || searchExp.getDateOfReceiptEnd() !== '') {
+      if (searchExp.getDateOfReceiptStart() !== '' && searchExp.getDateOfReceiptEnd() !== '') {
+        searchArr = searchArr.filter((item) => {
+          if (item.getDateOfReceipt() >= searchExp.getDateOfReceiptStart() && item.getDateOfReceipt() <= searchExp.getDateOfReceiptEnd()) return true
+          return false
+        })
+      }
+      else if (searchExp.getDateOfReceiptStart() !== '') {
+        searchArr = searchArr.filter((item) => {
+          if (item.getDateOfReceipt() >= searchExp.getDateOfReceiptStart()) return true
+          return false
+        })
+      }
+      else if (searchExp.getDateOfReceiptEnd() !== '') {
+        searchArr = searchArr.filter((item) => {
+          if (item.getDateOfReceipt() <= searchExp.getDateOfReceiptEnd()) return true
+          return false
+        })
+      }
 
+    }
+    if (searchExp.getTypeOfService() !== '' && searchExp.getTypeOfService() !== 'не указано') {
+      searchArr = searchArr.filter((item) => {
+        if (item.getTypeOfService() === searchExp.getTypeOfService()) return true
+        return false
+      })
+    }
+    if (searchExp.getUnitOfService() !== '' && searchExp.getUnitOfService() !== 'не указано') {
+      searchArr = searchArr.filter((item) => {
+        if (item.getUnitOfService() === searchExp.getUnitOfService()) return true
+        return false
+      })
+    }
+    if (searchExp.getTypeOfMaterial() !== '' && searchExp.getTypeOfMaterial() !== 'не указано') {
+      searchArr = searchArr.filter((item) => {
+        if (item.getTypeOfMaterial() === searchExp.getTypeOfMaterial()) return true
+        return false
+      })
+    }
+    if (searchExp.getNumberOfMaterial() !== '') {
+      searchArr = searchArr.filter((item) => {
+        if (new RegExp(searchExp.getNumberOfMaterial()).test(item.getNumberOfMaterial())) return true
+        return false
+      })
+    }
+    if (searchExp.getArticle() !== '' && searchExp.getArticle() !== 'не указано') {
+      searchArr = searchArr.filter((item) => {
+        if (item.getArticle() === searchExp.getArticle()) return true
+        return false
+      })
+    }
+    if (searchExp.getTypeOfExpertise() !== '' && searchExp.getTypeOfExpertise() !== 'не указано') {
+      searchArr = searchArr.filter((item) => {
+        if (item.getTypeOfExpertise() === searchExp.getTypeOfExpertise()) return true
+        return false
+      })
+    }
+    if (searchExp.getDifficult() !== '' && searchExp.getDifficult() !== 'не указано') {
+      searchArr = searchArr.filter((item) => {
+        if (item.getDifficult() === searchExp.getDifficult()) return true
+        return false
+      })
+    }
+    if (searchExp.getExecutor() !== '' && searchExp.getExecutor() !== 'не указано') {
+      searchArr = searchArr.filter((item) => {
+        if (item.getExecutor() === searchExp.getExecutor()) return true
+        return false
+      })
+    }
+    if (searchExp.getResult() !== '' && searchExp.getResult() !== 'не указано') {
+      searchArr = searchArr.filter((item) => {
+        if (item.getResult() === searchExp.getResult()) return true
+        return false
+      })
+    }
+    if (searchExp.getDateExpEndStart() !== '' || searchExp.getDateExpEndEnd() !== '') {
+      if (searchExp.getDateExpEndStart() !== '' && searchExp.getDateExpEndEnd() !== '') {
+        searchArr = searchArr.filter((item) => {
+          if (item.getDateExpEnd() >= searchExp.getDateExpEndStart() && item.getDateExpEnd() <= searchExp.getDateExpEndEnd()) return true
+          return false
+        })
+      }
+      else if (searchExp.getDateExpEndStart() !== '') {
+        searchArr = searchArr.filter((item) => {
+          if (item.getDateExpEnd() >= searchExp.getDateExpEndStart()) return true
+          return false
+        })
+      }
+      else if (searchExp.getDateExpEndEnd() !== '') {
+        searchArr = searchArr.filter((item) => {
+          if (item.getDateExpEnd() <= searchExp.getDateExpEndEnd()) return true
+          return false
+        })
+      }
+    }
+    if (searchExp.getDateExpCompleteStart() !== '' || searchExp.getDateExpCompleteEnd() !== '') {
+      if (searchExp.getDateExpCompleteStart() !== '' && searchExp.getDateExpCompleteEnd() !== '') {
+        searchArr = searchArr.filter((item) => {
+          if (item.getDateExpComplete() >= searchExp.getDateExpCompleteStart() && item.getDateExpComplete() <= searchExp.getDateExpCompleteEnd()) return true
+          return false
+        })
+      }
+      else if (searchExp.getDateExpCompleteStart() !== '') {
+        searchArr = searchArr.filter((item) => {
+          if (item.getDateExpComplete() >= searchExp.getDateExpCompleteStart()) return true
+          return false
+        })
+      }
+      else if (searchExp.getDateExpCompleteEnd() !== '') {
+        searchArr = searchArr.filter((item) => {
+          if (item.getDateExpComplete() <= searchExp.getDateExpCompleteEnd()) return true
+          return false
+        })
+      }
+    }
+    if (searchExp.getDateVerificationStartStart() !== '' || searchExp.getDateVerificationStartEnd() !== '') {
+      if (searchExp.getDateVerificationStartStart() !== '' && searchExp.getDateVerificationStartEnd() !== '') {
+        searchArr = searchArr.filter((item) => {
+          if (item.getDateVerificationStart() >= searchExp.getDateVerificationStartStart() && item.getDateVerificationStart() <= searchExp.getDateVerificationStartEnd()) return true
+          return false
+        })
+      }
+      else if (searchExp.getDateVerificationStartStart() !== '') {
+        searchArr = searchArr.filter((item) => {
+          if (item.getDateVerificationStart() >= searchExp.getDateVerificationStartStart()) return true
+          return false
+        })
+      }
+      else if (searchExp.getDateVerificationStartEnd() !== '') {
+        searchArr = searchArr.filter((item) => {
+          if (item.getDateVerificationStart() <= searchExp.getDateVerificationStartEnd()) return true
+          return false
+        })
+      }
+    }
+    if (searchExp.getNumberVerification() !== '') {
+      searchArr = searchArr.filter((item) => {
+        if (new RegExp(searchExp.getNumberVerification()).test(item.getNumberVerification())) return true
+        return false
+      })
+    }
+    if (searchExp.getVerificationNumberOfMaterial() !== '') {
+      searchArr = searchArr.filter((item) => {
+        if (new RegExp(searchExp.getVerificationNumberOfMaterial()).test(item.getVerificationNumberOfMaterial())) return true
+        return false
+      })
+    }
+    if (searchExp.getVerificationExecutor() !== '' && searchExp.getVerificationExecutor() !== 'не указано') {
+      searchArr = searchArr.filter((item) => {
+        if (item.getVerificationExecutor() === searchExp.getVerificationExecutor()) return true
+        return false
+      })
+    }
+    if (searchExp.getVerificationResult() !== '' && searchExp.getVerificationResult() !== 'не указано') {
+      searchArr = searchArr.filter((item) => {
+        if (item.getVerificationResult() === searchExp.getVerificationResult()) return true
+        return false
+      })
+    }
+  }
+  // console.log('searchExp', searchExp);
+  // console.log('searchArr', searchArr);
   
 
-  if (dbExps.length) {
+  if (searchArr.length) {
+    searchCardsArr = searchArr.map((item) => {
+      if (modal.idOfExp && modal.idOfExp === item.getId()) {
+        return (<Card
+          key={item.getId()}
+          active={true}
+          number={item.getId()}
+          type={`${item.getTypeOfMaterial()}`}
+          numberOfMaterial={`${item.getNumberOfMaterial()}`}
+          dateOfIncoming={`поступила ${dateFromUsToRu(item.getDateOfReceipt())}`}
+          dateOfComplite={item.getDateExpComplete() ? `завершена ${dateFromUsToRu(item.getDateExpComplete())}` : 'завершена н/д'}
+          executor={`${item.getExecutor()}`}
+          result={item.getResult() ? `${item.getResult()}` : 'в производстве'}
+          updateClickHendler={updateClickHendler}
+        />)
+      }
+      return (<Card
+        key={item.getId()}
+        active={false}
+        number={item.getId()}
+        type={`${item.getTypeOfMaterial()}`}
+        numberOfMaterial={`${item.getNumberOfMaterial()}`}
+        dateOfIncoming={`поступила ${dateFromUsToRu(item.getDateOfReceipt())}`}
+        dateOfComplite={item.getDateExpComplete() ? `завершена ${dateFromUsToRu(item.getDateExpComplete())}` : 'завершена н/д'}
+        executor={`${item.getExecutor()}`}
+        result={item.getResult() ? `${item.getResult()}` : 'в производстве'}
+        updateClickHendler={updateClickHendler}
+      />)
+    }).reverse()
+  }else if (dbExps.length) {
     cardsArr = dbExps.map((item) => {
       if (modal.idOfExp && modal.idOfExp === item.getId()) {
         return (<Card
@@ -76,7 +270,7 @@ const App = () => {
         result={item.getResult() ? `${item.getResult()}` : 'в производстве'}
         updateClickHendler={updateClickHendler}
       />)
-    }).reverse()    
+    }).reverse()
   }
 
 
@@ -86,7 +280,7 @@ const App = () => {
     let arr: Exp[] = []
 
     for (let i = 0; i < count; i++) {
-      const dateOfReceipt = '2022-07-05'
+      const dateOfReceipt = dateAddDays(new Date(), dayGenerator(1, new Date().getDate()), false);
       const typeOfServiceRand = Math.random()
       const typeOfService = typeOfServiceRand < 0.25 ?
         'МВД' : typeOfServiceRand >= 0.25 && typeOfServiceRand < 0.5 ?
@@ -167,8 +361,8 @@ const App = () => {
             'Без исполнения' : resultRand >= 0.75 ?
               'Сообщение о невозм.' : ''
 
-      const dateExpEnd = '2022-07-05'
-      const dateExpComplete = '2022-07-05'
+      const dateExpEnd = dateAddDays(new Date(), dayGenerator(1, new Date().getDate()), false)
+      const dateExpComplete = dateAddDays(new Date(), dayGenerator(1, new Date().getDate()), false)
       const exp = new Exp()
       exp.setId(`${i + 1}`)
       exp.setDateOfReceipt(dateOfReceipt)
@@ -199,6 +393,27 @@ const App = () => {
     }
     return result
   }
+  function dateFromRutoUs(incomingStr: string) {
+    let result
+    let splits = incomingStr.split(".")
+    result = `${splits[2]}-${splits[1]}-${splits[0]}`
+    return result
+  }
+  function dateAddDays(incomingDate: Date, countOfDays: number, plusMinus: boolean) {
+    let date = new Date(incomingDate)
+
+    if (plusMinus === true) {
+      date.setDate(date.getDate() + countOfDays)
+    } else {
+      date.setDate(date.getDate() - countOfDays)
+    }
+    date.setHours(0)
+    return dateFromRutoUs(date.toLocaleDateString())
+  }
+  function dayGenerator(from: number, to: number) {
+    return (from + Math.random() * (to - from));
+  }
+
 
   function createClickHendler() {
     if (modal.type !== 'create') {
@@ -223,8 +438,8 @@ const App = () => {
       setTimeout(() => {
         setModal((prev) => ({
           ...prev, type: 'update', idOfExp: number
-        }))        
-      },200)
+        }))
+      }, 200)
     }
   }
   function searchClickHendler() {
@@ -252,7 +467,7 @@ const App = () => {
 
   return (
     <Container>
-      <Header>Электронный журнал 0.0.1</Header>
+      <Header logoText='Электронный журнал 0.0.1'/>
       <Main>
         <Menu type='left'>
           <Button type='create' clickHendler={createClickHendler} />
@@ -264,11 +479,12 @@ const App = () => {
           dbExps={dbExps}
           setDbExps={setDbExps}
           setModal={setModal}
+          searchArr={searchArr}
           searchExp={searchExp}
           setSearchExp={setSearchExp}
         />
         <Gallery>
-          {cardsArr}
+          {searchCardsArr.length ? searchCardsArr : cardsArr}
         </Gallery>
         <Modal
           type={modal.type === 'info' ? 'info' : 'hidden'}

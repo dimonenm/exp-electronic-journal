@@ -44,4 +44,4 @@ const Card: FC<IInputProps> = ({ number, type, active, numberOfMaterial, dateOfI
   );
 };
 
-export default Card;
+export default React.memo(Card);

@@ -4,6 +4,7 @@ import Input from './Input';
 import ModalButton from './ModalButton';
 import { IModal } from '../types/types';
 import Exp from '../entities/Exp';
+import { dateAddReduceDays } from '../services/services'
 
 interface ModalCreateProps {
   dbExps: Exp[],
@@ -26,6 +27,9 @@ const ModalCreate: FC<ModalCreateProps> = ({ dbExps, setDbExps, setModal }) => {
   function onChangDateOfReceiptHandler(value: string): void {
     const localExp = new Exp(expStorage)
     localExp.setDateOfReceipt(value)
+    if (localExp.getDatePetitionStart() === '' && localExp.getDatePetitionEnd() === '' && localExp.getDateProlongationStart() === '') {
+      localExp.setDateExpEnd(dateAddReduceDays(value, 15, true))
+    }
     setExpStorage(localExp)
   }
   function onChangeTypeOfServiceHandler(value: string): void {
@@ -71,11 +75,17 @@ const ModalCreate: FC<ModalCreateProps> = ({ dbExps, setDbExps, setModal }) => {
   function onChangeDatePetitionStartHandler(value: string): void {
     const localExp = new Exp(expStorage)
     localExp.setDatePetitionStart(value)
+    if (localExp.getDatePetitionEnd() === '' && localExp.getDateProlongationStart() === '') {
+      localExp.setDateExpEnd(dateAddReduceDays(value, 20, true))
+    }
     setExpStorage(localExp)
   }
   function onChangeDatePetitionEndHandler(value: string): void {
     const localExp = new Exp(expStorage)
     localExp.setDatePetitionEnd(value)
+    if (localExp.getDateProlongationStart() === '') {
+      localExp.setDateExpEnd(dateAddReduceDays(value, 15, true))
+    }
     setExpStorage(localExp)
   }
   function onChangeDateProlongationStartHandler(value: string): void {
@@ -86,6 +96,9 @@ const ModalCreate: FC<ModalCreateProps> = ({ dbExps, setDbExps, setModal }) => {
   function onChangeValueOfProlongationHandler(value: string): void {
     const localExp = new Exp(expStorage)
     localExp.setValueOfProlongation(value)
+    if (localExp.getDateProlongationStart() !== '') {
+      localExp.setDateExpEnd(dateAddReduceDays(localExp.getDateProlongationStart(), +value, true))
+    }
     setExpStorage(localExp)
   }
   function onChangeResultHandler(value: string): void {
@@ -114,7 +127,7 @@ const ModalCreate: FC<ModalCreateProps> = ({ dbExps, setDbExps, setModal }) => {
       setDbExps?.(localExpArr)
       setExpStorage(new Exp(undefined, `${localExpArr.length + 1}`))
       setModal({ type: null, idOfExp: null })
-    }    
+    }
   }
   function onClickBtnCancelHandler(): void {
     setExpStorage(new Exp())
@@ -153,7 +166,7 @@ const ModalCreate: FC<ModalCreateProps> = ({ dbExps, setDbExps, setModal }) => {
       <Input type='date' title='Дата продления' name='dateProlongationStart' onChangeDateProlongationStartHandler={onChangeDateProlongationStartHandler} />
       <Input type='text' title='Срок продления' name='valueOfProlongation' onChangeValueOfProlongationHandler={onChangeValueOfProlongationHandler} />
       <Input type='select' title='Результат эксп-зы' name='result' listName='result' onChangeResultHandler={onChangeResultHandler} />
-      <Input type='date' title='Дата окончания' name='dateExpEnd' onChangeDateExpEndHandler={onChangeDateExpEndHandler} />
+      <Input type='date' title='Дата окончания' name='dateExpEnd' value={`${expStorage.getDateExpEnd()}`} onChangeDateExpEndHandler={onChangeDateExpEndHandler} />
       <Input type='date' title='Дата завершения' name='dateExpComplete' onChangeDateExpCompleteHandler={onChangeDateExpCompleteHandler} />
       <Input type='empty' title='empty' name='empty' />
       <ModalButton type='add' text='Добавить' onClickBtnAddHandler={onClickBtnAddHandler} />

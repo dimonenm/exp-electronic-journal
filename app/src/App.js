@@ -234,6 +234,7 @@ function App() {
           </Modal>
           <Menu>
             <Btn type="info" setModal={setModal} modal={modal}></Btn>
+            <Btn type="problem" setModal={setModal} modal={modal}></Btn>
           </Menu>
         </Main>
       </Container>

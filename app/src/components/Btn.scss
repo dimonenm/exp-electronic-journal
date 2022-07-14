@@ -27,3 +27,13 @@
 .btn-info:active{
     transform: scale(0.9);
 }
+.btn-problem{
+    height: 40px;
+    width: 40px;
+    // border: 1px solid #d2d2d2;
+    background-image: url("../images/document-error.svg")
+    // background-color: #2B579A;
+}
+.btn-problem:active{
+    transform: scale(0.9);
+}

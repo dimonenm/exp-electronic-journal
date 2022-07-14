@@ -71,6 +71,13 @@ const Btn = ({ type, setModal, modal, expState }) => {
             </div>
         )
     }
+    if (type === "problem") {
+        return (
+            <div className='btn-problem' onClick={infoClickHandler}>
+                
+            </div>
+        )
+    }
     if (type === "download") {
         return (
             <div className='btn' onClick={downloadClickHandler}>

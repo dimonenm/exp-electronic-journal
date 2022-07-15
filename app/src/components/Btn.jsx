@@ -1,6 +1,8 @@
 import React from 'react';
 import "./Btn.scss"
 import axios from 'axios'
+
+
 const Btn = ({ type, setModal, modal, expState }) => {
     function createClickHandler() {
         console.log(modal.type);
@@ -50,36 +52,43 @@ const Btn = ({ type, setModal, modal, expState }) => {
 
     if (type === "create") {
         return (
-            <div className='btn' onClick={createClickHandler}>
-                Btn
+            <div className='btn-create' onClick={createClickHandler}>
+                
             </div>
         )
     }
     if (type === "search") {
         return (
-            <div className='btn' onClick={searchClickHandler}>
-                Btn
+            <div className='btn-search' onClick={searchClickHandler}>
+                
             </div>
         )
     }
     if (type === "info") {
         return (
-            <div className='btn' onClick={infoClickHandler}>
-                Btn
+            <div className='btn-info' onClick={infoClickHandler}>
+                
+            </div>
+        )
+    }
+    if (type === "problem") {
+        return (
+            <div className='btn-problem' onClick={infoClickHandler}>
+                
             </div>
         )
     }
     if (type === "download") {
         return (
             <div className='btn' onClick={downloadClickHandler}>
-                Btn
+                
             </div>
         )
     }
     if (type === "save") {
         return (
             <div className='btn' onClick={saveClickHandler}>
-                Btn
+                
             </div>
         )
     }

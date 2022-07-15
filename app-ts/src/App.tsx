@@ -426,26 +426,9 @@ const App = () => {
     }
   }
   function updateClickHendler(number: string | null) {
-    // debugger
-    if (modal.type !== 'update') {
-      console.log('!==', number);
-      setModal((prev) => ({
+    setModal((prev) => ({
         ...prev, type: 'update', idOfExp: number
       }))
-    } else {
-      console.log('===', number);
-      setModal((prev) => ({
-        ...prev, type: 'update', idOfExp: number
-      }))
-      // setModal((prev) => ({
-      //   ...prev, type: 'reset', idOfExp: null
-      // }))
-      // setTimeout(() => {
-      //   setModal((prev) => ({
-      //     ...prev, type: 'update', idOfExp: number
-      //   }))
-      // }, 0)
-    }
   }
   function searchClickHendler() {
     if (modal.type !== 'search') {
@@ -479,7 +462,7 @@ const App = () => {
           <Button type='search' clickHendler={searchClickHendler} />
         </Menu>
         <Modal
-          type={modal.type === 'create' ? 'create' : modal.type === 'search' ? 'search' : modal.type === 'update' ? 'update' : modal.type === 'reset' ? 'reset' : 'hidden'}
+          type={modal.type === 'create' ? 'create' : modal.type === 'search' ? 'search' : modal.type === 'update' ? 'update' : 'hidden'}
           idOfExp={modal.idOfExp}
           dbExps={dbExps}
           setDbExps={setDbExps}

@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import ModalTitle from './ModalTitle';
 import Input from './Input';
 import ModalButton from './ModalButton';
@@ -16,18 +16,16 @@ interface ModalUpdateProps {
 const ModalUpdate: FC<ModalUpdateProps> = ({ dbExps, idOfExp, setDbExps, setModal }) => {
 
   const [expStorage, setExpStorage] = useState<Exp>(new Exp())
-  const localUpdateExp = dbExps.find((item) => {
-    if (item.getId() === idOfExp) return true
-    return false
-  })
-  console.log('idOfExp', idOfExp);
-  
-  // if (localUpdateExp) {
-  //   setExpStorage(localUpdateExp)
-  // }
 
-  // const [expStorage, setExpStorage] = useState<Exp>(()=>new Exp(localUpdateExp))
-  console.log('expStorage: ', expStorage);
+  useEffect(() => {
+    const localUpdateExp = dbExps.find((item) => {
+      if (item.getId() === idOfExp) return true
+      return false
+    })
+    if (localUpdateExp) {
+      setExpStorage(localUpdateExp)
+    }
+  }, [dbExps, idOfExp])
 
   let unitOfService
   let article

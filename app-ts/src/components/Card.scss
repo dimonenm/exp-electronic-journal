@@ -9,6 +9,8 @@
     height: 120px;
     border: 1px solid #D2D2D2;
 
+    -webkit-user-select: none;
+
     transition: background-color 200ms linear;
 }
 .card-row{

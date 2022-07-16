@@ -1,4 +1,6 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
+import Exp from '../entities/Exp';
+import Report from '../entities/Report';
 import InfoSeparator from './InfoSeparator';
 import InfoTable from './InfoTable';
 import InfoText from './InfoText';
@@ -6,9 +8,67 @@ import InfoTextVertical from './InfoTextVertical';
 import InfoTitle from './InfoTitle';
 
 interface ModalInfoProps {
+  dbExps: Exp[]
+  searchArr?: Exp[]
 }
 
-const ModalInfo: FC<ModalInfoProps> = () => {
+const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
+
+  let report: Report
+
+  function addReportData(arr: Exp[]): Report {
+    const report = new Report()
+    let assignedHandwritingExps: number = 0
+    let assignedTCEDExps: number = 0
+    let assignedPortraitExps: number = 0
+    let assignedTotalExps: number = 0
+    let resultHandwritingExps: number = 0
+    let resultTCEDExps: number = 0
+    let resultPortraitExps: number = 0
+    let resultTotalExps: number = 0
+    
+    arr.forEach(item => {
+      assignedTotalExps += 1
+      if (item.getTypeOfExpertise() === 'Почерковедческая') {
+        assignedHandwritingExps += 1
+        if (item.getResult() === 'Результативная') {
+          resultHandwritingExps += 1
+          resultTotalExps += 1
+        }
+      }
+      if (item.getTypeOfExpertise() === 'ТКЭД общ.' || item.getTypeOfExpertise() === 'ТКЭД ден.') {
+        assignedTCEDExps += 1
+        if (item.getResult() === 'Результативная') {
+          resultTCEDExps += 1
+          resultTotalExps += 1
+        }
+      }
+      if (item.getTypeOfExpertise() === 'Портретная') {
+        assignedPortraitExps += 1
+        if (item.getResult() === 'Результативная') {
+          resultPortraitExps += 1
+          resultTotalExps += 1
+        }
+      }
+    })
+
+    report.setAssignedHandwritingExps(assignedHandwritingExps.toString())
+    report.setAssignedTCEDExps(assignedTCEDExps.toString())
+    report.setAssignedPortraitExps(assignedPortraitExps.toString())
+    report.setAssignedTotalExps(assignedTotalExps.toString())
+    report.setResultHandwritingExps(resultHandwritingExps.toString())
+    report.setResultTCEDExps(resultTCEDExps.toString())
+    report.setResultPortraitExps(resultPortraitExps.toString())
+    report.setResultTotalExps(resultTotalExps.toString())
+
+    return report
+  }
+
+  if (searchArr?.length) {
+    report = addReportData(searchArr)
+  } else {
+    report = addReportData(dbExps)
+  }
 
   return (
     <>
@@ -16,26 +76,26 @@ const ModalInfo: FC<ModalInfoProps> = () => {
       <div></div>
       <div></div>
       <InfoText text="Почерковедческих:" />
-      <InfoText text="18" />
+      <InfoText text={report.getAssignedHandwritingExps()} />
       <InfoText text="ТКЭД:" />
-      <InfoText text="54" />
+      <InfoText text={report.getAssignedTCEDExps()} />
       <InfoText text="Портретных:" />
-      <InfoText text="28" />
+      <InfoText text={report.getAssignedPortraitExps()} />
       <InfoText text="Всего:" />
-      <InfoText text="100" />
+      <InfoText text={report.getAssignedTotalExps()} />
       <div></div>
       <div></div>
       <InfoTitle text="Количество результативных экспертиз" />
       <div></div>
       <div></div>
       <InfoText text="Почерковедческих:" />
-      <InfoText text="18" />
+      <InfoText text={report.getResultHandwritingExps()} />
       <InfoText text="ТКЭД:" />
-      <InfoText text="54" />
+      <InfoText text={report.getResultTCEDExps()} />
       <InfoText text="Портретных:" />
-      <InfoText text="28" />
+      <InfoText text={report.getResultPortraitExps()} />
       <InfoText text="Всего:" />
-      <InfoText text="100" />
+      <InfoText text={report.getResultTotalExps()} />
       <div></div>
       <div></div>
       <InfoTitle text="Количество экспертиз по статьям" />
@@ -48,7 +108,7 @@ const ModalInfo: FC<ModalInfoProps> = () => {
         <InfoTextVertical text="ТКЭД" />
         <InfoTextVertical text="Портретных" />
         <InfoTextVertical text="Проверок" />
-        <InfoSeparator/>
+        <InfoSeparator />
         <InfoText text="Всего:" />
         <InfoText text="36" />
         <InfoText text="6" />

@@ -208,9 +208,6 @@ const App = () => {
       })
     }
   }
-  // console.log('searchExp', searchExp);
-  // console.log('searchArr', searchArr);
-
 
   if (searchArr.length) {
     searchCardsArr = searchArr.map((item) => {
@@ -478,6 +475,7 @@ const App = () => {
           type={modal.type === 'info' ? 'info' : 'hidden'}
           dbExps={dbExps}
           searchExp={searchExp}
+          searchArr={searchArr}
           setModal={setModal}
           setSearchExp={setSearchExp}
         />

@@ -60,7 +60,10 @@ const Modal: FC<ModalProps> = ({ type, idOfExp, dbExps, searchExp, searchArr, se
   if (type === 'info') {
     return (
       <div className='modal modal-info'>
-        <ModalInfo />
+        <ModalInfo
+          dbExps={dbExps}
+          searchArr={searchArr}
+        />
       </div>
     );
   }

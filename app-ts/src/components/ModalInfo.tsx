@@ -18,48 +18,198 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
 
   function addReportData(arr: Exp[]): Report {
     const report = new Report()
-    let assignedHandwritingExps: number = 0
-    let assignedTCEDExps: number = 0
-    let assignedPortraitExps: number = 0
-    let assignedTotalExps: number = 0
-    let resultHandwritingExps: number = 0
-    let resultTCEDExps: number = 0
-    let resultPortraitExps: number = 0
-    let resultTotalExps: number = 0
-    
+    let assignedExps = {
+      Handwriting: 0,
+      TCED: 0,
+      Portrait: 0,
+      Total: 0
+    }
+    let resultExps = {
+      Handwriting: 0,
+      TCED: 0,
+      Portrait: 0,
+      Total: 0
+    }
+    let articleExps = {
+      Handwriting: {
+        'Всего': 0,
+        'ст 101': 0,
+        'ст 105': 0,
+        'ст 158,159,160': 0,
+        'ст 186,187': 0,
+        'ст 222': 0,
+        'ст 264': 0
+      },
+      TCED: {
+        'Всего': 0,
+        'ст 101': 0,
+        'ст 105': 0,
+        'ст 158,159,160': 0,
+        'ст 186,187': 0,
+        'ст 222': 0,
+        'ст 264': 0
+      },
+      Portrait: {
+        'Всего': 0,
+        'ст 101': 0,
+        'ст 105': 0,
+        'ст 158,159,160': 0,
+        'ст 186,187': 0,
+        'ст 222': 0,
+        'ст 264': 0
+      },
+      Verifications: 0,
+      Total: {
+        'Всего': 0,
+        'ст 101': 0,
+        'ст 105': 0,
+        'ст 158,159,160': 0,
+        'ст 186,187': 0,
+        'ст 222': 0,
+        'ст 264': 0
+      }
+    }
+
     arr.forEach(item => {
-      assignedTotalExps += 1
+      assignedExps.Total += 1
       if (item.getTypeOfExpertise() === 'Почерковедческая') {
-        assignedHandwritingExps += 1
+        assignedExps.Handwriting += 1
         if (item.getResult() === 'Результативная') {
-          resultHandwritingExps += 1
-          resultTotalExps += 1
+          resultExps.Handwriting += 1
+          resultExps.Total += 1
         }
       }
       if (item.getTypeOfExpertise() === 'ТКЭД общ.' || item.getTypeOfExpertise() === 'ТКЭД ден.') {
-        assignedTCEDExps += 1
+        assignedExps.TCED += 1
         if (item.getResult() === 'Результативная') {
-          resultTCEDExps += 1
-          resultTotalExps += 1
+          resultExps.TCED += 1
+          resultExps.Total += 1
         }
       }
       if (item.getTypeOfExpertise() === 'Портретная') {
-        assignedPortraitExps += 1
+        assignedExps.Portrait += 1
         if (item.getResult() === 'Результативная') {
-          resultPortraitExps += 1
-          resultTotalExps += 1
+          resultExps.Portrait += 1
+          resultExps.Total += 1
         }
+      }
+
+      if (item.getTypeOfMaterial() === 'УД') {
+        articleExps.Total['Всего'] += 1
+        if (item.getArticle() === 'ст. 101 УК РФ') {
+          articleExps.Total['ст 101'] += 1 
+          if (item.getTypeOfExpertise() === 'Почерковедческая') {
+            articleExps.Handwriting['Всего'] += 1
+            articleExps.Handwriting['ст 101'] += 1
+          }
+          if (item.getTypeOfExpertise() === 'ТКЭД общ.' || item.getTypeOfExpertise() === 'ТКЭД ден.') {
+            articleExps.TCED['Всего'] += 1
+            articleExps.TCED['ст 101'] += 1
+          }
+          if (item.getTypeOfExpertise() === 'Портретная') {
+            articleExps.Portrait['Всего'] += 1
+            articleExps.Portrait['ст 101'] += 1
+          }
+        }
+        if (item.getArticle() === 'ст. 105 УК РФ') {
+          articleExps.Total['ст 105'] += 1
+          if (item.getTypeOfExpertise() === 'Почерковедческая') {
+            articleExps.Handwriting['Всего'] += 1
+            articleExps.Handwriting['ст 105'] += 1
+          }
+          if (item.getTypeOfExpertise() === 'ТКЭД общ.' || item.getTypeOfExpertise() === 'ТКЭД ден.') {
+            articleExps.TCED['Всего'] += 1
+            articleExps.TCED['ст 105'] += 1
+          }
+          if (item.getTypeOfExpertise() === 'Портретная') {
+            articleExps.Portrait['Всего'] += 1
+            articleExps.Portrait['ст 105'] += 1
+          }
+        }
+        if (item.getArticle() === 'ст. 158, 159, 160 УК РФ') {
+          articleExps.Total['ст 158,159,160'] += 1
+          if (item.getTypeOfExpertise() === 'Почерковедческая') {
+            articleExps.Handwriting['Всего'] += 1
+            articleExps.Handwriting['ст 158,159,160'] += 1
+          }
+          if (item.getTypeOfExpertise() === 'ТКЭД общ.' || item.getTypeOfExpertise() === 'ТКЭД ден.') {
+            articleExps.TCED['Всего'] += 1
+            articleExps.TCED['ст 158,159,160'] += 1
+          }
+          if (item.getTypeOfExpertise() === 'Портретная') {
+            articleExps.Portrait['Всего'] += 1
+            articleExps.Portrait['ст 158,159,160'] += 1
+          }
+        }
+        if (item.getArticle() === 'ст. 186, 187 УК РФ') {
+          articleExps.Total['ст 186,187'] += 1
+          if (item.getTypeOfExpertise() === 'Почерковедческая') {
+            articleExps.Handwriting['Всего'] += 1
+            articleExps.Handwriting['ст 186,187'] += 1
+          }
+          if (item.getTypeOfExpertise() === 'ТКЭД общ.' || item.getTypeOfExpertise() === 'ТКЭД ден.') {
+            articleExps.TCED['Всего'] += 1
+            articleExps.TCED['ст 186,187'] += 1
+          }
+          if (item.getTypeOfExpertise() === 'Портретная') {
+            articleExps.Portrait['Всего'] += 1
+            articleExps.Portrait['ст 186,187'] += 1
+          }
+        }
+        if (item.getArticle() === 'ст. 222 УК РФ') {
+          articleExps.Total['ст 222'] += 1
+          if (item.getTypeOfExpertise() === 'Почерковедческая') {
+            articleExps.Handwriting['Всего'] += 1
+            articleExps.Handwriting['ст 222'] += 1
+          }
+          if (item.getTypeOfExpertise() === 'ТКЭД общ.' || item.getTypeOfExpertise() === 'ТКЭД ден.') {
+            articleExps.TCED['Всего'] += 1
+            articleExps.TCED['ст 222'] += 1
+          }
+          if (item.getTypeOfExpertise() === 'Портретная') {
+            articleExps.Portrait['Всего'] += 1
+            articleExps.Portrait['ст 222'] += 1
+          }
+        }
+        if (item.getArticle() === 'ст. 264 УК РФ') {
+          articleExps.Total['ст 264'] += 1
+          if (item.getTypeOfExpertise() === 'Почерковедческая') {
+            articleExps.Handwriting['Всего'] += 1
+            articleExps.Handwriting['ст 264'] += 1
+          }
+          if (item.getTypeOfExpertise() === 'ТКЭД общ.' || item.getTypeOfExpertise() === 'ТКЭД ден.') {
+            articleExps.TCED['Всего'] += 1
+            articleExps.TCED['ст 264'] += 1
+          }
+          if (item.getTypeOfExpertise() === 'Портретная') {
+            articleExps.Portrait['Всего'] += 1
+            articleExps.Portrait['ст 264'] += 1
+          }
+        }
+      }
+      if (item.getDateVerificationStart() !== '') {
+        articleExps.Verifications += 1
       }
     })
 
-    report.setAssignedHandwritingExps(assignedHandwritingExps.toString())
-    report.setAssignedTCEDExps(assignedTCEDExps.toString())
-    report.setAssignedPortraitExps(assignedPortraitExps.toString())
-    report.setAssignedTotalExps(assignedTotalExps.toString())
-    report.setResultHandwritingExps(resultHandwritingExps.toString())
-    report.setResultTCEDExps(resultTCEDExps.toString())
-    report.setResultPortraitExps(resultPortraitExps.toString())
-    report.setResultTotalExps(resultTotalExps.toString())
+    report.setAssignedHandwritingExps(assignedExps.Handwriting.toString())
+    report.setAssignedTCEDExps(assignedExps.TCED.toString())
+    report.setAssignedPortraitExps(assignedExps.Portrait.toString())
+    report.setAssignedTotalExps(assignedExps.Total.toString())
+    report.setResultHandwritingExps(resultExps.Handwriting.toString())
+    report.setResultTCEDExps(resultExps.TCED.toString())
+    report.setResultPortraitExps(resultExps.Portrait.toString())
+    report.setResultTotalExps(resultExps.Total.toString())
+    
+    report.setArticleExpsHandwriting(articleExps.Handwriting['Всего'].toString(), articleExps.Handwriting['ст 101'].toString(), articleExps.Handwriting['ст 105'].toString(), articleExps.Handwriting['ст 158,159,160'].toString(), articleExps.Handwriting['ст 186,187'].toString(), articleExps.Handwriting['ст 222'].toString(), articleExps.Handwriting['ст 264'].toString())
+    
+    report.setArticleExpsTCED(articleExps.TCED['Всего'].toString(), articleExps.TCED['ст 101'].toString(), articleExps.TCED['ст 105'].toString(), articleExps.TCED['ст 158,159,160'].toString(), articleExps.TCED['ст 186,187'].toString(), articleExps.TCED['ст 222'].toString(), articleExps.TCED['ст 264'].toString())
+    
+    report.setArticleExpsPortrait(articleExps.Portrait['Всего'].toString(), articleExps.Portrait['ст 101'].toString(), articleExps.Portrait['ст 105'].toString(), articleExps.Portrait['ст 158,159,160'].toString(), articleExps.Portrait['ст 186,187'].toString(), articleExps.Portrait['ст 222'].toString(), articleExps.Portrait['ст 264'].toString())
+
+    report.setArticleExpsVerifications(articleExps.Verifications.toString())
+    
+    report.setArticleExpsTotal(articleExps.Total['Всего'].toString(), articleExps.Total['ст 101'].toString(), articleExps.Total['ст 105'].toString(), articleExps.Total['ст 158,159,160'].toString(), articleExps.Total['ст 186,187'].toString(), articleExps.Total['ст 222'].toString(), articleExps.Total['ст 264'].toString())
 
     return report
   }
@@ -110,52 +260,52 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
         <InfoTextVertical text="Проверок" />
         <InfoSeparator />
         <InfoText text="Всего:" />
-        <InfoText text="36" />
-        <InfoText text="6" />
-        <InfoText text="17" />
-        <InfoText text="13" />
-        <InfoText text="153" />
+        <InfoText text={report.getArticleExpsTotal('Всего')} />
+        <InfoText text={report.getArticleExpsHandwriting('Всего')} />
+        <InfoText text={report.getArticleExpsTCED('Всего')} />
+        <InfoText text={report.getArticleExpsPortrait('Всего')} />
+        <InfoText text={report.getArticleExpsVerifications()} />
         <InfoSeparator />
         <InfoText text="ст. 101 УК РФ:" />
-        <InfoText text="4" />
-        <InfoText text="1" />
-        <InfoText text="2" />
-        <InfoText text="1" />
+        <InfoText text={report.getArticleExpsTotal('ст 101')} />
+        <InfoText text={report.getArticleExpsHandwriting('ст 101')} />
+        <InfoText text={report.getArticleExpsTCED('ст 101')} />
+        <InfoText text={report.getArticleExpsPortrait('ст 101')} />
         <InfoText text="" />
         <InfoSeparator />
         <InfoText text="ст. 105 УК РФ:" />
-        <InfoText text="3" />
-        <InfoText text="0" />
-        <InfoText text="2" />
-        <InfoText text="1" />
+        <InfoText text={report.getArticleExpsTotal('ст 105')} />
+        <InfoText text={report.getArticleExpsHandwriting('ст 105')} />
+        <InfoText text={report.getArticleExpsTCED('ст 105')} />
+        <InfoText text={report.getArticleExpsPortrait('ст 105')} />
         <InfoText text="" />
         <InfoSeparator />
         <InfoText text="ст. 158, 159, 160 УК РФ:" />
-        <InfoText text="7" />
-        <InfoText text="2" />
-        <InfoText text="3" />
-        <InfoText text="2" />
+        <InfoText text={report.getArticleExpsTotal('ст 158,159,160')} />
+        <InfoText text={report.getArticleExpsHandwriting('ст 158,159,160')} />
+        <InfoText text={report.getArticleExpsTCED('ст 158,159,160')} />
+        <InfoText text={report.getArticleExpsPortrait('ст 158,159,160')} />
         <InfoText text="" />
         <InfoSeparator />
         <InfoText text="ст. 186, 187 УК РФ:" />
-        <InfoText text="5" />
-        <InfoText text="1" />
-        <InfoText text="3" />
-        <InfoText text="1" />
+        <InfoText text={report.getArticleExpsTotal('ст 186,187')} />
+        <InfoText text={report.getArticleExpsHandwriting('ст 186,187')} />
+        <InfoText text={report.getArticleExpsTCED('ст 186,187')} />
+        <InfoText text={report.getArticleExpsPortrait('ст 186,187')} />
         <InfoText text="" />
         <InfoSeparator />
         <InfoText text="ст. 222 УК РФ:" />
-        <InfoText text="9" />
-        <InfoText text="1" />
-        <InfoText text="6" />
-        <InfoText text="2" />
+        <InfoText text={report.getArticleExpsTotal('ст 222')} />
+        <InfoText text={report.getArticleExpsHandwriting('ст 222')} />
+        <InfoText text={report.getArticleExpsTCED('ст 222')} />
+        <InfoText text={report.getArticleExpsPortrait('ст 222')} />
         <InfoText text="" />
         <InfoSeparator />
         <InfoText text="ст. 264 УК РФ:" />
-        <InfoText text="5" />
-        <InfoText text="1" />
-        <InfoText text="1" />
-        <InfoText text="3" />
+        <InfoText text={report.getArticleExpsTotal('ст 264')} />
+        <InfoText text={report.getArticleExpsHandwriting('ст 264')} />
+        <InfoText text={report.getArticleExpsTCED('ст 264')} />
+        <InfoText text={report.getArticleExpsPortrait('ст 264')} />
         <InfoText text="" />
         <InfoSeparator />
       </InfoTable>

@@ -154,47 +154,47 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
         }
         if (item.getExecutor() === 'Польченко Т.В.') {
           executorExps.Handwriting['Польченко Т.В.'] += 1
-          executorExps.Total['Польченко Т.В.'] += 1          
+          executorExps.Total['Польченко Т.В.'] += 1
         }
         if (item.getExecutor() === 'Поволодцкий Д.Г.') {
           executorExps.Handwriting['Поволодцкий Д.Г.'] += 1
-          executorExps.Total['Поволодцкий Д.Г.'] += 1          
+          executorExps.Total['Поволодцкий Д.Г.'] += 1
         }
         if (item.getExecutor() === 'Васильев И.С.') {
           executorExps.Handwriting['Васильев И.С.'] += 1
-          executorExps.Total['Васильев И.С.'] += 1          
+          executorExps.Total['Васильев И.С.'] += 1
         }
         if (item.getExecutor() === 'Арзяков Д.Н.') {
           executorExps.Handwriting['Арзяков Д.Н.'] += 1
-          executorExps.Total['Арзяков Д.Н.'] += 1          
+          executorExps.Total['Арзяков Д.Н.'] += 1
         }
         if (item.getExecutor() === 'Халилов Р.Н.') {
           executorExps.Handwriting['Халилов Р.Н.'] += 1
-          executorExps.Total['Халилов Р.Н.'] += 1          
+          executorExps.Total['Халилов Р.Н.'] += 1
         }
         if (item.getExecutor() === 'Балабанов А.А.') {
           executorExps.Handwriting['Балабанов А.А.'] += 1
-          executorExps.Total['Балабанов А.А.'] += 1          
+          executorExps.Total['Балабанов А.А.'] += 1
         }
         if (item.getExecutor() === 'Дружинина Е.Ю.') {
           executorExps.Handwriting['Дружинина Е.Ю.'] += 1
-          executorExps.Total['Дружинина Е.Ю.'] += 1          
+          executorExps.Total['Дружинина Е.Ю.'] += 1
         }
         if (item.getExecutor() === 'Еноткин А.А.') {
           executorExps.Handwriting['Еноткин А.А.'] += 1
-          executorExps.Total['Еноткин А.А.'] += 1          
+          executorExps.Total['Еноткин А.А.'] += 1
         }
         if (item.getExecutor() === 'Киселев А.С.') {
           executorExps.Handwriting['Киселев А.С.'] += 1
-          executorExps.Total['Киселев А.С.'] += 1          
+          executorExps.Total['Киселев А.С.'] += 1
         }
         if (item.getExecutor() === 'Марчук В.А.') {
           executorExps.Handwriting['Марчук В.А.'] += 1
-          executorExps.Total['Марчук В.А.'] += 1          
+          executorExps.Total['Марчук В.А.'] += 1
         }
         if (item.getExecutor() === 'Черногоров А.Ю.') {
           executorExps.Handwriting['Черногоров А.Ю.'] += 1
-          executorExps.Total['Черногоров А.Ю.'] += 1          
+          executorExps.Total['Черногоров А.Ю.'] += 1
         }
       }
       if (item.getTypeOfExpertise() === 'ТКЭД общ.' || item.getTypeOfExpertise() === 'ТКЭД ден.') {
@@ -251,7 +251,7 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
       }
       if (item.getTypeOfExpertise() === 'Портретная') {
         assignedExps.Portrait += 1
-        executorExps.Total['Всего'] +=1
+        executorExps.Portrait['Всего'] += 1
         if (item.getResult() === 'Результативная') {
           resultExps.Portrait += 1
           resultExps.Total += 1
@@ -305,7 +305,7 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
       if (item.getTypeOfMaterial() === 'УД') {
         articleExps.Total['Всего'] += 1
         if (item.getArticle() === 'ст. 101 УК РФ') {
-          articleExps.Total['ст 101'] += 1 
+          articleExps.Total['ст 101'] += 1
           if (item.getTypeOfExpertise() === 'Почерковедческая') {
             articleExps.Handwriting['Всего'] += 1
             articleExps.Handwriting['ст 101'] += 1
@@ -432,8 +432,6 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
           executorExps.Verifications['Черногоров А.Ю.'] += 1
         }
       }
-
-
     })
 
     report.setAssignedHandwritingExps(assignedExps.Handwriting.toString())
@@ -444,7 +442,7 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
     report.setResultTCEDExps(resultExps.TCED.toString())
     report.setResultPortraitExps(resultExps.Portrait.toString())
     report.setResultTotalExps(resultExps.Total.toString())
-    
+
     report.setArticleExpsHandwriting(
       articleExps.Handwriting['Всего'].toString(),
       articleExps.Handwriting['ст 101'].toString(),
@@ -454,7 +452,7 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
       articleExps.Handwriting['ст 222'].toString(),
       articleExps.Handwriting['ст 264'].toString()
     )
-    
+
     report.setArticleExpsTCED(
       articleExps.TCED['Всего'].toString(),
       articleExps.TCED['ст 101'].toString(),
@@ -464,7 +462,7 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
       articleExps.TCED['ст 222'].toString(),
       articleExps.TCED['ст 264'].toString()
     )
-    
+
     report.setArticleExpsPortrait(
       articleExps.Portrait['Всего'].toString(),
       articleExps.Portrait['ст 101'].toString(),
@@ -476,7 +474,7 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
     )
 
     report.setArticleExpsVerifications(articleExps.Verifications.toString())
-    
+
     report.setArticleExpsTotal(
       articleExps.Total['Всего'].toString(),
       articleExps.Total['ст 101'].toString(),
@@ -561,7 +559,6 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
       executorExps.Total['Марчук В.А.'].toString(),
       executorExps.Total['Черногоров А.Ю.'].toString()
     )
-
     return report
   }
 
@@ -681,81 +678,81 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
         <InfoText text={report.getExecutorExpsVerifications('Всего')} />
         <InfoSeparator />
         <InfoText text="Польченко Т.В.:" />
-        <InfoText text="10" />
-        <InfoText text="1" />
-        <InfoText text="6" />
-        <InfoText text="3" />
-        <InfoText text="" />
+        <InfoText text={report.getExecutorExpsTotal('Польченко Т.В.')} />
+        <InfoText text={report.getExecutorExpsHandwriting('Польченко Т.В.')} />
+        <InfoText text={report.getExecutorExpsTCED('Польченко Т.В.')} />
+        <InfoText text={report.getExecutorExpsPortrait('Польченко Т.В.')} />
+        <InfoText text={report.getExecutorExpsVerifications('Польченко Т.В.')} />
         <InfoSeparator />
         <InfoText text="Поволодцкий Д.Г.:" />
-        <InfoText text="13" />
-        <InfoText text="2" />
-        <InfoText text="7" />
-        <InfoText text="4" />
-        <InfoText text="" />
+        <InfoText text={report.getExecutorExpsTotal('Поволодцкий Д.Г.')} />
+        <InfoText text={report.getExecutorExpsHandwriting('Поволодцкий Д.Г.')} />
+        <InfoText text={report.getExecutorExpsTCED('Поволодцкий Д.Г.')} />
+        <InfoText text={report.getExecutorExpsPortrait('Поволодцкий Д.Г.')} />
+        <InfoText text={report.getExecutorExpsVerifications('Поволодцкий Д.Г.')} />
         <InfoSeparator />
         <InfoText text="Васильев И.С.:" />
-        <InfoText text="8" />
-        <InfoText text="2" />
-        <InfoText text="4" />
-        <InfoText text="2" />
-        <InfoText text="" />
+        <InfoText text={report.getExecutorExpsTotal('Васильев И.С.')} />
+        <InfoText text={report.getExecutorExpsHandwriting('Васильев И.С.')} />
+        <InfoText text={report.getExecutorExpsTCED('Васильев И.С.')} />
+        <InfoText text={report.getExecutorExpsPortrait('Васильев И.С.')} />
+        <InfoText text={report.getExecutorExpsVerifications('Васильев И.С.')} />
         <InfoSeparator />
         <InfoText text="Арзяков Д.Н.:" />
-        <InfoText text="11" />
-        <InfoText text="2" />
-        <InfoText text="7" />
-        <InfoText text="2" />
-        <InfoText text="" />
+        <InfoText text={report.getExecutorExpsTotal('Арзяков Д.Н.')} />
+        <InfoText text={report.getExecutorExpsHandwriting('Арзяков Д.Н.')} />
+        <InfoText text={report.getExecutorExpsTCED('Арзяков Д.Н.')} />
+        <InfoText text={report.getExecutorExpsPortrait('Арзяков Д.Н.')} />
+        <InfoText text={report.getExecutorExpsVerifications('Арзяков Д.Н.')} />
         <InfoSeparator />
         <InfoText text="Халилов Р.Н.:" />
-        <InfoText text="9" />
-        <InfoText text="2" />
-        <InfoText text="6" />
-        <InfoText text="1" />
-        <InfoText text="" />
+        <InfoText text={report.getExecutorExpsTotal('Халилов Р.Н.')} />
+        <InfoText text={report.getExecutorExpsHandwriting('Халилов Р.Н.')} />
+        <InfoText text={report.getExecutorExpsTCED('Халилов Р.Н.')} />
+        <InfoText text={report.getExecutorExpsPortrait('Халилов Р.Н.')} />
+        <InfoText text={report.getExecutorExpsVerifications('Халилов Р.Н.')} />
         <InfoSeparator />
         <InfoText text="Балабанов А.А.:" />
-        <InfoText text="10" />
-        <InfoText text="2" />
-        <InfoText text="5" />
-        <InfoText text="3" />
-        <InfoText text="" />
+        <InfoText text={report.getExecutorExpsTotal('Балабанов А.А.')} />
+        <InfoText text={report.getExecutorExpsHandwriting('Балабанов А.А.')} />
+        <InfoText text={report.getExecutorExpsTCED('Балабанов А.А.')} />
+        <InfoText text={report.getExecutorExpsPortrait('Балабанов А.А.')} />
+        <InfoText text={report.getExecutorExpsVerifications('Балабанов А.А.')} />
         <InfoSeparator />
         <InfoText text="Дружинина Е.Ю.:" />
-        <InfoText text="5" />
-        <InfoText text="0" />
-        <InfoText text="3" />
-        <InfoText text="2" />
-        <InfoText text="" />
+        <InfoText text={report.getExecutorExpsTotal('Дружинина Е.Ю.')} />
+        <InfoText text={report.getExecutorExpsHandwriting('Дружинина Е.Ю.')} />
+        <InfoText text={report.getExecutorExpsTCED('Дружинина Е.Ю.')} />
+        <InfoText text={report.getExecutorExpsPortrait('Дружинина Е.Ю.')} />
+        <InfoText text={report.getExecutorExpsVerifications('Дружинина Е.Ю.')} />
         <InfoSeparator />
         <InfoText text="Еноткин А.А.:" />
-        <InfoText text="7" />
-        <InfoText text="1" />
-        <InfoText text="5" />
-        <InfoText text="1" />
-        <InfoText text="" />
+        <InfoText text={report.getExecutorExpsTotal('Еноткин А.А.')} />
+        <InfoText text={report.getExecutorExpsHandwriting('Еноткин А.А.')} />
+        <InfoText text={report.getExecutorExpsTCED('Еноткин А.А.')} />
+        <InfoText text={report.getExecutorExpsPortrait('Еноткин А.А.')} />
+        <InfoText text={report.getExecutorExpsVerifications('Еноткин А.А.')} />
         <InfoSeparator />
         <InfoText text="Киселев А.С.:" />
-        <InfoText text="9" />
-        <InfoText text="1" />
-        <InfoText text="4" />
-        <InfoText text="4" />
-        <InfoText text="" />
+        <InfoText text={report.getExecutorExpsTotal('Киселев А.С.')} />
+        <InfoText text={report.getExecutorExpsHandwriting('Киселев А.С.')} />
+        <InfoText text={report.getExecutorExpsTCED('Киселев А.С.')} />
+        <InfoText text={report.getExecutorExpsPortrait('Киселев А.С.')} />
+        <InfoText text={report.getExecutorExpsVerifications('Киселев А.С.')} />
         <InfoSeparator />
         <InfoText text="Марчук В.А.:" />
-        <InfoText text="6" />
-        <InfoText text="2" />
-        <InfoText text="2" />
-        <InfoText text="2" />
-        <InfoText text="" />
+        <InfoText text={report.getExecutorExpsTotal('Марчук В.А.')} />
+        <InfoText text={report.getExecutorExpsHandwriting('Марчук В.А.')} />
+        <InfoText text={report.getExecutorExpsTCED('Марчук В.А.')} />
+        <InfoText text={report.getExecutorExpsPortrait('Марчук В.А.')} />
+        <InfoText text={report.getExecutorExpsVerifications('Марчук В.А.')} />
         <InfoSeparator />
         <InfoText text="Черногоров А.Ю.:" />
-        <InfoText text="2" />
-        <InfoText text="1" />
-        <InfoText text="0" />
-        <InfoText text="1" />
-        <InfoText text="" />
+        <InfoText text={report.getExecutorExpsTotal('Черногоров А.Ю.')} />
+        <InfoText text={report.getExecutorExpsHandwriting('Черногоров А.Ю.')} />
+        <InfoText text={report.getExecutorExpsTCED('Черногоров А.Ю.')} />
+        <InfoText text={report.getExecutorExpsPortrait('Черногоров А.Ю.')} />
+        <InfoText text={report.getExecutorExpsVerifications('Черногоров А.Ю.')} />
         <InfoSeparator />
       </InfoTable>
     </>

@@ -15,7 +15,7 @@ import SearchExp from './entities/SearchExp';
 const App = () => {
 
   // const [dbExps, setDbExps] = useState<IExp[]>([])
-  const [dbExps, setDbExps] = useState<Exp[]>((): Exp[] => { return addDbExps(200) })
+  const [dbExps, setDbExps] = useState<Exp[]>((): Exp[] => { return addDbExps(1000) })
   const [modal, setModal] = useState<IModal>({ type: null, idOfExp: null })
   const [searchExp, setSearchExp] = useState<SearchExp>(new SearchExp())
 
@@ -334,11 +334,18 @@ const App = () => {
               'ТКЭД ден.' : ''
 
       const executorRand = Math.random()
-      const executor = executorRand < 0.25 ?
-        'Польченко Т.В.' : executorRand >= 0.25 && executorRand < 0.5 ?
-          'Поволодцкий Д.Г.' : executorRand >= 0.5 && executorRand < 0.75 ?
-            'Васильев И.С.' : executorRand >= 0.75 ?
-              'Балабанов А.А.' : ''
+      const executor = executorRand < 0.1 ?
+        'Польченко Т.В.' : executorRand >= 0.1 && executorRand < 0.2 ?
+          'Поволодцкий Д.Г.' : executorRand >= 0.2 && executorRand < 0.3 ?
+            'Васильев И.С.' : executorRand >= 0.3 && executorRand < 0.4 ?
+              'Арзяков Д.Н.' : executorRand >= 0.4 && executorRand < 0.5 ?
+                'Халилов Р.Н.' : executorRand >= 0.5 && executorRand < 0.6 ?
+                  'Балабанов А.А.' : executorRand >= 0.6 && executorRand < 0.7 ?
+                    'Дружинина Е.Ю.' : executorRand >= 0.7 && executorRand < 0.8 ?
+                      'Еноткин А.А.' : executorRand >= 0.8 && executorRand < 0.85 ?
+                        'Киселев А.С.' : executorRand >= 0.85 && executorRand < 0.9 ?
+                          'Марчук В.А.' : executorRand >= 0.9 ?
+                            'Черногоров А.Ю.' : ''
       const difficultRand = Math.random()
       const difficult = difficultRand < 0.33 ?
         'Простая' : difficultRand >= 0.33 && difficultRand < 0.66 ?
@@ -424,8 +431,8 @@ const App = () => {
   }
   function updateClickHendler(number: string | null) {
     setModal((prev) => ({
-        ...prev, type: 'update', idOfExp: number
-      }))
+      ...prev, type: 'update', idOfExp: number
+    }))
   }
   function searchClickHendler() {
     if (modal.type !== 'search') {

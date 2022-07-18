@@ -182,18 +182,77 @@ const Modal = ({ type, expState }) => {
                     }
                     if (item.article === "ст. 105 УК РФ") {
                         articleExp.Pocherk["ст. 105"] += 1
+                        articleExp.Total["ст. 105"] += 1
                     }
                     if (item.article === "ст. 158, 159, 160 УК РФ") {
                         articleExp.Pocherk["ст. 158, 159, 160"] += 1
+                        articleExp.Total["ст. 158, 159, 160"] += 1
                     }
                     if (item.article === "ст. 186, 187 УК РФ") {
                         articleExp.Pocherk["ст. 186, 187"] += 1
+                        articleExp.Total["ст. 186, 187"] += 1
                     }
                     if (item.article === "ст. 222 УК РФ") {
                         articleExp.Pocherk["ст. 222"] += 1
+                        articleExp.Total["ст. 222"] += 1
                     }
                     if (item.article === "ст. 264 УК РФ") {
                         articleExp.Pocherk["ст. 264"] += 1
+                        articleExp.Total["ст. 264"] += 1
+                    }
+                }
+                if (item.typeOfExpertise === "ТКЭД общ." || item.typeOfExpertise === "ТКЭД ден.") {
+                    articleExp.Tked["Всего"] += 1
+                    if (item.article === "ст. 101 УК РФ") {
+                        articleExp.Tked["ст. 101"] += 1
+                        articleExp.Total["ст. 101"] += 1
+                    }
+                    if (item.article === "ст. 105 УК РФ") {
+                        articleExp.Tked["ст. 105"] += 1
+                        articleExp.Total["ст. 105"] += 1
+                    }
+                    if (item.article === "ст. 158, 159, 160 УК РФ") {
+                        articleExp.Tked["ст. 158, 159, 160"] += 1
+                        articleExp.Total["ст. 158, 159, 160"] += 1
+                    }
+                    if (item.article === "ст. 186, 187 УК РФ") {
+                        articleExp.Tked["ст. 186, 187"] += 1
+                        articleExp.Total["ст. 186, 187"] += 1
+                    }
+                    if (item.article === "ст. 222 УК РФ") {
+                        articleExp.Tked["ст. 222"] += 1
+                        articleExp.Total["ст. 222"] += 1
+                    }
+                    if (item.article === "ст. 264 УК РФ") {
+                        articleExp.Tked["ст. 264"] += 1
+                        articleExp.Total["ст. 264"] += 1
+                    }
+                }
+                if (item.typeOfExpertise === "Портретная") {
+                    articleExp.Portret["Всего"] += 1
+                    if (item.article === "ст. 101 УК РФ") {
+                        articleExp.Portret["ст. 101"] += 1
+                        articleExp.Total["ст. 101"] += 1
+                    }
+                    if (item.article === "ст. 105 УК РФ") {
+                        articleExp.Portret["ст. 105"] += 1
+                        articleExp.Total["ст. 105"] += 1
+                    }
+                    if (item.article === "ст. 158, 159, 160 УК РФ") {
+                        articleExp.Portret["ст. 158, 159, 160"] += 1
+                        articleExp.Total["ст. 158, 159, 160"] += 1
+                    }
+                    if (item.article === "ст. 186, 187 УК РФ") {
+                        articleExp.Portret["ст. 186, 187"] += 1
+                        articleExp.Total["ст. 186, 187"] += 1
+                    }
+                    if (item.article === "ст. 222 УК РФ") {
+                        articleExp.Portret["ст. 222"] += 1
+                        articleExp.Total["ст. 222"] += 1
+                    }
+                    if (item.article === "ст. 264 УК РФ") {
+                        articleExp.Portret["ст. 264"] += 1
+                        articleExp.Total["ст. 264"] += 1
                     }
                 }
             }
@@ -318,13 +377,6 @@ const Modal = ({ type, expState }) => {
             //         countOfChernogorovPortret += 1
             //     }
             // }
-            countUdTotal = countUdOfPocherk + countUdOfTkedTotal + countUdOfPortret
-            countOfUd101Total = countOfUd101Pocherk + countOfUd101Tked + countOfUd101Portret
-            countOfUd105Total = countOfUd105Pocherk + countOfUd105Tked + countOfUd105Portret
-            countOfUd158Total = countOfUd158Pocherk + countOfUd158Tked + countOfUd158Portret
-            countOfUd186Total = countOfUd186Pocherk + countOfUd186Tked + countOfUd186Portret
-            countOfUd222Total = countOfUd222Pocherk + countOfUd222Tked + countOfUd222Portret
-            countOfUd264Total = countOfUd264Pocherk + countOfUd264Tked + countOfUd264Portret
             countOfPolchenkoTotal = countOfPolchenkoPocherk + countOfPolchenkoTked + countOfPolchenkoPortret
             countOfPovolodtskiyTotal = countOfPovolodtskiyPocherk + countOfPovolodtskiyTked + countOfPovolodtskiyPortret
             countOfVasilyevTotal = countOfVasilyevPocherk + countOfVasilyevTked + countOfVasilyevPortret
@@ -368,47 +420,47 @@ const Modal = ({ type, expState }) => {
                     <TextItemVertical text="Проверок" />
                     <LineItem />
                     <TextItem text="Всего: " />
-                    <ValueItem text={countUdTotal} />
-                    <ValueItem text={countUdOfPocherk} />
-                    <ValueItem text={countUdOfTkedTotal} />
-                    <ValueItem text={countUdOfPortret} />
+                    <ValueItem text={articleExp.Total["Всего"]} />
+                    <ValueItem text={articleExp.Pocherk["Всего"]} />
+                    <ValueItem text={articleExp.Tked["Всего"]} />
+                    <ValueItem text={articleExp.Portret["Всего"]} />
                     <ValueItem text="153" />
                     <LineItem />
                     <TextItem text="ст. 101 УК РФ:" />
-                    <ValueItem text={countOfUd101Total} />
-                    <ValueItem text={countOfUd101Pocherk} />
-                    <ValueItem text={countOfUd101Tked} />
-                    <ValueItem text={countOfUd101Portret} />
+                    <ValueItem text={articleExp.Total["ст. 101"]} />
+                    <ValueItem text={articleExp.Pocherk["ст. 101"]} />
+                    <ValueItem text={articleExp.Tked["ст. 101"]} />
+                    <ValueItem text={articleExp.Portret["ст. 101"]} />
                     <LineItem />
                     <TextItem text="ст. 105 УК РФ:" />
-                    <ValueItem text={countOfUd105Total} />
-                    <ValueItem text={countOfUd105Pocherk} />
-                    <ValueItem text={countOfUd105Tked} />
-                    <ValueItem text={countOfUd105Portret} />
+                    <ValueItem text={articleExp.Total["ст. 105"]} />
+                    <ValueItem text={articleExp.Pocherk["ст. 105"]} />
+                    <ValueItem text={articleExp.Tked["ст. 105"]} />
+                    <ValueItem text={articleExp.Portret["ст. 105"]} />
                     <LineItem />
                     <TextItem text="ст. 158, 159, 160 УК РФ:" />
-                    <ValueItem text={countOfUd158Total} />
-                    <ValueItem text={countOfUd158Pocherk} />
-                    <ValueItem text={countOfUd158Tked} />
-                    <ValueItem text={countOfUd158Portret} />
+                    <ValueItem text={articleExp.Total["ст. 158, 159, 160"]} />
+                    <ValueItem text={articleExp.Pocherk["ст. 158, 159, 160"]} />
+                    <ValueItem text={articleExp.Tked["ст. 158, 159, 160"]} />
+                    <ValueItem text={articleExp.Portret["ст. 158, 159, 160"]} />
                     <LineItem />
                     <TextItem text="ст. 186, 187 УК РФ:" />
-                    <ValueItem text={countOfUd186Total} />
-                    <ValueItem text={countOfUd186Pocherk} />
-                    <ValueItem text={countOfUd186Tked} />
-                    <ValueItem text={countOfUd186Portret} />
+                    <ValueItem text={articleExp.Total["ст. 186, 187"]} />
+                    <ValueItem text={articleExp.Pocherk["ст. 186, 187"]} />
+                    <ValueItem text={articleExp.Tked["ст. 186, 187"]} />
+                    <ValueItem text={articleExp.Portret["ст. 186, 187"]} />
                     <LineItem />
                     <TextItem text="ст. 222 УК РФ:" />
-                    <ValueItem text={countOfUd222Total} />
-                    <ValueItem text={countOfUd222Pocherk} />
-                    <ValueItem text={countOfUd222Tked} />
-                    <ValueItem text={countOfUd222Portret} />
+                    <ValueItem text={articleExp.Total["ст. 222"]} />
+                    <ValueItem text={articleExp.Pocherk["ст. 222"]} />
+                    <ValueItem text={articleExp.Tked["ст. 222"]} />
+                    <ValueItem text={articleExp.Portret["ст. 222"]} />
                     <LineItem />
                     <TextItem text="ст. 264 УК РФ:" />
-                    <ValueItem text={countOfUd264Total} />
-                    <ValueItem text={countOfUd264Pocherk} />
-                    <ValueItem text={countOfUd264Tked} />
-                    <ValueItem text={countOfUd264Portret} />
+                    <ValueItem text={articleExp.Total["ст. 264"]} />
+                    <ValueItem text={articleExp.Pocherk["ст. 264"]} />
+                    <ValueItem text={articleExp.Tked["ст. 264"]} />
+                    <ValueItem text={articleExp.Portret["ст. 264"]} />
                     <LineItem />
                 </TextItemWrapper>
                 <InfoTitle text="Количество экспертиз по исполнителям" />

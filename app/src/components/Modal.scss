@@ -1,42 +1,21 @@
 .modal {
     display: grid;
-
+    height: calc(100vh - 52px);
     background-color: #f3f3f3;
     border: 1px solid #d2d2d2;
-    
+    width: 370px;
+    transition: all 500ms ease;
 }
 .modal-create {
-    display: grid;
-    grid-template-rows: 30px;
-
-    width: 370px;
-
-    background-color: #f3f3f3;
-    border: 1px solid #d2d2d2;
-
-    transition: all 500ms ease;
 }
 .modal-search {
-    display: grid;
-
-    width: 370px;
-
-    background-color: #f3f3f3;
-    border: 1px solid #d2d2d2;
-
-    transition: all 500ms ease;
-    
 }
 
 .modal-info {
-    display: grid;
-
     width: 450px;
-    height: calc(100vh - 70px);
-    background-color: #f3f3f3;
-    border: 1px solid #d2d2d2;
+
     padding: 0 10px 10px 20px;
-    transition: all 500ms ease;
+
     grid-template-rows: 50px repeat(4, 25px) 50px repeat(4, 25px);
     grid-template-columns: 1fr 1fr;
     overflow-y: auto;
@@ -64,10 +43,7 @@
 
 .modal-hidden {
     width: 0;
-    background-color: #f3f3f3;
-    border: 1px solid #d2d2d2;
-    height: calc(100vh - 70px);
     opacity: 0;
     overflow: hidden;
-    transition: all 500ms ease;
+    
 }

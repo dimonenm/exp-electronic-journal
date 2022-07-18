@@ -11,26 +11,70 @@ const Modal = ({ type, expState }) => {
 
     if (type === "create") {
         return (
-            <div className='modal-create'>
+            <div className='modal modal-create'>
 
             </div>
         )
     }
     if (type === "search") {
         return (
-            <div className='modal-search'>
+            <div className='modal modal-search'>
 
             </div>
         )
     }
     if (type === "info") {
-        let counterOfPocherk = 0
-        let countOfTkedTotal = 0
-        let countOfPortret = 0
-        let countResOfPocherk = 0
-        let countResOfTkedTotal = 0
-        let countResOfPortret = 0
-        let countResTotal = 0
+        let assignedExp = {
+            Pocherk: 0,
+            Tked: 0,
+            Portret: 0,
+            Total: 0
+        }
+        let resultExp = {
+            Pocherk: 0,
+            Tked: 0,
+            Portret: 0,
+            Total: 0
+        }
+        let articleExp = {
+            Total: {
+                "Всего": 0,
+                "ст. 101": 0,
+                "ст. 105": 0,
+                "ст. 158, 159, 160": 0,
+                "ст. 186, 187": 0,
+                "ст. 222": 0,
+                "ст. 264": 0,
+            },
+            Pocherk: {
+                "Всего": 0,
+                "ст. 101": 0,
+                "ст. 105": 0,
+                "ст. 158, 159, 160": 0,
+                "ст. 186, 187": 0,
+                "ст. 222": 0,
+                "ст. 264": 0,
+            },
+            Tked: {
+                "Всего": 0,
+                "ст. 101": 0,
+                "ст. 105": 0,
+                "ст. 158, 159, 160": 0,
+                "ст. 186, 187": 0,
+                "ст. 222": 0,
+                "ст. 264": 0,
+            },
+            Portret: {
+                "Всего": 0,
+                "ст. 101": 0,
+                "ст. 105": 0,
+                "ст. 158, 159, 160": 0,
+                "ст. 186, 187": 0,
+                "ст. 222": 0,
+                "ст. 264": 0,
+            },
+            Verifications: 0
+        }
         let countUdOfPocherk = 0
         let countUdOfTkedTotal = 0
         let countUdOfPortret = 0
@@ -105,190 +149,175 @@ const Modal = ({ type, expState }) => {
         let countOfChernogorovTotal = 0
 
         expState.forEach((item) => {
+            assignedExp.Total += 1
             if (item.typeOfExpertise === "Почерк") {
-                counterOfPocherk += 1
+                assignedExp.Pocherk += 1
                 if (item.result === "Результативная") {
-                    countResOfPocherk += 1
+                    resultExp.Pocherk += 1
+                    resultExp.Total += 1
                 }
-                if (item.typeOfMaterial === "УД") {
-                    countUdOfPocherk += 1
-                }
-                if (item.article === "ст. 101 УК РФ") {
-                    countOfUd101Pocherk += 1
-                }
-                if (item.article === "ст. 105 УК РФ") {
-                    countOfUd105Pocherk += 1
-                }
-                if (item.article === "ст. 158, 159, 160 УК РФ") {
-                    countOfUd158Pocherk += 1
-                }
-                if (item.article === "ст. 186, 187 УК РФ") {
-                    countOfUd186Pocherk += 1
-                }
-                if (item.article === "ст. 222 УК РФ") {
-                    countOfUd222Pocherk += 1
-                }
-                if (item.article === "ст. 264 УК РФ") {
-                    countOfUd264Pocherk += 1
-                }
-                if (item.executor === "Польченко Т.В.") {
-                    countOfPolchenkoPocherk += 1
-                }
-                if (item.executor === "Поволодцкий Д.Г.") {
-                    countOfPovolodtskiyPocherk += 1
-                }
-                if (item.executor === "Васильев И.С.") {
-                    countOfVasilyevPocherk += 1
-                }
-                if (item.executor === "Арзяков Д.Н.") {
-                    countOfArzyakovPocherk += 1
-                }
-                if (item.executor === "Халилов Р.Н.") {
-                    countOfKhalilovPocherk += 1
-                }
-                if (item.executor === "Балабанов А.А.") {
-                    countOfBalabanovPocherk += 1
-                }
-                if (item.executor === "Дружинина Е.Ю.") {
-                    countOfDrujininaPocherk += 1
-                }
-                if (item.executor === "Еноткин А.А.") {
-                    countOfEnotkinPocherk += 1
-                }
-                if (item.executor === "Киселев А.С.") {
-                    countOfKiselevPocherk += 1
-                }
-                if (item.executor === "Марчук В.А.") {
-                    countOfMarchukPocherk += 1
-                }
-                if (item.executor === "Черногоров А.Ю.") {
-                    countOfChernogorovPocherk += 1
-                }
-
-
-                
             }
             if (item.typeOfExpertise === "ТКЭД общ." || item.typeOfExpertise === "ТКЭД ден.") {
-                countOfTkedTotal += 1
+                assignedExp.Tked += 1
                 if (item.result === "Результативная") {
-                    countResOfTkedTotal += 1
-                }
-                if (item.typeOfMaterial === "УД") {
-                    countUdOfTkedTotal += 1
-                }
-                if (item.article === "ст. 101 УК РФ") {
-                    countOfUd101Tked += 1
-                }
-                if (item.article === "ст. 105 УК РФ") {
-                    countOfUd105Tked += 1
-                }
-                if (item.article === "ст. 158, 159, 160 УК РФ") {
-                    countOfUd158Tked += 1
-                }
-                if (item.article === "ст. 186, 187 УК РФ") {
-                    countOfUd186Tked += 1
-                }
-                if (item.article === "ст. 222 УК РФ") {
-                    countOfUd222Tked += 1
-                }
-                if (item.article === "ст. 264 УК РФ") {
-                    countOfUd264Tked += 1
-                }
-                if (item.executor === "Польченко Т.В.") {
-                    countOfPolchenkoTked += 1
-                }
-                if (item.executor === "Поволодцкий Д.Г.") {
-                    countOfPovolodtskiyTked += 1
-                }
-                if (item.executor === "Васильев И.С.") {
-                    countOfVasilyevTked += 1
-                }
-                if (item.executor === "Арзяков Д.Н.") {
-                    countOfArzyakovTked += 1
-                }
-                if (item.executor === "Халилов Р.Н.") {
-                    countOfKhalilovTked += 1
-                }
-                if (item.executor === "Балабанов А.А.") {
-                    countOfBalabanovTked += 1
-                }
-                if (item.executor === "Дружинина Е.Ю.") {
-                    countOfDrujininaTked += 1
-                }
-                if (item.executor === "Еноткин А.А.") {
-                    countOfEnotkinTked += 1
-                }
-                if (item.executor === "Киселев А.С.") {
-                    countOfKiselevTked += 1
-                }
-                if (item.executor === "Марчук В.А.") {
-                    countOfMarchukTked += 1
-                }
-                if (item.executor === "Черногоров А.Ю.") {
-                    countOfChernogorovTked += 1
+                    resultExp.Tked += 1
+                    resultExp.Total += 1
                 }
             }
             if (item.typeOfExpertise === "Портретная") {
-                countOfPortret += 1
+                assignedExp.Portret += 1
                 if (item.result === "Результативная") {
-                    countResOfPortret += 1
-                }
-                if (item.result === "Результативная") {
-                    countUdOfPortret += 1
-                }
-                if (item.article === "ст. 101 УК РФ") {
-                    countOfUd101Portret += 1
-                }
-                if (item.article === "ст. 105 УК РФ") {
-                    countOfUd105Portret += 1
-                }
-                if (item.article === "ст. 158, 159, 160 УК РФ") {
-                    countOfUd158Portret += 1
-                }
-                if (item.article === "ст. 186, 187 УК РФ") {
-                    countOfUd186Portret += 1
-                }
-                if (item.article === "ст. 222 УК РФ") {
-                    countOfUd222Portret += 1
-                }
-                if (item.article === "ст. 264 УК РФ") {
-                    countOfUd264Portret += 1
-                }
-                if (item.executor === "Польченко Т.В.") {
-                    countOfPolchenkoPortret += 1
-                }
-                if (item.executor === "Поволодцкий Д.Г.") {
-                    countOfPovolodtskiyPortret += 1
-                }
-                if (item.executor === "Васильев И.С.") {
-                    countOfVasilyevPortret += 1
-                }
-                if (item.executor === "Арзяков Д.Н.") {
-                    countOfArzyakovPortret += 1
-                }
-                if (item.executor === "Халилов Р.Н.") {
-                    countOfKhalilovPortret += 1
-                }
-                if (item.executor === "Балабанов А.А.") {
-                    countOfBalabanovPortret += 1
-                }
-                if (item.executor === "Дружинина Е.Ю.") {
-                    countOfDrujininaPortret += 1
-                }
-                if (item.executor === "Еноткин А.А.") {
-                    countOfEnotkinPortret += 1
-                }
-                if (item.executor === "Киселев А.С.") {
-                    countOfKiselevPortret += 1
-                }
-                if (item.executor === "Марчук В.А.") {
-                    countOfMarchukPortret += 1
-                }
-                if (item.executor === "Черногоров А.Ю.") {
-                    countOfChernogorovPortret += 1
+                    resultExp.Portret += 1
+                    resultExp.Total += 1
                 }
             }
-            countResTotal = countResOfPocherk + countResOfTkedTotal + countResOfPortret
+            if (item.typeOfMaterial === "УД") {
+                articleExp.Total["Всего"] += 1
+
+                if (item.typeOfExpertise === "Почерк") {
+                    articleExp.Pocherk["Всего"] += 1
+                    if (item.article === "ст. 101 УК РФ") {
+                        articleExp.Pocherk["ст. 101"] += 1
+                        articleExp.Total["ст. 101"] += 1
+                    }
+                    if (item.article === "ст. 105 УК РФ") {
+                        articleExp.Pocherk["ст. 105"] += 1
+                    }
+                    if (item.article === "ст. 158, 159, 160 УК РФ") {
+                        articleExp.Pocherk["ст. 158, 159, 160"] += 1
+                    }
+                    if (item.article === "ст. 186, 187 УК РФ") {
+                        articleExp.Pocherk["ст. 186, 187"] += 1
+                    }
+                    if (item.article === "ст. 222 УК РФ") {
+                        articleExp.Pocherk["ст. 222"] += 1
+                    }
+                    if (item.article === "ст. 264 УК РФ") {
+                        articleExp.Pocherk["ст. 264"] += 1
+                    }
+                }
+            }
+
+            // if (item.typeOfExpertise === "ТКЭД общ." || item.typeOfExpertise === "ТКЭД ден.") {
+            //     countOfTkedTotal += 1
+            //     if (item.result === "Результативная") {
+            //         countResOfTkedTotal += 1
+            //     }
+            //     if (item.typeOfMaterial === "УД") {
+            //         countUdOfTkedTotal += 1
+            //     }
+            //     if (item.article === "ст. 101 УК РФ") {
+            //         countOfUd101Tked += 1
+            //     }
+            //     if (item.article === "ст. 105 УК РФ") {
+            //         countOfUd105Tked += 1
+            //     }
+            //     if (item.article === "ст. 158, 159, 160 УК РФ") {
+            //         countOfUd158Tked += 1
+            //     }
+            //     if (item.article === "ст. 186, 187 УК РФ") {
+            //         countOfUd186Tked += 1
+            //     }
+            //     if (item.article === "ст. 222 УК РФ") {
+            //         countOfUd222Tked += 1
+            //     }
+            //     if (item.article === "ст. 264 УК РФ") {
+            //         countOfUd264Tked += 1
+            //     }
+            //     if (item.executor === "Польченко Т.В.") {
+            //         countOfPolchenkoTked += 1
+            //     }
+            //     if (item.executor === "Поволодцкий Д.Г.") {
+            //         countOfPovolodtskiyTked += 1
+            //     }
+            //     if (item.executor === "Васильев И.С.") {
+            //         countOfVasilyevTked += 1
+            //     }
+            //     if (item.executor === "Арзяков Д.Н.") {
+            //         countOfArzyakovTked += 1
+            //     }
+            //     if (item.executor === "Халилов Р.Н.") {
+            //         countOfKhalilovTked += 1
+            //     }
+            //     if (item.executor === "Балабанов А.А.") {
+            //         countOfBalabanovTked += 1
+            //     }
+            //     if (item.executor === "Дружинина Е.Ю.") {
+            //         countOfDrujininaTked += 1
+            //     }
+            //     if (item.executor === "Еноткин А.А.") {
+            //         countOfEnotkinTked += 1
+            //     }
+            //     if (item.executor === "Киселев А.С.") {
+            //         countOfKiselevTked += 1
+            //     }
+            //     if (item.executor === "Марчук В.А.") {
+            //         countOfMarchukTked += 1
+            //     }
+            //     if (item.executor === "Черногоров А.Ю.") {
+            //         countOfChernogorovTked += 1
+            //     }
+            // }
+            // if (item.typeOfExpertise === "Портретная") {
+            //     countOfPortret += 1
+            //     if (item.result === "Результативная") {
+            //         countResOfPortret += 1
+            //     }
+            //     if (item.result === "Результативная") {
+            //         countUdOfPortret += 1
+            //     }
+            //     if (item.article === "ст. 101 УК РФ") {
+            //         countOfUd101Portret += 1
+            //     }
+            //     if (item.article === "ст. 105 УК РФ") {
+            //         countOfUd105Portret += 1
+            //     }
+            //     if (item.article === "ст. 158, 159, 160 УК РФ") {
+            //         countOfUd158Portret += 1
+            //     }
+            //     if (item.article === "ст. 186, 187 УК РФ") {
+            //         countOfUd186Portret += 1
+            //     }
+            //     if (item.article === "ст. 222 УК РФ") {
+            //         countOfUd222Portret += 1
+            //     }
+            //     if (item.article === "ст. 264 УК РФ") {
+            //         countOfUd264Portret += 1
+            //     }
+            //     if (item.executor === "Польченко Т.В.") {
+            //         countOfPolchenkoPortret += 1
+            //     }
+            //     if (item.executor === "Поволодцкий Д.Г.") {
+            //         countOfPovolodtskiyPortret += 1
+            //     }
+            //     if (item.executor === "Васильев И.С.") {
+            //         countOfVasilyevPortret += 1
+            //     }
+            //     if (item.executor === "Арзяков Д.Н.") {
+            //         countOfArzyakovPortret += 1
+            //     }
+            //     if (item.executor === "Халилов Р.Н.") {
+            //         countOfKhalilovPortret += 1
+            //     }
+            //     if (item.executor === "Балабанов А.А.") {
+            //         countOfBalabanovPortret += 1
+            //     }
+            //     if (item.executor === "Дружинина Е.Ю.") {
+            //         countOfDrujininaPortret += 1
+            //     }
+            //     if (item.executor === "Еноткин А.А.") {
+            //         countOfEnotkinPortret += 1
+            //     }
+            //     if (item.executor === "Киселев А.С.") {
+            //         countOfKiselevPortret += 1
+            //     }
+            //     if (item.executor === "Марчук В.А.") {
+            //         countOfMarchukPortret += 1
+            //     }
+            //     if (item.executor === "Черногоров А.Ю.") {
+            //         countOfChernogorovPortret += 1
+            //     }
+            // }
             countUdTotal = countUdOfPocherk + countUdOfTkedTotal + countUdOfPortret
             countOfUd101Total = countOfUd101Pocherk + countOfUd101Tked + countOfUd101Portret
             countOfUd105Total = countOfUd105Pocherk + countOfUd105Tked + countOfUd105Portret
@@ -310,25 +339,25 @@ const Modal = ({ type, expState }) => {
         })
 
         return (
-            <div className='modal-info'>
+            <div className='modal modal-info'>
                 <InfoTitle text="Количество назначенных экспертиз" />
                 <TextItem text="Почерковедческих: " />
-                <TextItem text={counterOfPocherk} />
+                <TextItem text={assignedExp.Pocherk} />
                 <TextItem text="ТКЭД: " />
-                <TextItem text={countOfTkedTotal} />
+                <TextItem text={assignedExp.Tked} />
                 <TextItem text="Портретных: " />
-                <TextItem text={countOfPortret} />
+                <TextItem text={assignedExp.Portret} />
                 <TextItem text="Всего: " />
-                <TextItem text={expState.length} />
+                <TextItem text={assignedExp.Total} />
                 <InfoTitle text="Количество результативных экспертиз" />
                 <TextItem text="Почерковедческих: " />
-                <TextItem text={countResOfPocherk} />
+                <TextItem text={resultExp.Pocherk} />
                 <TextItem text="ТКЭД: " />
-                <TextItem text={countResOfTkedTotal} />
+                <TextItem text={resultExp.Tked} />
                 <TextItem text="Портретных: " />
-                <TextItem text={countResOfPortret} />
+                <TextItem text={resultExp.Portret} />
                 <TextItem text="Всего: " />
-                <TextItem text={countResTotal} />
+                <TextItem text={resultExp.Total} />
                 <InfoTitle text="Количество экспертиз по статьям" />
                 <TextItemWrapper>
                     <TextItem />
@@ -348,8 +377,8 @@ const Modal = ({ type, expState }) => {
                     <TextItem text="ст. 101 УК РФ:" />
                     <ValueItem text={countOfUd101Total} />
                     <ValueItem text={countOfUd101Pocherk} />
-                    <ValueItem text={countOfUd101Tked}/>
-                    <ValueItem text={countOfUd101Portret}/>
+                    <ValueItem text={countOfUd101Tked} />
+                    <ValueItem text={countOfUd101Portret} />
                     <LineItem />
                     <TextItem text="ст. 105 УК РФ:" />
                     <ValueItem text={countOfUd105Total} />
@@ -383,7 +412,7 @@ const Modal = ({ type, expState }) => {
                     <LineItem />
                 </TextItemWrapper>
                 <InfoTitle text="Количество экспертиз по исполнителям" />
-                <TextItemWrapper>
+                {/* <TextItemWrapper>
                     <TextItem />
                     <TextItemVertical text="Всего: " />
                     <TextItemVertical text="Почерко-ких" />
@@ -464,12 +493,12 @@ const Modal = ({ type, expState }) => {
                     <ValueItem text={countOfChernogorovTked} />
                     <ValueItem text={countOfChernogorovPortret} />
                     <LineItem />
-                </TextItemWrapper>
+                </TextItemWrapper> */}
             </div>
         )
     }
     return (
-        <div className='modal-hidden'>
+        <div className='modal modal-hidden'>
 
         </div>
     );

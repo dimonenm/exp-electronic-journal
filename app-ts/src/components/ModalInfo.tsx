@@ -69,28 +69,236 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
         'ст 264': 0
       }
     }
+    let executorExps = {
+      Handwriting: {
+        'Всего': 0,
+        'Польченко Т.В.': 0,
+        'Поволодцкий Д.Г.': 0,
+        'Васильев И.С.': 0,
+        'Арзяков Д.Н.': 0,
+        'Халилов Р.Н.': 0,
+        'Балабанов А.А.': 0,
+        'Дружинина Е.Ю.': 0,
+        'Еноткин А.А.': 0,
+        'Киселев А.С.': 0,
+        'Марчук В.А.': 0,
+        'Черногоров А.Ю.': 0
+      },
+      TCED: {
+        'Всего': 0,
+        'Польченко Т.В.': 0,
+        'Поволодцкий Д.Г.': 0,
+        'Васильев И.С.': 0,
+        'Арзяков Д.Н.': 0,
+        'Халилов Р.Н.': 0,
+        'Балабанов А.А.': 0,
+        'Дружинина Е.Ю.': 0,
+        'Еноткин А.А.': 0,
+        'Киселев А.С.': 0,
+        'Марчук В.А.': 0,
+        'Черногоров А.Ю.': 0
+      },
+      Portrait: {
+        'Всего': 0,
+        'Польченко Т.В.': 0,
+        'Поволодцкий Д.Г.': 0,
+        'Васильев И.С.': 0,
+        'Арзяков Д.Н.': 0,
+        'Халилов Р.Н.': 0,
+        'Балабанов А.А.': 0,
+        'Дружинина Е.Ю.': 0,
+        'Еноткин А.А.': 0,
+        'Киселев А.С.': 0,
+        'Марчук В.А.': 0,
+        'Черногоров А.Ю.': 0
+      },
+      Verifications: {
+        'Всего': 0,
+        'Польченко Т.В.': 0,
+        'Поволодцкий Д.Г.': 0,
+        'Васильев И.С.': 0,
+        'Арзяков Д.Н.': 0,
+        'Халилов Р.Н.': 0,
+        'Балабанов А.А.': 0,
+        'Дружинина Е.Ю.': 0,
+        'Еноткин А.А.': 0,
+        'Киселев А.С.': 0,
+        'Марчук В.А.': 0,
+        'Черногоров А.Ю.': 0
+      },
+      Total: {
+        'Всего': 0,
+        'Польченко Т.В.': 0,
+        'Поволодцкий Д.Г.': 0,
+        'Васильев И.С.': 0,
+        'Арзяков Д.Н.': 0,
+        'Халилов Р.Н.': 0,
+        'Балабанов А.А.': 0,
+        'Дружинина Е.Ю.': 0,
+        'Еноткин А.А.': 0,
+        'Киселев А.С.': 0,
+        'Марчук В.А.': 0,
+        'Черногоров А.Ю.': 0
+      }
+    }
 
     arr.forEach(item => {
       assignedExps.Total += 1
+      executorExps.Total['Всего'] += 1
       if (item.getTypeOfExpertise() === 'Почерковедческая') {
         assignedExps.Handwriting += 1
+        executorExps.Handwriting['Всего'] += 1
         if (item.getResult() === 'Результативная') {
           resultExps.Handwriting += 1
           resultExps.Total += 1
         }
+        if (item.getExecutor() === 'Польченко Т.В.') {
+          executorExps.Handwriting['Польченко Т.В.'] += 1
+          executorExps.Total['Польченко Т.В.'] += 1          
+        }
+        if (item.getExecutor() === 'Поволодцкий Д.Г.') {
+          executorExps.Handwriting['Поволодцкий Д.Г.'] += 1
+          executorExps.Total['Поволодцкий Д.Г.'] += 1          
+        }
+        if (item.getExecutor() === 'Васильев И.С.') {
+          executorExps.Handwriting['Васильев И.С.'] += 1
+          executorExps.Total['Васильев И.С.'] += 1          
+        }
+        if (item.getExecutor() === 'Арзяков Д.Н.') {
+          executorExps.Handwriting['Арзяков Д.Н.'] += 1
+          executorExps.Total['Арзяков Д.Н.'] += 1          
+        }
+        if (item.getExecutor() === 'Халилов Р.Н.') {
+          executorExps.Handwriting['Халилов Р.Н.'] += 1
+          executorExps.Total['Халилов Р.Н.'] += 1          
+        }
+        if (item.getExecutor() === 'Балабанов А.А.') {
+          executorExps.Handwriting['Балабанов А.А.'] += 1
+          executorExps.Total['Балабанов А.А.'] += 1          
+        }
+        if (item.getExecutor() === 'Дружинина Е.Ю.') {
+          executorExps.Handwriting['Дружинина Е.Ю.'] += 1
+          executorExps.Total['Дружинина Е.Ю.'] += 1          
+        }
+        if (item.getExecutor() === 'Еноткин А.А.') {
+          executorExps.Handwriting['Еноткин А.А.'] += 1
+          executorExps.Total['Еноткин А.А.'] += 1          
+        }
+        if (item.getExecutor() === 'Киселев А.С.') {
+          executorExps.Handwriting['Киселев А.С.'] += 1
+          executorExps.Total['Киселев А.С.'] += 1          
+        }
+        if (item.getExecutor() === 'Марчук В.А.') {
+          executorExps.Handwriting['Марчук В.А.'] += 1
+          executorExps.Total['Марчук В.А.'] += 1          
+        }
+        if (item.getExecutor() === 'Черногоров А.Ю.') {
+          executorExps.Handwriting['Черногоров А.Ю.'] += 1
+          executorExps.Total['Черногоров А.Ю.'] += 1          
+        }
       }
       if (item.getTypeOfExpertise() === 'ТКЭД общ.' || item.getTypeOfExpertise() === 'ТКЭД ден.') {
         assignedExps.TCED += 1
+        executorExps.TCED['Всего'] += 1
         if (item.getResult() === 'Результативная') {
           resultExps.TCED += 1
           resultExps.Total += 1
         }
+        if (item.getExecutor() === 'Польченко Т.В.') {
+          executorExps.TCED['Польченко Т.В.'] += 1
+          executorExps.Total['Польченко Т.В.'] += 1
+        }
+        if (item.getExecutor() === 'Поволодцкий Д.Г.') {
+          executorExps.TCED['Поволодцкий Д.Г.'] += 1
+          executorExps.Total['Поволодцкий Д.Г.'] += 1
+        }
+        if (item.getExecutor() === 'Васильев И.С.') {
+          executorExps.TCED['Васильев И.С.'] += 1
+          executorExps.Total['Васильев И.С.'] += 1
+        }
+        if (item.getExecutor() === 'Арзяков Д.Н.') {
+          executorExps.TCED['Арзяков Д.Н.'] += 1
+          executorExps.Total['Арзяков Д.Н.'] += 1
+        }
+        if (item.getExecutor() === 'Халилов Р.Н.') {
+          executorExps.TCED['Халилов Р.Н.'] += 1
+          executorExps.Total['Халилов Р.Н.'] += 1
+        }
+        if (item.getExecutor() === 'Балабанов А.А.') {
+          executorExps.TCED['Балабанов А.А.'] += 1
+          executorExps.Total['Балабанов А.А.'] += 1
+        }
+        if (item.getExecutor() === 'Дружинина Е.Ю.') {
+          executorExps.TCED['Дружинина Е.Ю.'] += 1
+          executorExps.Total['Дружинина Е.Ю.'] += 1
+        }
+        if (item.getExecutor() === 'Еноткин А.А.') {
+          executorExps.TCED['Еноткин А.А.'] += 1
+          executorExps.Total['Еноткин А.А.'] += 1
+        }
+        if (item.getExecutor() === 'Киселев А.С.') {
+          executorExps.TCED['Киселев А.С.'] += 1
+          executorExps.Total['Киселев А.С.'] += 1
+        }
+        if (item.getExecutor() === 'Марчук В.А.') {
+          executorExps.TCED['Марчук В.А.'] += 1
+          executorExps.Total['Марчук В.А.'] += 1
+        }
+        if (item.getExecutor() === 'Черногоров А.Ю.') {
+          executorExps.TCED['Черногоров А.Ю.'] += 1
+          executorExps.Total['Черногоров А.Ю.'] += 1
+        }
       }
       if (item.getTypeOfExpertise() === 'Портретная') {
         assignedExps.Portrait += 1
+        executorExps.Total['Всего'] +=1
         if (item.getResult() === 'Результативная') {
           resultExps.Portrait += 1
           resultExps.Total += 1
+        }
+        if (item.getExecutor() === 'Польченко Т.В.') {
+          executorExps.Portrait['Польченко Т.В.'] += 1
+          executorExps.Total['Польченко Т.В.'] += 1
+        }
+        if (item.getExecutor() === 'Поволодцкий Д.Г.') {
+          executorExps.Portrait['Поволодцкий Д.Г.'] += 1
+          executorExps.Total['Поволодцкий Д.Г.'] += 1
+        }
+        if (item.getExecutor() === 'Васильев И.С.') {
+          executorExps.Portrait['Васильев И.С.'] += 1
+          executorExps.Total['Васильев И.С.'] += 1
+        }
+        if (item.getExecutor() === 'Арзяков Д.Н.') {
+          executorExps.Portrait['Арзяков Д.Н.'] += 1
+          executorExps.Total['Арзяков Д.Н.'] += 1
+        }
+        if (item.getExecutor() === 'Халилов Р.Н.') {
+          executorExps.Portrait['Халилов Р.Н.'] += 1
+          executorExps.Total['Халилов Р.Н.'] += 1
+        }
+        if (item.getExecutor() === 'Балабанов А.А.') {
+          executorExps.Portrait['Балабанов А.А.'] += 1
+          executorExps.Total['Балабанов А.А.'] += 1
+        }
+        if (item.getExecutor() === 'Дружинина Е.Ю.') {
+          executorExps.Portrait['Дружинина Е.Ю.'] += 1
+          executorExps.Total['Дружинина Е.Ю.'] += 1
+        }
+        if (item.getExecutor() === 'Еноткин А.А.') {
+          executorExps.Portrait['Еноткин А.А.'] += 1
+          executorExps.Total['Еноткин А.А.'] += 1
+        }
+        if (item.getExecutor() === 'Киселев А.С.') {
+          executorExps.Portrait['Киселев А.С.'] += 1
+          executorExps.Total['Киселев А.С.'] += 1
+        }
+        if (item.getExecutor() === 'Марчук В.А.') {
+          executorExps.Portrait['Марчук В.А.'] += 1
+          executorExps.Total['Марчук В.А.'] += 1
+        }
+        if (item.getExecutor() === 'Черногоров А.Ю.') {
+          executorExps.Portrait['Черногоров А.Ю.'] += 1
+          executorExps.Total['Черногоров А.Ю.'] += 1
         }
       }
 
@@ -189,7 +397,43 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
       }
       if (item.getDateVerificationStart() !== '') {
         articleExps.Verifications += 1
+        executorExps.Verifications['Всего'] += 1
+        if (item.getVerificationExecutor() === 'Польченко Т.В.') {
+          executorExps.Verifications['Польченко Т.В.'] += 1
+        }
+        if (item.getExecutor() === 'Поволодцкий Д.Г.') {
+          executorExps.Verifications['Поволодцкий Д.Г.'] += 1
+        }
+        if (item.getExecutor() === 'Васильев И.С.') {
+          executorExps.Verifications['Васильев И.С.'] += 1
+        }
+        if (item.getExecutor() === 'Арзяков Д.Н.') {
+          executorExps.Verifications['Арзяков Д.Н.'] += 1
+        }
+        if (item.getExecutor() === 'Халилов Р.Н.') {
+          executorExps.Verifications['Халилов Р.Н.'] += 1
+        }
+        if (item.getExecutor() === 'Балабанов А.А.') {
+          executorExps.Verifications['Балабанов А.А.'] += 1
+        }
+        if (item.getExecutor() === 'Дружинина Е.Ю.') {
+          executorExps.Verifications['Дружинина Е.Ю.'] += 1
+        }
+        if (item.getExecutor() === 'Еноткин А.А.') {
+          executorExps.Verifications['Еноткин А.А.'] += 1
+        }
+        if (item.getExecutor() === 'Киселев А.С.') {
+          executorExps.Verifications['Киселев А.С.'] += 1
+        }
+        if (item.getExecutor() === 'Марчук В.А.') {
+          executorExps.Verifications['Марчук В.А.'] += 1
+        }
+        if (item.getExecutor() === 'Черногоров А.Ю.') {
+          executorExps.Verifications['Черногоров А.Ю.'] += 1
+        }
       }
+
+
     })
 
     report.setAssignedHandwritingExps(assignedExps.Handwriting.toString())
@@ -201,15 +445,122 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
     report.setResultPortraitExps(resultExps.Portrait.toString())
     report.setResultTotalExps(resultExps.Total.toString())
     
-    report.setArticleExpsHandwriting(articleExps.Handwriting['Всего'].toString(), articleExps.Handwriting['ст 101'].toString(), articleExps.Handwriting['ст 105'].toString(), articleExps.Handwriting['ст 158,159,160'].toString(), articleExps.Handwriting['ст 186,187'].toString(), articleExps.Handwriting['ст 222'].toString(), articleExps.Handwriting['ст 264'].toString())
+    report.setArticleExpsHandwriting(
+      articleExps.Handwriting['Всего'].toString(),
+      articleExps.Handwriting['ст 101'].toString(),
+      articleExps.Handwriting['ст 105'].toString(),
+      articleExps.Handwriting['ст 158,159,160'].toString(),
+      articleExps.Handwriting['ст 186,187'].toString(),
+      articleExps.Handwriting['ст 222'].toString(),
+      articleExps.Handwriting['ст 264'].toString()
+    )
     
-    report.setArticleExpsTCED(articleExps.TCED['Всего'].toString(), articleExps.TCED['ст 101'].toString(), articleExps.TCED['ст 105'].toString(), articleExps.TCED['ст 158,159,160'].toString(), articleExps.TCED['ст 186,187'].toString(), articleExps.TCED['ст 222'].toString(), articleExps.TCED['ст 264'].toString())
+    report.setArticleExpsTCED(
+      articleExps.TCED['Всего'].toString(),
+      articleExps.TCED['ст 101'].toString(),
+      articleExps.TCED['ст 105'].toString(),
+      articleExps.TCED['ст 158,159,160'].toString(),
+      articleExps.TCED['ст 186,187'].toString(),
+      articleExps.TCED['ст 222'].toString(),
+      articleExps.TCED['ст 264'].toString()
+    )
     
-    report.setArticleExpsPortrait(articleExps.Portrait['Всего'].toString(), articleExps.Portrait['ст 101'].toString(), articleExps.Portrait['ст 105'].toString(), articleExps.Portrait['ст 158,159,160'].toString(), articleExps.Portrait['ст 186,187'].toString(), articleExps.Portrait['ст 222'].toString(), articleExps.Portrait['ст 264'].toString())
+    report.setArticleExpsPortrait(
+      articleExps.Portrait['Всего'].toString(),
+      articleExps.Portrait['ст 101'].toString(),
+      articleExps.Portrait['ст 105'].toString(),
+      articleExps.Portrait['ст 158,159,160'].toString(),
+      articleExps.Portrait['ст 186,187'].toString(),
+      articleExps.Portrait['ст 222'].toString(),
+      articleExps.Portrait['ст 264'].toString()
+    )
 
     report.setArticleExpsVerifications(articleExps.Verifications.toString())
     
-    report.setArticleExpsTotal(articleExps.Total['Всего'].toString(), articleExps.Total['ст 101'].toString(), articleExps.Total['ст 105'].toString(), articleExps.Total['ст 158,159,160'].toString(), articleExps.Total['ст 186,187'].toString(), articleExps.Total['ст 222'].toString(), articleExps.Total['ст 264'].toString())
+    report.setArticleExpsTotal(
+      articleExps.Total['Всего'].toString(),
+      articleExps.Total['ст 101'].toString(),
+      articleExps.Total['ст 105'].toString(),
+      articleExps.Total['ст 158,159,160'].toString(),
+      articleExps.Total['ст 186,187'].toString(),
+      articleExps.Total['ст 222'].toString(),
+      articleExps.Total['ст 264'].toString()
+    )
+
+    report.setExecutorExpsHandwriting(
+      executorExps.Handwriting['Всего'].toString(),
+      executorExps.Handwriting['Польченко Т.В.'].toString(),
+      executorExps.Handwriting['Поволодцкий Д.Г.'].toString(),
+      executorExps.Handwriting['Васильев И.С.'].toString(),
+      executorExps.Handwriting['Арзяков Д.Н.'].toString(),
+      executorExps.Handwriting['Халилов Р.Н.'].toString(),
+      executorExps.Handwriting['Балабанов А.А.'].toString(),
+      executorExps.Handwriting['Дружинина Е.Ю.'].toString(),
+      executorExps.Handwriting['Еноткин А.А.'].toString(),
+      executorExps.Handwriting['Киселев А.С.'].toString(),
+      executorExps.Handwriting['Марчук В.А.'].toString(),
+      executorExps.Handwriting['Черногоров А.Ю.'].toString()
+    )
+
+    report.setExecutorExpsTCED(
+      executorExps.TCED['Всего'].toString(),
+      executorExps.TCED['Польченко Т.В.'].toString(),
+      executorExps.TCED['Поволодцкий Д.Г.'].toString(),
+      executorExps.TCED['Васильев И.С.'].toString(),
+      executorExps.TCED['Арзяков Д.Н.'].toString(),
+      executorExps.TCED['Халилов Р.Н.'].toString(),
+      executorExps.TCED['Балабанов А.А.'].toString(),
+      executorExps.TCED['Дружинина Е.Ю.'].toString(),
+      executorExps.TCED['Еноткин А.А.'].toString(),
+      executorExps.TCED['Киселев А.С.'].toString(),
+      executorExps.TCED['Марчук В.А.'].toString(),
+      executorExps.TCED['Черногоров А.Ю.'].toString()
+    )
+
+    report.setExecutorExpsPortrait(
+      executorExps.Portrait['Всего'].toString(),
+      executorExps.Portrait['Польченко Т.В.'].toString(),
+      executorExps.Portrait['Поволодцкий Д.Г.'].toString(),
+      executorExps.Portrait['Васильев И.С.'].toString(),
+      executorExps.Portrait['Арзяков Д.Н.'].toString(),
+      executorExps.Portrait['Халилов Р.Н.'].toString(),
+      executorExps.Portrait['Балабанов А.А.'].toString(),
+      executorExps.Portrait['Дружинина Е.Ю.'].toString(),
+      executorExps.Portrait['Еноткин А.А.'].toString(),
+      executorExps.Portrait['Киселев А.С.'].toString(),
+      executorExps.Portrait['Марчук В.А.'].toString(),
+      executorExps.Portrait['Черногоров А.Ю.'].toString()
+    )
+
+    report.setExecutorExpsVerifications(
+      executorExps.Verifications['Всего'].toString(),
+      executorExps.Verifications['Польченко Т.В.'].toString(),
+      executorExps.Verifications['Поволодцкий Д.Г.'].toString(),
+      executorExps.Verifications['Васильев И.С.'].toString(),
+      executorExps.Verifications['Арзяков Д.Н.'].toString(),
+      executorExps.Verifications['Халилов Р.Н.'].toString(),
+      executorExps.Verifications['Балабанов А.А.'].toString(),
+      executorExps.Verifications['Дружинина Е.Ю.'].toString(),
+      executorExps.Verifications['Еноткин А.А.'].toString(),
+      executorExps.Verifications['Киселев А.С.'].toString(),
+      executorExps.Verifications['Марчук В.А.'].toString(),
+      executorExps.Verifications['Черногоров А.Ю.'].toString()
+    )
+
+    report.setExecutorExpsTotal(
+      executorExps.Total['Всего'].toString(),
+      executorExps.Total['Польченко Т.В.'].toString(),
+      executorExps.Total['Поволодцкий Д.Г.'].toString(),
+      executorExps.Total['Васильев И.С.'].toString(),
+      executorExps.Total['Арзяков Д.Н.'].toString(),
+      executorExps.Total['Халилов Р.Н.'].toString(),
+      executorExps.Total['Балабанов А.А.'].toString(),
+      executorExps.Total['Дружинина Е.Ю.'].toString(),
+      executorExps.Total['Еноткин А.А.'].toString(),
+      executorExps.Total['Киселев А.С.'].toString(),
+      executorExps.Total['Марчук В.А.'].toString(),
+      executorExps.Total['Черногоров А.Ю.'].toString()
+    )
 
     return report
   }
@@ -323,11 +674,11 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
         <InfoTextVertical text="Проверок" />
         <InfoSeparator />
         <InfoText text="Всего:" />
-        <InfoText text="100" />
-        <InfoText text="18" />
-        <InfoText text="54" />
-        <InfoText text="28" />
-        <InfoText text="153" />
+        <InfoText text={report.getExecutorExpsTotal('Всего')} />
+        <InfoText text={report.getExecutorExpsHandwriting('Всего')} />
+        <InfoText text={report.getExecutorExpsTCED('Всего')} />
+        <InfoText text={report.getExecutorExpsPortrait('Всего')} />
+        <InfoText text={report.getExecutorExpsVerifications('Всего')} />
         <InfoSeparator />
         <InfoText text="Польченко Т.В.:" />
         <InfoText text="10" />

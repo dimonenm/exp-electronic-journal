@@ -66,61 +66,61 @@ const Input: FC<IInputProps> = ({
   let input
   if (type === 'text') {
     if (name === 'id')
-      input = <input type="text" className='input-text' defaultValue={value} onChange={(event) => { onChangeIdHandler?.(event.target.value) }} />
+      input = <input type="text" className='input-text' value={value} onChange={(event) => { onChangeIdHandler?.(event.target.value) }} />
     if (name === 'numberOfMaterial')
-      input = <input type="text" className='input-text' defaultValue={value} onChange={(event) => { onChangeNumberOfMaterialHandler?.(event.target.value) }} />
+      input = <input type="text" className='input-text' value={value} onChange={(event) => { onChangeNumberOfMaterialHandler?.(event.target.value) }} />
     if (name === 'valueOfProlongation')
-      input = <input type="text" className='input-text' defaultValue={value} onChange={(event) => { onChangeValueOfProlongationHandler?.(event.target.value) }} />
+      input = <input type="text" className='input-text' value={value} onChange={(event) => { onChangeValueOfProlongationHandler?.(event.target.value) }} />
     if (name === 'numberVerification')
-      input = <input type="text" className='input-text' defaultValue={value} onChange={(event) => { onChangeNumberVerificationHandler?.(event.target.value) }} />
+      input = <input type="text" className='input-text' value={value} onChange={(event) => { onChangeNumberVerificationHandler?.(event.target.value) }} />
     if (name === 'verificationNumberOfMaterial')
-      input = <input type="text" className='input-text' defaultValue={value} onChange={(event) => { onChangeVerificationNumberOfMaterialHandler?.(event.target.value) }} />
+      input = <input type="text" className='input-text' value={value} onChange={(event) => { onChangeVerificationNumberOfMaterialHandler?.(event.target.value) }} />
   }
   if (type === 'date') {
     if (name === 'dateOfReceipt') {
-      input = <input type="date" className='input-date' defaultValue={value} onChange={(event) => {
+      input = <input type="date" className='input-date' value={value} onChange={(event) => {
         onChangDateOfReceiptHandler?.(event.target.value)
       }} />
     }
     if (name === 'datePetitionStart') {
-      input = <input type="date" className='input-date' defaultValue={value} onChange={(event) => {
+      input = <input type="date" className='input-date' value={value} onChange={(event) => {
         onChangeDatePetitionStartHandler?.(event.target.value)
       }} />
     }
     if (name === 'datePetitionEnd') {
-      input = <input type="date" className='input-date' defaultValue={value} onChange={(event) => {
+      input = <input type="date" className='input-date' value={value} onChange={(event) => {
         onChangeDatePetitionEndHandler?.(event.target.value)
       }} />
     }
     if (name === 'dateProlongationStart') {
-      input = <input type="date" className='input-date' defaultValue={value} onChange={(event) => {
+      input = <input type="date" className='input-date' value={value} onChange={(event) => {
         onChangeDateProlongationStartHandler?.(event.target.value)
       }} />
     }
     if (name === 'dateExpEnd') {
-      input = <input type="date" className='input-date' defaultValue={value} onChange={(event) => {
+      input = <input type="date" className='input-date' value={value} onChange={(event) => {
         onChangeDateExpEndHandler?.(event.target.value)
       }} />
     }
     if (name === 'dateExpComplete') {
-      input = <input type="date" className='input-date' defaultValue={value} onChange={(event) => {
+      input = <input type="date" className='input-date' value={value} onChange={(event) => {
         onChangeDateExpCompleteHandler?.(event.target.value)
       }} />
     }
     if (name === 'dateVerificationStart') {
-      input = <input type="date" className='input-date' defaultValue={value} onChange={(event) => {
+      input = <input type="date" className='input-date' value={value} onChange={(event) => {
         onChangeDateVerificationStartHandler?.(event.target.value)
       }} />
     }
     if (name === 'dateVerificationEnd') {
-      input = <input type="date" className='input-date' defaultValue={value} onChange={(event) => {
+      input = <input type="date" className='input-date' value={value} onChange={(event) => {
         onChangeDateVerificationEndHandler?.(event.target.value)
       }} />
     }
   }
   if (type === 'select') {
     if (listName === 'typeOfService') {
-      input = <select className='select' defaultValue={value} onChange={(event) => {
+      input = <select className='select' value={value} onChange={(event) => {
         onChangeTypeOfServiceHandler?.(event.target.value)
       }}>
         <option>не указано</option>
@@ -132,7 +132,7 @@ const Input: FC<IInputProps> = ({
     }
     if (listName === 'unitOfService') {
       if (listType === 'police') {
-        input = <select className='select' defaultValue={value} onChange={(event) => {
+        input = <select className='select' value={value} onChange={(event) => {
           onChangeUnitOfServiceHandler?.(event.target.value)
         }}>
           <option>не указано</option>
@@ -170,7 +170,7 @@ const Input: FC<IInputProps> = ({
         </select>
       }
       if (listType === 'investigation') {
-        input = <select className='select' defaultValue={value} onChange={(event) => {
+        input = <select className='select' value={value} onChange={(event) => {
           onChangeUnitOfServiceHandler?.(event.target.value)
         }}>
           <option>не указано</option>
@@ -204,7 +204,7 @@ const Input: FC<IInputProps> = ({
       }
     }
     if (listName === 'typeOfMaterial') {
-      input = <select className='select' defaultValue={value} onChange={(event) => {
+      input = <select className='select' value={value} onChange={(event) => {
         onChangeTypeOfMaterialHandler?.(event.target.value)
       }}>
         <option>не указано</option>
@@ -214,7 +214,7 @@ const Input: FC<IInputProps> = ({
       </select>
     }
     if (listName === 'article') {
-      input = <select className='select' defaultValue={value} onChange={(event) => {
+      input = <select className='select' value={value} onChange={(event) => {
         onChangeArticleHandler?.(event.target.value)
       }} >
         <option>не указано</option>
@@ -227,7 +227,7 @@ const Input: FC<IInputProps> = ({
       </select>
     }
     if (listName === 'typeOfExpertise') {
-      input = <select className='select' defaultValue={value} onChange={(event) => {
+      input = <select className='select' value={value} onChange={(event) => {
         onChangeTypeOfExpertiseHandler?.(event.target.value)
       }}>
         <option>не указано</option>
@@ -238,7 +238,7 @@ const Input: FC<IInputProps> = ({
       </select>
     }
     if (listName === 'difficultOfExpertise') {
-      input = <select className='select' defaultValue={value} onChange={(event) => {
+      input = <select className='select' value={value} onChange={(event) => {
         onChangeDifficultOfExpertiseHandler?.(event.target.value)
       }}>
         <option>не указано</option>
@@ -248,7 +248,7 @@ const Input: FC<IInputProps> = ({
       </select>
     }
     if (listName === 'executor') {
-      input = <select className='select' defaultValue={value} onChange={(event) => {
+      input = <select className='select' value={value} onChange={(event) => {
         onChangeExecutorHandler?.(event.target.value)
       }}>
         <option>не указано</option>
@@ -266,7 +266,7 @@ const Input: FC<IInputProps> = ({
       </select>
     }
     if (listName === 'result') {
-      input = <select className='select' defaultValue={value} onChange={(event) => {
+      input = <select className='select' value={value} onChange={(event) => {
         onChangeResultHandler?.(event.target.value)
       }}>
         <option>не указано</option>
@@ -277,7 +277,7 @@ const Input: FC<IInputProps> = ({
       </select>
     }
     if (listName === 'verificationExecutor') {
-      input = <select className='select' defaultValue={value} onChange={(event) => {
+      input = <select className='select' value={value} onChange={(event) => {
         onChangeVerificationExecutorHandler?.(event.target.value)
       }}>
         <option>не указано</option>
@@ -295,7 +295,7 @@ const Input: FC<IInputProps> = ({
       </select>
     }
     if (listName === 'verificationResult') {
-      input = <select className='select' defaultValue={value} onChange={(event) => {
+      input = <select className='select' value={value} onChange={(event) => {
         onChangeVerificationResultHandler?.(event.target.value)
       }}>
         <option>не указано</option>

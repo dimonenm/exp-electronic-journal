@@ -2,10 +2,11 @@ import React, { FC } from 'react';
 import ModalCreate from './ModalCreate';
 import ModalUpdate from './ModalUpdate';
 import ModalSearch from './ModalSearch';
-import './Modal.scss'
 import { IModal } from '../types/types';
 import Exp from '../entities/Exp';
 import SearchExp from '../entities/SearchExp';
+import './Modal.scss'
+import ModalInfo from './ModalInfo';
 
 interface ModalProps {
   type: string
@@ -22,7 +23,7 @@ const Modal: FC<ModalProps> = ({ type, idOfExp, dbExps, searchExp, searchArr, se
 
   if (type === 'create') {
     return (
-      <div className='modal-create'>
+      <div className='modal modal-create'>
         <ModalCreate
           dbExps={dbExps}
           setDbExps={setDbExps}
@@ -31,9 +32,9 @@ const Modal: FC<ModalProps> = ({ type, idOfExp, dbExps, searchExp, searchArr, se
       </div>
     );
   }
-  if (type === 'update') {    
+  if (type === 'update') {
     return (
-      <div className='modal-update'>
+      <div className='modal modal-update'>
         <ModalUpdate
           dbExps={dbExps}
           idOfExp={idOfExp}
@@ -44,9 +45,9 @@ const Modal: FC<ModalProps> = ({ type, idOfExp, dbExps, searchExp, searchArr, se
     );
   }
   if (type === 'search') {
-    
+
     return (
-      <div className='modal-search'>
+      <div className='modal modal-search'>
         <ModalSearch
           searchExp={searchExp}
           searchArr={searchArr}
@@ -58,14 +59,17 @@ const Modal: FC<ModalProps> = ({ type, idOfExp, dbExps, searchExp, searchArr, se
   }
   if (type === 'info') {
     return (
-      <div className='modal-info'>
-        info
+      <div className='modal modal-info'>
+        <ModalInfo
+          dbExps={dbExps}
+          searchArr={searchArr}
+        />
       </div>
     );
   }
   if (type === 'hidden') {
     return (
-      <div className='modal-hidden'></div>
+      <div className='modal modal-hidden'></div>
     );
   }
   return null

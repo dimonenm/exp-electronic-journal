@@ -146,10 +146,11 @@ const ModalSearch: FC<ModalSearchProps> = ({ searchExp, searchArr, setModal, set
   }
   function onClickBtnClearHandler(): void {
     setSearchExp(new SearchExp())
-    setModal({ type: null, idOfExp: null })
-    setTimeout(() => {
-      setModal({ type: 'search', idOfExp: null })
-    }, 200)
+    setModal({ type: 'search', idOfExp: null })
+    // setModal({ type: null, idOfExp: null })
+    // setTimeout(() => {
+    //   setModal({ type: 'search', idOfExp: null })
+    // }, 200)
   }
 
   if (searchExp && searchExp.getTypeOfService() === 'МВД') {

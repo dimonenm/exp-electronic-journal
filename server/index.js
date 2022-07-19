@@ -17,12 +17,14 @@ app.get("/", (req, res) => {
 
 app.get("/get-db", (req, res) => {
     fs.readFile("./db/db.json", { encoding: 'utf-8' }, (error, data) => {
-        res.send(data)
+        if (error) {
+            console.log(error);
+        } else {
+            res.send(data)
+        }
     })
-    // res.send("строка")
 })
 app.post("/set-db", (req, res) => {
-
     if (!req.body) {
         res.send("данные не поступили")
     } else {
@@ -38,7 +40,7 @@ app.post("/set-db", (req, res) => {
         }
     })
 
-   
+
 })
 
 app.listen(PORT, () => { console.log("сервер запущен"); })

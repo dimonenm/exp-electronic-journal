@@ -62,7 +62,7 @@ const Input: FC<IInputProps> = ({
   onChangeNumberVerificationHandler,
   onChangeVerificationNumberOfMaterialHandler,
   onChangeVerificationExecutorHandler,
-  onChangeVerificationResultHandler}) => {
+  onChangeVerificationResultHandler}, ref) => {
   let input
   if (type === 'text') {
     if (name === 'id')
@@ -231,10 +231,10 @@ const Input: FC<IInputProps> = ({
         onChangeTypeOfExpertiseHandler?.(event.target.value)
       }}>
         <option>не указано</option>
-        <option>Портретная</option>
         <option>Почерковедческая</option>
         <option>ТКЭД общ.</option>
         <option>ТКЭД ден.</option>
+        <option>Портретная</option>
       </select>
     }
     if (listName === 'difficultOfExpertise') {
@@ -322,6 +322,6 @@ const Input: FC<IInputProps> = ({
       {input}
     </div>
   );
-};
+}
 
 export default Input;

@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState} from 'react';
 import ModalTitle from './ModalTitle';
 import Input from './Input';
 import ModalButton from './ModalButton';
@@ -117,6 +117,7 @@ const ModalCreate: FC<ModalCreateProps> = ({ dbExps, setDbExps, setModal }) => {
     setExpStorage(localExp)
   }
   function onClickBtnAddHandler(): void {
+    
     const localExpArr = [...dbExps]
     let isUniqId = true
     localExpArr.forEach((item) => {
@@ -126,7 +127,11 @@ const ModalCreate: FC<ModalCreateProps> = ({ dbExps, setDbExps, setModal }) => {
       localExpArr.push(expStorage);
       setDbExps?.(localExpArr)
       setExpStorage(new Exp(undefined, `${localExpArr.length + 1}`))
-      setModal({ type: null, idOfExp: null })
+      // setModal({ type: null, idOfExp: null })
+      setModal({ type: 'create', idOfExp: null })
+      // setTimeout(() => {
+      //   setModal({type: 'create', idOfExp: null})
+      // }, 0)
     }
   }
   function onClickBtnCancelHandler(): void {
@@ -135,16 +140,16 @@ const ModalCreate: FC<ModalCreateProps> = ({ dbExps, setDbExps, setModal }) => {
   }
 
   if (expStorage.getTypeOfService() === 'МВД') {
-    unitOfService = <Input type='select' title='Орган инициатора' name='unitOfService' listName='unitOfService' listType='police' onChangeUnitOfServiceHandler={onChangeUnitOfServiceHandler} />
+    unitOfService = <Input type='select' title='Орган инициатора' name='unitOfService' value={`${expStorage?.getUnitOfService()}`} listName='unitOfService' listType='police' onChangeUnitOfServiceHandler={onChangeUnitOfServiceHandler} />
   } else if (expStorage.getTypeOfService() === 'ГСУ СК') {
-    unitOfService = <Input type='select' title='Орган инициатора' name='unitOfService' listName='unitOfService' listType='investigation' onChangeUnitOfServiceHandler={onChangeUnitOfServiceHandler} />
+    unitOfService = <Input type='select' title='Орган инициатора' name='unitOfService' value={`${expStorage?.getUnitOfService()}`} listName='unitOfService' listType='investigation' onChangeUnitOfServiceHandler={onChangeUnitOfServiceHandler} />
   }
   else {
     unitOfService = <Input type='empty' title='empty' name='empty' />
   }
 
   if (expStorage.getTypeOfMaterial() === 'УД') {
-    article = <Input type='select' title='Статья' name='article' listName='article' onChangeArticleHandler={onChangeArticleHandler} />
+    article = <Input type='select' title='Статья' name='article' value={`${expStorage?.getArticle()}`} listName='article' onChangeArticleHandler={onChangeArticleHandler} />
   } else {
     article = <Input type='empty' title='empty' name='empty' />
   }
@@ -152,22 +157,22 @@ const ModalCreate: FC<ModalCreateProps> = ({ dbExps, setDbExps, setModal }) => {
     <>
       <ModalTitle>Создание новой экспертизы</ModalTitle>
       <Input type='text' title='№ по порядку' name='id' value={`${expStorage.getId()}`} onChangeIdHandler={onChangeIdHandler} />
-      <Input type='date' title='Дата поступления' name='dateOfReceipt' onChangDateOfReceiptHandler={onChangDateOfReceiptHandler} />
-      <Input type='select' title='Вид службы' name='typeOfService' listName='typeOfService' onChangeTypeOfServiceHandler={onChangeTypeOfServiceHandler} />
+      <Input type='date' title='Дата поступления' name='dateOfReceipt' value={`${expStorage?.getDateOfReceipt()}`} onChangDateOfReceiptHandler={onChangDateOfReceiptHandler} />
+      <Input type='select' title='Вид службы' name='typeOfService' value={`${expStorage?.getTypeOfService()}`} listName='typeOfService' onChangeTypeOfServiceHandler={onChangeTypeOfServiceHandler} />
       {unitOfService}
-      <Input type='select' title='Вид материала' name='typeOfMaterial' listName='typeOfMaterial' onChangeTypeOfMaterialHandler={onChangeTypeOfMaterialHandler} />
-      <Input type='text' title='№ материала' name='numberOfMaterial' onChangeNumberOfMaterialHandler={onChangeNumberOfMaterialHandler} />
+      <Input type='select' title='Вид материала' name='typeOfMaterial' value={`${expStorage?.getTypeOfMaterial()}`} listName='typeOfMaterial' onChangeTypeOfMaterialHandler={onChangeTypeOfMaterialHandler} />
+      <Input type='text' title='№ материала' name='numberOfMaterial' value={`${expStorage?.getNumberOfMaterial()}`} onChangeNumberOfMaterialHandler={onChangeNumberOfMaterialHandler} />
       {article}
-      <Input type='select' title='Вид экспертизы' name='typeOfExpertise' listName='typeOfExpertise' onChangeTypeOfExpertiseHandler={onChangeTypeOfExpertiseHandler} />
-      <Input type='select' title='Сложность эксп-зы' name='difficultOfExpertise' listName='difficultOfExpertise' onChangeDifficultOfExpertiseHandler={onChangeDifficultOfExpertiseHandler} />
-      <Input type='select' title='Исполнитель' name='executor' listName='executor' onChangeExecutorHandler={onChangeExecutorHandler} />
-      <Input type='date' title='Дата вын. ходат-ва' name='datePetitionStart' onChangeDatePetitionStartHandler={onChangeDatePetitionStartHandler} />
-      <Input type='date' title='Дата удов. ходат-ва' name='datePetitionEnd' onChangeDatePetitionEndHandler={onChangeDatePetitionEndHandler} />
-      <Input type='date' title='Дата продления' name='dateProlongationStart' onChangeDateProlongationStartHandler={onChangeDateProlongationStartHandler} />
-      <Input type='text' title='Срок продления' name='valueOfProlongation' onChangeValueOfProlongationHandler={onChangeValueOfProlongationHandler} />
-      <Input type='select' title='Результат эксп-зы' name='result' listName='result' onChangeResultHandler={onChangeResultHandler} />
+      <Input type='select' title='Вид экспертизы' name='typeOfExpertise' value={`${expStorage?.getTypeOfExpertise()}`} listName='typeOfExpertise' onChangeTypeOfExpertiseHandler={onChangeTypeOfExpertiseHandler} />
+      <Input type='select' title='Сложность эксп-зы' name='difficultOfExpertise' value={`${expStorage?.getDifficult()}`} listName='difficultOfExpertise' onChangeDifficultOfExpertiseHandler={onChangeDifficultOfExpertiseHandler} />
+      <Input type='select' title='Исполнитель' name='executor' value={`${expStorage?.getExecutor()}`} listName='executor' onChangeExecutorHandler={onChangeExecutorHandler} />
+      <Input type='date' title='Дата вын. ходат-ва' name='datePetitionStart' value={`${expStorage?.getDatePetitionStart()}`} onChangeDatePetitionStartHandler={onChangeDatePetitionStartHandler} />
+      <Input type='date' title='Дата удов. ходат-ва' name='datePetitionEnd' value={`${expStorage?.getDatePetitionEnd()}`} onChangeDatePetitionEndHandler={onChangeDatePetitionEndHandler} />
+      <Input type='date' title='Дата продления' name='dateProlongationStart' value={`${expStorage?.getDateProlongationStart()}`} onChangeDateProlongationStartHandler={onChangeDateProlongationStartHandler} />
+      <Input type='text' title='Срок продления' name='valueOfProlongation' value={`${expStorage?.getValueOfProlongation()}`} onChangeValueOfProlongationHandler={onChangeValueOfProlongationHandler} />
+      <Input type='select' title='Результат эксп-зы' name='result' value={`${expStorage?.getResult()}`} listName='result' onChangeResultHandler={onChangeResultHandler} />
       <Input type='date' title='Дата окончания' name='dateExpEnd' value={`${expStorage.getDateExpEnd()}`} onChangeDateExpEndHandler={onChangeDateExpEndHandler} />
-      <Input type='date' title='Дата завершения' name='dateExpComplete' onChangeDateExpCompleteHandler={onChangeDateExpCompleteHandler} />
+      <Input type='date' title='Дата завершения' name='dateExpComplete' value={`${expStorage?.getDateExpComplete()}`} onChangeDateExpCompleteHandler={onChangeDateExpCompleteHandler} />
       <Input type='empty' title='empty' name='empty' />
       <ModalButton type='add' text='Добавить' onClickBtnAddHandler={onClickBtnAddHandler} />
       <ModalButton type='cancel' text='Отменить' onClickBtnCancelHandler={onClickBtnCancelHandler} />

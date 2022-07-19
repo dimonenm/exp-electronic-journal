@@ -75,34 +75,7 @@ const Modal = ({ type, expState }) => {
             },
             Verifications: 0
         }
-        let countUdOfPocherk = 0
-        let countUdOfTkedTotal = 0
-        let countUdOfPortret = 0
-        let countUdTotal = 0
-        let countOfUd101Pocherk = 0
-        let countOfUd101Tked = 0
-        let countOfUd101Portret = 0
-        let countOfUd101Total = 0
-        let countOfUd105Pocherk = 0
-        let countOfUd105Tked = 0
-        let countOfUd105Portret = 0
-        let countOfUd105Total = 0
-        let countOfUd158Pocherk = 0
-        let countOfUd158Tked = 0
-        let countOfUd158Portret = 0
-        let countOfUd158Total = 0
-        let countOfUd186Pocherk = 0
-        let countOfUd186Tked = 0
-        let countOfUd186Portret = 0
-        let countOfUd186Total = 0
-        let countOfUd222Pocherk = 0
-        let countOfUd222Tked = 0
-        let countOfUd222Portret = 0
-        let countOfUd222Total = 0
-        let countOfUd264Pocherk = 0
-        let countOfUd264Tked = 0
-        let countOfUd264Portret = 0
-        let countOfUd264Total = 0
+        
         let countOfPolchenkoPocherk = 0
         let countOfPolchenkoTked = 0
         let countOfPolchenkoPortret = 0
@@ -257,31 +230,7 @@ const Modal = ({ type, expState }) => {
                 }
             }
 
-            // if (item.typeOfExpertise === "ТКЭД общ." || item.typeOfExpertise === "ТКЭД ден.") {
-            //     countOfTkedTotal += 1
-            //     if (item.result === "Результативная") {
-            //         countResOfTkedTotal += 1
-            //     }
-            //     if (item.typeOfMaterial === "УД") {
-            //         countUdOfTkedTotal += 1
-            //     }
-            //     if (item.article === "ст. 101 УК РФ") {
-            //         countOfUd101Tked += 1
-            //     }
-            //     if (item.article === "ст. 105 УК РФ") {
-            //         countOfUd105Tked += 1
-            //     }
-            //     if (item.article === "ст. 158, 159, 160 УК РФ") {
-            //         countOfUd158Tked += 1
-            //     }
-            //     if (item.article === "ст. 186, 187 УК РФ") {
-            //         countOfUd186Tked += 1
-            //     }
-            //     if (item.article === "ст. 222 УК РФ") {
-            //         countOfUd222Tked += 1
-            //     }
-            //     if (item.article === "ст. 264 УК РФ") {
-            //         countOfUd264Tked += 1
+            
             //     }
             //     if (item.executor === "Польченко Т.В.") {
             //         countOfPolchenkoTked += 1

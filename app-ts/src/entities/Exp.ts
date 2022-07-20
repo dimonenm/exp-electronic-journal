@@ -191,5 +191,30 @@ export default class Exp implements IExp {
   setVerificationResult(value: string): void {
     this.verificationResult = value
   }
-
+  copyDataFromDbExp(expFromDb: any): void {
+    // this.id = expFromDb.id
+    this.setId(expFromDb.id)
+    this.setDateOfReceipt(expFromDb.dateOfReceipt)
+    this.setTypeOfService(expFromDb.typeOfService)
+    this.setUnitOfService(expFromDb.unitOfService)
+    this.setTypeOfMaterial(expFromDb.typeOfMaterial)
+    this.setNumberOfMaterial(expFromDb.numberOfMaterial)
+    this.setArticle(expFromDb.article)
+    this.setTypeOfExpertise(expFromDb.typeOfExpertise)
+    this.setExecutor(expFromDb.executor)
+    this.setDifficult(expFromDb.difficult)
+    this.setDatePetitionStart(expFromDb.datePetitionStart)
+    this.setDatePetitionEnd(expFromDb.datePetitionEnd)
+    this.setDateProlongationStart(expFromDb.dateProlongationStart)
+    this.setValueOfProlongation(expFromDb.valueOfProlongation)
+    this.setResult(expFromDb.result)
+    this.setDateExpEnd(expFromDb.dateExpEnd)
+    this.setDateExpComplete(expFromDb.dateExpComplete)
+    this.setDateVerificationStart(expFromDb.dateVerificationStart)
+    this.setDateVerificationEnd(expFromDb.dateVerificationEnd)
+    this.setNumberVerification(expFromDb.numberVerification)
+    this.setVerificationNumberOfMaterial(expFromDb.verificationNumberOfMaterial)
+    this.setVerificationExecutor(expFromDb.verificationExecutor)
+    this.setVerificationResult(expFromDb.verificationResult)
+  }
 }

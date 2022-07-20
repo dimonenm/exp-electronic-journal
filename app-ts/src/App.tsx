@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.scss'
 import Container from './containers/Container';
 import Header from './containers/Header';
@@ -11,6 +11,7 @@ import Exp from './entities/Exp';
 import Gallery from './containers/Gallery';
 import Card from './components/Card';
 import SearchExp from './entities/SearchExp';
+import { loadExpsFromDb } from './services/services';
 
 const App = () => {
 
@@ -18,12 +19,11 @@ const App = () => {
   // const [dbExps, setDbExps] = useState<Exp[]>((): Exp[] => { return addDbExps(1000) })
   const [modal, setModal] = useState<IModal>({ type: null, idOfExp: null })
   const [searchExp, setSearchExp] = useState<SearchExp>(new SearchExp())
-
-
+  
   let searchCardsArr: JSX.Element[] = []
   let searchArr: Exp[] = []
   let cardsArr: JSX.Element[] = []
-
+  
   if (searchExp.isSearchExp()) {
     searchArr = dbExps.map((item) => {
       return item
@@ -457,9 +457,23 @@ const App = () => {
     }
   }
 
-  let dbIn = fetch("http://localhost:3001/get-db").then((data) => data.json()).then(data => {
-    console.log('data in: ', data);
-  })
+  useEffect(() => {
+    // fetch("http://localhost:3001/get-db").then((data) => data.json()).then((data: []) => {
+    //   const loadedData: Exp[] = []      
+    //   data.forEach((item) => {
+    //     let newExp = new Exp()        
+    //     newExp.copyDataFromDbExp(item)
+    //     loadedData.push(newExp)
+    //   })
+    //   setDbExps(loadedData);
+    // })
+    loadExpsFromDb("http://localhost:3001/get-db").then((data) => {
+      setDbExps(data);
+    })
+  }, [])
+  // let dbIn = fetch("http://localhost:3001/get-db").then((data) => data.json()).then(data => {
+  //   console.log('data in: ', data);
+  // })
   const dbOut: Exp[] = addDbExps(20)
 
   async function postData(url = '', data = {}) {

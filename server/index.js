@@ -31,7 +31,6 @@ app.post("/set-db", (req, res) => {
         res.send(req.body)
     }
 
-
     fs.writeFile("./db/db.json", JSON.stringify(req.body), (error) => {
         if (error) {
             console.log(error);
@@ -39,8 +38,6 @@ app.post("/set-db", (req, res) => {
             res.send("данные сохранены")
         }
     })
-
-
 })
 
 app.listen(PORT, () => { console.log("сервер запущен"); })

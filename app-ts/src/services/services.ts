@@ -1,3 +1,5 @@
+import Exp from "../entities/Exp"
+
 export function dateFromUsToRu(incomingStr: string | null) {
   let result = 'н/д'
   if (incomingStr) {
@@ -25,4 +27,16 @@ export function dateAddReduceDays(incomingDate: string, countOfDays: number, plu
 }
 export function dayGenerator(from: number, to: number) {
   return (from + Math.random() * (to - from));
+}
+
+export function loadExpsFromDb(url: string){
+  return fetch(url).then((data) => data.json()).then((data: []) => {
+    const loadedData: Exp[] = []
+    data.forEach((item) => {
+      let newExp = new Exp()
+      newExp.copyDataFromDbExp(item)
+      loadedData.push(newExp)
+    })
+    return loadedData
+  })
 }

@@ -4,7 +4,7 @@ import Input from './Input';
 import ModalButton from './ModalButton';
 import { IModal } from '../types/types';
 import Exp from '../entities/Exp';
-import { dateAddReduceDays } from '../services/services';
+import { dateAddReduceDays, seveExpsFromAppDb } from '../services/services';
 
 interface ModalUpdateProps {
   dbExps: Exp[],
@@ -166,6 +166,7 @@ const ModalUpdate: FC<ModalUpdateProps> = ({ dbExps, idOfExp, setDbExps, setModa
       return item
     })
     setDbExps?.(localExpArr)
+    seveExpsFromAppDb('http://localhost:3001/set-db', localExpArr)
     setModal({ type: null, idOfExp: null })
   }
   function onClickBtnCancelHandler(): void {

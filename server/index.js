@@ -28,7 +28,7 @@ app.post("/set-db", (req, res) => {
     if (!req.body) {
         res.send("данные не поступили")
     } else {
-        res.send(req.body)
+        // res.send(req.body)
     }
 
     fs.writeFile("./db/db.json", JSON.stringify(req.body), (error) => {

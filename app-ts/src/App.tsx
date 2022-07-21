@@ -11,7 +11,7 @@ import Exp from './entities/Exp';
 import Gallery from './containers/Gallery';
 import Card from './components/Card';
 import SearchExp from './entities/SearchExp';
-import { loadExpsFromDb } from './services/services';
+import { loadExpsForAppDb } from './services/services';
 
 const App = () => {
 
@@ -269,7 +269,6 @@ const App = () => {
     }).reverse()
   }
 
-
   // генератор экспертиз для базы
   function addDbExps(count: number) {
 
@@ -458,47 +457,10 @@ const App = () => {
   }
 
   useEffect(() => {
-    // fetch("http://localhost:3001/get-db").then((data) => data.json()).then((data: []) => {
-    //   const loadedData: Exp[] = []      
-    //   data.forEach((item) => {
-    //     let newExp = new Exp()        
-    //     newExp.copyDataFromDbExp(item)
-    //     loadedData.push(newExp)
-    //   })
-    //   setDbExps(loadedData);
-    // })
-    loadExpsFromDb("http://localhost:3001/get-db").then((data) => {
+    loadExpsForAppDb("http://localhost:3001/get-db").then((data) => {
       setDbExps(data);
     })
   }, [])
-  // let dbIn = fetch("http://localhost:3001/get-db").then((data) => data.json()).then(data => {
-  //   console.log('data in: ', data);
-  // })
-  const dbOut: Exp[] = addDbExps(20)
-
-  async function postData(url = '', data = {}) {
-    // Default options are marked with *
-    const response = await fetch(url, {
-      method: 'POST', // *GET, POST, PUT, DELETE, etc.
-      mode: 'cors', // no-cors, *cors, same-origin
-      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-      credentials: 'same-origin', // include, *same-origin, omit
-      headers: {
-        'Content-Type': 'application/json'
-        // 'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      redirect: 'follow', // manual, *follow, error
-      referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-      body: JSON.stringify(data) // body data type must match "Content-Type" header
-    });
-    return response.json(); // parses JSON response into native JavaScript objects
-  }
-
-  // postData("http://localhost:3001/set-db", dbOut)
-  //   .then(data => {
-  //     console.log('data out: ', data); // JSON data parsed by `data.json()` call
-  //   });
-
 
   return (
     <Container>

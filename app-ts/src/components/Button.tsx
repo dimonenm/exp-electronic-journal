@@ -21,6 +21,11 @@ const Button: FC<IButtonProps> = ({ type, clickHendler }) => {
       <div className='btn-info' onClick={clickHendler}></div>
     );    
   }
+  if (type === 'warnings') {
+    return (
+      <div className='btn-info' onClick={clickHendler}></div>
+    );    
+  }
   return null    
 };
 

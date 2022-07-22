@@ -7,6 +7,7 @@ import Exp from '../entities/Exp';
 import SearchExp from '../entities/SearchExp';
 import './Modal.scss'
 import ModalInfo from './ModalInfo';
+import ModalWarnings from './ModalWarnings';
 
 interface ModalProps {
   type: string
@@ -61,6 +62,16 @@ const Modal: FC<ModalProps> = ({ type, idOfExp, dbExps, searchExp, searchArr, se
     return (
       <div className='modal modal-info'>
         <ModalInfo
+          dbExps={dbExps}
+          searchArr={searchArr}
+        />
+      </div>
+    );
+  }
+  if (type === 'warnings') {
+    return (
+      <div className='modal modal-warnings'>
+        <ModalWarnings
           dbExps={dbExps}
           searchArr={searchArr}
         />

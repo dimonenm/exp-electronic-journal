@@ -285,6 +285,11 @@ const App = () => {
       ...prev, type: 'update', idOfExp: number
     }))
   }
+  function galleryClickHendler(number: string | null) {
+    setModal((prev) => ({
+      ...prev, type: null, idOfExp: null
+    }))
+  }
   function searchClickHendler() {
     if (modal.type !== 'search') {
       setModal((prev) => ({
@@ -343,7 +348,7 @@ const App = () => {
           searchExp={searchExp}
           setSearchExp={setSearchExp}
         />
-        <Gallery>
+        <Gallery galleryClickHendler={galleryClickHendler}>
           {searchCardsArr.length ? searchCardsArr : cardsArr}
         </Gallery>
         <Modal

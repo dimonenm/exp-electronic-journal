@@ -1,13 +1,14 @@
 import React, { FC } from 'react';
 import "./Gallery.scss"
 
-interface GalleryProps {
+interface IGalleryProps {
+    galleryClickHendler: () => void,
     children: React.ReactNode
 }
 
-const Gallery: FC<GalleryProps> = ({ children }) => {
+const Gallery: FC<IGalleryProps> = ({ children }) => {
     return (
-        <div className='gallery'>
+        <div className='gallery' onClick={galleryClickHendler}>
             {children}
         </div>
     );

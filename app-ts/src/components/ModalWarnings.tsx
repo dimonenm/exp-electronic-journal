@@ -10,19 +10,56 @@ interface ModalWarningsProps {
 
 const ModalWarnings: FC<ModalWarningsProps> = ({ dbExps, searchArr }) => {
 
-  // let report: Report
+  let expWarningsComponentsArr: React.ReactNode[] = []
+  let petitionsWarningsComponentsArr: React.ReactNode[] = []
 
   if (searchArr?.length) {
-    // report = addReportData(searchArr)
+    searchArr.forEach((item) => {
+      console.log(item);
+    })
   } else {
-    // report = addReportData(dbExps)
+    dbExps.forEach((item) => {
+      if (item.getResult() === '' || item.getResult() === 'не указано') {
+        if (item.getDatePetitionStart() === '') {
+          const date1 = new Date(item.getDateExpEnd())
+          const date2 = new Date()
+          const daysCount = Math.floor(((Number(date1) - Number(date2)) / 1000 / 60 / 60 / 24))
+          if (daysCount <= 5 && daysCount >= 0) {
+            const dayOfWeek = daysCount === 0 ? 'дней' : daysCount === 5 ? 'дней' : daysCount === 1 ? 'день' : 'дня'
+            const text = `№${item.getId()} - ${daysCount} ${dayOfWeek} до окончания экспертизы`
+            expWarningsComponentsArr.push(<WarningsText key={item.getId()} text={text} />)            
+          }
+          if (daysCount < 0) {
+            const dayOfWeek = daysCount < -5 ? 'дней' : daysCount === -1 ? 'день' : 'дня'
+            const text = `№${item.getId()} - ${daysCount * -1} ${dayOfWeek} после окончания экспертизы`
+            expWarningsComponentsArr.push(<WarningsText key={item.getId()} text={text} />)            
+          }
+        }
+        if (item.getDatePetitionStart() !== '' && item.getDatePetitionEnd() === '' && item.getValueOfProlongation() === '') {
+          const date1 = new Date(item.getDateExpEnd())
+          const date2 = new Date()
+          const daysCount = Math.floor(((Number(date1) - Number(date2)) / 1000 / 60 / 60 / 24))
+          if (daysCount <= 3 && daysCount >= 0) {
+            const dayOfWeek = daysCount === 0 ? 'дней' : daysCount === 1 ? 'день' : 'дня'
+            const text = `№${item.getId()} - ${daysCount} ${dayOfWeek} до окончания ходатайства`
+            petitionsWarningsComponentsArr.push(<WarningsText key={item.getId()} text={text} />)            
+          }
+          if (daysCount < 0) {
+            const dayOfWeek = daysCount < -5 ? 'дней' : daysCount === -1 ? 'день' : 'дня'
+            const text = `№${item.getId()} - ${daysCount * -1} ${dayOfWeek} после окончания ходатайства`
+            petitionsWarningsComponentsArr.push(<WarningsText key={item.getId()} text={text} />)
+          }
+        }
+      }
+
+    })
   }
 
   return (
     <>
       <WarningsTitle text="Список экспертиз, требующих внимания" />
-      <WarningsText text="№13 - 5 дней до окончания экспертизы" />
-      <WarningsText text="№14 - 3 дней до окончания ходатайства" />
+      {expWarningsComponentsArr}
+      {petitionsWarningsComponentsArr}
     </>
   );
 };

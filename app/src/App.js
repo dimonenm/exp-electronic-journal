@@ -12,10 +12,11 @@ import { useState } from 'react';
 
 
 function App() {
-
+  const [pagesCount, setPagesCount] = useState(30)
   let toDay = new Date()
   const [modal, setModal] = useState({ type: null })
   const [expState] = useState(addDbExps(100))
+
   const searchParameters = { idStart: "20", idEnd: "", dateStart: "", dateEnd: "" }
   function expFilter(expArr, serchParameters) {
     let resArr = []
@@ -32,8 +33,7 @@ function App() {
 
     return resArr
   }
-  console.log("expState :", expState);
-  console.log('expFilter: ', expFilter(expState, searchParameters));
+
 
   function dayGenerator(from, to) {
     return (from + Math.random() * (to - from));
@@ -198,20 +198,44 @@ function App() {
 
 
 
-  let cardArr = expState.map(
-    (item) => {
-      let str = `поступил ${dateFromUsToRu(item.dateOfReceipt)}`
-      return (
+  // let cardArr = expState.map(
+  //   (item) => {
+  //     let str = `поступил ${dateFromUsToRu(item.dateOfReceipt)}`
+  //     return (
+  //       <Card
+  //         key={item.id}
+  //         number={`${item.id}`}
+  //         type={`${item.typeOfExpertise}`}
+  //         numberOfMaterial={`${item.numberOfMaterial}`}
+  //         dateOfIncoming={str}
+  //         dateOfComplite="окончание 00.00.2022"
+  //         executor={`${item.executor}`} result={`${item.result}`} />)
+  //   }
+  // ).reverse()
+  let cardArr = []
+  let counterIn = 0
+  for (let i = expState.length - 1; i >= 0; i--) {
+    if (counterIn <= pagesCount) {
+      let str = `поступил ${dateFromUsToRu(expState[i].dateOfReceipt)}`
+      cardArr.push(
         <Card
-          key={item.id}
-          number={`${item.id}`}
-          type={`${item.typeOfExpertise}`}
-          numberOfMaterial={`${item.numberOfMaterial}`}
+          key={expState[i].id}
+          number={`${expState[i].id}`}
+          type={`${expState[i].typeOfExpertise}`}
+          numberOfMaterial={`${expState[i].numberOfMaterial}`}
           dateOfIncoming={str}
           dateOfComplite="окончание 00.00.2022"
-          executor={`${item.executor}`} result={`${item.result}`} />)
+          executor={`${expState[i].executor}`} result={`${expState[i].result}`} />
+      )
+      counterIn += 1
+    } else {
+      counterIn = 0
+      break
     }
-  ).reverse()
+
+  }
+
+
 
   return (
     <div className="App">
@@ -227,6 +251,7 @@ function App() {
           </Menu>
           <Modal type={modal.type === 'create' ? 'create' : modal.type === 'search' ? 'search' : 'hidden'}></Modal>
           <Gallery>
+            <Btn type="more" setPagesCount={setPagesCount} />
             {cardArr}
           </Gallery>
           <Modal type={modal.type === 'info' ? 'info' : 'hidden'} expState={expState}>

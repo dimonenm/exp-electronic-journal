@@ -3,7 +3,12 @@ import "./Btn.scss"
 import axios from 'axios'
 
 
-const Btn = ({ type, setModal, modal, expState }) => {
+const Btn = ({ type, setModal, modal, expState, setPagesCount }) => {
+    function seeMoreCardsHandler() {
+        setPagesCount((pref) => {
+            return pref + 30
+        })
+    }
     function createClickHandler() {
         console.log(modal.type);
         if (modal.type !== "create") {
@@ -88,6 +93,13 @@ const Btn = ({ type, setModal, modal, expState }) => {
     if (type === "save") {
         return (
             <div className='btn' onClick={saveClickHandler}>
+                
+            </div>
+        )
+    }
+    if (type === "more") {
+        return (
+            <div className='btn-more' onClick={seeMoreCardsHandler}>
                 
             </div>
         )

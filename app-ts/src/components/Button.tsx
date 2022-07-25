@@ -3,28 +3,53 @@ import './Button.scss'
 
 interface IButtonProps {
   type: string,
+  modalType: string | null,
   clickHendler: () => void
 }
-const Button: FC<IButtonProps> = ({ type, clickHendler }) => {
+const Button: FC<IButtonProps> = ({ type, modalType, clickHendler }) => {
   if (type === 'create') {
-    return (
-      <div className='btn-create' onClick={clickHendler}></div>
-    );    
+    if (modalType === 'create') {
+      return (
+        <div className='btn btn-create-active' onClick={clickHendler}></div>
+      );    
+    } else {
+      return (
+        <div className='btn btn-create' onClick={clickHendler}></div>
+      );    
+    }
   }
   if (type === 'search') {
-    return (
-      <div className='btn-search' onClick={clickHendler}></div>
-    );    
+    if (modalType === 'search') {
+      return (
+        <div className='btn btn-search-active' onClick={clickHendler}></div>
+      );    
+    } else {
+      return (
+        <div className='btn btn-search' onClick={clickHendler}></div>
+      );    
+    }
   }
   if (type === 'info') {
-    return (
-      <div className='btn-info' onClick={clickHendler}></div>
-    );    
+    if (modalType === 'info') {
+      return (
+        <div className='btn btn-info-active' onClick={clickHendler}></div>
+      );    
+    } else {
+      return (
+        <div className='btn btn-info' onClick={clickHendler}></div>
+      );    
+    }
   }
   if (type === 'warnings') {
-    return (
-      <div className='btn-info' onClick={clickHendler}></div>
-    );    
+    if (modalType === 'warnings') {
+      return (
+        <div className='btn btn-warnings-active' onClick={clickHendler}></div>
+      );    
+    } else {
+      return (
+        <div className='btn btn-warnings' onClick={clickHendler}></div>
+      );    
+    }
   }
   return null    
 };

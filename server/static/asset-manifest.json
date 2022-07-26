@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/static/css/main.265d8f89.css",
+    "main.js": "/static/js/main.0f71035c.js",
+    "static/media/Roboto-Regular.ttf": "/static/media/Roboto-Regular.a8d6ac03c7b96b7acb62.ttf",
+    "static/media/error_FILL0_wght400_GRAD0_opsz40.svg": "/static/media/error_FILL0_wght400_GRAD0_opsz40.bd32028d3557c94f5438.svg",
+    "static/media/info_FILL0_wght400_GRAD0_opsz40.svg": "/static/media/info_FILL0_wght400_GRAD0_opsz40.0988416b0e968676f1df.svg",
+    "static/media/add_circle_FILL0_wght400_GRAD0_opsz40.svg": "/static/media/add_circle_FILL0_wght400_GRAD0_opsz40.287fc72685c7b1e4eb86.svg",
+    "index.html": "/index.html",
+    "static/media/error_FILL1_wght400_GRAD0_opsz40.svg": "/static/media/error_FILL1_wght400_GRAD0_opsz40.5df95ce346045dcdbeae.svg",
+    "static/media/info_FILL1_wght400_GRAD0_opsz40.svg": "/static/media/info_FILL1_wght400_GRAD0_opsz40.ca457393e937d5008dbe.svg",
+    "static/media/add_circle_FILL1_wght400_GRAD0_opsz40.svg": "/static/media/add_circle_FILL1_wght400_GRAD0_opsz40.15cb5d026230af8bb414.svg",
+    "static/media/search-active.svg": "/static/media/search-active.6a420ee686f4f9013b18.svg",
+    "static/media/search.svg": "/static/media/search.450b27f7e3834cdcfeb6.svg",
+    "main.265d8f89.css.map": "/static/css/main.265d8f89.css.map",
+    "main.0f71035c.js.map": "/static/js/main.0f71035c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.265d8f89.css",
+    "static/js/main.0f71035c.js"
+  ]
+}

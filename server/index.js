@@ -3,16 +3,16 @@ import express from "express"
 import fs from "fs"
 import path from "path"
 
-const __dirName = path.resolve()
+const __dirname = path.resolve()
 const PORT = 3001
 const app = express()
 
-app.use(express.json())
-
 app.use(cors())
+app.use(express.json())
+app.use(express.static(path.resolve(__dirname, 'static')));
+
 app.get("/", (req, res) => {
     console.log(req);
-    res.send("строка")
 })
 
 app.get("/get-db", (req, res) => {

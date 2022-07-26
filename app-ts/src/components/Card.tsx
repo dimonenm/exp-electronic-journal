@@ -16,7 +16,8 @@ interface IInputProps {
 const Card: FC<IInputProps> = ({ number, type, active, numberOfMaterial, dateOfIncoming, dateOfComplite, executor, result, updateClickHendler }) => {
   if (active) {
     return (
-      <div className='card card-active' onClick={() => {
+      <div className='card card-active' onClick={(event) => {
+        event.stopPropagation()
         updateClickHendler(number)
       }}>
         <div className='card-half-row'>{`№ ${number}`}</div>
@@ -30,7 +31,8 @@ const Card: FC<IInputProps> = ({ number, type, active, numberOfMaterial, dateOfI
     );
   }
   return (
-    <div className='card' onClick={() => {
+    <div className='card' onClick={(event) => {
+      event.stopPropagation()
       updateClickHendler(number)
     }}>
       <div className='card-half-row'>{`№ ${number}`}</div>

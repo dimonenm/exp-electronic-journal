@@ -285,7 +285,7 @@ const App = () => {
       ...prev, type: 'update', idOfExp: number
     }))
   }
-  function galleryClickHendler(number: string | null) {
+  function galleryClickHendler() {
     setModal((prev) => ({
       ...prev, type: null, idOfExp: null
     }))

@@ -6,7 +6,7 @@ interface IGalleryProps {
     children: React.ReactNode
 }
 
-const Gallery: FC<IGalleryProps> = ({ children }) => {
+const Gallery: FC<IGalleryProps> = ({ galleryClickHendler, children }) => {
     return (
         <div className='gallery' onClick={galleryClickHendler}>
             {children}

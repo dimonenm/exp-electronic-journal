@@ -43,7 +43,7 @@ app.post("/set-db", (req, res) => {
 
 app.listen(PORT, () => {
     console.log("сервер запущен");
-    console.log(os.networkInterfaces()['Беспроводная сеть 2'][1].address);
+    /*console.log(os.networkInterfaces()['Беспроводная сеть 2'][1].address);
     
     fs.readFile("./template/main.0f71035c.js", { encoding: 'utf-8' }, (error, data) => {
         if (error) {
@@ -74,5 +74,5 @@ app.listen(PORT, () => {
                 }    
             })
         }
-    })
+    })*/
 })

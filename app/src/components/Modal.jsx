@@ -11,14 +11,14 @@ const Modal = ({ type, expState }) => {
 
     if (type === "create") {
         return (
-            <div className='modal modal-create'>
+            <div className='modal'>
 
             </div>
         )
     }
     if (type === "search") {
         return (
-            <div className='modal modal-search'>
+            <div className='modal'>
 
             </div>
         )

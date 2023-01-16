@@ -16,6 +16,7 @@ interface ModalSearchProps{
 const ModalSearch: FC<ModalSearchProps> = ({ searchExp, searchArr, setModal, setSearchExp}) => {
 
   let unitOfService
+  let kindOfService
   let article
   let verification
 
@@ -49,6 +50,11 @@ const ModalSearch: FC<ModalSearchProps> = ({ searchExp, searchArr, setModal, set
     localExp.setUnitOfService(value)
     setSearchExp?.(localExp)
   }
+  function onChangeKindOfServiceHandler(value: string): void {
+    const localExp = new SearchExp(searchExp)
+    localExp.setKindOfService(value)
+    setSearchExp?.(localExp)
+  }
   function onChangeTypeOfMaterialHandler(value: string): void {
     const localExp = new SearchExp(searchExp)
     localExp.setTypeOfMaterial(value)
@@ -79,16 +85,6 @@ const ModalSearch: FC<ModalSearchProps> = ({ searchExp, searchArr, setModal, set
     localExp.setExecutor(value)
     setSearchExp?.(localExp)
   }
-  // function onChangeDatePetitionStartHandler(value: string): void {
-  //   const localExp = new SearchExp(searchExp)
-  //   localExp.setDatePetitionStart(value)
-  //   setSearchExp?.(localExp)
-  // }
-  // function onChangeDatePetitionEndHandler(value: string): void {
-  //   const localExp = new SearchExp(searchExp)
-  //   localExp.setDatePetitionEnd(value)
-  //   setSearchExp?.(localExp)
-  // }
   function onChangeResultHandler(value: string): void {
     const localExp = new SearchExp(searchExp)
     localExp.setResult(value)
@@ -147,14 +143,11 @@ const ModalSearch: FC<ModalSearchProps> = ({ searchExp, searchArr, setModal, set
   function onClickBtnClearHandler(): void {
     setSearchExp(new SearchExp())
     setModal({ type: 'search', idOfExp: null })
-    // setModal({ type: null, idOfExp: null })
-    // setTimeout(() => {
-    //   setModal({ type: 'search', idOfExp: null })
-    // }, 200)
   }
 
   if (searchExp && searchExp.getTypeOfService() === 'МВД') {
     unitOfService = <InputSearch type='select' title='Орган инициатора' name='unitOfService' value={`${searchExp?.getUnitOfService()}`} listName='unitOfService' listType='police' onChangeUnitOfServiceHandler={onChangeUnitOfServiceHandler} />
+    kindOfService = <InputSearch type='select' title='Подразд-е службы' name='kindOfService' value={`${searchExp?.getKindOfService()}`} listName='kindOfService' onChangeKindOfServiceHandler={onChangeKindOfServiceHandler} />
   } else if (searchExp && searchExp.getTypeOfService() === 'ГСУ СК') {
     unitOfService = <InputSearch type='select' title='Орган инициатора' name='unitOfService' value={`${searchExp?.getUnitOfService()}`} listName='unitOfService' listType='investigation' onChangeUnitOfServiceHandler={onChangeUnitOfServiceHandler} />
   } else {
@@ -194,6 +187,7 @@ const ModalSearch: FC<ModalSearchProps> = ({ searchExp, searchArr, setModal, set
       <InputSearch type='date' title='По дате пост-я по' name='dateOfReceiptEnd' value={`${searchExp?.getDateOfReceiptEnd()}`} onChangDateOfReceiptEndHandler={onChangDateOfReceiptEndHandler} />
       <InputSearch type='select' title='По виду службы' name='typeOfService' value={`${searchExp?.getTypeOfService()}`} listName='typeOfService' onChangeTypeOfServiceHandler={onChangeTypeOfServiceHandler} />
       {unitOfService}
+      {kindOfService}
       <InputSearch type='select' title='По виду материала' name='typeOfMaterial' value={`${searchExp?.getTypeOfMaterial()}`} listName='typeOfMaterial' onChangeTypeOfMaterialHandler={onChangeTypeOfMaterialHandler} />
       <InputSearch type='text' title='По № материала' name='numberOfMaterial' value={`${searchExp?.getNumberOfMaterial()}`} onChangeNumberOfMaterialHandler={onChangeNumberOfMaterialHandler} />
       {article}

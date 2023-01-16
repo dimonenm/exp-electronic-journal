@@ -17,6 +17,7 @@ const ModalCreate: FC<ModalCreateProps> = ({ dbExps, setDbExps, setModal }) => {
   const [expStorage, setExpStorage] = useState<Exp>(new Exp(undefined, `${dbExps.length + 1}`))
 
   let unitOfService
+  let kindOfService
   let article
 
   function onChangeIdHandler(value: string): void {
@@ -40,6 +41,11 @@ const ModalCreate: FC<ModalCreateProps> = ({ dbExps, setDbExps, setModal }) => {
   function onChangeUnitOfServiceHandler(value: string): void {
     const localExp = new Exp(expStorage)
     localExp.setUnitOfService(value)
+    setExpStorage(localExp)
+  }
+  function onChangeKindOfServiceHandler(value: string): void {
+    const localExp = new Exp(expStorage)
+    localExp.setKindOfService(value)
     setExpStorage(localExp)
   }
   function onChangeTypeOfMaterialHandler(value: string): void {
@@ -138,6 +144,7 @@ const ModalCreate: FC<ModalCreateProps> = ({ dbExps, setDbExps, setModal }) => {
 
   if (expStorage.getTypeOfService() === 'МВД') {
     unitOfService = <Input type='select' title='Орган инициатора' name='unitOfService' value={`${expStorage?.getUnitOfService()}`} listName='unitOfService' listType='police' onChangeUnitOfServiceHandler={onChangeUnitOfServiceHandler} />
+    kindOfService = <Input type='select' title='Подразд-е службы' name='kindOfService' value={`${expStorage?.getKindOfService()}`} listName='kindOfService' onChangeKindOfServiceHandler={onChangeKindOfServiceHandler} />
   } else if (expStorage.getTypeOfService() === 'ГСУ СК') {
     unitOfService = <Input type='select' title='Орган инициатора' name='unitOfService' value={`${expStorage?.getUnitOfService()}`} listName='unitOfService' listType='investigation' onChangeUnitOfServiceHandler={onChangeUnitOfServiceHandler} />
   }
@@ -157,6 +164,7 @@ const ModalCreate: FC<ModalCreateProps> = ({ dbExps, setDbExps, setModal }) => {
       <Input type='date' title='Дата поступления' name='dateOfReceipt' value={`${expStorage?.getDateOfReceipt()}`} onChangDateOfReceiptHandler={onChangDateOfReceiptHandler} />
       <Input type='select' title='Вид службы' name='typeOfService' value={`${expStorage?.getTypeOfService()}`} listName='typeOfService' onChangeTypeOfServiceHandler={onChangeTypeOfServiceHandler} />
       {unitOfService}
+      {kindOfService}
       <Input type='select' title='Вид материала' name='typeOfMaterial' value={`${expStorage?.getTypeOfMaterial()}`} listName='typeOfMaterial' onChangeTypeOfMaterialHandler={onChangeTypeOfMaterialHandler} />
       <Input type='text' title='№ материала' name='numberOfMaterial' value={`${expStorage?.getNumberOfMaterial()}`} onChangeNumberOfMaterialHandler={onChangeNumberOfMaterialHandler} />
       {article}

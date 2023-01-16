@@ -5,6 +5,7 @@ export default class Exp implements IExp {
   dateOfReceipt: string
   typeOfService: string
   unitOfService: string
+  kindOfService: string
   typeOfMaterial: string
   numberOfMaterial: string
   article: string
@@ -33,6 +34,7 @@ export default class Exp implements IExp {
     this.dateOfReceipt = oldExp?.getDateOfReceipt() || ''
     this.typeOfService = oldExp?.getTypeOfService() || ''
     this.unitOfService = oldExp?.getUnitOfService() || ''
+    this.kindOfService = oldExp?.getKindOfService() || ''
     this.typeOfMaterial = oldExp?.getTypeOfMaterial() || ''
     this.numberOfMaterial = oldExp?.getNumberOfMaterial() || ''
     this.article = oldExp?.getArticle() || ''
@@ -64,6 +66,9 @@ export default class Exp implements IExp {
   }
   getUnitOfService(): string {
     return this.unitOfService
+  }
+  getKindOfService(): string {
+    return this.kindOfService
   }
   getTypeOfMaterial(): string {
     return this.typeOfMaterial
@@ -134,6 +139,9 @@ export default class Exp implements IExp {
   setUnitOfService(value: string): void {
     this.unitOfService = value
   }
+  setKindOfService(value: string): void {
+    this.kindOfService = value
+  }
   setTypeOfMaterial(value: string): void {
     this.typeOfMaterial = value
   }
@@ -192,11 +200,11 @@ export default class Exp implements IExp {
     this.verificationResult = value
   }
   copyDataFromDbExp(expFromDb: any): void {
-    // this.id = expFromDb.id
     this.setId(expFromDb.id)
     this.setDateOfReceipt(expFromDb.dateOfReceipt)
     this.setTypeOfService(expFromDb.typeOfService)
     this.setUnitOfService(expFromDb.unitOfService)
+    this.setKindOfService(expFromDb.kindOfService)
     this.setTypeOfMaterial(expFromDb.typeOfMaterial)
     this.setNumberOfMaterial(expFromDb.numberOfMaterial)
     this.setArticle(expFromDb.article)

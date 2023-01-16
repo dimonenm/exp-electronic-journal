@@ -13,6 +13,7 @@ export interface IExp{
   dateOfReceipt: string,
   typeOfService: string,
   unitOfService: string,
+  kindOfService: string,
   typeOfMaterial: string,
   numberOfMaterial: string,
   article: string,

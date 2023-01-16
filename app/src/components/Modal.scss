@@ -6,17 +6,12 @@
     width: 370px;
     transition: all 500ms ease;
 }
-.modal-create {
-}
-.modal-search {
-}
 
 .modal-info {
     width: 450px;
 
     padding-left: 20px;
 
-   
     grid-template-rows: 50px repeat(4, 25px) 50px repeat(4, 25px);
     grid-template-columns: 1fr 1fr;
     overflow-y: auto;

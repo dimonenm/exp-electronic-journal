@@ -10,7 +10,6 @@ const Btn = ({ type, setModal, modal, expState, setPagesCount }) => {
         })
     }
     function createClickHandler() {
-        console.log(modal.type);
         if (modal.type !== "create") {
             setModal({ type: "create" })
         } else {
@@ -18,7 +17,6 @@ const Btn = ({ type, setModal, modal, expState, setPagesCount }) => {
         }
     }
     function searchClickHandler() {
-        console.log(modal.type);
         if (modal.type !== "search") {
             setModal({ type: "search" })
         } else {
@@ -27,7 +25,6 @@ const Btn = ({ type, setModal, modal, expState, setPagesCount }) => {
 
     }
     function infoClickHandler() {
-        console.log(modal.type);
         if (modal.type !== "info") {
             setModal({ type: "info" })
         } else {
@@ -36,17 +33,9 @@ const Btn = ({ type, setModal, modal, expState, setPagesCount }) => {
     }
     function downloadClickHandler() {
         let req = axios.get("http://localhost:3001/get-db")
-        console.log(req);
     }
     function saveClickHandler() {
-
-
-
         axios.post('http://localhost:3001/set-db', { expState })
-
-        // let str = JSON.stringify(expState)
-
-
             .then(function (response) {
                 console.log(response);
             })

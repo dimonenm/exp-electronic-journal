@@ -16,7 +16,6 @@ import { dateFromUsToRu, loadExpsForAppDb } from './services/services';
 const App = () => {
 
   const [dbExps, setDbExps] = useState<Exp[]>([])
-  // const [dbExps, setDbExps] = useState<Exp[]>((): Exp[] => { return addDbExps(1000) })
   const [modal, setModal] = useState<IModal>({ type: null, idOfExp: null })
   const [searchExp, setSearchExp] = useState<SearchExp>(new SearchExp())
   
@@ -78,6 +77,12 @@ const App = () => {
     if (searchExp.getUnitOfService() !== '' && searchExp.getUnitOfService() !== 'не указано') {
       searchArr = searchArr.filter((item) => {
         if (item.getUnitOfService() === searchExp.getUnitOfService()) return true
+        return false
+      })
+    }
+    if (searchExp.getKindOfService() !== '' && searchExp.getKindOfService() !== 'не указано') {
+      searchArr = searchArr.filter((item) => {
+        if (item.getKindOfService() === searchExp.getKindOfService()) return true
         return false
       })
     }

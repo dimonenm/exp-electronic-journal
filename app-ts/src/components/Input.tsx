@@ -12,6 +12,7 @@ interface IInputProps {
   onChangDateOfReceiptHandler?: (value: string) => void
   onChangeTypeOfServiceHandler?: (value: string) => void
   onChangeUnitOfServiceHandler?: (value: string) => void
+  onChangeKindOfServiceHandler?: (value: string) => void
   onChangeTypeOfMaterialHandler?: (value: string) => void
   onChangeNumberOfMaterialHandler?: (value: string) => void
   onChangeArticleHandler?: (value: string) => void
@@ -44,6 +45,7 @@ const Input: FC<IInputProps> = ({
   onChangDateOfReceiptHandler,
   onChangeTypeOfServiceHandler,
   onChangeUnitOfServiceHandler,
+  onChangeKindOfServiceHandler,
   onChangeTypeOfMaterialHandler,
   onChangeNumberOfMaterialHandler,
   onChangeArticleHandler,
@@ -202,6 +204,17 @@ const Input: FC<IInputProps> = ({
           <option>Красногвардейский МСО</option>
         </select>
       }
+    }
+    if (listName === 'kindOfService') {
+      input = <select className='select' value={value} onChange={(event) => {
+        onChangeKindOfServiceHandler?.(event.target.value)
+      }}>
+        <option>не указано</option>
+        <option>УУП</option>
+        <option>ОУР</option>
+        <option>ОЭБ</option>
+        <option>УКОН</option>
+      </select>
     }
     if (listName === 'typeOfMaterial') {
       input = <select className='select' value={value} onChange={(event) => {

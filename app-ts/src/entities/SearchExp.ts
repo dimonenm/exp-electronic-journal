@@ -5,6 +5,7 @@ export default class SearchExp {
   dateOfReceiptEnd: string
   typeOfService: string
   unitOfService: string
+  kindOfService: string
   typeOfMaterial: string
   numberOfMaterial: string
   article: string
@@ -34,6 +35,7 @@ export default class SearchExp {
     this.dateOfReceiptEnd = oldExp?.getDateOfReceiptEnd() || ''
     this.typeOfService = oldExp?.getTypeOfService() || ''
     this.unitOfService = oldExp?.getUnitOfService() || ''
+    this.kindOfService = oldExp?.getKindOfService() || ''
     this.typeOfMaterial = oldExp?.getTypeOfMaterial() || ''
     this.numberOfMaterial = oldExp?.getNumberOfMaterial() || ''
     this.article = oldExp?.getArticle() || ''
@@ -74,6 +76,9 @@ export default class SearchExp {
   }
   getUnitOfService(): string {
     return this.unitOfService
+  }
+  getKindOfService(): string {
+    return this.kindOfService
   }
   getTypeOfMaterial(): string {
     return this.typeOfMaterial
@@ -159,6 +164,9 @@ export default class SearchExp {
   setUnitOfService(value: string): void {
     this.unitOfService = value
   }
+  setKindOfService(value: string): void {
+    this.kindOfService = value
+  }
   setTypeOfMaterial(value: string): void {
     this.typeOfMaterial = value
   }
@@ -233,6 +241,7 @@ export default class SearchExp {
     this.dateOfReceiptEnd !== '' ||
     this.typeOfService !== '' ||
     this.unitOfService !== '' ||
+    this.kindOfService !== '' ||
     this.typeOfMaterial !== '' ||
     this.numberOfMaterial !== '' ||
     this.article !== '' ||

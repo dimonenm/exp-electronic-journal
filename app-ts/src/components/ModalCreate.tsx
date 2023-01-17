@@ -178,7 +178,7 @@ const ModalCreate: FC<ModalCreateProps> = ({ dbExps, setDbExps, setModal }) => {
       <Input type='select' title='Результат эксп-зы' name='result' value={`${expStorage?.getResult()}`} listName='result' onChangeResultHandler={onChangeResultHandler} />
       <Input type='date' title='Дата окончания' name='dateExpEnd' value={`${expStorage.getDateExpEnd()}`} onChangeDateExpEndHandler={onChangeDateExpEndHandler} />
       <Input type='date' title='Дата завершения' name='dateExpComplete' value={`${expStorage?.getDateExpComplete()}`} onChangeDateExpCompleteHandler={onChangeDateExpCompleteHandler} />
-      <Input type='empty' title='empty' name='empty' />
+      {expStorage.getTypeOfService() === 'МВД' ? null : <Input type='empty' title='empty' name='empty' />}
       <ModalButton type='add' text='Добавить' onClickBtnAddHandler={onClickBtnAddHandler} />
       <ModalButton type='cancel' text='Отменить' onClickBtnCancelHandler={onClickBtnCancelHandler} />
     </>

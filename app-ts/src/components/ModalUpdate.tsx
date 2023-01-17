@@ -233,7 +233,8 @@ const ModalUpdate: FC<ModalUpdateProps> = ({ dbExps, idOfExp, setDbExps, setModa
       <Input type='select' title='Результат эксп-зы' name='result' listName='result' value={`${expStorage?.getResult()}`} onChangeResultHandler={onChangeResultHandler} />
       <Input type='date' title='Дата окончания' name='dateExpEnd' value={`${expStorage?.getDateExpEnd()}`} onChangeDateExpEndHandler={onChangeDateExpEndHandler} />
       <Input type='date' title='Дата завершения' name='dateExpComplete' value={`${expStorage?.getDateExpComplete()}`} onChangeDateExpCompleteHandler={onChangeDateExpCompleteHandler} />
-      {verification}
+      {expStorage.getTypeOfExpertise() === 'ТКЭД ден.' ? verification : null}
+      {expStorage.getTypeOfService() !== 'МВД' ? expStorage.getTypeOfExpertise() !== 'ТКЭД ден.' ? <Input type='empty' title='empty' name='empty' /> : null : null}
       <ModalButton type='update' text='Изменить' onClickBtnUpdateHandler={onClickBtnUpdateHandler} />
       <ModalButton type='cancel' text='Отменить' onClickBtnCancelHandler={onClickBtnCancelHandler} />
     </>

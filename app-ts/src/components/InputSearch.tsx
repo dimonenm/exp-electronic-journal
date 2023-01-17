@@ -303,11 +303,9 @@ const InputSearch: FC<IInputSearchProps> = ({
         <option>Арзяков Д.Н.</option>
         <option>Халилов Р.Н.</option>
         <option>Балабанов А.А.</option>
-        <option>Дружинина Е.Ю.</option>
-        <option>Еноткин А.А.</option>
+        <option>Шулипа Е.Ю.</option>
         <option>Киселев А.С.</option>
         <option>Марчук В.А.</option>
-        <option>Черногоров А.Ю.</option>
       </select>
     }
     if (listName === 'result') {
@@ -332,11 +330,9 @@ const InputSearch: FC<IInputSearchProps> = ({
         <option>Арзяков Д.Н.</option>
         <option>Халилов Р.Н.</option>
         <option>Балабанов А.А.</option>
-        <option>Дружинина Е.Ю.</option>
-        <option>Еноткин А.А.</option>
+        <option>Шулипа Е.Ю.</option>
         <option>Киселев А.С.</option>
         <option>Марчук В.А.</option>
-        <option>Черногоров А.Ю.</option>
       </select>
     }
     if (listName === 'verificationResult') {

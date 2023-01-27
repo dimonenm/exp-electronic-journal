@@ -246,6 +246,8 @@ const InputSearch: FC<IInputSearchProps> = ({
         <option>УУП</option>
         <option>ОУР</option>
         <option>ОЭБ</option>
+        <option>СО</option>
+        <option>ОД</option>
         <option>УКОН</option>
       </select>
     }

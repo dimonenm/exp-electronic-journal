@@ -215,6 +215,7 @@ const Input: FC<IInputProps> = ({
         <option>ОУР</option>
         <option>ОЭБ</option>
         <option>СО</option>
+        <option>ОД</option>
         <option>УКОН</option>
       </select>
     }

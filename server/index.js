@@ -2,14 +2,14 @@ import cors from "cors"
 import express from "express"
 import fs from "fs"
 import path from "path"
-import os from "os"
 
 const __dirname = path.resolve()
 const PORT = 3001
 const app = express()
 
 app.use(cors())
-app.use(express.json())
+app.use(express.json({ limit: '10mb' }))
+app.use(express.urlencoded({ limit: '10mb' }))
 app.use(express.static(path.resolve(__dirname, 'static')));
 
 app.get("/get-db", (req, res) => {

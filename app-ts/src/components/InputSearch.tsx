@@ -306,6 +306,7 @@ const InputSearch: FC<IInputSearchProps> = ({
         <option>Арзяков Д.Н.</option>
         <option>Халилов Р.Н.</option>
         <option>Балабанов А.А.</option>
+        <option>Голынков Д.Н.</option>
         <option>Шулипа Е.Ю.</option>
         <option>Киселев А.С.</option>
         <option>Марчук В.А.</option>
@@ -333,6 +334,7 @@ const InputSearch: FC<IInputSearchProps> = ({
         <option>Арзяков Д.Н.</option>
         <option>Халилов Р.Н.</option>
         <option>Балабанов А.А.</option>
+        <option>Голынков Д.Н.</option>
         <option>Шулипа Е.Ю.</option>
         <option>Киселев А.С.</option>
         <option>Марчук В.А.</option>

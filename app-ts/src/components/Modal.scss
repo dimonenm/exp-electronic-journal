@@ -55,8 +55,7 @@
   width: 420px;
 
   padding: 0 10px;
-  // padding: 10px 10px 0 ;
-  grid-template-rows: 30px 10px repeat(4, 20px) 10px 30px 10px repeat(4, 20px) 10px 30px 10px 293px 10px 30px 10px 428px;
+  grid-template-rows: 30px 10px repeat(4, 20px) 10px 30px 10px repeat(4, 20px) 10px 30px 10px 335px 10px 30px 10px 428px;
   grid-template-columns: 200px 200px;
 
   &-title {
@@ -95,7 +94,7 @@
     display: grid;
     grid-column-start: 1;
     grid-column-end: 3;
-    grid-template-rows: 100px 1px 20px 1px 20px 1px 20px 1px 20px 1px 20px 1px 20px 1px 20px 1px;
+    grid-template-rows: 100px 1px 20px 1px 20px 1px 20px 1px 20px 1px 20px 1px 20px 1px 20px 1px 20px 1px 20px 1px;
     grid-template-columns: 200px repeat(5, 40px);
     row-gap: 3px;
 

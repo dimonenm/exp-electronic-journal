@@ -268,7 +268,9 @@ const InputSearch: FC<IInputSearchProps> = ({
         <option>не указано</option>
         <option>ст. 101 УК РФ</option>
         <option>ст. 105 УК РФ</option>
-        <option>ст. 158, 159, 160 УК РФ</option>
+        <option>ст. 158 УК РФ</option>
+        <option>ст. 159 УК РФ</option>
+        <option>ст. 160 УК РФ</option>
         <option>ст. 186, 187 УК РФ</option>
         <option>ст. 222 УК РФ</option>
         <option>ст. 264 УК РФ</option>

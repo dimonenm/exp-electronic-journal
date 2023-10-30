@@ -196,10 +196,6 @@ const ModalSearch: FC<ModalSearchProps> = ({ searchExp, searchArr, setModal, set
 
       <InputSearch type='select' title='По слож-ти эксп-зы' name='difficultOfExpertise' value={`${searchExp?.getDifficult()}`} listName='difficultOfExpertise' onChangeDifficultOfExpertiseHandler={onChangeDifficultOfExpertiseHandler} />
       <InputSearch type='select' title='По исполнителю' name='executor' value={`${searchExp?.getExecutor()}`} listName='executor' onChangeExecutorHandler={onChangeExecutorHandler} />
-      {/* <InputSearch type='date' title='Дата вын. ходат-ва' name='datePetitionStart' value={`${searchExp?.getDatePetitionStart()}`} onChangeDatePetitionStartHandler={onChangeDatePetitionStartHandler} />
-      <InputSearch type='date' title='Дата удов. ходат-ва' name='datePetitionEnd' value={`${searchExp?.getDatePetitionEnd()}`} onChangeDatePetitionEndHandler={onChangeDatePetitionEndHandler} /> */}
-      {/* <InputSearch type='date' title='Дата продления' name='dateProlongationStart' value={`${searchExp?.getDateProlongationStart()}`} onChangeDateProlongationStartHandler={onChangeDateProlongationStartHandler} />
-      <InputSearch type='text' title='Срок продления' name='valueOfProlongation' value={`${searchExp?.getValueOfProlongation()}`} onChangeValueOfProlongationHandler={onChangeValueOfProlongationHandler} /> */}
       <InputSearch type='select' title='По рез-ту эксп-зы' name='result' listName='result' value={`${searchExp?.getResult()}`} onChangeResultHandler={onChangeResultHandler} />
       <InputSearch type='empty' title='empty' name='empty' />
       <InputSearch type='date' title='По дате окон-я с' name='dateExpEndStart' value={`${searchExp?.getDateExpEndStart()}`} onChangeDateExpEndStartHandler={onChangeDateExpEndStartHandler} />

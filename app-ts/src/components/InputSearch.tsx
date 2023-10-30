@@ -202,6 +202,10 @@ const InputSearch: FC<IInputSearchProps> = ({
           <option>СЧСУ МВД</option>
           <option>СЧСУ</option>
           <option>ОКОН по Симферополю</option>
+          <option>ДНР</option>
+          <option>ЛНР</option>
+          <option>Херсонская область</option>
+          <option>ЛУ на транспорте</option>
         </select>
       }
       if (listType === 'investigation') {

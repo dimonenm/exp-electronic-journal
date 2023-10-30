@@ -90,6 +90,12 @@ const ModalSearch: FC<ModalSearchProps> = ({ searchExp, searchArr, setModal, set
     localExp.setResult(value)
     setSearchExp?.(localExp)
   }
+  function onChangeStatusOfExpertiseHandler(value: string): void {
+    const localExp = new SearchExp(searchExp)
+    localExp.setStatusOfExpertise(value)
+    console.log('localExp: ', localExp);
+    setSearchExp?.(localExp)
+  }
   function onChangeDateExpEndStartHandler(value: string): void {
     const localExp = new SearchExp(searchExp)
     localExp.setDateExpEndStart(value)
@@ -197,7 +203,7 @@ const ModalSearch: FC<ModalSearchProps> = ({ searchExp, searchArr, setModal, set
       <InputSearch type='select' title='По слож-ти эксп-зы' name='difficultOfExpertise' value={`${searchExp?.getDifficult()}`} listName='difficultOfExpertise' onChangeDifficultOfExpertiseHandler={onChangeDifficultOfExpertiseHandler} />
       <InputSearch type='select' title='По исполнителю' name='executor' value={`${searchExp?.getExecutor()}`} listName='executor' onChangeExecutorHandler={onChangeExecutorHandler} />
       <InputSearch type='select' title='По рез-ту эксп-зы' name='result' listName='result' value={`${searchExp?.getResult()}`} onChangeResultHandler={onChangeResultHandler} />
-      <InputSearch type='empty' title='empty' name='empty' />
+      <InputSearch type='select' title='По состоя-ю эк-зы' name='statusOfExpertise' listName='statusOfExpertise' value={`${searchExp?.getStatusOfExpertise()}`} onChangeStatusOfExpertiseHandler={onChangeStatusOfExpertiseHandler} />
       <InputSearch type='date' title='По дате окон-я с' name='dateExpEndStart' value={`${searchExp?.getDateExpEndStart()}`} onChangeDateExpEndStartHandler={onChangeDateExpEndStartHandler} />
       <InputSearch type='date' title='По дате окон-я по' name='dateExpEndEnd' value={`${searchExp?.getDateExpEndEnd()}`} onChangeDateExpEndEndHandler={onChangeDateExpEndEndHandler} />
       <InputSearch type='date' title='По дате завер-я с' name='dateExpCompleteStart' value={`${searchExp?.getDateExpCompleteStart()}`} onChangeDateExpCompleteStartHandler={onChangeDateExpCompleteStartHandler} />

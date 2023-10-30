@@ -26,6 +26,7 @@ interface IInputSearchProps {
   onChangeDateProlongationStartHandler?: (value: string) => void
   onChangeValueOfProlongationHandler?: (value: string) => void
   onChangeResultHandler?: (value: string) => void
+  onChangeStatusOfExpertiseHandler?: (value: string) => void
   onChangeDateExpEndStartHandler?: (value: string) => void
   onChangeDateExpEndEndHandler?: (value: string) => void
   onChangeDateExpCompleteStartHandler?: (value: string) => void
@@ -64,6 +65,7 @@ const InputSearch: FC<IInputSearchProps> = ({
   onChangeDateProlongationStartHandler,
   onChangeValueOfProlongationHandler,
   onChangeResultHandler,
+  onChangeStatusOfExpertiseHandler,
   onChangeDateExpEndStartHandler,
   onChangeDateExpEndEndHandler,
   onChangeDateExpCompleteStartHandler,
@@ -154,7 +156,7 @@ const InputSearch: FC<IInputSearchProps> = ({
   }
   if (type === 'select') {
     if (listName === 'typeOfService') {
-      input = <select className='select' value={value} onChange={(event) => {
+      input = <select className='select' value={value} onChange={(event: React.ChangeEvent<HTMLSelectElement>) => {
         onChangeTypeOfServiceHandler?.(event.target.value)
       }}>
         <option>не указано</option>
@@ -166,7 +168,7 @@ const InputSearch: FC<IInputSearchProps> = ({
     }
     if (listName === 'unitOfService') {
       if (listType === 'police') {
-        input = <select className='select' value={value} onChange={(event) => {
+        input = <select className='select' value={value} onChange={(event: React.ChangeEvent<HTMLSelectElement>) => {
           onChangeUnitOfServiceHandler?.(event.target.value)
         }}>
           <option>не указано</option>
@@ -243,7 +245,7 @@ const InputSearch: FC<IInputSearchProps> = ({
       }
     }
     if (listName === 'kindOfService') {
-      input = <select className='select' value={value} onChange={(event) => {
+      input = <select className='select' value={value} onChange={(event: React.ChangeEvent<HTMLSelectElement>) => {
         onChangeKindOfServiceHandler?.(event.target.value)
       }}>
         <option>не указано</option>
@@ -256,7 +258,7 @@ const InputSearch: FC<IInputSearchProps> = ({
       </select>
     }
     if (listName === 'typeOfMaterial') {
-      input = <select className='select' value={value} onChange={(event) => {
+      input = <select className='select' value={value} onChange={(event: React.ChangeEvent<HTMLSelectElement>) => {
         onChangeTypeOfMaterialHandler?.(event.target.value)
       }}>
         <option>не указано</option>
@@ -266,7 +268,7 @@ const InputSearch: FC<IInputSearchProps> = ({
       </select>
     }
     if (listName === 'article') {
-      input = <select className='select' value={value} onChange={(event) => {
+      input = <select className='select' value={value} onChange={(event: React.ChangeEvent<HTMLSelectElement>) => {
         onChangeArticleHandler?.(event.target.value)
       }} >
         <option>не указано</option>
@@ -281,7 +283,7 @@ const InputSearch: FC<IInputSearchProps> = ({
       </select>
     }
     if (listName === 'typeOfExpertise') {
-      input = <select className='select' value={value} onChange={(event) => {
+      input = <select className='select' value={value} onChange={(event: React.ChangeEvent<HTMLSelectElement>) => {
         onChangeTypeOfExpertiseHandler?.(event.target.value)
       }}>
         <option>не указано</option>
@@ -292,7 +294,7 @@ const InputSearch: FC<IInputSearchProps> = ({
       </select>
     }
     if (listName === 'difficultOfExpertise') {
-      input = <select className='select' value={value} onChange={(event) => {
+      input = <select className='select' value={value} onChange={(event: React.ChangeEvent<HTMLSelectElement>) => {
         onChangeDifficultOfExpertiseHandler?.(event.target.value)
       }}>
         <option>не указано</option>
@@ -302,7 +304,7 @@ const InputSearch: FC<IInputSearchProps> = ({
       </select>
     }
     if (listName === 'executor') {
-      input = <select className='select' value={value} onChange={(event) => {
+      input = <select className='select' value={value} onChange={(event: React.ChangeEvent<HTMLSelectElement>) => {
         onChangeExecutorHandler?.(event.target.value)
       }}>
         <option>не указано</option>
@@ -319,7 +321,7 @@ const InputSearch: FC<IInputSearchProps> = ({
       </select>
     }
     if (listName === 'result') {
-      input = <select className='select' value={value} onChange={(event) => {
+      input = <select className='select' value={value} onChange={(event: React.ChangeEvent<HTMLSelectElement>) => {
         onChangeResultHandler?.(event.target.value)
       }}>
         <option>не указано</option>
@@ -329,8 +331,18 @@ const InputSearch: FC<IInputSearchProps> = ({
         <option>Сообщение о невозм.</option>
       </select>
     }
+    if (listName === 'statusOfExpertise') {
+      input = <select className='select' value={value} onChange={(event: React.ChangeEvent<HTMLSelectElement>) => {
+        onChangeStatusOfExpertiseHandler?.(event.target.value)
+      }}>
+        <option>не указано</option>
+        <option>В производстве</option>
+        <option>На ходатайстве</option>
+        <option>На продлении</option>
+      </select>
+    }
     if (listName === 'verificationExecutor') {
-      input = <select className='select' value={value} onChange={(event) => {
+      input = <select className='select' value={value} onChange={(event: React.ChangeEvent<HTMLSelectElement>) => {
         onChangeVerificationExecutorHandler?.(event.target.value)
       }}>
         <option>не указано</option>
@@ -347,7 +359,7 @@ const InputSearch: FC<IInputSearchProps> = ({
       </select>
     }
     if (listName === 'verificationResult') {
-      input = <select className='select' value={value} onChange={(event) => {
+      input = <select className='select' value={value} onChange={(event: React.ChangeEvent<HTMLSelectElement>) => {
         onChangeVerificationResultHandler?.(event.target.value)
       }}>
         <option>не указано</option>

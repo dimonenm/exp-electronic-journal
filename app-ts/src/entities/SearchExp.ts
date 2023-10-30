@@ -17,6 +17,7 @@ export default class SearchExp {
   dateProlongationStart: string
   valueOfProlongation: string
   result: string
+  statusOfExpertise: string
   dateExpEndStart: string
   dateExpEndEnd: string
   dateExpCompleteStart: string
@@ -47,6 +48,7 @@ export default class SearchExp {
     this.dateProlongationStart = oldExp?.getDateProlongationStart() || ''
     this.valueOfProlongation = oldExp?.getValueOfProlongation() || ''
     this.result = oldExp?.getResult() || ''
+    this.statusOfExpertise = oldExp?.getStatusOfExpertise() || ''
     this.dateExpEndStart = oldExp?.getDateExpEndStart() || ''
     this.dateExpEndEnd = oldExp?.getDateExpEndEnd() || ''
     this.dateExpCompleteStart = oldExp?.getDateExpCompleteStart() || ''
@@ -112,6 +114,9 @@ export default class SearchExp {
   }
   getResult(): string {
     return this.result
+  }
+  getStatusOfExpertise(): string {
+    return this.statusOfExpertise
   }
   getDateExpEndStart(): string {
     return this.dateExpEndStart
@@ -200,6 +205,9 @@ export default class SearchExp {
   setResult(value: string): void {
     this.result = value
   }
+  setStatusOfExpertise(value: string): void {
+    this.statusOfExpertise = value
+  }
   setDateExpEndStart(value: string): void {
     this.dateExpEndStart = value
   }
@@ -233,37 +241,38 @@ export default class SearchExp {
   setVerificationResult(value: string): void {
     this.verificationResult = value
   }
-  isSearchExp(): boolean{
+  isSearchExp(): boolean {
     if (
       this.idStart !== '' ||
-    this.idEnd !== '' ||
-    this.dateOfReceiptStart !== '' ||
-    this.dateOfReceiptEnd !== '' ||
-    this.typeOfService !== '' ||
-    this.unitOfService !== '' ||
-    this.kindOfService !== '' ||
-    this.typeOfMaterial !== '' ||
-    this.numberOfMaterial !== '' ||
-    this.article !== '' ||
-    this.typeOfExpertise !== '' ||
-    this.executor !== '' ||
-    this.difficult !== '' ||
-    this.datePetitionStart !== '' ||
-    this.datePetitionEnd !== '' ||
-    this.dateProlongationStart !== '' ||
-    this.valueOfProlongation !== '' ||
-    this.result !== '' ||
-    this.dateExpEndStart !== '' ||
-    this.dateExpEndEnd !== '' ||
-    this.dateExpCompleteStart !== '' ||
-    this.dateExpCompleteEnd !== '' ||
-    this.dateVerificationStartStart !== '' ||
-    this.dateVerificationStartEnd !== '' ||
-    this.dateVerificationEnd !== '' ||
-    this.numberVerification !== '' ||
-    this.verificationNumberOfMaterial !== '' ||
-    this.verificationExecutor !== '' ||
-    this.verificationResult !== ''
+      this.idEnd !== '' ||
+      this.dateOfReceiptStart !== '' ||
+      this.dateOfReceiptEnd !== '' ||
+      this.typeOfService !== '' ||
+      this.unitOfService !== '' ||
+      this.kindOfService !== '' ||
+      this.typeOfMaterial !== '' ||
+      this.numberOfMaterial !== '' ||
+      this.article !== '' ||
+      this.typeOfExpertise !== '' ||
+      this.executor !== '' ||
+      this.difficult !== '' ||
+      this.datePetitionStart !== '' ||
+      this.datePetitionEnd !== '' ||
+      this.dateProlongationStart !== '' ||
+      this.valueOfProlongation !== '' ||
+      this.result !== '' ||
+      this.statusOfExpertise !== '' ||
+      this.dateExpEndStart !== '' ||
+      this.dateExpEndEnd !== '' ||
+      this.dateExpCompleteStart !== '' ||
+      this.dateExpCompleteEnd !== '' ||
+      this.dateVerificationStartStart !== '' ||
+      this.dateVerificationStartEnd !== '' ||
+      this.dateVerificationEnd !== '' ||
+      this.numberVerification !== '' ||
+      this.verificationNumberOfMaterial !== '' ||
+      this.verificationExecutor !== '' ||
+      this.verificationResult !== ''
     ) return true
     else return false
   }

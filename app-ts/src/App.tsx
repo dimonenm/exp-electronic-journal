@@ -129,7 +129,9 @@ const App = () => {
       })
     }
     if (searchExp.getStatusOfExpertise() !== '' && searchExp.getStatusOfExpertise() !== 'не указано') {
-      if (searchExp.getStatusOfExpertise() === 'В производстве')
+      if (searchExp.getStatusOfExpertise() === 'В производстве') {
+        
+      }
       searchArr = searchArr.filter((item) => {
         if (item.getResult() === searchExp.getResult()) return true
         return false

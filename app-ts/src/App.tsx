@@ -130,12 +130,11 @@ const App = () => {
     }
     if (searchExp.getStatusOfExpertise() !== '' && searchExp.getStatusOfExpertise() !== 'не указано') {
       if (searchExp.getStatusOfExpertise() === 'В производстве') {
-        
+        searchArr = searchArr.filter((item) => {
+          if (item.getResult() === searchExp.getResult()) return true
+          return false
+        })
       }
-      searchArr = searchArr.filter((item) => {
-        if (item.getResult() === searchExp.getResult()) return true
-        return false
-      })
     }
     if (searchExp.getDateExpEndStart() !== '' || searchExp.getDateExpEndEnd() !== '') {
       if (searchExp.getDateExpEndStart() !== '' && searchExp.getDateExpEndEnd() !== '') {

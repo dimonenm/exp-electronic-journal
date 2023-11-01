@@ -131,7 +131,19 @@ const App = () => {
     if (searchExp.getStatusOfExpertise() !== '' && searchExp.getStatusOfExpertise() !== 'не указано') {
       if (searchExp.getStatusOfExpertise() === 'В производстве') {
         searchArr = searchArr.filter((item) => {
-          if (item.getResult() === searchExp.getResult()) return true
+          if (item.getDateExpComplete() === '' && item.getResult() === '') return true
+          return false
+        })
+      }
+      if (searchExp.getStatusOfExpertise() === 'На ходатайстве') {
+        searchArr = searchArr.filter((item) => {
+          if (item.getDateExpComplete() === '' && item.getResult() === '' && item.getDatePetitionStart() !== '') return true
+          return false
+        })
+      }
+      if (searchExp.getStatusOfExpertise() === 'На продлении') {
+        searchArr = searchArr.filter((item) => {
+          if (item.getDateExpComplete() === '' && item.getResult() === '' && item.getDateProlongationStart() !== '') return true
           return false
         })
       }

@@ -207,6 +207,7 @@ const InputSearch: FC<IInputSearchProps> = ({
           <option>ДНР</option>
           <option>ЛНР</option>
           <option>Херсонская область</option>
+          <option>Запорожская область</option>
           <option>ЛУ на транспорте</option>
         </select>
       }

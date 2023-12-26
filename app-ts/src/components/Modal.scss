@@ -1,15 +1,17 @@
 .modal {
+  position: fixed;
+  left: 50px;
+  top: 50px;
   display: grid;
   grid-gap: 10px;
   justify-content: center;
-  grid-template-rows: 30px repeat(14, 50px);
+  grid-template-rows: 30px repeat(11, 50px);
   grid-template-columns: 150px 150px;
-
+  // height: 100%;
   max-height: calc(100vh - 52px);
   width: 370px;
-
   overflow: auto;
-
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
   background-color: #f3f3f3;
   border: 1px solid #d2d2d2;
 
@@ -37,7 +39,7 @@
 }
 
 .modal-create {
-  grid-template-rows: 30px repeat(9, 50px) 50px;
+  grid-template-rows: 30px repeat(10, 50px) 50px;
 }
 
 // .modal-search {

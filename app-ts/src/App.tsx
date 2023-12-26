@@ -364,6 +364,8 @@ const App = () => {
         <Menu type='left'>
           <Button type='create' modalType={modal.type} clickHendler={createClickHendler} />
           <Button type='search' modalType={modal.type} clickHendler={searchClickHendler} />
+          <Button type='info' modalType={modal.type} clickHendler={infoClickHendler} />
+          <Button type='warnings' modalType={modal.type} clickHendler={warningsClickHendler} />
         </Menu>
         {isActive&&<Modal
           type={modal.type === 'create' ? 'create' : modal.type === 'search' ? 'search' : modal.type === 'update' ? 'update' : 'hidden'}
@@ -386,10 +388,6 @@ const App = () => {
           setModal={setModal}
           setSearchExp={setSearchExp}
         />
-        <Menu type='right'>
-          <Button type='info' modalType={modal.type} clickHendler={infoClickHendler} />
-          <Button type='warnings' modalType={modal.type} clickHendler={warningsClickHendler} />
-        </Menu>
       </Main>
     </Container>
   );

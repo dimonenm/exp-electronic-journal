@@ -148,9 +148,6 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
     arr.forEach(item => {
       assignedExps.Total += 1
       executorExps.Total['Всего'] += 1
-      if (item.getTypeOfExpertise() !== 'Почерковедческая' && item.getTypeOfExpertise() !== 'ТКЭД общ.' && item.getTypeOfExpertise() !== 'ТКЭД ден.' && item.getTypeOfExpertise() !== 'Портретная') {
-        console.log(item);
-      }
       if (item.getTypeOfExpertise() === 'Почерковедческая') {
         assignedExps.Handwriting += 1
         executorExps.Handwriting['Всего'] += 1
@@ -453,7 +450,6 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
         }
       }
     })
-    console.log('assignedExps: ', assignedExps);
 
     report.setAssignedHandwritingExps(assignedExps.Handwriting.toString())
     report.setAssignedTCEDExps(assignedExps.TCED.toString())

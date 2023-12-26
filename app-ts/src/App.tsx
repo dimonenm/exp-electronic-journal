@@ -18,7 +18,6 @@ const App = () => {
   const [dbExps, setDbExps] = useState<Exp[]>([])
   const [modal, setModal] = useState<IModal>({ type: null, idOfExp: null })
   const [searchExp, setSearchExp] = useState<SearchExp>(new SearchExp())
-  const [isActive, setIsActive] = useState<boolean>(false)
 
   let searchCardsArr: JSX.Element[] = []
   let searchArr: Exp[] = []
@@ -300,7 +299,6 @@ const App = () => {
       setModal((prev) => ({
         ...prev, type: 'create', idOfExp: null
       }))
-      setIsActive(true)
     } else {
       setModal((prev) => ({
         ...prev, type: null, idOfExp: null
@@ -365,7 +363,7 @@ const App = () => {
           <Button type='create' modalType={modal.type} clickHendler={createClickHendler} />
           <Button type='search' modalType={modal.type} clickHendler={searchClickHendler} />
         </Menu>
-        {isActive&&<Modal
+        {<Modal
           type={modal.type === 'create' ? 'create' : modal.type === 'search' ? 'search' : modal.type === 'update' ? 'update' : 'hidden'}
           idOfExp={modal.idOfExp}
           dbExps={dbExps}

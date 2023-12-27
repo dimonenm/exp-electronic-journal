@@ -22,8 +22,14 @@ interface ModalProps {
 
 const Modal: FC<ModalProps> = ({ type, idOfExp, dbExps, searchExp, searchArr, setDbExps, setModal, setSearchExp }) => {
 
+  function closeModalClickHandler():void {
+    console.log("click");
+    setModal({ type: null, idOfExp: null })
+  }
+
   if (type === 'create') {
     return (
+      <>
       <div className='modal modal-create'>
         <ModalCreate
           dbExps={dbExps}
@@ -31,6 +37,8 @@ const Modal: FC<ModalProps> = ({ type, idOfExp, dbExps, searchExp, searchArr, se
           setModal={setModal}
         />
       </div>
+        <div className='modal-background' onClick={closeModalClickHandler}></div>
+      </>
     );
   }
   if (type === 'update') {

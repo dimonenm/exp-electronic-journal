@@ -43,6 +43,7 @@ const Modal: FC<ModalProps> = ({ type, idOfExp, dbExps, searchExp, searchArr, se
   }
   if (type === 'update') {
     return (
+      <>
       <div className='modal modal-update'>
         <ModalUpdate
           dbExps={dbExps}
@@ -51,11 +52,14 @@ const Modal: FC<ModalProps> = ({ type, idOfExp, dbExps, searchExp, searchArr, se
           setModal={setModal}
         />
       </div>
+      <div className='modal-background' onClick={closeModalClickHandler}></div>
+      </>
     );
   }
   if (type === 'search') {
 
     return (
+      <>
       <div className='modal modal-search'>
         <ModalSearch
           searchExp={searchExp}
@@ -63,32 +67,43 @@ const Modal: FC<ModalProps> = ({ type, idOfExp, dbExps, searchExp, searchArr, se
           setModal={setModal}
           setSearchExp={setSearchExp}
         />
-      </div>
+        </div>
+        <div className='modal-background' onClick={closeModalClickHandler}></div>
+      </>
     );
   }
   if (type === 'info') {
     return (
+      <>
       <div className='modal modal-info'>
         <ModalInfo
           dbExps={dbExps}
           searchArr={searchArr}
         />
-      </div>
+        </div>
+        <div className='modal-background' onClick={closeModalClickHandler}></div>
+      </>
     );
   }
   if (type === 'warnings') {
     return (
+      <>
       <div className='modal modal-warnings'>
         <ModalWarnings
           dbExps={dbExps}
           searchArr={searchArr}
         />
-      </div>
+        </div>
+        <div className='modal-background' onClick={closeModalClickHandler}></div>
+      </>
     );
   }
   if (type === 'hidden') {
     return (
-      <div className='modal modal-hidden'></div>
+      <>
+        <div className='modal modal-hidden'></div>
+        <div className='background-hidden' onClick={closeModalClickHandler}></div>
+      </>
     );
   }
   return null

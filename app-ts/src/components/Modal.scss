@@ -7,18 +7,21 @@
 
   max-height: calc(100vh - 52px);
   width: 370px;
-  
+
   position: fixed;
   left: 50px;
   top: 50px;
-  
-  overflow: auto;
-  
+  z-index: 20;
+
+  overflow-x: hidden;
+
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
   background-color: #f3f3f3;
   border: 1px solid #d2d2d2;
 
-  transition: width 200ms linear, opacity 200ms linear;
+  transition:
+    width 200ms linear,
+    opacity 200ms linear;
 
   &::-webkit-scrollbar {
     width: 6px;
@@ -168,5 +171,26 @@
 
   opacity: 0;
 
-  transition: width 200ms linear, opacity 200ms linear;
+  transition:
+    width 200ms linear,
+    opacity 200ms linear;
+}
+
+.modal-background {
+  position: absolute;
+  top: 50px;
+  bottom: 0;
+  left: 50px;
+  right: 0;
+  z-index: 10;
+  background: #2b4a79;
+  opacity: 0.2;
+  transition: background-color 0.5s linear;
+}
+
+.background-hidden {
+  position: absolute;
+  width: 0;
+  z-index: 10;
+  opacity: 0;
 }

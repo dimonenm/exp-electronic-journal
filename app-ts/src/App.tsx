@@ -362,9 +362,11 @@ const App = () => {
         <Menu type='left'>
           <Button type='create' modalType={modal.type} clickHendler={createClickHendler} />
           <Button type='search' modalType={modal.type} clickHendler={searchClickHendler} />
+          <Button type='info' modalType={modal.type} clickHendler={infoClickHendler} />
+          <Button type='warnings' modalType={modal.type} clickHendler={warningsClickHendler} />
         </Menu>
-        {<Modal
-          type={modal.type === 'create' ? 'create' : modal.type === 'search' ? 'search' : modal.type === 'update' ? 'update' : 'hidden'}
+        <Modal
+          type={modal.type === 'create' ? 'create' : 'hidden'}
           idOfExp={modal.idOfExp}
           dbExps={dbExps}
           setDbExps={setDbExps}
@@ -372,22 +374,46 @@ const App = () => {
           searchArr={searchArr}
           searchExp={searchExp}
           setSearchExp={setSearchExp}
-        />}
+        />
+        <Modal
+          type={ modal.type === 'search' ? 'search' : modal.type === 'update' ? 'update' : 'hidden'}
+          idOfExp={modal.idOfExp}
+          dbExps={dbExps}
+          setDbExps={setDbExps}
+          setModal={setModal}
+          searchArr={searchArr}
+          searchExp={searchExp}
+          setSearchExp={setSearchExp}
+        />
+        <Modal
+          type={modal.type === 'update' ? 'update' : 'hidden'}
+          idOfExp={modal.idOfExp}
+          dbExps={dbExps}
+          setDbExps={setDbExps}
+          setModal={setModal}
+          searchArr={searchArr}
+          searchExp={searchExp}
+          setSearchExp={setSearchExp}
+        />
         <Gallery galleryClickHendler={galleryClickHendler}>
           {searchCardsArr.length ? searchCardsArr : cardsArr}
         </Gallery>
         <Modal
-          type={modal.type === 'info' ? 'info' : modal.type === 'warnings' ? 'warnings' : 'hidden'}
+          type={modal.type === 'info' ? 'info' : 'hidden'}
           dbExps={dbExps}
           searchExp={searchExp}
           searchArr={searchArr}
           setModal={setModal}
           setSearchExp={setSearchExp}
         />
-        <Menu type='right'>
-          <Button type='info' modalType={modal.type} clickHendler={infoClickHendler} />
-          <Button type='warnings' modalType={modal.type} clickHendler={warningsClickHendler} />
-        </Menu>
+        <Modal
+          type={modal.type === 'warnings' ? 'warnings' : 'hidden'}
+          dbExps={dbExps}
+          searchExp={searchExp}
+          searchArr={searchArr}
+          setModal={setModal}
+          setSearchExp={setSearchExp}
+        />
       </Main>
     </Container>
   );

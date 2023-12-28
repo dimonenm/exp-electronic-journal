@@ -11,8 +11,5 @@
   border: 1px solid #d2d2d2;
 }
 .menu-left {
-  grid-template-rows: 40px 40px;
-}
-.menu-right {
-  grid-template-rows: 40px;
+  grid-template-rows: repeat(4, 40px);
 }

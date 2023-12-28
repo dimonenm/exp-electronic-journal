@@ -184,16 +184,16 @@ export default class Report {
   getArticleExpsVerifications(): string {
     return this.articleExps.Verifications
   }
-  getArticleExpsTotal(id: string): string {
-    if (id === 'Всего') return this.articleExps.Total['Всего']
-    if (id === 'ст 101') return this.articleExps.Total['ст 101']
-    if (id === 'ст 105') return this.articleExps.Total['ст 105']
-    if (id === 'ст 158') return this.articleExps.Total['ст 158']
-    if (id === 'ст 159') return this.articleExps.Total['ст 159']
-    if (id === 'ст 160') return this.articleExps.Total['ст 160']
-    if (id === 'ст 186,187') return this.articleExps.Total['ст 186,187']
-    if (id === 'ст 222') return this.articleExps.Total['ст 222']
-    if (id === 'ст 264') return this.articleExps.Total['ст 264']
+  getArticleExpsTotal(article: string): string {
+    if (article === 'Всего') return this.articleExps.Total['Всего']
+    if (article === 'ст 101') return this.articleExps.Total['ст 101']
+    if (article === 'ст 105') return this.articleExps.Total['ст 105']
+    if (article === 'ст 158') return this.articleExps.Total['ст 158']
+    if (article === 'ст 159') return this.articleExps.Total['ст 159']
+    if (article === 'ст 160') return this.articleExps.Total['ст 160']
+    if (article === 'ст 186,187') return this.articleExps.Total['ст 186,187']
+    if (article === 'ст 222') return this.articleExps.Total['ст 222']
+    if (article === 'ст 264') return this.articleExps.Total['ст 264']
     return ''
   }
   getExecutorExpsHandwriting(id: string): string {

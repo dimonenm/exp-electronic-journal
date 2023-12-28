@@ -293,8 +293,8 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
         }
       }
       if (item.getTypeOfMaterial() === 'УД') {
-        articleExps.Total['Всего'] += 1
         if (item.getArticle() === 'ст. 101 УК РФ') {
+          articleExps.Total['Всего'] += 1
           articleExps.Total['ст 101'] += 1
           if (item.getTypeOfExpertise() === 'Почерковедческая') {
             articleExps.Handwriting['Всего'] += 1
@@ -310,6 +310,7 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
           }
         }
         if (item.getArticle() === 'ст. 105 УК РФ') {
+          articleExps.Total['Всего'] += 1
           articleExps.Total['ст 105'] += 1
           if (item.getTypeOfExpertise() === 'Почерковедческая') {
             articleExps.Handwriting['Всего'] += 1
@@ -325,6 +326,7 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
           }
         }
         if (item.getArticle() === 'ст. 158 УК РФ') {
+          articleExps.Total['Всего'] += 1
           articleExps.Total['ст 158'] += 1
           if (item.getTypeOfExpertise() === 'Почерковедческая') {
             articleExps.Handwriting['Всего'] += 1
@@ -340,6 +342,7 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
           }
         }
         if (item.getArticle() === 'ст. 159 УК РФ') {
+          articleExps.Total['Всего'] += 1
           articleExps.Total['ст 159'] += 1
           if (item.getTypeOfExpertise() === 'Почерковедческая') {
             articleExps.Handwriting['Всего'] += 1
@@ -355,6 +358,7 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
           }
         }
         if (item.getArticle() === 'ст. 160 УК РФ') {
+          articleExps.Total['Всего'] += 1
           articleExps.Total['ст 160'] += 1
           if (item.getTypeOfExpertise() === 'Почерковедческая') {
             articleExps.Handwriting['Всего'] += 1
@@ -370,6 +374,7 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
           }
         }
         if (item.getArticle() === 'ст. 186, 187 УК РФ') {
+          articleExps.Total['Всего'] += 1
           articleExps.Total['ст 186,187'] += 1
           if (item.getTypeOfExpertise() === 'Почерковедческая') {
             articleExps.Handwriting['Всего'] += 1
@@ -385,6 +390,7 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
           }
         }
         if (item.getArticle() === 'ст. 222 УК РФ') {
+          articleExps.Total['Всего'] += 1
           articleExps.Total['ст 222'] += 1
           if (item.getTypeOfExpertise() === 'Почерковедческая') {
             articleExps.Handwriting['Всего'] += 1
@@ -400,6 +406,7 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
           }
         }
         if (item.getArticle() === 'ст. 264 УК РФ') {
+          articleExps.Total['Всего'] += 1
           articleExps.Total['ст 264'] += 1
           if (item.getTypeOfExpertise() === 'Почерковедческая') {
             articleExps.Handwriting['Всего'] += 1
@@ -459,7 +466,6 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
     report.setResultTCEDExps(resultExps.TCED.toString())
     report.setResultPortraitExps(resultExps.Portrait.toString())
     report.setResultTotalExps(resultExps.Total.toString())
-
     report.setArticleExpsHandwriting(
       articleExps.Handwriting['Всего'].toString(),
       articleExps.Handwriting['ст 101'].toString(),
@@ -471,7 +477,6 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
       articleExps.Handwriting['ст 222'].toString(),
       articleExps.Handwriting['ст 264'].toString()
     )
-
     report.setArticleExpsTCED(
       articleExps.TCED['Всего'].toString(),
       articleExps.TCED['ст 101'].toString(),
@@ -483,7 +488,6 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
       articleExps.TCED['ст 222'].toString(),
       articleExps.TCED['ст 264'].toString()
     )
-
     report.setArticleExpsPortrait(
       articleExps.Portrait['Всего'].toString(),
       articleExps.Portrait['ст 101'].toString(),
@@ -495,9 +499,7 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
       articleExps.Portrait['ст 222'].toString(),
       articleExps.Portrait['ст 264'].toString()
     )
-
     report.setArticleExpsVerifications(articleExps.Verifications.toString())
-
     report.setArticleExpsTotal(
       articleExps.Total['Всего'].toString(),
       articleExps.Total['ст 101'].toString(),
@@ -509,7 +511,6 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
       articleExps.Total['ст 222'].toString(),
       articleExps.Total['ст 264'].toString()
     )
-
     report.setExecutorExpsHandwriting(
       executorExps.Handwriting['Всего'].toString(),
       executorExps.Handwriting['Польченко Т.В.'].toString(),
@@ -523,7 +524,6 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
       executorExps.Handwriting['Киселев А.С.'].toString(),
       executorExps.Handwriting['Марчук В.А.'].toString()
     )
-
     report.setExecutorExpsTCED(
       executorExps.TCED['Всего'].toString(),
       executorExps.TCED['Польченко Т.В.'].toString(),
@@ -537,7 +537,6 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
       executorExps.TCED['Киселев А.С.'].toString(),
       executorExps.TCED['Марчук В.А.'].toString()
     )
-
     report.setExecutorExpsPortrait(
       executorExps.Portrait['Всего'].toString(),
       executorExps.Portrait['Польченко Т.В.'].toString(),
@@ -551,7 +550,6 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
       executorExps.Portrait['Киселев А.С.'].toString(),
       executorExps.Portrait['Марчук В.А.'].toString()
     )
-
     report.setExecutorExpsVerifications(
       executorExps.Verifications['Всего'].toString(),
       executorExps.Verifications['Польченко Т.В.'].toString(),
@@ -565,7 +563,6 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
       executorExps.Verifications['Киселев А.С.'].toString(),
       executorExps.Verifications['Марчук В.А.'].toString()
     )
-
     report.setExecutorExpsTotal(
       executorExps.Total['Всего'].toString(),
       executorExps.Total['Польченко Т.В.'].toString(),

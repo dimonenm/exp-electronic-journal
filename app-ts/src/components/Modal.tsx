@@ -23,7 +23,6 @@ interface ModalProps {
 const Modal: FC<ModalProps> = ({ type, idOfExp, dbExps, searchExp, searchArr, setDbExps, setModal, setSearchExp }) => {
 
   function closeModalClickHandler():void {
-    console.log("click");
     setModal({ type: null, idOfExp: null })
   }
 
@@ -91,7 +90,6 @@ const Modal: FC<ModalProps> = ({ type, idOfExp, dbExps, searchExp, searchArr, se
       <div className='modal modal-warnings'>
         <ModalWarnings
           dbExps={dbExps}
-          searchArr={searchArr}
         />
         </div>
         <div className='modal-background' onClick={closeModalClickHandler}></div>

@@ -47,7 +47,11 @@ const Button: FC<IButtonProps> = ({ type, modalType, clickHendler }) => {
       );    
     } else {
       return (
-        <div className='btn btn-warnings' onClick={clickHendler}></div>
+        <>
+        <div className='btn btn-warnings' onClick={clickHendler}>
+        <span className="button__badge">5</span>
+        </div>
+        </>
       );    
     }
   }

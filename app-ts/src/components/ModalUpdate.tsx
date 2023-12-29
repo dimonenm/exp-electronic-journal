@@ -171,7 +171,7 @@ const ModalUpdate: FC<ModalUpdateProps> = ({ dbExps, idOfExp, setDbExps, setModa
       return item
     })
     setDbExps?.(localExpArr)
-    seveExpsFromAppDb('http://localhost:3001/set-db', localExpArr)
+    // seveExpsFromAppDb('http://localhost:3001/set-db', localExpArr)
     setModal({ type: null, idOfExp: null })
   }
   function onClickBtnCancelHandler(): void {

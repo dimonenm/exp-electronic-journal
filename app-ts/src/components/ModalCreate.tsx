@@ -134,7 +134,7 @@ const ModalCreate: FC<ModalCreateProps> = ({ dbExps, setDbExps, setModal }) => {
       setDbExps?.(localExpArr)
       setExpStorage(new Exp(undefined, `${localExpArr.length + 1}`))
       setModal({ type: 'create', idOfExp: null })
-      seveExpsFromAppDb('http://localhost:3001/set-db', localExpArr)
+      // seveExpsFromAppDb('http://localhost:3001/set-db', localExpArr)
     }
   }
   function onClickBtnCancelHandler(): void {

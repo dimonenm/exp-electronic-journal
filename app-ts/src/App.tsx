@@ -24,7 +24,8 @@ const App = () => {
   let searchCardsArr: JSX.Element[] = []
   let searchArr: Exp[] = []
   let cardsArr: JSX.Element[] = []
-  
+  let countOfWarnings: number = 0
+
   if (searchExp.isSearchExp()) {
     searchArr = dbExps.map((item) => {
       return item
@@ -351,6 +352,34 @@ const App = () => {
     }
   }
 
+  dbExps.forEach((item) => {
+    if (item.getResult() === '' || item.getResult() === 'не указано') {
+      if (item.getDatePetitionStart() === '') {
+        const date1 = new Date(item.getDateExpEnd())
+        const date2 = new Date()
+        const daysCount = Math.floor(((Number(date1) - Number(date2)) / 1000 / 60 / 60 / 24))
+        if (daysCount <= 5 && daysCount >= 0) {
+          countOfWarnings += 1
+        }
+        if (daysCount < 0) {
+          countOfWarnings += 1
+        }
+      }
+      if (item.getDatePetitionStart() !== '' && item.getDatePetitionEnd() === '' && item.getValueOfProlongation() === '') {
+        const date1 = new Date(item.getDateExpEnd())
+        const date2 = new Date()
+        const daysCount = Math.floor(((Number(date1) - Number(date2)) / 1000 / 60 / 60 / 24))
+        if (daysCount <= 3 && daysCount >= 0) {
+          countOfWarnings += 1
+        }
+        if (daysCount < 0) {
+          countOfWarnings += 1
+        }
+      }
+    }
+    // console.log(countOfWarnings);
+  })
+
   useEffect(() => {
     var currentYear = new Date().getFullYear().toString()
     setYear(currentYear)
@@ -369,7 +398,7 @@ const App = () => {
           <Button type='create' modalType={modal.type} clickHendler={createClickHendler} />
           <Button type='search' modalType={modal.type} clickHendler={searchClickHendler} />
           <Button type='info' modalType={modal.type} clickHendler={infoClickHendler} />
-          <Button type='warnings' modalType={modal.type} clickHendler={warningsClickHendler} />
+          <Button type='warnings' modalType={modal.type} clickHendler={warningsClickHendler} countOfWarnings={countOfWarnings} />
         </Menu>
         <Modal
           type={modal.type === 'create' ? 'create' : 'hidden'}

@@ -30,18 +30,23 @@ export function dayGenerator(from: number, to: number) {
   return (from + Math.random() * (to - from));
 }
 // функции сохранения и загрузки базы
-export function loadExpsForAppDb(url: string){
-  return fetch(url).then((data) => data.json()).then((data: []) => {
+export function loadExpsForAppDb(url: string, year: string){
+  return fetch(url + `?year=${year}`).then((data) => data.json()).then((data: [] | string) => {
     const loadedData: Exp[] = []
-    data.forEach((item) => {
-      let newExp = new Exp()
-      newExp.copyDataFromDbExp(item)
-      loadedData.push(newExp)
-    })
+    if (typeof data === 'string') {
+      console.log(data);
+    } else {
+      data.forEach((item) => {
+        let newExp = new Exp()
+        newExp.copyDataFromDbExp(item)
+        loadedData.push(newExp)
+      })
+    }
     return loadedData
   })
 }
-export function seveExpsFromAppDb(url: string, data: Exp[]) {
+export function seveExpsFromAppDb(url: string, data: Exp[], year: string) {
+  
   const settings: RequestInit = {
     method: 'POST', // *GET, POST, PUT, DELETE, etc.
     mode: 'cors', // no-cors, *cors, same-origin

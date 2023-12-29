@@ -352,12 +352,14 @@ const App = () => {
   }
 
   useEffect(() => {
-
-    setYear(new Date().getFullYear().toString())
-    loadExpsForAppDb("http://localhost:3001/get-db").then((data) => {
-      setDbExps(data);
-    })
+    var currentYear = new Date().getFullYear().toString()
+    setYear(currentYear)
+    loadExpsForAppDb("http://localhost:3001/get-db", currentYear).then((data) => {setDbExps(data)})
   }, [])
+  useEffect(() => {
+    loadExpsForAppDb("http://localhost:3001/get-db", year).then((data) => {setDbExps(data)})
+  }, [year])
+
 
   return (
     <Container>

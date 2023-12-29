@@ -45,15 +45,15 @@
 }
 
 .modal-create {
-  grid-template-rows: 30px repeat(10, 50px) 30px;
+  grid-template-rows: 30px repeat(10, 50px) 20px;
 }
 
-// .modal-search {
-//   grid-template-rows: 30px repeat(15, 50px);
-// }
-// .modal-update {
-//   grid-template-rows: 30px repeat(15, 50px);
-// }
+.modal-search {
+  grid-template-rows: 30px repeat(10, 50px) 80px;
+}
+.modal-update {
+  grid-template-rows: 30px repeat(10, 50px) 20px;
+}
 
 .modal-info {
   justify-items: center;

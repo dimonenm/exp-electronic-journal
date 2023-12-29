@@ -12,12 +12,14 @@ import Gallery from './containers/Gallery';
 import Card from './components/Card';
 import SearchExp from './entities/SearchExp';
 import { dateFromUsToRu, loadExpsForAppDb } from './services/services';
+import ButtonYear from './components/ButtonYear';
 
 const App = () => {
 
   const [dbExps, setDbExps] = useState<Exp[]>([])
   const [modal, setModal] = useState<IModal>({ type: null, idOfExp: null })
   const [searchExp, setSearchExp] = useState<SearchExp>(new SearchExp())
+  const [year, setYear] = useState<string>('')
 
   let searchCardsArr: JSX.Element[] = []
   let searchArr: Exp[] = []
@@ -350,6 +352,8 @@ const App = () => {
   }
 
   useEffect(() => {
+
+    setYear(new Date().getFullYear().toString())
     loadExpsForAppDb("http://localhost:3001/get-db").then((data) => {
       setDbExps(data);
     })
@@ -376,7 +380,7 @@ const App = () => {
           setSearchExp={setSearchExp}
         />
         <Modal
-          type={ modal.type === 'search' ? 'search' : modal.type === 'update' ? 'update' : 'hidden'}
+          type={ modal.type === 'search' ? 'search' : 'hidden'}
           idOfExp={modal.idOfExp}
           dbExps={dbExps}
           setDbExps={setDbExps}
@@ -414,6 +418,10 @@ const App = () => {
           setModal={setModal}
           setSearchExp={setSearchExp}
         />
+        <Menu type='right'>
+          <ButtonYear year='2023' activeYear={year} setYear={setYear} />
+          <ButtonYear year='2024' activeYear={year} setYear={setYear} />
+        </Menu>
       </Main>
     </Container>
   );

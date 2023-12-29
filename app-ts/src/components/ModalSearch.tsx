@@ -156,8 +156,10 @@ const ModalSearch: FC<ModalSearchProps> = ({ searchExp, searchArr, setModal, set
     kindOfService = <InputSearch type='select' title='Подразд-е службы' name='kindOfService' value={`${searchExp?.getKindOfService()}`} listName='kindOfService' onChangeKindOfServiceHandler={onChangeKindOfServiceHandler} />
   } else if (searchExp && searchExp.getTypeOfService() === 'ГСУ СК') {
     unitOfService = <InputSearch type='select' title='Орган инициатора' name='unitOfService' value={`${searchExp?.getUnitOfService()}`} listName='unitOfService' listType='investigation' onChangeUnitOfServiceHandler={onChangeUnitOfServiceHandler} />
+    kindOfService = <InputSearch type='empty' title='empty' name='empty' />
   } else {
     unitOfService = <InputSearch type='empty' title='empty' name='empty' />
+    kindOfService = <InputSearch type='empty' title='empty' name='empty' />
   }
 
   if (searchExp && searchExp.getTypeOfMaterial() === 'УД') {
@@ -210,6 +212,7 @@ const ModalSearch: FC<ModalSearchProps> = ({ searchExp, searchArr, setModal, set
       <InputSearch type='date' title='По дате завер-я по' name='dateExpCompleteEnd' value={`${searchExp?.getDateExpCompleteEnd()}`} onChangeDateExpCompleteEndHandler={onChangeDateExpCompleteEndHandler} />
       {verification}
       <InputSearch type='searchResult' title='empty' name='empty' value={`${searchArr?.length}`} />
+      {/* <InputSearch type='empty' title='empty' name='empty' /> */}
       <ModalButton type='clear' text='Сбросить' onClickBtnClearHandler={onClickBtnClearHandler} />
     </>
   );

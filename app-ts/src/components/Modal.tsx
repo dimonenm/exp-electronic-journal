@@ -20,7 +20,7 @@ interface ModalProps {
   setSearchExp: React.Dispatch<SearchExp>
 }
 
-const Modal: FC<ModalProps> = ({ type, idOfExp, dbExps, searchExp, searchArr, setDbExps, setModal, setSearchExp }) => {
+const Modal: FC<ModalProps> = ({ type, idOfExp, dbExps, searchExp, searchArr, setDbExps, setModal, setSearchExp}) => {
 
   function closeModalClickHandler():void {
     setModal({ type: null, idOfExp: null })

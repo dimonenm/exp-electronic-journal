@@ -90,6 +90,7 @@ const Modal: FC<ModalProps> = ({ type, idOfExp, dbExps, searchExp, searchArr, se
       <div className='modal modal-warnings'>
         <ModalWarnings
           dbExps={dbExps}
+          setModal={setModal}
         />
         </div>
         <div className='modal-background' onClick={closeModalClickHandler}></div>

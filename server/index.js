@@ -14,7 +14,6 @@ app.use(express.static(path.resolve(__dirname, 'static')))
 
 app.get("/get-db", (req, res) => {
     fs.readFile(`./db/db${req.query.year}.json`, { encoding: 'utf-8' }, (error, data) => {
-        console.log('req.query.year: ', req.query.year);
         if (error) {
             console.log(error);
             res.send(JSON.stringify('Фаил базы данных экспертизы отсутствует'))

@@ -2,9 +2,9 @@
   display: grid;
   grid-gap: 10px;
   justify-content: center;
-  grid-template-rows: 30px repeat(11, 50px);
+  // grid-template-rows: 30px repeat(11, 50px);
   grid-template-columns: 150px 150px;
-  padding-bottom: 30px;
+  padding-bottom: 20px;
 
   max-height: calc(100vh - 52px);
   width: 370px;
@@ -45,9 +45,9 @@
   }
 }
 
-.modal-create {
-  grid-template-rows: 30px repeat(10, 50px) ;
-}
+// .modal-create {
+//   grid-template-rows: 30px repeat(10, 50px);
+// }
 
 // .modal-search {
 //   grid-template-rows: 30px repeat(10, 50px) 80px;

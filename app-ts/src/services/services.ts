@@ -26,9 +26,6 @@ export function dateAddReduceDays(incomingDate: string, countOfDays: number, plu
   date.setHours(0)
   return dateFromRutoUs(date.toLocaleDateString())
 }
-export function dayGenerator(from: number, to: number) {
-  return (from + Math.random() * (to - from));
-}
 // функции сохранения и загрузки базы
 export function loadExpsForAppDb(url: string, year: string){
   return fetch(url + `?year=${year}`).then((data) => data.json()).then((data: [] | string) => {

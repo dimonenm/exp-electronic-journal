@@ -383,10 +383,19 @@ const App = () => {
   useEffect(() => {
     var currentYear = new Date().getFullYear().toString()
     setYear(currentYear)
-    loadExpsForAppDb("http://localhost:3001/get-db", currentYear).then((data) => {setDbExps(data)})
+    loadExpsForAppDb("http://localhost:3001/get-db", currentYear).then((data) => {
+      console.log('year 1: ', year);
+      console.log('useEffect 1: ', data);
+      setDbExps(data)
+    })
   }, [])
   useEffect(() => {
-    loadExpsForAppDb("http://localhost:3001/get-db", year).then((data) => {setDbExps(data)})
+  console.log('useEffect 2');
+    loadExpsForAppDb("http://localhost:3001/get-db", year).then((data) => {
+      console.log('year 2: ', year);
+      console.log('useEffect 2: ', data);
+      setDbExps(data)
+    })
   }, [year])
 
 

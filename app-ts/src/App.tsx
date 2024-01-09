@@ -396,7 +396,7 @@ const App = () => {
 
   return (
     <Container>
-      <Header logoText='Электронный журнал 0.0.1' />
+      <Header logoText='Электронный журнал 0.0.2' />
       <Main>
         <Menu type='left'>
           <Button type='create' modalType={modal.type} clickHendler={createClickHendler} />

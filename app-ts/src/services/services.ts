@@ -27,7 +27,7 @@ export function dateAddReduceDays(incomingDate: string, countOfDays: number, plu
   return dateFromRutoUs(date.toLocaleDateString())
 }
 // функции сохранения и загрузки базы
-export function loadExpsForAppDb(url: string, year: string){
+export function loadExpsForAppDb(url: string, year: string) {
   return fetch(url + `?year=${year}`).then((data) => data.json()).then((data: [] | string) => {
     const loadedData: Exp[] = []
     if (typeof data === 'string') {
@@ -42,8 +42,8 @@ export function loadExpsForAppDb(url: string, year: string){
     return loadedData
   })
 }
-export function seveExpsFromAppDb(url: string, data: Exp[], year: string) {
-  
+export function saveExpsFromAppDb(url: string, data: Exp[], year: string) {
+
   const settings: RequestInit = {
     method: 'POST', // *GET, POST, PUT, DELETE, etc.
     mode: 'cors', // no-cors, *cors, same-origin
@@ -55,7 +55,7 @@ export function seveExpsFromAppDb(url: string, data: Exp[], year: string) {
     },
     redirect: 'follow', // manual, *follow, error
     referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-    body: JSON.stringify(data) // body data type must match "Content-Type" header
+    body: JSON.stringify({ data, year }) // body data type must match "Content-Type" header
   }
   fetch(url, settings);
 }

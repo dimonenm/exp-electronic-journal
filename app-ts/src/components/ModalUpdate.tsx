@@ -4,16 +4,17 @@ import Input from './Input';
 import ModalButton from './ModalButton';
 import { IModal } from '../types/types';
 import Exp from '../entities/Exp';
-import { dateAddReduceDays, seveExpsFromAppDb } from '../services/services';
+import { dateAddReduceDays, saveExpsFromAppDb } from '../services/services';
 
 interface ModalUpdateProps {
   dbExps: Exp[],
   idOfExp?: string | null | undefined,
   setDbExps: React.Dispatch<Exp[]> | undefined,
   setModal: React.Dispatch<IModal>
+  year: string
 }
 
-const ModalUpdate: FC<ModalUpdateProps> = ({ dbExps, idOfExp, setDbExps, setModal }) => {
+const ModalUpdate: FC<ModalUpdateProps> = ({ dbExps, idOfExp, setDbExps, setModal, year }) => {
 
   const [expStorage, setExpStorage] = useState<Exp>(new Exp())
 
@@ -171,7 +172,7 @@ const ModalUpdate: FC<ModalUpdateProps> = ({ dbExps, idOfExp, setDbExps, setModa
       return item
     })
     setDbExps?.(localExpArr)
-    // seveExpsFromAppDb('http://localhost:3001/set-db', localExpArr)
+    saveExpsFromAppDb('http://localhost:3001/set-db', localExpArr, year)
     setModal({ type: null, idOfExp: null })
   }
   function onClickBtnCancelHandler(): void {

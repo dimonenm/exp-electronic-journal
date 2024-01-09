@@ -384,16 +384,11 @@ const App = () => {
     var currentYear = new Date().getFullYear().toString()
     setYear(currentYear)
     loadExpsForAppDb("http://localhost:3001/get-db", currentYear).then((data) => {
-      console.log('year 1: ', year);
-      console.log('useEffect 1: ', data);
       setDbExps(data)
     })
   }, [])
   useEffect(() => {
-  console.log('useEffect 2');
     loadExpsForAppDb("http://localhost:3001/get-db", year).then((data) => {
-      console.log('year 2: ', year);
-      console.log('useEffect 2: ', data);
       setDbExps(data)
     })
   }, [year])
@@ -418,6 +413,7 @@ const App = () => {
           searchArr={searchArr}
           searchExp={searchExp}
           setSearchExp={setSearchExp}
+          year={year}
         />
         <Modal
           type={ modal.type === 'search' ? 'search' : 'hidden'}
@@ -428,6 +424,7 @@ const App = () => {
           searchArr={searchArr}
           searchExp={searchExp}
           setSearchExp={setSearchExp}
+          year={year}
         />
         <Modal
           type={modal.type === 'update' ? 'update' : 'hidden'}
@@ -438,6 +435,7 @@ const App = () => {
           searchArr={searchArr}
           searchExp={searchExp}
           setSearchExp={setSearchExp}
+          year={year}
         />
         <Gallery galleryClickHendler={galleryClickHendler}>
           {searchCardsArr.length ? searchCardsArr : cardsArr}
@@ -449,6 +447,7 @@ const App = () => {
           searchArr={searchArr}
           setModal={setModal}
           setSearchExp={setSearchExp}
+          year={year}
         />
         <Modal
           type={modal.type === 'warnings' ? 'warnings' : 'hidden'}
@@ -457,6 +456,7 @@ const App = () => {
           searchArr={searchArr}
           setModal={setModal}
           setSearchExp={setSearchExp}
+          year={year}
         />
         <Menu type='right'>
           <ButtonYear year='2023' activeYear={year} setYear={setYear} />

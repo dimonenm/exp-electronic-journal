@@ -27,15 +27,14 @@ app.post("/set-db", (req, res) => {
     if (!req.body) {
         res.send("данные не поступили")
     } else {
-        // res.send(req.body)
+        fs.writeFile(`./db/db${req.body.year}.json`, JSON.stringify(req.body.data), (error) => {
+            if (error) {
+                console.log(error);
+            } else {
+                res.send("данные сохранены")
+            }
+        })
     }
-    fs.writeFile("./db/db.json", JSON.stringify(req.body), (error) => {
-        if (error) {
-            console.log(error);
-        } else {
-            res.send("данные сохранены")
-        }
-    })
 })
 app.listen(PORT, () => {
     console.log("сервер запущен");

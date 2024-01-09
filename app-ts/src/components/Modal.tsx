@@ -18,24 +18,26 @@ interface ModalProps {
   setDbExps?: React.Dispatch<Exp[]>
   setModal: React.Dispatch<IModal>
   setSearchExp: React.Dispatch<SearchExp>
+  year: string
 }
 
-const Modal: FC<ModalProps> = ({ type, idOfExp, dbExps, searchExp, searchArr, setDbExps, setModal, setSearchExp}) => {
+const Modal: FC<ModalProps> = ({ type, idOfExp, dbExps, searchExp, searchArr, setDbExps, setModal, setSearchExp, year }) => {
 
-  function closeModalClickHandler():void {
+  function closeModalClickHandler(): void {
     setModal({ type: null, idOfExp: null })
   }
 
   if (type === 'create') {
     return (
       <>
-      <div className='modal modal-create'>
-        <ModalCreate
-          dbExps={dbExps}
-          setDbExps={setDbExps}
-          setModal={setModal}
-        />
-      </div>
+        <div className='modal modal-create'>
+          <ModalCreate
+            dbExps={dbExps}
+            setDbExps={setDbExps}
+            setModal={setModal}
+            year={year}
+          />
+        </div>
         <div className='modal-background' onClick={closeModalClickHandler}></div>
       </>
     );
@@ -43,15 +45,16 @@ const Modal: FC<ModalProps> = ({ type, idOfExp, dbExps, searchExp, searchArr, se
   if (type === 'update') {
     return (
       <>
-      <div className='modal modal-update'>
-        <ModalUpdate
-          dbExps={dbExps}
-          idOfExp={idOfExp}
-          setDbExps={setDbExps}
-          setModal={setModal}
-        />
-      </div>
-      <div className='modal-background' onClick={closeModalClickHandler}></div>
+        <div className='modal modal-update'>
+          <ModalUpdate
+            dbExps={dbExps}
+            idOfExp={idOfExp}
+            setDbExps={setDbExps}
+            setModal={setModal}
+            year={year}
+          />
+        </div>
+        <div className='modal-background' onClick={closeModalClickHandler}></div>
       </>
     );
   }
@@ -59,13 +62,13 @@ const Modal: FC<ModalProps> = ({ type, idOfExp, dbExps, searchExp, searchArr, se
 
     return (
       <>
-      <div className='modal modal-search'>
-        <ModalSearch
-          searchExp={searchExp}
-          searchArr={searchArr}
-          setModal={setModal}
-          setSearchExp={setSearchExp}
-        />
+        <div className='modal modal-search'>
+          <ModalSearch
+            searchExp={searchExp}
+            searchArr={searchArr}
+            setModal={setModal}
+            setSearchExp={setSearchExp}
+          />
         </div>
         <div className='modal-background' onClick={closeModalClickHandler}></div>
       </>
@@ -74,11 +77,11 @@ const Modal: FC<ModalProps> = ({ type, idOfExp, dbExps, searchExp, searchArr, se
   if (type === 'info') {
     return (
       <>
-      <div className='modal modal-info'>
-        <ModalInfo
-          dbExps={dbExps}
-          searchArr={searchArr}
-        />
+        <div className='modal modal-info'>
+          <ModalInfo
+            dbExps={dbExps}
+            searchArr={searchArr}
+          />
         </div>
         <div className='modal-background' onClick={closeModalClickHandler}></div>
       </>
@@ -87,11 +90,11 @@ const Modal: FC<ModalProps> = ({ type, idOfExp, dbExps, searchExp, searchArr, se
   if (type === 'warnings') {
     return (
       <>
-      <div className='modal modal-warnings'>
-        <ModalWarnings
-          dbExps={dbExps}
-          setModal={setModal}
-        />
+        <div className='modal modal-warnings'>
+          <ModalWarnings
+            dbExps={dbExps}
+            setModal={setModal}
+          />
         </div>
         <div className='modal-background' onClick={closeModalClickHandler}></div>
       </>

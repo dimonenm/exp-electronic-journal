@@ -17,7 +17,7 @@ app.get("/get-db", (req, res) => {
         console.log('req.query.year: ', req.query.year);
         if (error) {
             console.log(error);
-            res.send(JSON.stringify('Фаил базы данных экспертизы отсутствуют'))
+            res.send(JSON.stringify('Фаил базы данных экспертизы отсутствует'))
         } else {
             res.send(data)
         }

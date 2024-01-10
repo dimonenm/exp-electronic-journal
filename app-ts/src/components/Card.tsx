@@ -20,8 +20,12 @@ const Card: FC<IInputProps> = ({ number, type, active, numberOfMaterial, dateOfI
         event.stopPropagation()
         updateClickHendler(number)
       }}>
-        <div className='card-half-row'>{`№ ${number}`}</div>
-        <div className='card-half-row'>{type}</div>
+        <div className="card-half-row2">
+          <div className="warning-icon"></div>
+          <div className='card-half-row'>{`№ ${number}`}</div>
+        </div>
+        <div className='card-half-row'>{type}
+        </div>
         <div className='card-row'>{numberOfMaterial}</div>
         <div className='card-row'>{dateOfIncoming}</div>
         <div className='card-row'>{dateOfComplite}</div>
@@ -35,8 +39,12 @@ const Card: FC<IInputProps> = ({ number, type, active, numberOfMaterial, dateOfI
       event.stopPropagation()
       updateClickHendler(number)
     }}>
+      <div className="card-half-row2">
+      <div className="warning-icon"></div>
       <div className='card-half-row'>{`№ ${number}`}</div>
-      <div className='card-half-row'>{type}</div>
+      </div>
+      <div className='card-half-row'>{type}
+      </div>
       <div className='card-row'>{numberOfMaterial}</div>
       <div className='card-row'>{dateOfIncoming}</div>
       <div className='card-row'>{dateOfComplite}</div>

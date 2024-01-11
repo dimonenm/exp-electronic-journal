@@ -32,11 +32,22 @@
     background-color: #c2d5f2;
 }
 
-.warning-icon {
+
+.completed-icon {
     background-image: url("../images/warning.svg");
     width: 20px;
     height: 20px;
-    // position: relative; /* Position the badge within the relatively positioned button */
-    // top: 0;
-    // right: 0;
 }
+
+.expired-icon {
+    background-image: url("../images/completed.svg");
+    width: 20px;
+    height: 20px;
+}
+
+.warning-icon {
+    background-image: url("../images/expired.svg");
+    width: 20px;
+    height: 20px;
+}
+

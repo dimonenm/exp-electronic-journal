@@ -25,6 +25,7 @@ const App = () => {
   let searchArr: Exp[] = []
   let cardsArr: JSX.Element[] = []
   let countOfWarnings: number = 0
+  const resultExpsarr: { id: number, type: 'completed' | 'expired' | 'none' | 'worning' }[] = []
 
   if (searchExp.isSearchExp()) {
     searchArr = dbExps.map((item) => {
@@ -237,6 +238,34 @@ const App = () => {
     }
   }
 
+  dbExps.forEach((item) => {
+    if (item.getResult() === '' || item.getResult() === 'не указано') {
+      if (item.getDatePetitionStart() === '') {
+        const date1 = new Date(item.getDateExpEnd())
+        const date2 = new Date()
+        const daysCount = Math.floor(((Number(date1) - Number(date2)) / 1000 / 60 / 60 / 24))
+        if (daysCount <= 5 && daysCount >= 0) {
+          countOfWarnings += 1
+        }
+        if (daysCount < 0) {
+          countOfWarnings += 1
+        }
+      }
+      if (item.getDatePetitionStart() !== '' && item.getDatePetitionEnd() === '' && item.getValueOfProlongation() === '') {
+        const date1 = new Date(item.getDateExpEnd())
+        const date2 = new Date()
+        const daysCount = Math.floor(((Number(date1) - Number(date2)) / 1000 / 60 / 60 / 24))
+        if (daysCount <= 3 && daysCount >= 0) {
+          countOfWarnings += 1
+        }
+        if (daysCount < 0) {
+          countOfWarnings += 1
+        }
+      }
+    }
+    // console.log(countOfWarnings);
+  })
+
   if (searchArr.length) {
     searchCardsArr = searchArr.map((item) => {
       if (modal.idOfExp && modal.idOfExp === item.getId()) {
@@ -250,6 +279,7 @@ const App = () => {
           dateOfComplite={item.getDateExpComplete() ? `завершена ${dateFromUsToRu(item.getDateExpComplete())}` : 'завершена н/д'}
           executor={`${item.getExecutor()}`}
           result={item.getResult() ? `${item.getResult()}` : 'в производстве'}
+          isWarning={resultExpsarr[Number(item.getId()) + 1].type}
           updateClickHendler={updateClickHendler}
         />)
       }
@@ -263,6 +293,7 @@ const App = () => {
         dateOfComplite={item.getDateExpComplete() ? `завершена ${dateFromUsToRu(item.getDateExpComplete())}` : 'завершена н/д'}
         executor={`${item.getExecutor()}`}
         result={item.getResult() ? `${item.getResult()}` : 'в производстве'}
+        isWarning={resultExpsarr[Number(item.getId()) + 1].type}
         updateClickHendler={updateClickHendler}
       />)
     }).reverse()
@@ -279,6 +310,7 @@ const App = () => {
           dateOfComplite={item.getDateExpComplete() ? `завершена ${dateFromUsToRu(item.getDateExpComplete())}` : 'завершена н/д'}
           executor={`${item.getExecutor()}`}
           result={item.getResult() ? `${item.getResult()}` : 'в производстве'}
+          isWarning={resultExpsarr[Number(item.getId()) + 1].type}
           updateClickHendler={updateClickHendler}
         />)
       }
@@ -292,6 +324,7 @@ const App = () => {
         dateOfComplite={item.getDateExpComplete() ? `завершена ${dateFromUsToRu(item.getDateExpComplete())}` : 'завершена н/д'}
         executor={`${item.getExecutor()}`}
         result={item.getResult() ? `${item.getResult()}` : 'в производстве'}
+        isWarning={resultExpsarr[Number(item.getId()) + 1].type}
         updateClickHendler={updateClickHendler}
       />)
     }).reverse()
@@ -352,33 +385,7 @@ const App = () => {
     }
   }
 
-  dbExps.forEach((item) => {
-    if (item.getResult() === '' || item.getResult() === 'не указано') {
-      if (item.getDatePetitionStart() === '') {
-        const date1 = new Date(item.getDateExpEnd())
-        const date2 = new Date()
-        const daysCount = Math.floor(((Number(date1) - Number(date2)) / 1000 / 60 / 60 / 24))
-        if (daysCount <= 5 && daysCount >= 0) {
-          countOfWarnings += 1
-        }
-        if (daysCount < 0) {
-          countOfWarnings += 1
-        }
-      }
-      if (item.getDatePetitionStart() !== '' && item.getDatePetitionEnd() === '' && item.getValueOfProlongation() === '') {
-        const date1 = new Date(item.getDateExpEnd())
-        const date2 = new Date()
-        const daysCount = Math.floor(((Number(date1) - Number(date2)) / 1000 / 60 / 60 / 24))
-        if (daysCount <= 3 && daysCount >= 0) {
-          countOfWarnings += 1
-        }
-        if (daysCount < 0) {
-          countOfWarnings += 1
-        }
-      }
-    }
-    // console.log(countOfWarnings);
-  })
+
 
   useEffect(() => {
     var currentYear = new Date().getFullYear().toString()

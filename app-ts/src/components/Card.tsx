@@ -10,10 +10,11 @@ interface IInputProps {
   dateOfComplite: string,
   executor: string,
   result: string,
+  isWarning: 'completed' | 'expired' | 'none' | 'worning',  
   updateClickHendler: (value: string | null) => void
 }
 
-const Card: FC<IInputProps> = ({ number, type, active, numberOfMaterial, dateOfIncoming, dateOfComplite, executor, result, updateClickHendler }) => {
+const Card: FC<IInputProps> = ({ number, type, active, numberOfMaterial, dateOfIncoming, dateOfComplite, executor, result, updateClickHendler, isWarning }) => {
   if (active) {
     return (
       <div className='card card-active' onClick={(event) => {
@@ -31,7 +32,7 @@ const Card: FC<IInputProps> = ({ number, type, active, numberOfMaterial, dateOfI
     );
   }
   return (
-    <div className='card' onClick={(event) => {
+    <div className={`card ${isWarning === 'worning' ? 'card-worning' : isWarning === 'expired' ? 'card-expired' : isWarning === 'completed' ? 'card-completed' : null}`} onClick={(event) => {
       event.stopPropagation()
       updateClickHendler(number)
     }}>

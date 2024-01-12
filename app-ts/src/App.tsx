@@ -25,7 +25,7 @@ const App = () => {
   let searchArr: Exp[] = []
   let cardsArr: JSX.Element[] = []
   let countOfWarnings: number = 0
-  const resultExpsarr: { id: number, type: 'completed' | 'expired' | 'none' | 'worning' }[] = []
+  const resultExpsarr: { id: string, type: 'completed' | 'expired' | 'none' | 'worning' }[] = []
 
   if (searchExp.isSearchExp()) {
     searchArr = dbExps.map((item) => {
@@ -240,30 +240,47 @@ const App = () => {
 
   dbExps.forEach((item) => {
     if (item.getResult() === '' || item.getResult() === 'не указано') {
-      if (item.getDatePetitionStart() === '') {
+      if (item.getDatePetitionStart() === '' && item.getDateExpComplete() === '') {
         const date1 = new Date(item.getDateExpEnd())
         const date2 = new Date()
         const daysCount = Math.floor(((Number(date1) - Number(date2)) / 1000 / 60 / 60 / 24))
         if (daysCount <= 5 && daysCount >= 0) {
           countOfWarnings += 1
+          resultExpsarr.push({ id: item.getId(), type: 'worning' })
+          return
         }
         if (daysCount < 0) {
           countOfWarnings += 1
+          resultExpsarr.push({ id: item.getId(), type: 'expired' })
+          return
         }
       }
-      if (item.getDatePetitionStart() !== '' && item.getDatePetitionEnd() === '' && item.getValueOfProlongation() === '') {
+
+      if (item.getDatePetitionStart() !== '' && item.getDatePetitionEnd() === '' && item.getValueOfProlongation() === '' ) {
         const date1 = new Date(item.getDateExpEnd())
         const date2 = new Date()
         const daysCount = Math.floor(((Number(date1) - Number(date2)) / 1000 / 60 / 60 / 24))
         if (daysCount <= 3 && daysCount >= 0) {
+          resultExpsarr.push({ id: item.getId(), type: 'worning' })
           countOfWarnings += 1
+          return
         }
-        if (daysCount < 0) {
+        if (daysCount < 0 ) {
           countOfWarnings += 1
+          resultExpsarr.push({ id: item.getId(), type: 'expired' })
+          return
         }
+        
       }
+      
     }
-    // console.log(countOfWarnings);
+    
+    if (item.getDateExpComplete() !== '' && item.getResult() !== '' || item.getDateExpComplete() !== '' && item.getResult() !== 'не указано') {
+      resultExpsarr.push({ id: item.getId(), type: 'completed' })
+    }
+    else {
+      resultExpsarr.push({ id: item.getId(), type: 'none' })
+    }
   })
 
   if (searchArr.length) {
@@ -279,7 +296,7 @@ const App = () => {
           dateOfComplite={item.getDateExpComplete() ? `завершена ${dateFromUsToRu(item.getDateExpComplete())}` : 'завершена н/д'}
           executor={`${item.getExecutor()}`}
           result={item.getResult() ? `${item.getResult()}` : 'в производстве'}
-          isWarning={resultExpsarr[Number(item.getId()) + 1].type}
+          isWarning={resultExpsarr[Number(item.getId()) - 1].type}
           updateClickHendler={updateClickHendler}
         />)
       }
@@ -293,7 +310,7 @@ const App = () => {
         dateOfComplite={item.getDateExpComplete() ? `завершена ${dateFromUsToRu(item.getDateExpComplete())}` : 'завершена н/д'}
         executor={`${item.getExecutor()}`}
         result={item.getResult() ? `${item.getResult()}` : 'в производстве'}
-        isWarning={resultExpsarr[Number(item.getId()) + 1].type}
+        isWarning={resultExpsarr[Number(item.getId()) - 1].type}
         updateClickHendler={updateClickHendler}
       />)
     }).reverse()
@@ -310,7 +327,7 @@ const App = () => {
           dateOfComplite={item.getDateExpComplete() ? `завершена ${dateFromUsToRu(item.getDateExpComplete())}` : 'завершена н/д'}
           executor={`${item.getExecutor()}`}
           result={item.getResult() ? `${item.getResult()}` : 'в производстве'}
-          isWarning={resultExpsarr[Number(item.getId()) + 1].type}
+          isWarning={resultExpsarr[Number(item.getId()) - 1].type}
           updateClickHendler={updateClickHendler}
         />)
       }
@@ -324,7 +341,7 @@ const App = () => {
         dateOfComplite={item.getDateExpComplete() ? `завершена ${dateFromUsToRu(item.getDateExpComplete())}` : 'завершена н/д'}
         executor={`${item.getExecutor()}`}
         result={item.getResult() ? `${item.getResult()}` : 'в производстве'}
-        isWarning={resultExpsarr[Number(item.getId()) + 1].type}
+        isWarning={resultExpsarr[Number(item.getId()) - 1].type}
         updateClickHendler={updateClickHendler}
       />)
     }).reverse()

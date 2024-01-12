@@ -15,14 +15,17 @@ interface IInputProps {
 }
 
 const Card: FC<IInputProps> = ({ number, type, active, numberOfMaterial, dateOfIncoming, dateOfComplite, executor, result, updateClickHendler, isWarning }) => {
+  
+  // console.log('isWarning', isWarning );
+  
   if (active) {
     return (
       <div className='card card-active' onClick={(event) => {
         event.stopPropagation()
         updateClickHendler(number)
       }}>
-        <div className="card-half-row">
-          {/* <div className="warning-icon"></div> */}
+        <div className="card-half-row2">
+          <div className={`${isWarning === 'worning' ? 'warning-icon' : isWarning === 'expired' ? 'expired-icon' : isWarning === 'completed' ? 'completed-icon' : null}`}></div>
           <div className='card-half-row'>{`№ ${number}`}</div>
         </div>
         <div className='card-half-row'>{type}
@@ -36,12 +39,12 @@ const Card: FC<IInputProps> = ({ number, type, active, numberOfMaterial, dateOfI
     );
   }
   return (
-    <div className={`card ${isWarning === 'worning' ? 'card-worning' : isWarning === 'expired' ? 'card-expired' : isWarning === 'completed' ? 'card-completed' : null}`} onClick={(event) => {
+    <div className="card" onClick={(event) => {
       event.stopPropagation()
       updateClickHendler(number)
     }}>
-      <div className="card-half-row">
-      {/* <div className="warning-icon"></div> */}
+      <div className="card-half-row2">
+        <div className={`${isWarning === 'worning' ? 'warning-icon' : isWarning === 'expired' ? 'expired-icon' : isWarning === 'completed' ? 'completed-icon' : null}`}></div>
       <div className='card-half-row'>{`№ ${number}`}</div>
       </div>
       <div className='card-half-row'>{type}

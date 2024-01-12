@@ -283,9 +283,6 @@ const App = () => {
     }
   })
 
-
-  console.log('resultExpsarr', resultExpsarr);
-
   if (searchArr.length) {
     searchCardsArr = searchArr.map((item) => {
       if (modal.idOfExp && modal.idOfExp === item.getId()) {

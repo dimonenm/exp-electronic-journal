@@ -275,7 +275,7 @@ const App = () => {
       
     }
     
-    if (item.getDateExpComplete() !== '' && item.getResult() !== '' || item.getDateExpComplete() !== '' && item.getResult() !== 'не указано') {
+    if (item.getDateExpComplete() !== '' && item.getResult() !== '' && item.getResult() !== 'не указано') {
       resultExpsarr.push({ id: item.getId(), type: 'completed' })
     }
     else {

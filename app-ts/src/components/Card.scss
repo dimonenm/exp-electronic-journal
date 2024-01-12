@@ -19,11 +19,11 @@
     grid-column-end: 3;
 }
 
-.card-half-row2{
+.card-half-row2 {
     display: grid;
     grid-template-columns: 1fr 3fr;
     gap: 2px;
-    align-items:center;
+    align-items: center;
 }
 .card:hover {
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.25);
@@ -32,22 +32,24 @@
     background-color: #c2d5f2;
 }
 
-
 .completed-icon {
-    background-image: url("../images/warning.svg");
-    width: 20px;
-    height: 20px;
-}
-
-.expired-icon {
     background-image: url("../images/completed.svg");
     width: 20px;
     height: 20px;
 }
 
-.warning-icon {
+.expired-icon {
     background-image: url("../images/expired.svg");
     width: 20px;
     height: 20px;
 }
 
+.warning-icon {
+    background-image: url("../images/warning.svg");
+    width: 20px;
+    height: 20px;
+}
+
+.hidden-icon {
+    opacity: 0;
+}

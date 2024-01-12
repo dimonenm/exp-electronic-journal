@@ -240,36 +240,51 @@ const App = () => {
 
   dbExps.forEach((item) => {
     if (item.getResult() === '' || item.getResult() === 'не указано') {
-      if (item.getDatePetitionStart() === '') {
+      if (item.getDatePetitionStart() === '' && item.getDateExpComplete() === '') {
         const date1 = new Date(item.getDateExpEnd())
         const date2 = new Date()
         const daysCount = Math.floor(((Number(date1) - Number(date2)) / 1000 / 60 / 60 / 24))
         if (daysCount <= 5 && daysCount >= 0) {
           countOfWarnings += 1
           resultExpsarr.push({ id: item.getId(), type: 'worning' })
+          return
         }
         if (daysCount < 0) {
           countOfWarnings += 1
           resultExpsarr.push({ id: item.getId(), type: 'expired' })
+          return
         }
       }
 
-      if (item.getDatePetitionStart() !== '' && item.getDatePetitionEnd() === '' && item.getValueOfProlongation() === '') {
+      if (item.getDatePetitionStart() !== '' && item.getDatePetitionEnd() === '' && item.getValueOfProlongation() === '' ) {
         const date1 = new Date(item.getDateExpEnd())
         const date2 = new Date()
         const daysCount = Math.floor(((Number(date1) - Number(date2)) / 1000 / 60 / 60 / 24))
         if (daysCount <= 3 && daysCount >= 0) {
           resultExpsarr.push({ id: item.getId(), type: 'worning' })
           countOfWarnings += 1
+          return
         }
-        if (daysCount < 0) {
+        if (daysCount < 0 ) {
           countOfWarnings += 1
           resultExpsarr.push({ id: item.getId(), type: 'expired' })
+          return
         }
         
       }
+      
+    }
+    
+    if (item.getDateExpComplete() !== '') {
+      resultExpsarr.push({ id: item.getId(), type: 'completed' })
+    }
+    else {
+      resultExpsarr.push({ id: item.getId(), type: 'none' })
     }
   })
+
+
+  console.log('resultExpsarr', resultExpsarr);
 
   if (searchArr.length) {
     searchCardsArr = searchArr.map((item) => {

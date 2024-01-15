@@ -144,7 +144,18 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
         'Марчук В.А.': 0
       }
     }
-
+    let экспертизСХодатайством: number = 0
+    let экспертизПоЗатраченвмДням: {
+      '<5': 0,
+      '<15': 0,
+      '>15': 0
+    } = {
+      '<5': 0,
+      '<15': 0,
+      '>15': 0
+    }
+    
+    
     arr.forEach(item => {
       assignedExps.Total += 1
       executorExps.Total['Всего'] += 1
@@ -456,7 +467,21 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
           executorExps.Verifications['Марчук В.А.'] += 1
         }
       }
+
+      if (item.getDatePetitionStart() !== '') {
+        экспертизСХодатайством += 1
+      }
+      if (item.getDateExpComplete() !== '') {
+        const start = Number(new Date(item.getDateOfReceipt()))
+        const end = Number(new Date(item.getDateExpComplete()))
+        const res = (end - start) * 1000 * 60 * 60 * 24
+        if (res > 0 && res < 5) { экспертизПоЗатраченвмДням['<5'] += 1 } else
+        if (res >= 5 && res < 14) { экспертизПоЗатраченвмДням['<15'] += 1 }else
+        if (res >= 15) { экспертизПоЗатраченвмДням['>15'] += 1 }
+      }
     })
+    console.log('экспертизПоЗатраченвмДням: ', экспертизПоЗатраченвмДням);
+    console.log('экспертизСХодатайством: ', экспертизСХодатайством);
 
     report.setAssignedHandwritingExps(assignedExps.Handwriting.toString())
     report.setAssignedTCEDExps(assignedExps.TCED.toString())

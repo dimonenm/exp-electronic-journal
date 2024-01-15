@@ -255,8 +255,14 @@ const App = () => {
           return
         }
       }
+      
+      if (item.getDateExpComplete() !== '') {
+        countOfWarnings += 1
+        resultExpsarr.push({ id: item.getId(), type: 'worning' })
+        return
+      }
 
-      if (item.getDatePetitionStart() !== '' && item.getDatePetitionEnd() === '' && item.getValueOfProlongation() === '' ) {
+      if (item.getDatePetitionStart() !== '' && item.getDatePetitionEnd() === '' && item.getValueOfProlongation() === '') {
         const date1 = new Date(item.getDateExpEnd())
         const date2 = new Date()
         const daysCount = Math.floor(((Number(date1) - Number(date2)) / 1000 / 60 / 60 / 24))
@@ -265,16 +271,16 @@ const App = () => {
           countOfWarnings += 1
           return
         }
-        if (daysCount < 0 ) {
+        if (daysCount < 0) {
           countOfWarnings += 1
           resultExpsarr.push({ id: item.getId(), type: 'expired' })
           return
         }
-        
+
       }
-      
+
     }
-    
+
     if (item.getDateExpComplete() !== '' && item.getResult() !== '' && item.getResult() !== 'не указано') {
       resultExpsarr.push({ id: item.getId(), type: 'completed' })
     }
@@ -440,7 +446,7 @@ const App = () => {
           year={year}
         />
         <Modal
-          type={ modal.type === 'search' ? 'search' : 'hidden'}
+          type={modal.type === 'search' ? 'search' : 'hidden'}
           idOfExp={modal.idOfExp}
           dbExps={dbExps}
           setDbExps={setDbExps}

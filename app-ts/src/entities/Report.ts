@@ -121,6 +121,7 @@ export default class Report {
       'Марчук В.А.': ''
     }
   }
+  
   getAssignedHandwritingExps(): string {
     return this.assignedHandwritingExps
   }

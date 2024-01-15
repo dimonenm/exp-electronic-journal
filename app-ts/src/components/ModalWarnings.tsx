@@ -24,6 +24,11 @@ const ModalWarnings: FC<ModalWarningsProps> = ({ dbExps, setModal }) => {
 
   dbExps.forEach((item) => {
     if (item.getResult() === '' || item.getResult() === 'не указано') {
+      if (item.getDateExpComplete() !== '') {
+        const text = `№${item.getId()} - не указан результат экспертизы`
+          expWarningsComponentsArr.push(<WarningsText key={item.getId()} text={text} number={item.getId()} updateClickHendler={updateClickHendler} />)
+        return
+      }
       if (item.getDatePetitionStart() === '') {
         const date1 = new Date(item.getDateExpEnd())
         const date2 = new Date()

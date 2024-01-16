@@ -635,6 +635,11 @@ console.log('get', report.getExpertiseDaysSpent('до 5 дней'));
       <InfoText text={report.getAssignedTotalExps()} />
       <div></div>
       <div></div>
+      <InfoTitle text="Количество вынесенных ходатайств" />
+      <InfoText text="Всего:" />
+      <InfoText text={report.getExpertisesWithPetition()} />
+      <div></div>
+      <div></div>
       <InfoTitle text="Количество результативных экспертиз" />
       <div></div>
       <div></div>
@@ -659,11 +664,7 @@ console.log('get', report.getExpertiseDaysSpent('до 5 дней'));
       <InfoText text={report.getExpertiseDaysSpent('более 15 дней')} />
       <div></div>
       <div></div>
-      <InfoTitle text="Количество вынесенных ходатайств" />
-      <InfoText text="Всего:" />
-      <InfoText text={report.getExpertisesWithPetition()} />
-      <div></div>
-      <div></div>
+     
       <InfoTitle text="Количество экспертиз по статьям" />
       <div></div>
       <div></div>

@@ -64,7 +64,7 @@
   width: 420px;
 
   padding: 0 10px;
-  grid-template-rows: 30px 10px repeat(4, 20px) 10px 30px 10px repeat(4, 20px) 10px 30px 10px 335px 10px 30px 10px 428px;
+  grid-template-rows: 30px 10px repeat(4, 20px) 10px 30px 10px repeat(4, 20px) 10px 45px 10px repeat(3, 20px) 10px 30px 20px 10px 30px 10px;
   grid-template-columns: 200px 200px;
 
   &-title {
@@ -73,6 +73,7 @@
     grid-column-end: 3;
     justify-items: center;
     align-items: center;
+    text-align: center;
 
     height: 100%;
     width: 100%;

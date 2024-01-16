@@ -7,6 +7,12 @@ export default class Report {
   resultTCEDExps: string = ''
   resultPortraitExps: string = ''
   resultTotalExps: string = ''
+  expertisesWithPetition: string = ''
+  expertiseDaysSpent = {
+      'до 5 дней': '',
+      'до 15 дней': '',
+      'более 15 дней': ''
+  }
   articleExps = {
     Handwriting: {
       'Всего': '',
@@ -121,7 +127,7 @@ export default class Report {
       'Марчук В.А.': ''
     }
   }
-  
+
   getAssignedHandwritingExps(): string {
     return this.assignedHandwritingExps
   }
@@ -145,6 +151,21 @@ export default class Report {
   }
   getResultTotalExps(): string {
     return this.resultTotalExps
+  }
+  getExpertisesWithPetition(): string{
+    return this.expertisesWithPetition
+  }
+  getExpertiseDaysSpent(id: string): string {
+    if (id === 'до 5 дней') {
+      return this.expertiseDaysSpent['до 5 дней']
+    }
+    if (id === 'до 15 дней') {
+      return this.expertiseDaysSpent['до 15 дней']
+    }
+    if (id === 'более 15 дней') {
+      return this.expertiseDaysSpent['более 15 дней']
+    }
+    return ''
   }
   getArticleExpsHandwriting(id: string): string {
     if (id === 'Всего') return this.articleExps.Handwriting['Всего']
@@ -291,6 +312,14 @@ export default class Report {
   }
   setResultTotalExps(value: string): void {
     this.resultTotalExps = value
+  }
+  setExpertisesWithPetition(value: string): void {
+    this.expertisesWithPetition = value
+  }
+  setExpertiseDaysSpent(v1: string, v2: string, v3: string): void {
+    this.expertiseDaysSpent['до 5 дней'] = v1
+    this.expertiseDaysSpent['до 15 дней'] = v2
+    this.expertiseDaysSpent['более 15 дней'] = v3
   }
   setArticleExpsHandwriting(v1: string, v2: string, v3: string, v4: string, v5: string, v6: string, v7: string, v8: string, v9: string): void {
     this.articleExps.Handwriting['Всего'] = v1

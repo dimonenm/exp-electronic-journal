@@ -144,18 +144,18 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
         'Марчук В.А.': 0
       }
     }
-    let экспертизСХодатайством: number = 0
-    let экспертизПоЗатраченвмДням: {
-      '<5': 0,
-      '<15': 0,
-      '>15': 0
+    let expertisesWithPetition: number = 0
+    let expertiseDaysSpent: {
+      'до 5 дней': 0,
+      'до 15 дней': 0,
+      'более 15 дней': 0
     } = {
-      '<5': 0,
-      '<15': 0,
-      '>15': 0
+      'до 5 дней': 0,
+      'до 15 дней': 0,
+      'более 15 дней': 0
     }
-    
-    
+
+
     arr.forEach(item => {
       assignedExps.Total += 1
       executorExps.Total['Всего'] += 1
@@ -469,19 +469,23 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
       }
 
       if (item.getDatePetitionStart() !== '') {
-        экспертизСХодатайством += 1
+        expertisesWithPetition += 1
       }
       if (item.getDateExpComplete() !== '') {
         const start = Number(new Date(item.getDateOfReceipt()))
         const end = Number(new Date(item.getDateExpComplete()))
-        const res = (end - start) * 1000 * 60 * 60 * 24
-        if (res > 0 && res < 5) { экспертизПоЗатраченвмДням['<5'] += 1 } else
-        if (res >= 5 && res < 14) { экспертизПоЗатраченвмДням['<15'] += 1 }else
-        if (res >= 15) { экспертизПоЗатраченвмДням['>15'] += 1 }
+        const res = (end - start) / 1000 / 60 / 60 / 24
+        if (res > 0 && res < 5) {
+          expertiseDaysSpent['до 5 дней'] += 1
+        } else if (res >= 5 && res < 14) {
+          expertiseDaysSpent['до 15 дней'] += 1
+        } else if (res >= 15) {
+          expertiseDaysSpent['более 15 дней'] += 1
+        }
       }
     })
-    console.log('экспертизПоЗатраченвмДням: ', экспертизПоЗатраченвмДням);
-    console.log('экспертизСХодатайством: ', экспертизСХодатайством);
+    console.log('экспертизПоЗатраченвмДням: ', expertiseDaysSpent['более 15 дней']);
+    console.log('экспертизСХодатайством: ', expertisesWithPetition);
 
     report.setAssignedHandwritingExps(assignedExps.Handwriting.toString())
     report.setAssignedTCEDExps(assignedExps.TCED.toString())
@@ -491,6 +495,12 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
     report.setResultTCEDExps(resultExps.TCED.toString())
     report.setResultPortraitExps(resultExps.Portrait.toString())
     report.setResultTotalExps(resultExps.Total.toString())
+    report.setExpertisesWithPetition(expertisesWithPetition.toString())
+    report.setExpertiseDaysSpent(
+      expertiseDaysSpent['до 5 дней'].toString(),
+      expertiseDaysSpent['до 15 дней'].toString(),
+      expertiseDaysSpent['более 15 дней'].toString()
+    )
     report.setArticleExpsHandwriting(
       articleExps.Handwriting['Всего'].toString(),
       articleExps.Handwriting['ст 101'].toString(),
@@ -609,7 +619,7 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
   } else {
     report = addReportData(dbExps)
   }
-
+console.log('get', report.getExpertiseDaysSpent('до 5 дней'));
   return (
     <>
       <InfoTitle text="Количество назначенных экспертиз" />
@@ -625,6 +635,11 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
       <InfoText text={report.getAssignedTotalExps()} />
       <div></div>
       <div></div>
+      <InfoTitle text="Количество вынесенных ходатайств" />
+      <InfoText text="Всего:" />
+      <InfoText text={report.getExpertisesWithPetition()} />
+      <div></div>
+      <div></div>
       <InfoTitle text="Количество результативных экспертиз" />
       <div></div>
       <div></div>
@@ -638,6 +653,18 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
       <InfoText text={report.getResultTotalExps()} />
       <div></div>
       <div></div>
+      <InfoTitle text="Количество дней затраченных на производство экспертиз" />
+      <div></div>
+      <div></div>
+      <InfoText text="до 5 дней:" />
+      <InfoText text={report.getExpertiseDaysSpent('до 5 дней')}/>
+      <InfoText text="до 15 дней:" />
+      <InfoText text={report.getExpertiseDaysSpent('до 15 дней')}/>
+      <InfoText text="более 15 дней:" />
+      <InfoText text={report.getExpertiseDaysSpent('более 15 дней')} />
+      <div></div>
+      <div></div>
+     
       <InfoTitle text="Количество экспертиз по статьям" />
       <div></div>
       <div></div>

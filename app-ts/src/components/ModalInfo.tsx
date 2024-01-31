@@ -155,6 +155,28 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
       'более 15 дней': 0
     }
 
+    let expsDaysSpent = {
+      Handwriting:{
+        'до 5 дней': 0,
+        'до 15 дней': 0,
+        'более 15 дней': 0
+      },
+      TCED:{
+        'до 5 дней': 0,
+        'до 15 дней': 0,
+        'более 15 дней': 0
+      },
+      Portrait:{
+        'до 5 дней': 0,
+        'до 15 дней': 0,
+        'более 15 дней': 0
+      }, 
+      Total:{
+        'до 5 дней': 0,
+        'до 15 дней': 0,
+        'более 15 дней': 0
+      }
+    } 
 
     arr.forEach(item => {
       assignedExps.Total += 1
@@ -471,20 +493,37 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
       if (item.getDatePetitionStart() !== '') {
         expertisesWithPetition += 1
       }
-      if (item.getDateExpComplete() !== '') {
+function getDaysSpentExp(exp: any): void {
+  const start = Number(new Date(item.getDateOfReceipt()))
+  const end = Number(new Date(item.getDateExpComplete()))
+  const res = (end - start) / 1000 / 60 / 60 / 24
+  if (res > 0 && res < 5) {
+    exp['до 5 дней'] +=1
+  } else if (res >= 5 && res < 14) {
+    exp['до 15 дней'] +=1
+  } else if (res >= 15) {
+    exp['более 15 дней'] +=1
+  }
+  return exp
+}
+
+      if (item.getDateExpComplete() !== '' && item.getTypeOfExpertise() === 'Почерковедческая') {
         const start = Number(new Date(item.getDateOfReceipt()))
         const end = Number(new Date(item.getDateExpComplete()))
         const res = (end - start) / 1000 / 60 / 60 / 24
         if (res > 0 && res < 5) {
           expertiseDaysSpent['до 5 дней'] += 1
+          expsDaysSpent.Handwriting['до 5 дней'] +=1
         } else if (res >= 5 && res < 14) {
           expertiseDaysSpent['до 15 дней'] += 1
+          expsDaysSpent.Handwriting['до 15 дней'] +=1
         } else if (res >= 15) {
           expertiseDaysSpent['более 15 дней'] += 1
+          expsDaysSpent.Handwriting['более 15 дней'] +=1
         }
       }
     })
-    console.log('экспертизПоЗатраченвмДням: ', expertiseDaysSpent['более 15 дней']);
+   console.log(expsDaysSpent);
     console.log('экспертизСХодатайством: ', expertisesWithPetition);
 
     report.setAssignedHandwritingExps(assignedExps.Handwriting.toString())
@@ -501,6 +540,11 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
       expertiseDaysSpent['до 15 дней'].toString(),
       expertiseDaysSpent['более 15 дней'].toString()
     )
+    report.setExpsDaysSpentHandwriting(
+      expsDaysSpent.Handwriting['до 5 дней'].toString(),
+      expsDaysSpent.Handwriting['до 15 дней'].toString(),
+      expsDaysSpent.Handwriting['более 15 дней'].toString(),
+      )
     report.setArticleExpsHandwriting(
       articleExps.Handwriting['Всего'].toString(),
       articleExps.Handwriting['ст 101'].toString(),
@@ -620,6 +664,7 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
     report = addReportData(dbExps)
   }
 console.log('get', report.getExpertiseDaysSpent('до 5 дней'));
+// console.log('экспертизПоЗатраченвмДнямПочерк: ', expsDaysSpent);
   return (
     <>
       <InfoTitle text="Количество назначенных экспертиз" />

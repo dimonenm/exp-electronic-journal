@@ -374,7 +374,7 @@ export default class Report {
     this.expsDaysSpent.Handwriting['до 15 дней'] = v2
     this.expsDaysSpent.Handwriting['более 15 дней'] = v3
   }
-  setExpsDaysSpentTKED(v1: string, v2: string, v3: string): void {
+  setExpsDaysSpentTCED(v1: string, v2: string, v3: string): void {
     this.expsDaysSpent.TCED['до 5 дней'] = v1
     this.expsDaysSpent.TCED['до 15 дней'] = v2
     this.expsDaysSpent.TCED['более 15 дней'] = v3

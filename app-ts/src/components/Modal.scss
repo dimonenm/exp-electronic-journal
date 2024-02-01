@@ -64,7 +64,7 @@
   width: 420px;
 
   padding: 0 10px;
-  grid-template-rows: 30px 10px repeat(4, 20px) 10px 30px 20px 10px 30px 10px repeat(4, 20px) 10px 45px 10px repeat(3, 20px)  10px 30px 10px;
+  grid-template-rows: 30px 10px repeat(4, 20px) 10px 30px 20px 10px 30px 10px repeat(4, 20px) 10px 45px 10px 100px 10px 30px 10px;
   grid-template-columns: 200px 200px;
 
   &-title {
@@ -118,6 +118,17 @@
     grid-template-rows: 100px 1px 20px 1px 20px 1px 20px 1px 20px 1px 20px 1px 20px 1px 20px 1px 20px 1px 20px 1px 20px 1px 20px 1px 20px 1px;
     grid-template-columns: 200px repeat(5, 40px);
     row-gap: 3px;
+
+    height: 100%;
+    width: 100%;
+  }
+  &-table-daysSpent{
+    display: grid;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-template-columns: 195px repeat(3, 1fr);
+    grid-template-rows: repeat(5, 20px);
+    grid-gap: 3px;
 
     height: 100%;
     width: 100%;

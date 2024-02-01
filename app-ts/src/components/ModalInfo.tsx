@@ -728,12 +728,36 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
       <InfoTitle text="Количество дней затраченных на производство экспертиз" />
       <div></div>
       <div></div>
-      <InfoText text="до 5 дней:" />
+      {/* <InfoText text="до 5 дней:" />
       <InfoText text={report.getExpertiseDaysSpent('до 5 дней')} />
       <InfoText text="до 15 дней:" />
       <InfoText text={report.getExpertiseDaysSpent('до 15 дней')} />
       <InfoText text="более 15 дней:" />
-      <InfoText text={report.getExpertiseDaysSpent('более 15 дней')} />
+      <InfoText text={report.getExpertiseDaysSpent('более 15 дней')} /> */}
+      <InfoTable type="daysSpent">
+        <InfoText text="" />
+        <InfoText text="до 5" />
+        <InfoText text="до 15" />
+        <InfoText text="более 15" />
+        <InfoText text="Почерковедческих:" />
+        <InfoText text="" />
+        <InfoText text="" />
+        <InfoText text="" />
+        <InfoText text="ТКЭД:" />
+        <InfoText text="" />
+        <InfoText text="" />
+        <InfoText text="" />
+        <InfoText text="Портретных:" />
+        <InfoText text="" />
+        <InfoText text="" />
+        <InfoText text="" />
+        <InfoText text="Всего:" />
+        <InfoText text="" />
+        <InfoText text="" />
+        <InfoText text="" />
+
+       
+      </InfoTable>
       <div></div>
       <div></div>
 

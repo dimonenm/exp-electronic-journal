@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
 interface InfoTableProps {
-  type:string
+  type: string
   children: React.ReactNode
 }
 
@@ -19,6 +19,14 @@ const InfoTable: FC<InfoTableProps> = ({ type, children }) => {
         {children}
       </div>
     );
+  }
+  if (type === 'daysSpent') {
+    return (
+      <div className="modal-info-table-daysSpent">
+        {children}
+      </div>
+    )
+
   }
   return (<></>);
 };

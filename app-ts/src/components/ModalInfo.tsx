@@ -541,7 +541,8 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
       }
     })
     console.log(expsDaysSpent);
-    console.log('экспертизСХодатайством: ', expertisesWithPetition);
+      console.log(report.getExpsDaysSpentTotal('до 5 дней'));
+    // console.log('экспертизСХодатайством: ', expertisesWithPetition);
 
     report.setAssignedHandwritingExps(assignedExps.Handwriting.toString())
     report.setAssignedTCEDExps(assignedExps.TCED.toString())
@@ -571,6 +572,12 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
       expsDaysSpent.Portrait['до 5 дней'].toString(),
       expsDaysSpent.Portrait['до 15 дней'].toString(),
       expsDaysSpent.Portrait['более 15 дней'].toString(),
+    )
+  
+    report.setExpsDaysSpentTotal(
+      expsDaysSpent.Total['до 5 дней'].toString(),
+      expsDaysSpent.Total['до 15 дней'].toString(),
+      expsDaysSpent.Total['более 15 дней'].toString(),
     )
     report.setArticleExpsHandwriting(
       articleExps.Handwriting['Всего'].toString(),
@@ -690,7 +697,8 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
   } else {
     report = addReportData(dbExps)
   }
-  console.log('get', report.getExpertiseDaysSpent('до 5 дней'));
+  // console.log('get', report.getExpertiseDaysSpent('до 5 дней'));
+  // console.log(report.getExpsDaysSpentTotal('до 5 дней'));
   // console.log('экспертизПоЗатраченвмДнямПочерк: ', expsDaysSpent);
   return (
     <>
@@ -740,21 +748,22 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
         <InfoText text="до 15" />
         <InfoText text="более 15" />
         <InfoText text="Почерковедческих:" />
-        <InfoText text="" />
-        <InfoText text="" />
-        <InfoText text="" />
+        <InfoText text={report.getExpsDaysSpentHandwriting('до 5 дней')}/>
+        <InfoText text={report.getExpsDaysSpentHandwriting('до 15 дней')} />
+        <InfoText text={report.getExpsDaysSpentHandwriting('более 15 дней')} />
         <InfoText text="ТКЭД:" />
-        <InfoText text="" />
-        <InfoText text="" />
-        <InfoText text="" />
+        <InfoText text={report.getExpsDaysSpentTCED('до 5 дней')}/>
+        <InfoText text={report.getExpsDaysSpentTCED('до 15 дней')} />
+        <InfoText text={report.getExpsDaysSpentTCED('более 15 дней')} />
         <InfoText text="Портретных:" />
-        <InfoText text="" />
-        <InfoText text="" />
-        <InfoText text="" />
+        <InfoText text={report.getExpsDaysSpentPortrait('до 5 дней')}/>
+        <InfoText text={report.getExpsDaysSpentPortrait('до 15 дней')} />
+        <InfoText text={report.getExpsDaysSpentPortrait('более 15 дней')} />
         <InfoText text="Всего:" />
-        <InfoText text="" />
-        <InfoText text="" />
-        <InfoText text="" />
+        <InfoText text={report.getExpsDaysSpentTotal('до 5 дней')}/>
+        <InfoText text={report.getExpsDaysSpentTotal('до 15 дней')} />
+        <InfoText text={report.getExpsDaysSpentTotal('более 15 дней')} />
+
 
        
       </InfoTable>

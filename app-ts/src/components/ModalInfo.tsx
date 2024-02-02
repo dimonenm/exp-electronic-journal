@@ -145,16 +145,6 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
       }
     }
     let expertisesWithPetition: number = 0
-    let expertiseDaysSpent: {
-      'до 5 дней': 0,
-      'до 15 дней': 0,
-      'более 15 дней': 0
-    } = {
-      'до 5 дней': 0,
-      'до 15 дней': 0,
-      'более 15 дней': 0
-    }
-
     let expsDaysSpent = {
       Handwriting: {
         'до 5 дней': 0,
@@ -540,9 +530,6 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
 
       }
     })
-    console.log(expsDaysSpent);
-      console.log(report.getExpsDaysSpentTotal('до 5 дней'));
-    // console.log('экспертизСХодатайством: ', expertisesWithPetition);
 
     report.setAssignedHandwritingExps(assignedExps.Handwriting.toString())
     report.setAssignedTCEDExps(assignedExps.TCED.toString())
@@ -553,11 +540,6 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
     report.setResultPortraitExps(resultExps.Portrait.toString())
     report.setResultTotalExps(resultExps.Total.toString())
     report.setExpertisesWithPetition(expertisesWithPetition.toString())
-    report.setExpertiseDaysSpent(
-      expertiseDaysSpent['до 5 дней'].toString(),
-      expertiseDaysSpent['до 15 дней'].toString(),
-      expertiseDaysSpent['более 15 дней'].toString()
-    )
     report.setExpsDaysSpentHandwriting(
       expsDaysSpent.Handwriting['до 5 дней'].toString(),
       expsDaysSpent.Handwriting['до 15 дней'].toString(),
@@ -697,9 +679,7 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
   } else {
     report = addReportData(dbExps)
   }
-  // console.log('get', report.getExpertiseDaysSpent('до 5 дней'));
-  // console.log(report.getExpsDaysSpentTotal('до 5 дней'));
-  // console.log('экспертизПоЗатраченвмДнямПочерк: ', expsDaysSpent);
+
   return (
     <>
       <InfoTitle text="Количество назначенных экспертиз" />
@@ -736,12 +716,6 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
       <InfoTitle text="Количество дней затраченных на производство экспертиз" />
       <div></div>
       <div></div>
-      {/* <InfoText text="до 5 дней:" />
-      <InfoText text={report.getExpertiseDaysSpent('до 5 дней')} />
-      <InfoText text="до 15 дней:" />
-      <InfoText text={report.getExpertiseDaysSpent('до 15 дней')} />
-      <InfoText text="более 15 дней:" />
-      <InfoText text={report.getExpertiseDaysSpent('более 15 дней')} /> */}
       <InfoTable type="daysSpent">
         <InfoText text="" />
         <InfoText text="до 5" />
@@ -763,13 +737,9 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
         <InfoText text={report.getExpsDaysSpentTotal('до 5 дней')}/>
         <InfoText text={report.getExpsDaysSpentTotal('до 15 дней')} />
         <InfoText text={report.getExpsDaysSpentTotal('более 15 дней')} />
-
-
-       
       </InfoTable>
       <div></div>
       <div></div>
-
       <InfoTitle text="Количество экспертиз по статьям" />
       <div></div>
       <div></div>

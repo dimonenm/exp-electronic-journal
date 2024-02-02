@@ -8,11 +8,6 @@ export default class Report {
   resultPortraitExps: string = ''
   resultTotalExps: string = ''
   expertisesWithPetition: string = ''
-  expertiseDaysSpent = {
-      'до 5 дней': '',
-      'до 15 дней': '',
-      'более 15 дней': ''
-  }
   expsDaysSpent = {
     Handwriting:{
       'до 5 дней': '',
@@ -179,18 +174,7 @@ export default class Report {
   getExpertisesWithPetition(): string{
     return this.expertisesWithPetition
   }
-  getExpertiseDaysSpent(id: string): string {
-    if (id === 'до 5 дней') {
-      return this.expertiseDaysSpent['до 5 дней']
-    }
-    if (id === 'до 15 дней') {
-      return this.expertiseDaysSpent['до 15 дней']
-    }
-    if (id === 'более 15 дней') {
-      return this.expertiseDaysSpent['более 15 дней']
-    }
-    return ''
-  }
+
   getExpsDaysSpentHandwriting(id: string): string {
     if (id === 'до 5 дней') return this.expsDaysSpent.Handwriting['до 5 дней']
     if (id === 'до 15 дней') return this.expsDaysSpent.Handwriting['до 15 дней']
@@ -363,11 +347,6 @@ export default class Report {
   }
   setExpertisesWithPetition(value: string): void {
     this.expertisesWithPetition = value
-  }
-  setExpertiseDaysSpent(v1: string, v2: string, v3: string): void {
-    this.expertiseDaysSpent['до 5 дней'] = v1
-    this.expertiseDaysSpent['до 15 дней'] = v2
-    this.expertiseDaysSpent['более 15 дней'] = v3
   }
   setExpsDaysSpentHandwriting(v1: string, v2: string, v3: string): void {
     this.expsDaysSpent.Handwriting['до 5 дней'] = v1

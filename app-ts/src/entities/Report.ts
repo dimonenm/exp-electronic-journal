@@ -8,11 +8,30 @@ export default class Report {
   resultPortraitExps: string = ''
   resultTotalExps: string = ''
   expertisesWithPetition: string = ''
-  expertiseDaysSpent = {
+  expsDaysSpent = {
+    Handwriting:{
       'до 5 дней': '',
       'до 15 дней': '',
       'более 15 дней': ''
+    },
+    TCED:{
+      'до 5 дней': '',
+      'до 15 дней': '',
+      'более 15 дней': ''
+    },
+    Portrait:{
+      'до 5 дней': '',
+      'до 15 дней': '',
+      'более 15 дней': ''
+    }, 
+    Total:{
+      'до 5 дней': '',
+      'до 15 дней': '',
+      'более 15 дней': ''
+    }
+  
   }
+
   articleExps = {
     Handwriting: {
       'Всего': '',
@@ -155,16 +174,29 @@ export default class Report {
   getExpertisesWithPetition(): string{
     return this.expertisesWithPetition
   }
-  getExpertiseDaysSpent(id: string): string {
-    if (id === 'до 5 дней') {
-      return this.expertiseDaysSpent['до 5 дней']
-    }
-    if (id === 'до 15 дней') {
-      return this.expertiseDaysSpent['до 15 дней']
-    }
-    if (id === 'более 15 дней') {
-      return this.expertiseDaysSpent['более 15 дней']
-    }
+
+  getExpsDaysSpentHandwriting(id: string): string {
+    if (id === 'до 5 дней') return this.expsDaysSpent.Handwriting['до 5 дней']
+    if (id === 'до 15 дней') return this.expsDaysSpent.Handwriting['до 15 дней']
+    if (id === 'более 15 дней') return this.expsDaysSpent.Handwriting['более 15 дней']
+    return ''
+  }
+  getExpsDaysSpentTCED(id: string): string {
+    if (id === 'до 5 дней') return this.expsDaysSpent.TCED['до 5 дней']
+    if (id === 'до 15 дней') return this.expsDaysSpent.TCED['до 15 дней']
+    if (id === 'более 15 дней') return this.expsDaysSpent.TCED['более 15 дней']
+    return ''
+  }
+  getExpsDaysSpentPortrait(id: string): string {
+    if (id === 'до 5 дней') return this.expsDaysSpent.Portrait['до 5 дней']
+    if (id === 'до 15 дней') return this.expsDaysSpent.Portrait['до 15 дней']
+    if (id === 'более 15 дней') return this.expsDaysSpent.Portrait['более 15 дней']
+    return ''
+  }
+  getExpsDaysSpentTotal(id: string): string {
+    if (id === 'до 5 дней') return this.expsDaysSpent.Total['до 5 дней']
+    if (id === 'до 15 дней') return this.expsDaysSpent.Total['до 15 дней']
+    if (id === 'более 15 дней') return this.expsDaysSpent.Total['более 15 дней']
     return ''
   }
   getArticleExpsHandwriting(id: string): string {
@@ -316,11 +348,27 @@ export default class Report {
   setExpertisesWithPetition(value: string): void {
     this.expertisesWithPetition = value
   }
-  setExpertiseDaysSpent(v1: string, v2: string, v3: string): void {
-    this.expertiseDaysSpent['до 5 дней'] = v1
-    this.expertiseDaysSpent['до 15 дней'] = v2
-    this.expertiseDaysSpent['более 15 дней'] = v3
+  setExpsDaysSpentHandwriting(v1: string, v2: string, v3: string): void {
+    this.expsDaysSpent.Handwriting['до 5 дней'] = v1
+    this.expsDaysSpent.Handwriting['до 15 дней'] = v2
+    this.expsDaysSpent.Handwriting['более 15 дней'] = v3
   }
+  setExpsDaysSpentTCED(v1: string, v2: string, v3: string): void {
+    this.expsDaysSpent.TCED['до 5 дней'] = v1
+    this.expsDaysSpent.TCED['до 15 дней'] = v2
+    this.expsDaysSpent.TCED['более 15 дней'] = v3
+  }
+  setExpsDaysSpentPortrait(v1: string, v2: string, v3: string): void {
+    this.expsDaysSpent.Portrait['до 5 дней'] = v1
+    this.expsDaysSpent.Portrait['до 15 дней'] = v2
+    this.expsDaysSpent.Portrait['более 15 дней'] = v3
+  }
+  setExpsDaysSpentTotal(v1: string, v2: string, v3: string): void {
+    this.expsDaysSpent.Total['до 5 дней'] = v1
+    this.expsDaysSpent.Total['до 15 дней'] = v2
+    this.expsDaysSpent.Total['более 15 дней'] = v3
+  }
+
   setArticleExpsHandwriting(v1: string, v2: string, v3: string, v4: string, v5: string, v6: string, v7: string, v8: string, v9: string): void {
     this.articleExps.Handwriting['Всего'] = v1
     this.articleExps.Handwriting['ст 101'] = v2

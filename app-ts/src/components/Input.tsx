@@ -128,6 +128,7 @@ const Input: FC<IInputProps> = ({
         <option>не указано</option>
         <option>МВД</option>
         <option>ГСУ СК</option>
+        <option>ВСУ СК</option>
         <option>ФСБ</option>
         <option>Суд</option>
       </select>

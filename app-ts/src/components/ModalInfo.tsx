@@ -145,12 +145,12 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
       }
     }
     let expertisesWithPetition: number = 0
-    // let expsWithPetition = {
-    //   handwriting: 0, 
-    //   TCED: 0,
-    //   portrait: 0,
-    //   total:0,
-    // }
+    let expsWithPetition = {
+      handwriting: 0,
+      TCED: 0,
+      portrait: 0,
+      total: 0,
+    }
     let expsDaysSpent = {
       Handwriting: {
         'до 5 дней': 0,
@@ -487,55 +487,67 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
       }
 
       if (item.getDatePetitionStart() !== '') {
-        expertisesWithPetition += 1
-      }
-
-      if (item.getDateExpComplete() !== '') {
-        const start = Number(new Date(item.getDateOfReceipt()))
-        const end = Number(new Date(item.getDateExpComplete()))
-        const res = (end - start) / 1000 / 60 / 60 / 24
-
         if (item.getTypeOfExpertise() === 'Почерковедческая') {
-          if (res > 0 && res < 5) {
-            expsDaysSpent.Total['до 5 дней'] += 1
-            expsDaysSpent.Handwriting['до 5 дней'] += 1
-          } else if (res >= 5 && res < 14) {
-            expsDaysSpent.Total['до 15 дней'] += 1
-            expsDaysSpent.Handwriting['до 15 дней'] += 1
-          } else if (res >= 15) {
-            expsDaysSpent.Total['более 15 дней'] += 1
-            expsDaysSpent.Handwriting['более 15 дней'] += 1
-          }
+          expsWithPetition.handwriting += 1
+          expsWithPetition.total += 1
         }
-
-        if (item.getTypeOfExpertise() === 'Портретная') {
-          if (res > 0 && res < 5) {
-            expsDaysSpent.Total['до 5 дней'] += 1
-            expsDaysSpent.Portrait['до 5 дней'] += 1
-          } else if (res >= 5 && res < 14) {
-            expsDaysSpent.Total['до 15 дней'] += 1
-            expsDaysSpent.Portrait['до 15 дней'] += 1
-          } else if (res >= 15) {
-            expsDaysSpent.Total['более 15 дней'] += 1
-            expsDaysSpent.Portrait['более 15 дней'] += 1
-          }
-        }
-
         if (item.getTypeOfExpertise() === 'ТКЭД общ.' || item.getTypeOfExpertise() === 'ТКЭД ден.') {
-          if (res > 0 && res < 5) {
-            expsDaysSpent.Total['до 5 дней'] += 1
-            expsDaysSpent.TCED['до 5 дней'] += 1
-          } else if (res >= 5 && res < 14) {
-            expsDaysSpent.Total['до 15 дней'] += 1
-            expsDaysSpent.TCED['до 15 дней'] += 1
-          } else if (res >= 15) {
-            expsDaysSpent.Total['более 15 дней'] += 1
-            expsDaysSpent.TCED['более 15 дней'] += 1
-          }
+          expsWithPetition.TCED += 1
+          expsWithPetition.total += 1
         }
-
+        if (item.getTypeOfExpertise() === 'Портретная') {
+          expsWithPetition.portrait += 1
+          expsWithPetition.total += 1
+        }
       }
-    })
+        expertisesWithPetition += 1
+       
+        if (item.getDateExpComplete() !== '') {
+          const start = Number(new Date(item.getDateOfReceipt()))
+          const end = Number(new Date(item.getDateExpComplete()))
+          const res = (end - start) / 1000 / 60 / 60 / 24
+
+          if (item.getTypeOfExpertise() === 'Почерковедческая') {
+            if (res > 0 && res < 5) {
+              expsDaysSpent.Total['до 5 дней'] += 1
+              expsDaysSpent.Handwriting['до 5 дней'] += 1
+            } else if (res >= 5 && res < 14) {
+              expsDaysSpent.Total['до 15 дней'] += 1
+              expsDaysSpent.Handwriting['до 15 дней'] += 1
+            } else if (res >= 15) {
+              expsDaysSpent.Total['более 15 дней'] += 1
+              expsDaysSpent.Handwriting['более 15 дней'] += 1
+            }
+          }
+
+          if (item.getTypeOfExpertise() === 'Портретная') {
+            if (res > 0 && res < 5) {
+              expsDaysSpent.Total['до 5 дней'] += 1
+              expsDaysSpent.Portrait['до 5 дней'] += 1
+            } else if (res >= 5 && res < 14) {
+              expsDaysSpent.Total['до 15 дней'] += 1
+              expsDaysSpent.Portrait['до 15 дней'] += 1
+            } else if (res >= 15) {
+              expsDaysSpent.Total['более 15 дней'] += 1
+              expsDaysSpent.Portrait['более 15 дней'] += 1
+            }
+          }
+
+          if (item.getTypeOfExpertise() === 'ТКЭД общ.' || item.getTypeOfExpertise() === 'ТКЭД ден.') {
+            if (res > 0 && res < 5) {
+              expsDaysSpent.Total['до 5 дней'] += 1
+              expsDaysSpent.TCED['до 5 дней'] += 1
+            } else if (res >= 5 && res < 14) {
+              expsDaysSpent.Total['до 15 дней'] += 1
+              expsDaysSpent.TCED['до 15 дней'] += 1
+            } else if (res >= 15) {
+              expsDaysSpent.Total['более 15 дней'] += 1
+              expsDaysSpent.TCED['более 15 дней'] += 1
+            }
+          }
+
+        }
+      })
 
     report.setAssignedHandwritingExps(assignedExps.Handwriting.toString())
     report.setAssignedTCEDExps(assignedExps.TCED.toString())
@@ -561,7 +573,7 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
       expsDaysSpent.Portrait['до 15 дней'].toString(),
       expsDaysSpent.Portrait['более 15 дней'].toString(),
     )
-  
+
     report.setExpsDaysSpentTotal(
       expsDaysSpent.Total['до 5 дней'].toString(),
       expsDaysSpent.Total['до 15 дней'].toString(),
@@ -728,19 +740,19 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
         <InfoText text="до 15" />
         <InfoText text="более 15" />
         <InfoText text="Почерковедческих:" />
-        <InfoText text={report.getExpsDaysSpentHandwriting('до 5 дней')}/>
+        <InfoText text={report.getExpsDaysSpentHandwriting('до 5 дней')} />
         <InfoText text={report.getExpsDaysSpentHandwriting('до 15 дней')} />
         <InfoText text={report.getExpsDaysSpentHandwriting('более 15 дней')} />
         <InfoText text="ТКЭД:" />
-        <InfoText text={report.getExpsDaysSpentTCED('до 5 дней')}/>
+        <InfoText text={report.getExpsDaysSpentTCED('до 5 дней')} />
         <InfoText text={report.getExpsDaysSpentTCED('до 15 дней')} />
         <InfoText text={report.getExpsDaysSpentTCED('более 15 дней')} />
         <InfoText text="Портретных:" />
-        <InfoText text={report.getExpsDaysSpentPortrait('до 5 дней')}/>
+        <InfoText text={report.getExpsDaysSpentPortrait('до 5 дней')} />
         <InfoText text={report.getExpsDaysSpentPortrait('до 15 дней')} />
         <InfoText text={report.getExpsDaysSpentPortrait('более 15 дней')} />
         <InfoText text="Всего:" />
-        <InfoText text={report.getExpsDaysSpentTotal('до 5 дней')}/>
+        <InfoText text={report.getExpsDaysSpentTotal('до 5 дней')} />
         <InfoText text={report.getExpsDaysSpentTotal('до 15 дней')} />
         <InfoText text={report.getExpsDaysSpentTotal('более 15 дней')} />
       </InfoTable>

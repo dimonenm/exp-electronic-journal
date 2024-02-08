@@ -145,6 +145,12 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
       }
     }
     let expertisesWithPetition: number = 0
+    // let expsWithPetition = {
+    //   handwriting: 0, 
+    //   TCED: 0,
+    //   portrait: 0,
+    //   total:0,
+    // }
     let expsDaysSpent = {
       Handwriting: {
         'до 5 дней': 0,

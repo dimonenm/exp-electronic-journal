@@ -499,9 +499,9 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
           expsWithPetition.portrait += 1
           expsWithPetition.total += 1
         }
-      }
         expertisesWithPetition += 1
-       
+      }
+    
         if (item.getDateExpComplete() !== '') {
           const start = Number(new Date(item.getDateOfReceipt()))
           const end = Number(new Date(item.getDateExpComplete()))
@@ -558,6 +558,12 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
     report.setResultPortraitExps(resultExps.Portrait.toString())
     report.setResultTotalExps(resultExps.Total.toString())
     report.setExpertisesWithPetition(expertisesWithPetition.toString())
+
+    report.setExpsWithPetitionHandwriting(expsWithPetition.handwriting.toString())
+    report.setExpsWithPetitionTCED(expsWithPetition.TCED.toString())
+    report.setExpsWithPetitionPortrait(expsWithPetition.portrait.toString())
+    report.setExpsWithPetitionTotal(expsWithPetition.total.toString())
+
     report.setExpsDaysSpentHandwriting(
       expsDaysSpent.Handwriting['до 5 дней'].toString(),
       expsDaysSpent.Handwriting['до 15 дней'].toString(),
@@ -697,7 +703,7 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
   } else {
     report = addReportData(dbExps)
   }
-
+console.log(report.getExpsWithPetition('ТКЭД общ.'));
   return (
     <>
       <InfoTitle text="Количество назначенных экспертиз" />

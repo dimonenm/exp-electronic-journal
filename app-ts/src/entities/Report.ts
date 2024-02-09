@@ -15,27 +15,27 @@ export default class Report {
     Total: '0',
   }
   expsDaysSpent = {
-    Handwriting:{
+    Handwriting: {
       'до 5 дней': '',
       'до 15 дней': '',
       'более 15 дней': ''
     },
-    TCED:{
+    TCED: {
       'до 5 дней': '',
       'до 15 дней': '',
       'более 15 дней': ''
     },
-    Portrait:{
+    Portrait: {
       'до 5 дней': '',
       'до 15 дней': '',
       'более 15 дней': ''
-    }, 
-    Total:{
+    },
+    Total: {
       'до 5 дней': '',
       'до 15 дней': '',
       'более 15 дней': ''
     }
-  
+
   }
 
   articleExps = {
@@ -177,14 +177,14 @@ export default class Report {
   getResultTotalExps(): string {
     return this.resultTotalExps
   }
-  getExpertisesWithPetition(): string{
+  getExpertisesWithPetition(): string {
     return this.expertisesWithPetition
   }
-  getExpsWithPetition(id:string): string {
-    if(id === 'Почерковедческая') return this.expsWithPetition.Handwriting
-    if(id === 'ТКЭД') return this.expsWithPetition.TCED
-    if(id === 'Портретная') return this.expsWithPetition.Portrait
-    if(id === 'Всего') return this.expsWithPetition.Total
+  getExpsWithPetition(id: string): string {
+    if (id === 'Почерковедческая') return this.expsWithPetition.Handwriting
+    if (id === 'ТКЭД ден.' || id === 'ТКЭД общ.') return this.expsWithPetition.TCED
+    if (id === 'Портретная') return this.expsWithPetition.Portrait
+    if (id === 'Всего') return this.expsWithPetition.Total
     return ''
   }
   getExpsDaysSpentHandwriting(id: string): string {
@@ -360,10 +360,17 @@ export default class Report {
   setExpertisesWithPetition(value: string): void {
     this.expertisesWithPetition = value
   }
-  setExpsWithPetition(v1: string, v2: string, v3: string){
-  this.expsWithPetition.Handwriting = v1
-  this.expsWithPetition.TCED = v2
-  this.expsWithPetition.Portrait = v3
+  setExpsWithPetitionHandwriting(value: string) {
+    this.expsWithPetition.Handwriting = value
+  }
+  setExpsWithPetitionTCED(value: string) {
+    this.expsWithPetition.TCED = value
+  }
+  setExpsWithPetitionPortrait(value: string) {
+    this.expsWithPetition.Portrait = value
+  }
+  setExpsWithPetitionTotal(value: string) {
+    this.expsWithPetition.Total = value
   }
   setExpsDaysSpentHandwriting(v1: string, v2: string, v3: string): void {
     this.expsDaysSpent.Handwriting['до 5 дней'] = v1

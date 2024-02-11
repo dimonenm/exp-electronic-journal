@@ -14,6 +14,12 @@ export default class Report {
     Portrait: '0',
     Total: '0',
   }
+  satisfiedPetitions = {
+    Handwriting: '0',
+    TCED : '0',
+    Portrait: '0',
+    Total: '0',
+    }
   expsDaysSpent = {
     Handwriting: {
       'до 5 дней': '',
@@ -37,7 +43,6 @@ export default class Report {
     }
 
   }
-
   articleExps = {
     Handwriting: {
       'Всего': '',

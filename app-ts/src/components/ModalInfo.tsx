@@ -144,7 +144,6 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
         'Марчук В.А.': 0
       }
     }
-    let expertisesWithPetition: number = 0
     let expsWithPetition = {
       Handwriting: 0,
       TCED: 0,
@@ -179,7 +178,6 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
         'более 15 дней': 0
       }
     }
-    let count: number = 0
     arr.forEach(item => {
       assignedExps.Total += 1
       executorExps.Total['Всего'] += 1
@@ -505,7 +503,6 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
           expsWithPetition.Portrait += 1
           expsWithPetition.Total += 1
         }
-        expertisesWithPetition += 1
       }
 
       if (item.getDatePetitionStart() !== '' && item.getDatePetitionEnd() !== '' )  { // вычисление количества удовлетворенных ходатайств
@@ -578,12 +575,16 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
     report.setResultTCEDExps(resultExps.TCED.toString())
     report.setResultPortraitExps(resultExps.Portrait.toString())
     report.setResultTotalExps(resultExps.Total.toString())
-    report.setExpertisesWithPetition(expertisesWithPetition.toString())
-
+    
     report.setExpsWithPetitionHandwriting(expsWithPetition.Handwriting.toString())
     report.setExpsWithPetitionTCED(expsWithPetition.TCED.toString())
     report.setExpsWithPetitionPortrait(expsWithPetition.Portrait.toString())
     report.setExpsWithPetitionTotal(expsWithPetition.Total.toString())
+    
+    report.setSatisfiedPetitionHandwriting(satisfiedPetitions.Handwriting.toString())
+    report.setSatisfiedPetitionTCED(satisfiedPetitions.TCED.toString())
+    report.setSatisfiedPetitionPortrait(satisfiedPetitions.Portrait.toString())
+    report.setSatisfiedPetitionTotal(satisfiedPetitions.Total.toString())
 
     report.setExpsDaysSpentHandwriting(
       expsDaysSpent.Handwriting['до 5 дней'].toString(),
@@ -749,6 +750,17 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
       <InfoText text={report.getExpsWithPetition('Портретная')} />
       <InfoText text="Всего:" />
       <InfoText text={report.getExpsWithPetition('Всего')} />
+      <div></div>
+      <div></div>
+      <InfoTitle text="Количество удовлетворённых ходатайств" />
+      <InfoText text="Почерковедческих:" />
+      <InfoText text={report.getSatisfiedPetitions('Почерковедческая')} />
+      <InfoText text="ТКЭД:" />
+      <InfoText text={report.getSatisfiedPetitions('ТКЭД')} />
+      <InfoText text="Портретных:" />
+      <InfoText text={report.getSatisfiedPetitions('Портретная')} />
+      <InfoText text="Всего:" />
+      <InfoText text={report.getSatisfiedPetitions('Всего')} />
       <div></div>
       <div></div>
       <InfoTitle text="Количество результативных экспертиз" />

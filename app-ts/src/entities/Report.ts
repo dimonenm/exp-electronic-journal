@@ -187,7 +187,7 @@ export default class Report {
   }
   getExpsWithPetition(id: string): string {
     if (id === 'Почерковедческая') return this.expsWithPetition.Handwriting
-    if (id === 'ТКЭД ден.' || id === 'ТКЭД общ.') return this.expsWithPetition.TCED
+    if (id === 'ТКЭД') return this.expsWithPetition.TCED
     if (id === 'Портретная') return this.expsWithPetition.Portrait
     if (id === 'Всего') return this.expsWithPetition.Total
     return ''

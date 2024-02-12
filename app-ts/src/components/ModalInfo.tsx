@@ -522,7 +522,6 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
           satisfiedPetitions.Total += 1
         }
       }
-      console.log('satisfiedPetitions', satisfiedPetitions.TCED);
 
       if (item.getDateExpComplete() !== '') { // вычисление дней, затраченных на производство экспертиз
         const start = Number(new Date(item.getDateOfReceipt()))
@@ -742,6 +741,12 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
       <div></div>
       <div></div>
       <InfoTitle text="Количество вынесенных ходатайств" />
+      <InfoText text="Почерковедческих:" />
+      <InfoText text={report.getExpsWithPetition('Почерковедческая')} />
+      <InfoText text="ТКЭД:" />
+      <InfoText text={report.getExpsWithPetition('ТКЭД')} />
+      <InfoText text="Портретных:" />
+      <InfoText text={report.getExpsWithPetition('Портретная')} />
       <InfoText text="Всего:" />
       <InfoText text={report.getExpsWithPetition('Всего')} />
       <div></div>

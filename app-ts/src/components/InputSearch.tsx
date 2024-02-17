@@ -240,6 +240,7 @@ const InputSearch: FC<IInputSearchProps> = ({
           <option>СО по Железнодорожному району г. Симферополь</option>
           <option>СО по Киевскому району г. Симферополь</option>
           <option>СО по Центральному району г. Симферополь</option>
+          <option>Крымский СО на транспорте</option>
           <option>Белагорский МСО</option>
           <option>Кировский МСО</option>
           <option>Красногвардейский МСО</option>

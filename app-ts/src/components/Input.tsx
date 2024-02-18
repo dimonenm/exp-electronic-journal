@@ -128,6 +128,7 @@ const Input: FC<IInputProps> = ({
         <option>не указано</option>
         <option>МВД</option>
         <option>ГСУ СК</option>
+        <option>ВСУ СК</option>
         <option>ФСБ</option>
         <option>Суд</option>
       </select>
@@ -205,6 +206,7 @@ const Input: FC<IInputProps> = ({
           <option>СО по Железнодорожному району г. Симферополь</option>
           <option>СО по Киевскому району г. Симферополь</option>
           <option>СО по Центральному району г. Симферополь</option>
+          <option>Крымский СО на транспорте</option>
           <option>Белагорский МСО</option>
           <option>Кировский МСО</option>
           <option>Красногвардейский МСО</option>

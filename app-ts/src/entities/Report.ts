@@ -7,31 +7,41 @@ export default class Report {
   resultTCEDExps: string = ''
   resultPortraitExps: string = ''
   resultTotalExps: string = ''
-  expertisesWithPetition: string = ''
+  expsWithPetition = {
+    Handwriting: '0',
+    TCED: '0',
+    Portrait: '0',
+    Total: '0',
+  }
+  satisfiedPetitions = {
+    Handwriting: '0',
+    TCED: '0',
+    Portrait: '0',
+    Total: '0',
+  }
   expsDaysSpent = {
-    Handwriting:{
+    Handwriting: {
       'до 5 дней': '',
       'до 15 дней': '',
       'более 15 дней': ''
     },
-    TCED:{
+    TCED: {
       'до 5 дней': '',
       'до 15 дней': '',
       'более 15 дней': ''
     },
-    Portrait:{
+    Portrait: {
       'до 5 дней': '',
       'до 15 дней': '',
       'более 15 дней': ''
-    }, 
-    Total:{
+    },
+    Total: {
       'до 5 дней': '',
       'до 15 дней': '',
       'более 15 дней': ''
     }
-  
-  }
 
+  }
   articleExps = {
     Handwriting: {
       'Всего': '',
@@ -171,10 +181,22 @@ export default class Report {
   getResultTotalExps(): string {
     return this.resultTotalExps
   }
-  getExpertisesWithPetition(): string{
-    return this.expertisesWithPetition
+
+  getExpsWithPetition(id: string): string {
+    if (id === 'Почерковедческая') return this.expsWithPetition.Handwriting
+    if (id === 'ТКЭД') return this.expsWithPetition.TCED
+    if (id === 'Портретная') return this.expsWithPetition.Portrait
+    if (id === 'Всего') return this.expsWithPetition.Total
+    return ''
   }
 
+  getSatisfiedPetitions(id: string): string {
+    if (id === 'Почерковедческая') return this.satisfiedPetitions.Handwriting
+    if (id === 'ТКЭД') return this.satisfiedPetitions.TCED
+    if (id === 'Портретная') return this.satisfiedPetitions.Portrait
+    if (id === 'Всего') return this.satisfiedPetitions.Total
+    return ''
+  }
   getExpsDaysSpentHandwriting(id: string): string {
     if (id === 'до 5 дней') return this.expsDaysSpent.Handwriting['до 5 дней']
     if (id === 'до 15 дней') return this.expsDaysSpent.Handwriting['до 15 дней']
@@ -345,9 +367,34 @@ export default class Report {
   setResultTotalExps(value: string): void {
     this.resultTotalExps = value
   }
-  setExpertisesWithPetition(value: string): void {
-    this.expertisesWithPetition = value
+
+  setExpsWithPetitionHandwriting(value: string) {
+    this.expsWithPetition.Handwriting = value
   }
+  setExpsWithPetitionTCED(value: string) {
+    this.expsWithPetition.TCED = value
+  }
+  setExpsWithPetitionPortrait(value: string) {
+    this.expsWithPetition.Portrait = value
+  }
+  setExpsWithPetitionTotal(value: string) {
+    this.expsWithPetition.Total = value
+  }
+
+  setSatisfiedPetitionHandwriting(value: string) {
+    this.satisfiedPetitions.Handwriting = value
+  }
+  setSatisfiedPetitionTCED(value: string) {
+    this.satisfiedPetitions.TCED = value
+  }
+  setSatisfiedPetitionPortrait(value: string) {
+    this.satisfiedPetitions.Portrait = value
+  }
+
+  setSatisfiedPetitionTotal(value: string) {
+    this.satisfiedPetitions.Total = value
+  }
+
   setExpsDaysSpentHandwriting(v1: string, v2: string, v3: string): void {
     this.expsDaysSpent.Handwriting['до 5 дней'] = v1
     this.expsDaysSpent.Handwriting['до 15 дней'] = v2

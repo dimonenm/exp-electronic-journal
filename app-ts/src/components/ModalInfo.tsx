@@ -530,10 +530,10 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
           if (res > 0 && res < 5) {
             expsDaysSpent.Total['до 5 дней'] += 1
             expsDaysSpent.Handwriting['до 5 дней'] += 1
-          } else if (res >= 5 && res < 14) {
+          } else if (res >= 5 && res < 15) {
             expsDaysSpent.Total['до 15 дней'] += 1
             expsDaysSpent.Handwriting['до 15 дней'] += 1
-          } else if (res >= 15) {
+          } else if (res > 15) {
             expsDaysSpent.Total['более 15 дней'] += 1
             expsDaysSpent.Handwriting['более 15 дней'] += 1
           }
@@ -543,10 +543,10 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
           if (res > 0 && res < 5) {
             expsDaysSpent.Total['до 5 дней'] += 1
             expsDaysSpent.Portrait['до 5 дней'] += 1
-          } else if (res >= 5 && res < 14) {
+          } else if (res >= 5 && res <= 15) {
             expsDaysSpent.Total['до 15 дней'] += 1
             expsDaysSpent.Portrait['до 15 дней'] += 1
-          } else if (res >= 15) {
+          } else if (res > 15) {
             expsDaysSpent.Total['более 15 дней'] += 1
             expsDaysSpent.Portrait['более 15 дней'] += 1
           }
@@ -556,10 +556,10 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
           if (res > 0 && res < 5) {
             expsDaysSpent.Total['до 5 дней'] += 1
             expsDaysSpent.TCED['до 5 дней'] += 1
-          } else if (res >= 5 && res < 14) {
+          } else if (res >= 5 && res <= 15) {
             expsDaysSpent.Total['до 15 дней'] += 1
             expsDaysSpent.TCED['до 15 дней'] += 1
-          } else if (res >= 15) {
+          } else if (res > 15) {
             expsDaysSpent.Total['более 15 дней'] += 1
             expsDaysSpent.TCED['более 15 дней'] += 1
           }

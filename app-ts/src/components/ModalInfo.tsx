@@ -489,8 +489,8 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
           executorExps.Verifications['Марчук В.А.'] += 1
         }
       }
-      
-      if (item.getDatePetitionStart() !== '') { // вычисление количества вынесенных ходатайств по типам экспертиз
+      // вычисление количества вынесенных ходатайств по типам экспертиз
+      if (item.getDatePetitionStart() !== '') { 
         if (item.getTypeOfExpertise() === 'Почерковедческая') {
           expsWithPetition.Handwriting += 1
           expsWithPetition.Total += 1
@@ -504,8 +504,8 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
           expsWithPetition.Total += 1
         }
       }
-
-      if (item.getDatePetitionStart() !== '' && item.getDatePetitionEnd() !== '' )  { // вычисление количества удовлетворенных ходатайств
+// вычисление количества удовлетворенных ходатайств
+      if (item.getDatePetitionStart() !== '' && item.getDatePetitionEnd() !== '' )  { 
         if (item.getTypeOfExpertise() === 'Почерковедческая') {
           satisfiedPetitions.Handwriting += 1
           satisfiedPetitions.Total += 1
@@ -519,8 +519,9 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
           satisfiedPetitions.Total += 1
         }
       }
-
-      if (item.getDateExpComplete() !== '') { // вычисление дней, затраченных на производство экспертиз
+      
+// вычисление дней, затраченных на производство экспертиз
+      if (item.getDateExpComplete() !== '') { 
         const start = Number(new Date(item.getDateOfReceipt()))
         const end = Number(new Date(item.getDateExpComplete()))
         const res = (end - start) / 1000 / 60 / 60 / 24

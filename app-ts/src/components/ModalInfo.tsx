@@ -1,11 +1,11 @@
-import React, { FC } from 'react';
-import Exp from '../entities/Exp';
-import Report from '../entities/Report';
-import InfoSeparator from './InfoSeparator';
-import InfoTable from './InfoTable';
-import InfoText from './InfoText';
-import InfoTextVertical from './InfoTextVertical';
-import InfoTitle from './InfoTitle';
+import React, { FC } from 'react'
+import Exp from '../entities/Exp'
+import Report from '../entities/Report'
+import InfoSeparator from './InfoSeparator'
+import InfoTable from './InfoTable'
+import InfoText from './InfoText'
+import InfoTextVertical from './InfoTextVertical'
+import InfoTitle from './InfoTitle'
 
 interface ModalInfoProps {
   dbExps: Exp[]
@@ -13,7 +13,6 @@ interface ModalInfoProps {
 }
 
 const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
-
   let report: Report
 
   function addReportData(arr: Exp[]): Report {
@@ -22,17 +21,17 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
       Handwriting: 0,
       TCED: 0,
       Portrait: 0,
-      Total: 0
+      Total: 0,
     }
     let resultExps = {
       Handwriting: 0,
       TCED: 0,
       Portrait: 0,
-      Total: 0
+      Total: 0,
     }
     let articleExps = {
       Handwriting: {
-        'Всего': 0,
+        Всего: 0,
         'ст 101': 0,
         'ст 105': 0,
         'ст 158': 0,
@@ -40,10 +39,10 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
         'ст 160': 0,
         'ст 186,187': 0,
         'ст 222': 0,
-        'ст 264': 0
+        'ст 264': 0,
       },
       TCED: {
-        'Всего': 0,
+        Всего: 0,
         'ст 101': 0,
         'ст 105': 0,
         'ст 158': 0,
@@ -51,10 +50,10 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
         'ст 160': 0,
         'ст 186,187': 0,
         'ст 222': 0,
-        'ст 264': 0
+        'ст 264': 0,
       },
       Portrait: {
-        'Всего': 0,
+        Всего: 0,
         'ст 101': 0,
         'ст 105': 0,
         'ст 158': 0,
@@ -62,11 +61,11 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
         'ст 160': 0,
         'ст 186,187': 0,
         'ст 222': 0,
-        'ст 264': 0
+        'ст 264': 0,
       },
       Verifications: 0,
       Total: {
-        'Всего': 0,
+        Всего: 0,
         'ст 101': 0,
         'ст 105': 0,
         'ст 158': 0,
@@ -74,12 +73,12 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
         'ст 160': 0,
         'ст 186,187': 0,
         'ст 222': 0,
-        'ст 264': 0
-      }
+        'ст 264': 0,
+      },
     }
     let executorExps = {
       Handwriting: {
-        'Всего': 0,
+        Всего: 0,
         'Польченко Т.В.': 0,
         'Поволодцкий Д.Г.': 0,
         'Васильев И.С.': 0,
@@ -89,10 +88,10 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
         'Голынков Д.Н.': 0,
         'Шулипа Е.Ю.': 0,
         'Киселев А.С.': 0,
-        'Марчук В.А.': 0
+        'Марчук В.А.': 0,
       },
       TCED: {
-        'Всего': 0,
+        Всего: 0,
         'Польченко Т.В.': 0,
         'Поволодцкий Д.Г.': 0,
         'Васильев И.С.': 0,
@@ -105,7 +104,7 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
         'Марчук В.А.': 0,
       },
       Portrait: {
-        'Всего': 0,
+        Всего: 0,
         'Польченко Т.В.': 0,
         'Поволодцкий Д.Г.': 0,
         'Васильев И.С.': 0,
@@ -115,10 +114,10 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
         'Голынков Д.Н.': 0,
         'Шулипа Е.Ю.': 0,
         'Киселев А.С.': 0,
-        'Марчук В.А.': 0
+        'Марчук В.А.': 0,
       },
       Verifications: {
-        'Всего': 0,
+        Всего: 0,
         'Польченко Т.В.': 0,
         'Поволодцкий Д.Г.': 0,
         'Васильев И.С.': 0,
@@ -128,10 +127,10 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
         'Голынков Д.Н.': 0,
         'Шулипа Е.Ю.': 0,
         'Киселев А.С.': 0,
-        'Марчук В.А.': 0
+        'Марчук В.А.': 0,
       },
       Total: {
-        'Всего': 0,
+        Всего: 0,
         'Польченко Т.В.': 0,
         'Поволодцкий Д.Г.': 0,
         'Васильев И.С.': 0,
@@ -141,8 +140,8 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
         'Голынков Д.Н.': 0,
         'Шулипа Е.Ю.': 0,
         'Киселев А.С.': 0,
-        'Марчук В.А.': 0
-      }
+        'Марчук В.А.': 0,
+      },
     }
     let expsWithPetition = {
       Handwriting: 0,
@@ -151,32 +150,32 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
       Total: 0,
     }
     let satisfiedPetitions = {
-    Handwriting: 0,
-    TCED : 0,
-    Portrait: 0,
-    Total: 0
+      Handwriting: 0,
+      TCED: 0,
+      Portrait: 0,
+      Total: 0,
     }
     let expsDaysSpent = {
       Handwriting: {
         'до 5 дней': 0,
         'до 15 дней': 0,
-        'более 15 дней': 0
+        'более 15 дней': 0,
       },
       TCED: {
         'до 5 дней': 0,
         'до 15 дней': 0,
-        'более 15 дней': 0
+        'более 15 дней': 0,
       },
       Portrait: {
         'до 5 дней': 0,
         'до 15 дней': 0,
-        'более 15 дней': 0
+        'более 15 дней': 0,
       },
       Total: {
         'до 5 дней': 0,
         'до 15 дней': 0,
-        'более 15 дней': 0
-      }
+        'более 15 дней': 0,
+      },
     }
     arr.forEach(item => {
       assignedExps.Total += 1
@@ -229,7 +228,10 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
           executorExps.Total['Марчук В.А.'] += 1
         }
       }
-      if (item.getTypeOfExpertise() === 'ТКЭД общ.' || item.getTypeOfExpertise() === 'ТКЭД ден.') {
+      if (
+        item.getTypeOfExpertise() === 'ТКЭД общ.' ||
+        item.getTypeOfExpertise() === 'ТКЭД ден.'
+      ) {
         assignedExps.TCED += 1
         executorExps.TCED['Всего'] += 1
         if (item.getResult() === 'Результативная') {
@@ -333,7 +335,10 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
             articleExps.Handwriting['Всего'] += 1
             articleExps.Handwriting['ст 101'] += 1
           }
-          if (item.getTypeOfExpertise() === 'ТКЭД общ.' || item.getTypeOfExpertise() === 'ТКЭД ден.') {
+          if (
+            item.getTypeOfExpertise() === 'ТКЭД общ.' ||
+            item.getTypeOfExpertise() === 'ТКЭД ден.'
+          ) {
             articleExps.TCED['Всего'] += 1
             articleExps.TCED['ст 101'] += 1
           }
@@ -349,7 +354,10 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
             articleExps.Handwriting['Всего'] += 1
             articleExps.Handwriting['ст 105'] += 1
           }
-          if (item.getTypeOfExpertise() === 'ТКЭД общ.' || item.getTypeOfExpertise() === 'ТКЭД ден.') {
+          if (
+            item.getTypeOfExpertise() === 'ТКЭД общ.' ||
+            item.getTypeOfExpertise() === 'ТКЭД ден.'
+          ) {
             articleExps.TCED['Всего'] += 1
             articleExps.TCED['ст 105'] += 1
           }
@@ -365,7 +373,10 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
             articleExps.Handwriting['Всего'] += 1
             articleExps.Handwriting['ст 158'] += 1
           }
-          if (item.getTypeOfExpertise() === 'ТКЭД общ.' || item.getTypeOfExpertise() === 'ТКЭД ден.') {
+          if (
+            item.getTypeOfExpertise() === 'ТКЭД общ.' ||
+            item.getTypeOfExpertise() === 'ТКЭД ден.'
+          ) {
             articleExps.TCED['Всего'] += 1
             articleExps.TCED['ст 158'] += 1
           }
@@ -381,7 +392,10 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
             articleExps.Handwriting['Всего'] += 1
             articleExps.Handwriting['ст 159'] += 1
           }
-          if (item.getTypeOfExpertise() === 'ТКЭД общ.' || item.getTypeOfExpertise() === 'ТКЭД ден.') {
+          if (
+            item.getTypeOfExpertise() === 'ТКЭД общ.' ||
+            item.getTypeOfExpertise() === 'ТКЭД ден.'
+          ) {
             articleExps.TCED['Всего'] += 1
             articleExps.TCED['ст 159'] += 1
           }
@@ -397,7 +411,10 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
             articleExps.Handwriting['Всего'] += 1
             articleExps.Handwriting['ст 160'] += 1
           }
-          if (item.getTypeOfExpertise() === 'ТКЭД общ.' || item.getTypeOfExpertise() === 'ТКЭД ден.') {
+          if (
+            item.getTypeOfExpertise() === 'ТКЭД общ.' ||
+            item.getTypeOfExpertise() === 'ТКЭД ден.'
+          ) {
             articleExps.TCED['Всего'] += 1
             articleExps.TCED['ст 160'] += 1
           }
@@ -413,7 +430,10 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
             articleExps.Handwriting['Всего'] += 1
             articleExps.Handwriting['ст 186,187'] += 1
           }
-          if (item.getTypeOfExpertise() === 'ТКЭД общ.' || item.getTypeOfExpertise() === 'ТКЭД ден.') {
+          if (
+            item.getTypeOfExpertise() === 'ТКЭД общ.' ||
+            item.getTypeOfExpertise() === 'ТКЭД ден.'
+          ) {
             articleExps.TCED['Всего'] += 1
             articleExps.TCED['ст 186,187'] += 1
           }
@@ -429,7 +449,10 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
             articleExps.Handwriting['Всего'] += 1
             articleExps.Handwriting['ст 222'] += 1
           }
-          if (item.getTypeOfExpertise() === 'ТКЭД общ.' || item.getTypeOfExpertise() === 'ТКЭД ден.') {
+          if (
+            item.getTypeOfExpertise() === 'ТКЭД общ.' ||
+            item.getTypeOfExpertise() === 'ТКЭД ден.'
+          ) {
             articleExps.TCED['Всего'] += 1
             articleExps.TCED['ст 222'] += 1
           }
@@ -445,7 +468,10 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
             articleExps.Handwriting['Всего'] += 1
             articleExps.Handwriting['ст 264'] += 1
           }
-          if (item.getTypeOfExpertise() === 'ТКЭД общ.' || item.getTypeOfExpertise() === 'ТКЭД ден.') {
+          if (
+            item.getTypeOfExpertise() === 'ТКЭД общ.' ||
+            item.getTypeOfExpertise() === 'ТКЭД ден.'
+          ) {
             articleExps.TCED['Всего'] += 1
             articleExps.TCED['ст 264'] += 1
           }
@@ -490,12 +516,15 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
         }
       }
       // вычисление количества вынесенных ходатайств по типам экспертиз
-      if (item.getDatePetitionStart() !== '') { 
+      if (item.getDatePetitionStart() !== '') {
         if (item.getTypeOfExpertise() === 'Почерковедческая') {
           expsWithPetition.Handwriting += 1
           expsWithPetition.Total += 1
         }
-        if (item.getTypeOfExpertise() === 'ТКЭД общ.' || item.getTypeOfExpertise() === 'ТКЭД ден.') {
+        if (
+          item.getTypeOfExpertise() === 'ТКЭД общ.' ||
+          item.getTypeOfExpertise() === 'ТКЭД ден.'
+        ) {
           expsWithPetition.TCED += 1
           expsWithPetition.Total += 1
         }
@@ -504,13 +533,19 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
           expsWithPetition.Total += 1
         }
       }
-// вычисление количества удовлетворенных ходатайств
-      if (item.getDatePetitionStart() !== '' && item.getDatePetitionEnd() !== '' )  { 
+      // вычисление количества удовлетворенных ходатайств
+      if (
+        item.getDatePetitionStart() !== '' &&
+        item.getDatePetitionEnd() !== ''
+      ) {
         if (item.getTypeOfExpertise() === 'Почерковедческая') {
           satisfiedPetitions.Handwriting += 1
           satisfiedPetitions.Total += 1
         }
-        if (item.getTypeOfExpertise() === 'ТКЭД общ.' || item.getTypeOfExpertise() === 'ТКЭД ден.') {
+        if (
+          item.getTypeOfExpertise() === 'ТКЭД общ.' ||
+          item.getTypeOfExpertise() === 'ТКЭД ден.'
+        ) {
           satisfiedPetitions.TCED += 1
           satisfiedPetitions.Total += 1
         }
@@ -519,52 +554,102 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
           satisfiedPetitions.Total += 1
         }
       }
-      
-// вычисление дней, затраченных на производство экспертиз
-      if (item.getDateExpComplete() !== '') { 
-        const start = Number(new Date(item.getDateOfReceipt()))
-        const end = Number(new Date(item.getDateExpComplete()))
-        const res = (end - start) / 1000 / 60 / 60 / 24
 
-        if (item.getTypeOfExpertise() === 'Почерковедческая') {
-          if (res > 0 && res < 5) {
-            expsDaysSpent.Total['до 5 дней'] += 1
-            expsDaysSpent.Handwriting['до 5 дней'] += 1
-          } else if (res >= 5 && res < 15) {
-            expsDaysSpent.Total['до 15 дней'] += 1
-            expsDaysSpent.Handwriting['до 15 дней'] += 1
-          } else if (res > 15) {
-            expsDaysSpent.Total['более 15 дней'] += 1
-            expsDaysSpent.Handwriting['более 15 дней'] += 1
+      // вычисление дней, затраченных на производство экспертиз
+      if (item.getDateExpComplete() !== '') {
+        if (item.getDatePetitionEnd() !== '') {
+          const start = Number(new Date(item.getDatePetitionEnd()))
+          const end = Number(new Date(item.getDateExpComplete()))
+          const res = (end - start) / 1000 / 60 / 60 / 24
+          if (item.getTypeOfExpertise() === 'Почерковедческая') {
+            if (res > 0 && res < 5) {
+              expsDaysSpent.Total['до 5 дней'] += 1
+              expsDaysSpent.Handwriting['до 5 дней'] += 1
+            } else if (res >= 5 && res < 15) {
+              expsDaysSpent.Total['до 15 дней'] += 1
+              expsDaysSpent.Handwriting['до 15 дней'] += 1
+            } else if (res > 15) {
+              expsDaysSpent.Total['более 15 дней'] += 1
+              expsDaysSpent.Handwriting['более 15 дней'] += 1
+              console.log('res1', res)
+            }
+          }
+          if (item.getTypeOfExpertise() === 'Портретная') {
+            if (res > 0 && res < 5) {
+              expsDaysSpent.Total['до 5 дней'] += 1
+              expsDaysSpent.Portrait['до 5 дней'] += 1
+            } else if (res >= 5 && res <= 15) {
+              expsDaysSpent.Total['до 15 дней'] += 1
+              expsDaysSpent.Portrait['до 15 дней'] += 1
+            } else if (res > 15) {
+              expsDaysSpent.Total['более 15 дней'] += 1
+              expsDaysSpent.Portrait['более 15 дней'] += 1
+            }
+          }
+
+          if (
+            item.getTypeOfExpertise() === 'ТКЭД общ.' ||
+            item.getTypeOfExpertise() === 'ТКЭД ден.'
+          ) {
+            if (res > 0 && res < 5) {
+              expsDaysSpent.Total['до 5 дней'] += 1
+              expsDaysSpent.TCED['до 5 дней'] += 1
+            } else if (res >= 5 && res <= 15) {
+              expsDaysSpent.Total['до 15 дней'] += 1
+              expsDaysSpent.TCED['до 15 дней'] += 1
+            } else if (res > 15) {
+              expsDaysSpent.Total['более 15 дней'] += 1
+              expsDaysSpent.TCED['более 15 дней'] += 1
+            }
+          }
+        } else {
+          const start = Number(new Date(item.getDateOfReceipt()))
+          const end = Number(new Date(item.getDateExpComplete()))
+          const res = (end - start) / 1000 / 60 / 60 / 24
+
+          if (item.getTypeOfExpertise() === 'Почерковедческая') {
+            if (res > 0 && res < 5) {
+              expsDaysSpent.Total['до 5 дней'] += 1
+              expsDaysSpent.Handwriting['до 5 дней'] += 1
+            } else if (res >= 5 && res < 15) {
+              expsDaysSpent.Total['до 15 дней'] += 1
+              expsDaysSpent.Handwriting['до 15 дней'] += 1
+            } else if (res > 15) {
+              expsDaysSpent.Total['более 15 дней'] += 1
+              expsDaysSpent.Handwriting['более 15 дней'] += 1
+              console.log('res2', res)
+            }
+          }
+
+          if (item.getTypeOfExpertise() === 'Портретная') {
+            if (res > 0 && res < 5) {
+              expsDaysSpent.Total['до 5 дней'] += 1
+              expsDaysSpent.Portrait['до 5 дней'] += 1
+            } else if (res >= 5 && res <= 15) {
+              expsDaysSpent.Total['до 15 дней'] += 1
+              expsDaysSpent.Portrait['до 15 дней'] += 1
+            } else if (res > 15) {
+              expsDaysSpent.Total['более 15 дней'] += 1
+              expsDaysSpent.Portrait['более 15 дней'] += 1
+            }
+          }
+
+          if (
+            item.getTypeOfExpertise() === 'ТКЭД общ.' ||
+            item.getTypeOfExpertise() === 'ТКЭД ден.'
+          ) {
+            if (res > 0 && res < 5) {
+              expsDaysSpent.Total['до 5 дней'] += 1
+              expsDaysSpent.TCED['до 5 дней'] += 1
+            } else if (res >= 5 && res <= 15) {
+              expsDaysSpent.Total['до 15 дней'] += 1
+              expsDaysSpent.TCED['до 15 дней'] += 1
+            } else if (res > 15) {
+              expsDaysSpent.Total['более 15 дней'] += 1
+              expsDaysSpent.TCED['более 15 дней'] += 1
+            }
           }
         }
-
-        if (item.getTypeOfExpertise() === 'Портретная') {
-          if (res > 0 && res < 5) {
-            expsDaysSpent.Total['до 5 дней'] += 1
-            expsDaysSpent.Portrait['до 5 дней'] += 1
-          } else if (res >= 5 && res <= 15) {
-            expsDaysSpent.Total['до 15 дней'] += 1
-            expsDaysSpent.Portrait['до 15 дней'] += 1
-          } else if (res > 15) {
-            expsDaysSpent.Total['более 15 дней'] += 1
-            expsDaysSpent.Portrait['более 15 дней'] += 1
-          }
-        }
-
-        if (item.getTypeOfExpertise() === 'ТКЭД общ.' || item.getTypeOfExpertise() === 'ТКЭД ден.') {
-          if (res > 0 && res < 5) {
-            expsDaysSpent.Total['до 5 дней'] += 1
-            expsDaysSpent.TCED['до 5 дней'] += 1
-          } else if (res >= 5 && res <= 15) {
-            expsDaysSpent.Total['до 15 дней'] += 1
-            expsDaysSpent.TCED['до 15 дней'] += 1
-          } else if (res > 15) {
-            expsDaysSpent.Total['более 15 дней'] += 1
-            expsDaysSpent.TCED['более 15 дней'] += 1
-          }
-        }
-
       }
     })
 
@@ -576,13 +661,17 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
     report.setResultTCEDExps(resultExps.TCED.toString())
     report.setResultPortraitExps(resultExps.Portrait.toString())
     report.setResultTotalExps(resultExps.Total.toString())
-    
-    report.setExpsWithPetitionHandwriting(expsWithPetition.Handwriting.toString())
+
+    report.setExpsWithPetitionHandwriting(
+      expsWithPetition.Handwriting.toString()
+    )
     report.setExpsWithPetitionTCED(expsWithPetition.TCED.toString())
     report.setExpsWithPetitionPortrait(expsWithPetition.Portrait.toString())
     report.setExpsWithPetitionTotal(expsWithPetition.Total.toString())
-    
-    report.setSatisfiedPetitionHandwriting(satisfiedPetitions.Handwriting.toString())
+
+    report.setSatisfiedPetitionHandwriting(
+      satisfiedPetitions.Handwriting.toString()
+    )
     report.setSatisfiedPetitionTCED(satisfiedPetitions.TCED.toString())
     report.setSatisfiedPetitionPortrait(satisfiedPetitions.Portrait.toString())
     report.setSatisfiedPetitionTotal(satisfiedPetitions.Total.toString())
@@ -590,23 +679,23 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
     report.setExpsDaysSpentHandwriting(
       expsDaysSpent.Handwriting['до 5 дней'].toString(),
       expsDaysSpent.Handwriting['до 15 дней'].toString(),
-      expsDaysSpent.Handwriting['более 15 дней'].toString(),
+      expsDaysSpent.Handwriting['более 15 дней'].toString()
     )
     report.setExpsDaysSpentTCED(
       expsDaysSpent.TCED['до 5 дней'].toString(),
       expsDaysSpent.TCED['до 15 дней'].toString(),
-      expsDaysSpent.TCED['более 15 дней'].toString(),
+      expsDaysSpent.TCED['более 15 дней'].toString()
     )
     report.setExpsDaysSpentPortrait(
       expsDaysSpent.Portrait['до 5 дней'].toString(),
       expsDaysSpent.Portrait['до 15 дней'].toString(),
-      expsDaysSpent.Portrait['более 15 дней'].toString(),
+      expsDaysSpent.Portrait['более 15 дней'].toString()
     )
 
     report.setExpsDaysSpentTotal(
       expsDaysSpent.Total['до 5 дней'].toString(),
       expsDaysSpent.Total['до 15 дней'].toString(),
-      expsDaysSpent.Total['более 15 дней'].toString(),
+      expsDaysSpent.Total['более 15 дней'].toString()
     )
     report.setArticleExpsHandwriting(
       articleExps.Handwriting['Всего'].toString(),
@@ -729,240 +818,248 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
 
   return (
     <>
-      <InfoTitle text="Количество назначенных экспертиз" />
+      <InfoTitle text='Количество назначенных экспертиз' />
       <div></div>
       <div></div>
-      <InfoText text="Почерковедческих:" />
+      <InfoText text='Почерковедческих:' />
       <InfoText text={report.getAssignedHandwritingExps()} />
-      <InfoText text="ТКЭД:" />
+      <InfoText text='ТКЭД:' />
       <InfoText text={report.getAssignedTCEDExps()} />
-      <InfoText text="Портретных:" />
+      <InfoText text='Портретных:' />
       <InfoText text={report.getAssignedPortraitExps()} />
-      <InfoText text="Всего:" />
+      <InfoText text='Всего:' />
       <InfoText text={report.getAssignedTotalExps()} />
       <div></div>
       <div></div>
-      <InfoTitle text="Количество вынесенных ходатайств" />
-      <InfoText text="Почерковедческих:" />
+      <InfoTitle text='Количество вынесенных ходатайств' />
+      <InfoText text='Почерковедческих:' />
       <InfoText text={report.getExpsWithPetition('Почерковедческая')} />
-      <InfoText text="ТКЭД:" />
+      <InfoText text='ТКЭД:' />
       <InfoText text={report.getExpsWithPetition('ТКЭД')} />
-      <InfoText text="Портретных:" />
+      <InfoText text='Портретных:' />
       <InfoText text={report.getExpsWithPetition('Портретная')} />
-      <InfoText text="Всего:" />
+      <InfoText text='Всего:' />
       <InfoText text={report.getExpsWithPetition('Всего')} />
       <div></div>
       <div></div>
-      <InfoTitle text="Количество удовлетворённых ходатайств" />
-      <InfoText text="Почерковедческих:" />
+      <InfoTitle text='Количество удовлетворённых ходатайств' />
+      <InfoText text='Почерковедческих:' />
       <InfoText text={report.getSatisfiedPetitions('Почерковедческая')} />
-      <InfoText text="ТКЭД:" />
+      <InfoText text='ТКЭД:' />
       <InfoText text={report.getSatisfiedPetitions('ТКЭД')} />
-      <InfoText text="Портретных:" />
+      <InfoText text='Портретных:' />
       <InfoText text={report.getSatisfiedPetitions('Портретная')} />
-      <InfoText text="Всего:" />
+      <InfoText text='Всего:' />
       <InfoText text={report.getSatisfiedPetitions('Всего')} />
       <div></div>
       <div></div>
-      <InfoTitle text="Количество результативных экспертиз" />
+      <InfoTitle text='Количество результативных экспертиз' />
       <div></div>
       <div></div>
-      <InfoText text="Почерковедческих:" />
+      <InfoText text='Почерковедческих:' />
       <InfoText text={report.getResultHandwritingExps()} />
-      <InfoText text="ТКЭД:" />
+      <InfoText text='ТКЭД:' />
       <InfoText text={report.getResultTCEDExps()} />
-      <InfoText text="Портретных:" />
+      <InfoText text='Портретных:' />
       <InfoText text={report.getResultPortraitExps()} />
-      <InfoText text="Всего:" />
+      <InfoText text='Всего:' />
       <InfoText text={report.getResultTotalExps()} />
       <div></div>
       <div></div>
-      <InfoTitle text="Количество дней затраченных на производство экспертиз" />
+      <InfoTitle text='Количество дней затраченных на производство экспертиз' />
       <div></div>
       <div></div>
-      <InfoTable type="daysSpent">
-        <InfoText text="" />
-        <InfoText text="до 5" />
-        <InfoText text="до 15" />
-        <InfoText text="более 15" />
-        <InfoText text="Почерковедческих:" />
+      <InfoTable type='daysSpent'>
+        <InfoText text='' />
+        <InfoText text='до 5' />
+        <InfoText text='до 15' />
+        <InfoText text='более 15' />
+        <InfoText text='Почерковедческих:' />
         <InfoText text={report.getExpsDaysSpentHandwriting('до 5 дней')} />
         <InfoText text={report.getExpsDaysSpentHandwriting('до 15 дней')} />
         <InfoText text={report.getExpsDaysSpentHandwriting('более 15 дней')} />
-        <InfoText text="ТКЭД:" />
+        <InfoText text='ТКЭД:' />
         <InfoText text={report.getExpsDaysSpentTCED('до 5 дней')} />
         <InfoText text={report.getExpsDaysSpentTCED('до 15 дней')} />
         <InfoText text={report.getExpsDaysSpentTCED('более 15 дней')} />
-        <InfoText text="Портретных:" />
+        <InfoText text='Портретных:' />
         <InfoText text={report.getExpsDaysSpentPortrait('до 5 дней')} />
         <InfoText text={report.getExpsDaysSpentPortrait('до 15 дней')} />
         <InfoText text={report.getExpsDaysSpentPortrait('более 15 дней')} />
-        <InfoText text="Всего:" />
+        <InfoText text='Всего:' />
         <InfoText text={report.getExpsDaysSpentTotal('до 5 дней')} />
         <InfoText text={report.getExpsDaysSpentTotal('до 15 дней')} />
         <InfoText text={report.getExpsDaysSpentTotal('более 15 дней')} />
       </InfoTable>
       <div></div>
       <div></div>
-      <InfoTitle text="Количество экспертиз по статьям" />
+      <InfoTitle text='Количество экспертиз по статьям' />
       <div></div>
       <div></div>
-      <InfoTable type="article">
-        <InfoText text="" />
-        <InfoTextVertical text="Всего" />
-        <InfoTextVertical text="Почерк-ких" />
-        <InfoTextVertical text="ТКЭД" />
-        <InfoTextVertical text="Портретных" />
-        <InfoTextVertical text="Проверок" />
+      <InfoTable type='article'>
+        <InfoText text='' />
+        <InfoTextVertical text='Всего' />
+        <InfoTextVertical text='Почерк-ких' />
+        <InfoTextVertical text='ТКЭД' />
+        <InfoTextVertical text='Портретных' />
+        <InfoTextVertical text='Проверок' />
         <InfoSeparator />
-        <InfoText text="Всего:" />
+        <InfoText text='Всего:' />
         <InfoText text={report.getArticleExpsTotal('Всего')} />
         <InfoText text={report.getArticleExpsHandwriting('Всего')} />
         <InfoText text={report.getArticleExpsTCED('Всего')} />
         <InfoText text={report.getArticleExpsPortrait('Всего')} />
         <InfoText text={report.getArticleExpsVerifications()} />
         <InfoSeparator />
-        <InfoText text="ст. 101 УК РФ:" />
+        <InfoText text='ст. 101 УК РФ:' />
         <InfoText text={report.getArticleExpsTotal('ст 101')} />
         <InfoText text={report.getArticleExpsHandwriting('ст 101')} />
         <InfoText text={report.getArticleExpsTCED('ст 101')} />
         <InfoText text={report.getArticleExpsPortrait('ст 101')} />
-        <InfoText text="" />
+        <InfoText text='' />
         <InfoSeparator />
-        <InfoText text="ст. 105 УК РФ:" />
+        <InfoText text='ст. 105 УК РФ:' />
         <InfoText text={report.getArticleExpsTotal('ст 105')} />
         <InfoText text={report.getArticleExpsHandwriting('ст 105')} />
         <InfoText text={report.getArticleExpsTCED('ст 105')} />
         <InfoText text={report.getArticleExpsPortrait('ст 105')} />
-        <InfoText text="" />
+        <InfoText text='' />
         <InfoSeparator />
-        <InfoText text="ст. 158 УК РФ:" />
+        <InfoText text='ст. 158 УК РФ:' />
         <InfoText text={report.getArticleExpsTotal('ст 158')} />
         <InfoText text={report.getArticleExpsHandwriting('ст 158')} />
         <InfoText text={report.getArticleExpsTCED('ст 158')} />
         <InfoText text={report.getArticleExpsPortrait('ст 158')} />
-        <InfoText text="" />
+        <InfoText text='' />
         <InfoSeparator />
-        <InfoText text="ст. 159 УК РФ:" />
+        <InfoText text='ст. 159 УК РФ:' />
         <InfoText text={report.getArticleExpsTotal('ст 159')} />
         <InfoText text={report.getArticleExpsHandwriting('ст 159')} />
         <InfoText text={report.getArticleExpsTCED('ст 159')} />
         <InfoText text={report.getArticleExpsPortrait('ст 159')} />
-        <InfoText text="" />
+        <InfoText text='' />
         <InfoSeparator />
-        <InfoText text="ст. 160 УК РФ:" />
+        <InfoText text='ст. 160 УК РФ:' />
         <InfoText text={report.getArticleExpsTotal('ст 160')} />
         <InfoText text={report.getArticleExpsHandwriting('ст 160')} />
         <InfoText text={report.getArticleExpsTCED('ст 160')} />
         <InfoText text={report.getArticleExpsPortrait('ст 160')} />
-        <InfoText text="" />
+        <InfoText text='' />
         <InfoSeparator />
-        <InfoText text="ст. 186, 187 УК РФ:" />
+        <InfoText text='ст. 186, 187 УК РФ:' />
         <InfoText text={report.getArticleExpsTotal('ст 186,187')} />
         <InfoText text={report.getArticleExpsHandwriting('ст 186,187')} />
         <InfoText text={report.getArticleExpsTCED('ст 186,187')} />
         <InfoText text={report.getArticleExpsPortrait('ст 186,187')} />
-        <InfoText text="" />
+        <InfoText text='' />
         <InfoSeparator />
-        <InfoText text="ст. 222 УК РФ:" />
+        <InfoText text='ст. 222 УК РФ:' />
         <InfoText text={report.getArticleExpsTotal('ст 222')} />
         <InfoText text={report.getArticleExpsHandwriting('ст 222')} />
         <InfoText text={report.getArticleExpsTCED('ст 222')} />
         <InfoText text={report.getArticleExpsPortrait('ст 222')} />
-        <InfoText text="" />
+        <InfoText text='' />
         <InfoSeparator />
-        <InfoText text="ст. 264 УК РФ:" />
+        <InfoText text='ст. 264 УК РФ:' />
         <InfoText text={report.getArticleExpsTotal('ст 264')} />
         <InfoText text={report.getArticleExpsHandwriting('ст 264')} />
         <InfoText text={report.getArticleExpsTCED('ст 264')} />
         <InfoText text={report.getArticleExpsPortrait('ст 264')} />
-        <InfoText text="" />
+        <InfoText text='' />
         <InfoSeparator />
       </InfoTable>
       <div></div>
       <div></div>
-      <InfoTitle text="Количество экспертиз по исполнителям" />
+      <InfoTitle text='Количество экспертиз по исполнителям' />
       <div></div>
       <div></div>
-      <InfoTable type="executors">
-        <InfoText text="" />
-        <InfoTextVertical text="Всего" />
-        <InfoTextVertical text="Почерк-ких" />
-        <InfoTextVertical text="ТКЭД" />
-        <InfoTextVertical text="Портретных" />
-        <InfoTextVertical text="Проверок" />
+      <InfoTable type='executors'>
+        <InfoText text='' />
+        <InfoTextVertical text='Всего' />
+        <InfoTextVertical text='Почерк-ких' />
+        <InfoTextVertical text='ТКЭД' />
+        <InfoTextVertical text='Портретных' />
+        <InfoTextVertical text='Проверок' />
         <InfoSeparator />
-        <InfoText text="Всего:" />
+        <InfoText text='Всего:' />
         <InfoText text={report.getExecutorExpsTotal('Всего')} />
         <InfoText text={report.getExecutorExpsHandwriting('Всего')} />
         <InfoText text={report.getExecutorExpsTCED('Всего')} />
         <InfoText text={report.getExecutorExpsPortrait('Всего')} />
         <InfoText text={report.getExecutorExpsVerifications('Всего')} />
         <InfoSeparator />
-        <InfoText text="Польченко Т.В.:" />
+        <InfoText text='Польченко Т.В.:' />
         <InfoText text={report.getExecutorExpsTotal('Польченко Т.В.')} />
         <InfoText text={report.getExecutorExpsHandwriting('Польченко Т.В.')} />
         <InfoText text={report.getExecutorExpsTCED('Польченко Т.В.')} />
         <InfoText text={report.getExecutorExpsPortrait('Польченко Т.В.')} />
-        <InfoText text={report.getExecutorExpsVerifications('Польченко Т.В.')} />
+        <InfoText
+          text={report.getExecutorExpsVerifications('Польченко Т.В.')}
+        />
         <InfoSeparator />
-        <InfoText text="Поволодцкий Д.Г.:" />
+        <InfoText text='Поволодцкий Д.Г.:' />
         <InfoText text={report.getExecutorExpsTotal('Поволодцкий Д.Г.')} />
-        <InfoText text={report.getExecutorExpsHandwriting('Поволодцкий Д.Г.')} />
+        <InfoText
+          text={report.getExecutorExpsHandwriting('Поволодцкий Д.Г.')}
+        />
         <InfoText text={report.getExecutorExpsTCED('Поволодцкий Д.Г.')} />
         <InfoText text={report.getExecutorExpsPortrait('Поволодцкий Д.Г.')} />
-        <InfoText text={report.getExecutorExpsVerifications('Поволодцкий Д.Г.')} />
+        <InfoText
+          text={report.getExecutorExpsVerifications('Поволодцкий Д.Г.')}
+        />
         <InfoSeparator />
-        <InfoText text="Васильев И.С.:" />
+        <InfoText text='Васильев И.С.:' />
         <InfoText text={report.getExecutorExpsTotal('Васильев И.С.')} />
         <InfoText text={report.getExecutorExpsHandwriting('Васильев И.С.')} />
         <InfoText text={report.getExecutorExpsTCED('Васильев И.С.')} />
         <InfoText text={report.getExecutorExpsPortrait('Васильев И.С.')} />
         <InfoText text={report.getExecutorExpsVerifications('Васильев И.С.')} />
         <InfoSeparator />
-        <InfoText text="Арзяков Д.Н.:" />
+        <InfoText text='Арзяков Д.Н.:' />
         <InfoText text={report.getExecutorExpsTotal('Арзяков Д.Н.')} />
         <InfoText text={report.getExecutorExpsHandwriting('Арзяков Д.Н.')} />
         <InfoText text={report.getExecutorExpsTCED('Арзяков Д.Н.')} />
         <InfoText text={report.getExecutorExpsPortrait('Арзяков Д.Н.')} />
         <InfoText text={report.getExecutorExpsVerifications('Арзяков Д.Н.')} />
         <InfoSeparator />
-        <InfoText text="Халилов Р.Н.:" />
+        <InfoText text='Халилов Р.Н.:' />
         <InfoText text={report.getExecutorExpsTotal('Халилов Р.Н.')} />
         <InfoText text={report.getExecutorExpsHandwriting('Халилов Р.Н.')} />
         <InfoText text={report.getExecutorExpsTCED('Халилов Р.Н.')} />
         <InfoText text={report.getExecutorExpsPortrait('Халилов Р.Н.')} />
         <InfoText text={report.getExecutorExpsVerifications('Халилов Р.Н.')} />
         <InfoSeparator />
-        <InfoText text="Балабанов А.А.:" />
+        <InfoText text='Балабанов А.А.:' />
         <InfoText text={report.getExecutorExpsTotal('Балабанов А.А.')} />
         <InfoText text={report.getExecutorExpsHandwriting('Балабанов А.А.')} />
         <InfoText text={report.getExecutorExpsTCED('Балабанов А.А.')} />
         <InfoText text={report.getExecutorExpsPortrait('Балабанов А.А.')} />
-        <InfoText text={report.getExecutorExpsVerifications('Балабанов А.А.')} />
+        <InfoText
+          text={report.getExecutorExpsVerifications('Балабанов А.А.')}
+        />
         <InfoSeparator />
-        <InfoText text="Голынков Д.Н.:" />
+        <InfoText text='Голынков Д.Н.:' />
         <InfoText text={report.getExecutorExpsTotal('Голынков Д.Н.')} />
         <InfoText text={report.getExecutorExpsHandwriting('Голынков Д.Н.')} />
         <InfoText text={report.getExecutorExpsTCED('Голынков Д.Н.')} />
         <InfoText text={report.getExecutorExpsPortrait('Голынков Д.Н.')} />
         <InfoText text={report.getExecutorExpsVerifications('Голынков Д.Н.')} />
         <InfoSeparator />
-        <InfoText text="Шулипа Е.Ю.:" />
+        <InfoText text='Шулипа Е.Ю.:' />
         <InfoText text={report.getExecutorExpsTotal('Шулипа Е.Ю.')} />
         <InfoText text={report.getExecutorExpsHandwriting('Шулипа Е.Ю.')} />
         <InfoText text={report.getExecutorExpsTCED('Шулипа Е.Ю.')} />
         <InfoText text={report.getExecutorExpsPortrait('Шулипа Е.Ю.')} />
         <InfoText text={report.getExecutorExpsVerifications('Шулипа Е.Ю.')} />
         <InfoSeparator />
-        <InfoText text="Киселев А.С.:" />
+        <InfoText text='Киселев А.С.:' />
         <InfoText text={report.getExecutorExpsTotal('Киселев А.С.')} />
         <InfoText text={report.getExecutorExpsHandwriting('Киселев А.С.')} />
         <InfoText text={report.getExecutorExpsTCED('Киселев А.С.')} />
         <InfoText text={report.getExecutorExpsPortrait('Киселев А.С.')} />
         <InfoText text={report.getExecutorExpsVerifications('Киселев А.С.')} />
         <InfoSeparator />
-        <InfoText text="Марчук В.А.:" />
+        <InfoText text='Марчук В.А.:' />
         <InfoText text={report.getExecutorExpsTotal('Марчук В.А.')} />
         <InfoText text={report.getExecutorExpsHandwriting('Марчук В.А.')} />
         <InfoText text={report.getExecutorExpsTCED('Марчук В.А.')} />
@@ -971,7 +1068,7 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
         <InfoSeparator />
       </InfoTable>
     </>
-  );
-};
+  )
+}
 
-export default ModalInfo;
+export default ModalInfo

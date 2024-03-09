@@ -571,7 +571,6 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
             } else if (res > 15) {
               expsDaysSpent.Total['более 15 дней'] += 1
               expsDaysSpent.Handwriting['более 15 дней'] += 1
-              console.log('res1', res)
             }
           }
           if (item.getTypeOfExpertise() === 'Портретная') {
@@ -617,7 +616,7 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
             } else if (res > 15) {
               expsDaysSpent.Total['более 15 дней'] += 1
               expsDaysSpent.Handwriting['более 15 дней'] += 1
-              console.log('res2', res)
+       
             }
           }
 

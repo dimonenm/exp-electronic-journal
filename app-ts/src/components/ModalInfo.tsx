@@ -616,7 +616,6 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
             } else if (res > 15) {
               expsDaysSpent.Total['более 15 дней'] += 1
               expsDaysSpent.Handwriting['более 15 дней'] += 1
-       
             }
           }
 

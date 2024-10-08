@@ -230,7 +230,13 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
       }
       if (
         item.getTypeOfExpertise() === 'ТКЭД общ.' ||
-        item.getTypeOfExpertise() === 'ТКЭД ден.'
+        item.getTypeOfExpertise() === 'ТКЭД ден.' ||
+        item.getTypeOfExpertise() === 'ТКЭД ден. Банк' ||
+        item.getTypeOfExpertise() === 'ТКЭД акц. марки' ||
+        item.getTypeOfExpertise() === 'ТКЭД вод. РФ' ||
+        item.getTypeOfExpertise() === 'ТКЭД вод. ИН' ||
+        item.getTypeOfExpertise() === 'ТКЭД пасп. РФ' ||
+        item.getTypeOfExpertise() === 'ТКЭД пасп. ИН'
       ) {
         assignedExps.TCED += 1
         executorExps.TCED['Всего'] += 1
@@ -337,7 +343,13 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
           }
           if (
             item.getTypeOfExpertise() === 'ТКЭД общ.' ||
-            item.getTypeOfExpertise() === 'ТКЭД ден.'
+            item.getTypeOfExpertise() === 'ТКЭД ден.' ||
+            item.getTypeOfExpertise() === 'ТКЭД ден. Банк' ||
+            item.getTypeOfExpertise() === 'ТКЭД акц. марки' ||
+            item.getTypeOfExpertise() === 'ТКЭД вод. РФ' ||
+            item.getTypeOfExpertise() === 'ТКЭД вод. ИН' ||
+            item.getTypeOfExpertise() === 'ТКЭД пасп. РФ' ||
+            item.getTypeOfExpertise() === 'ТКЭД пасп. ИН'
           ) {
             articleExps.TCED['Всего'] += 1
             articleExps.TCED['ст 101'] += 1
@@ -356,7 +368,13 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
           }
           if (
             item.getTypeOfExpertise() === 'ТКЭД общ.' ||
-            item.getTypeOfExpertise() === 'ТКЭД ден.'
+            item.getTypeOfExpertise() === 'ТКЭД ден.' ||
+            item.getTypeOfExpertise() === 'ТКЭД ден. Банк' ||
+            item.getTypeOfExpertise() === 'ТКЭД акц. марки' ||
+            item.getTypeOfExpertise() === 'ТКЭД вод. РФ' ||
+            item.getTypeOfExpertise() === 'ТКЭД вод. ИН' ||
+            item.getTypeOfExpertise() === 'ТКЭД пасп. РФ' ||
+            item.getTypeOfExpertise() === 'ТКЭД пасп. ИН'
           ) {
             articleExps.TCED['Всего'] += 1
             articleExps.TCED['ст 105'] += 1
@@ -375,7 +393,13 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
           }
           if (
             item.getTypeOfExpertise() === 'ТКЭД общ.' ||
-            item.getTypeOfExpertise() === 'ТКЭД ден.'
+            item.getTypeOfExpertise() === 'ТКЭД ден.' ||
+            item.getTypeOfExpertise() === 'ТКЭД ден. Банк' ||
+            item.getTypeOfExpertise() === 'ТКЭД акц. марки' ||
+            item.getTypeOfExpertise() === 'ТКЭД вод. РФ' ||
+            item.getTypeOfExpertise() === 'ТКЭД вод. ИН' ||
+            item.getTypeOfExpertise() === 'ТКЭД пасп. РФ' ||
+            item.getTypeOfExpertise() === 'ТКЭД пасп. ИН'
           ) {
             articleExps.TCED['Всего'] += 1
             articleExps.TCED['ст 158'] += 1
@@ -394,7 +418,13 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
           }
           if (
             item.getTypeOfExpertise() === 'ТКЭД общ.' ||
-            item.getTypeOfExpertise() === 'ТКЭД ден.'
+            item.getTypeOfExpertise() === 'ТКЭД ден.' ||
+            item.getTypeOfExpertise() === 'ТКЭД ден. Банк' ||
+            item.getTypeOfExpertise() === 'ТКЭД акц. марки' ||
+            item.getTypeOfExpertise() === 'ТКЭД вод. РФ' ||
+            item.getTypeOfExpertise() === 'ТКЭД вод. ИН' ||
+            item.getTypeOfExpertise() === 'ТКЭД пасп. РФ' ||
+            item.getTypeOfExpertise() === 'ТКЭД пасп. ИН'
           ) {
             articleExps.TCED['Всего'] += 1
             articleExps.TCED['ст 159'] += 1
@@ -413,7 +443,13 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
           }
           if (
             item.getTypeOfExpertise() === 'ТКЭД общ.' ||
-            item.getTypeOfExpertise() === 'ТКЭД ден.'
+            item.getTypeOfExpertise() === 'ТКЭД ден.' ||
+            item.getTypeOfExpertise() === 'ТКЭД ден. Банк' ||
+            item.getTypeOfExpertise() === 'ТКЭД акц. марки' ||
+            item.getTypeOfExpertise() === 'ТКЭД вод. РФ' ||
+            item.getTypeOfExpertise() === 'ТКЭД вод. ИН' ||
+            item.getTypeOfExpertise() === 'ТКЭД пасп. РФ' ||
+            item.getTypeOfExpertise() === 'ТКЭД пасп. ИН'
           ) {
             articleExps.TCED['Всего'] += 1
             articleExps.TCED['ст 160'] += 1
@@ -432,7 +468,13 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
           }
           if (
             item.getTypeOfExpertise() === 'ТКЭД общ.' ||
-            item.getTypeOfExpertise() === 'ТКЭД ден.'
+            item.getTypeOfExpertise() === 'ТКЭД ден.' ||
+            item.getTypeOfExpertise() === 'ТКЭД ден. Банк' ||
+            item.getTypeOfExpertise() === 'ТКЭД акц. марки' ||
+            item.getTypeOfExpertise() === 'ТКЭД вод. РФ' ||
+            item.getTypeOfExpertise() === 'ТКЭД вод. ИН' ||
+            item.getTypeOfExpertise() === 'ТКЭД пасп. РФ' ||
+            item.getTypeOfExpertise() === 'ТКЭД пасп. ИН'
           ) {
             articleExps.TCED['Всего'] += 1
             articleExps.TCED['ст 186,187'] += 1
@@ -451,7 +493,13 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
           }
           if (
             item.getTypeOfExpertise() === 'ТКЭД общ.' ||
-            item.getTypeOfExpertise() === 'ТКЭД ден.'
+            item.getTypeOfExpertise() === 'ТКЭД ден.' ||
+            item.getTypeOfExpertise() === 'ТКЭД ден. Банк' ||
+            item.getTypeOfExpertise() === 'ТКЭД акц. марки' ||
+            item.getTypeOfExpertise() === 'ТКЭД вод. РФ' ||
+            item.getTypeOfExpertise() === 'ТКЭД вод. ИН' ||
+            item.getTypeOfExpertise() === 'ТКЭД пасп. РФ' ||
+            item.getTypeOfExpertise() === 'ТКЭД пасп. ИН'
           ) {
             articleExps.TCED['Всего'] += 1
             articleExps.TCED['ст 222'] += 1
@@ -470,7 +518,13 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
           }
           if (
             item.getTypeOfExpertise() === 'ТКЭД общ.' ||
-            item.getTypeOfExpertise() === 'ТКЭД ден.'
+            item.getTypeOfExpertise() === 'ТКЭД ден.' ||
+            item.getTypeOfExpertise() === 'ТКЭД ден. Банк' ||
+            item.getTypeOfExpertise() === 'ТКЭД акц. марки' ||
+            item.getTypeOfExpertise() === 'ТКЭД вод. РФ' ||
+            item.getTypeOfExpertise() === 'ТКЭД вод. ИН' ||
+            item.getTypeOfExpertise() === 'ТКЭД пасп. РФ' ||
+            item.getTypeOfExpertise() === 'ТКЭД пасп. ИН'
           ) {
             articleExps.TCED['Всего'] += 1
             articleExps.TCED['ст 264'] += 1
@@ -523,7 +577,13 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
         }
         if (
           item.getTypeOfExpertise() === 'ТКЭД общ.' ||
-          item.getTypeOfExpertise() === 'ТКЭД ден.'
+          item.getTypeOfExpertise() === 'ТКЭД ден.' ||
+          item.getTypeOfExpertise() === 'ТКЭД ден. Банк' ||
+          item.getTypeOfExpertise() === 'ТКЭД акц. марки' ||
+          item.getTypeOfExpertise() === 'ТКЭД вод. РФ' ||
+          item.getTypeOfExpertise() === 'ТКЭД вод. ИН' ||
+          item.getTypeOfExpertise() === 'ТКЭД пасп. РФ' ||
+          item.getTypeOfExpertise() === 'ТКЭД пасп. ИН'
         ) {
           expsWithPetition.TCED += 1
           expsWithPetition.Total += 1
@@ -544,7 +604,13 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
         }
         if (
           item.getTypeOfExpertise() === 'ТКЭД общ.' ||
-          item.getTypeOfExpertise() === 'ТКЭД ден.'
+          item.getTypeOfExpertise() === 'ТКЭД ден.' ||
+          item.getTypeOfExpertise() === 'ТКЭД ден. Банк' ||
+          item.getTypeOfExpertise() === 'ТКЭД акц. марки' ||
+          item.getTypeOfExpertise() === 'ТКЭД вод. РФ' ||
+          item.getTypeOfExpertise() === 'ТКЭД вод. ИН' ||
+          item.getTypeOfExpertise() === 'ТКЭД пасп. РФ' ||
+          item.getTypeOfExpertise() === 'ТКЭД пасп. ИН'
         ) {
           satisfiedPetitions.TCED += 1
           satisfiedPetitions.Total += 1
@@ -588,7 +654,13 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
 
           if (
             item.getTypeOfExpertise() === 'ТКЭД общ.' ||
-            item.getTypeOfExpertise() === 'ТКЭД ден.'
+            item.getTypeOfExpertise() === 'ТКЭД ден.' ||
+            item.getTypeOfExpertise() === 'ТКЭД ден. Банк' ||
+            item.getTypeOfExpertise() === 'ТКЭД акц. марки' ||
+            item.getTypeOfExpertise() === 'ТКЭД вод. РФ' ||
+            item.getTypeOfExpertise() === 'ТКЭД вод. ИН' ||
+            item.getTypeOfExpertise() === 'ТКЭД пасп. РФ' ||
+            item.getTypeOfExpertise() === 'ТКЭД пасп. ИН'
           ) {
             if (res > 0 && res < 5) {
               expsDaysSpent.Total['до 5 дней'] += 1
@@ -634,7 +706,13 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
 
           if (
             item.getTypeOfExpertise() === 'ТКЭД общ.' ||
-            item.getTypeOfExpertise() === 'ТКЭД ден.'
+            item.getTypeOfExpertise() === 'ТКЭД ден.' ||
+            item.getTypeOfExpertise() === 'ТКЭД ден. Банк' ||
+            item.getTypeOfExpertise() === 'ТКЭД акц. марки' ||
+            item.getTypeOfExpertise() === 'ТКЭД вод. РФ' ||
+            item.getTypeOfExpertise() === 'ТКЭД вод. ИН' ||
+            item.getTypeOfExpertise() === 'ТКЭД пасп. РФ' ||
+            item.getTypeOfExpertise() === 'ТКЭД пасп. ИН'
           ) {
             if (res > 0 && res < 5) {
               expsDaysSpent.Total['до 5 дней'] += 1

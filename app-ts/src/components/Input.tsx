@@ -259,6 +259,12 @@ const Input: FC<IInputProps> = ({
         <option>Почерковедческая</option>
         <option>ТКЭД общ.</option>
         <option>ТКЭД ден.</option>
+        <option>ТКЭД ден. Банк</option>
+        <option>ТКЭД акц. марки</option>
+        <option>ТКЭД вод. РФ</option>
+        <option>ТКЭД вод. ИН</option>
+        <option>ТКЭД пасп. РФ</option>
+        <option>ТКЭД пасп. ИН</option>
         <option>Портретная</option>
       </select>
     }

@@ -453,12 +453,19 @@ const InputSearch: FC<IInputSearchProps> = ({
           <option>не указано</option>
           <option>ст. 101 УК РФ</option>
           <option>ст. 105 УК РФ</option>
+          <option>ст. 135 УК РФ</option>
           <option>ст. 158 УК РФ</option>
           <option>ст. 159 УК РФ</option>
           <option>ст. 160 УК РФ</option>
+          <option>ст. 162 УК РФ</option>
+          <option>ст. 167 УК РФ</option>
+          <option>ст. 171 УК РФ</option>
           <option>ст. 186, 187 УК РФ</option>
+          <option>ст. 201 УК РФ</option>
           <option>ст. 222 УК РФ</option>
           <option>ст. 264 УК РФ</option>
+          <option>ст. 326 УК РФ</option>
+          <option>ст. 327 УК РФ</option>
         </select>
       )
     }
@@ -519,6 +526,7 @@ const InputSearch: FC<IInputSearchProps> = ({
           <option>Балабанов А.А.</option>
           <option>Голынков Д.Н.</option>
           <option>Шулипа Е.Ю.</option>
+          <option>Миронова Е.С.</option>
           <option>Киселев А.С.</option>
           <option>Марчук В.А.</option>
         </select>
@@ -575,6 +583,7 @@ const InputSearch: FC<IInputSearchProps> = ({
           <option>Балабанов А.А.</option>
           <option>Голынков Д.Н.</option>
           <option>Шулипа Е.Ю.</option>
+          <option>Миронова Е.С.</option>
           <option>Киселев А.С.</option>
           <option>Марчук В.А.</option>
         </select>

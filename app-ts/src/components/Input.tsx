@@ -243,12 +243,19 @@ const Input: FC<IInputProps> = ({
         <option>не указано</option>
         <option>ст. 101 УК РФ</option>
         <option>ст. 105 УК РФ</option>
+        <option>ст. 135 УК РФ</option>
         <option>ст. 158 УК РФ</option>
         <option>ст. 159 УК РФ</option>
         <option>ст. 160 УК РФ</option>
+        <option>ст. 162 УК РФ</option>
+        <option>ст. 167 УК РФ</option>
+        <option>ст. 171 УК РФ</option>
         <option>ст. 186, 187 УК РФ</option>
+        <option>ст. 201 УК РФ</option>
         <option>ст. 222 УК РФ</option>
         <option>ст. 264 УК РФ</option>
+        <option>ст. 326 УК РФ</option>
+        <option>ст. 327 УК РФ</option>
       </select>
     }
     if (listName === 'typeOfExpertise') {
@@ -291,6 +298,7 @@ const Input: FC<IInputProps> = ({
         <option>Балабанов А.А.</option>
         <option>Голынков Д.Н.</option>
         <option>Шулипа Е.Ю.</option>
+        <option>Миронова Е.С.</option>
         <option>Киселев А.С.</option>
         <option>Марчук В.А.</option>
       </select>
@@ -307,21 +315,28 @@ const Input: FC<IInputProps> = ({
       </select>
     }
     if (listName === 'verificationExecutor') {
-      input = <select className='select' value={value} onChange={(event) => {
-        onChangeVerificationExecutorHandler?.(event.target.value)
-      }}>
-        <option>не указано</option>
-        <option>Польченко Т.В.</option>
-        <option>Поволодцкий Д.Г.</option>
-        <option>Васильев И.С.</option>
-        <option>Арзяков Д.Н.</option>
-        <option>Халилов Р.Н.</option>
-        <option>Балабанов А.А.</option>
-        <option>Голынков Д.Н.</option>
-        <option>Шулипа Е.Ю.</option>
-        <option>Киселев А.С.</option>
-        <option>Марчук В.А.</option>
-      </select>
+      input = (
+        <select
+          className='select'
+          value={value}
+          onChange={event => {
+            onChangeVerificationExecutorHandler?.(event.target.value)
+          }}
+        >
+          <option>не указано</option>
+          <option>Польченко Т.В.</option>
+          <option>Поволодцкий Д.Г.</option>
+          <option>Васильев И.С.</option>
+          <option>Арзяков Д.Н.</option>
+          <option>Халилов Р.Н.</option>
+          <option>Балабанов А.А.</option>
+          <option>Голынков Д.Н.</option>
+          <option>Шулипа Е.Ю.</option>
+          <option>Миронова Е.С.</option>
+          <option>Киселев А.С.</option>
+          <option>Марчук В.А.</option>
+        </select>
+      )
     }
     if (listName === 'verificationResult') {
       input = <select className='select' value={value} onChange={(event) => {

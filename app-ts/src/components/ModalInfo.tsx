@@ -40,7 +40,9 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
         'ст 160': 0,
         'ст 162': 0,
         'ст 167': 0,
+        'ст 171': 0,
         'ст 186,187': 0,
+        'ст 201': 0,
         'ст 222': 0,
         'ст 264': 0,
       },
@@ -54,7 +56,9 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
         'ст 160': 0,
         'ст 162': 0,
         'ст 167': 0,
+        'ст 171': 0,
         'ст 186,187': 0,
+        'ст 201': 0,
         'ст 222': 0,
         'ст 264': 0,
       },
@@ -68,7 +72,9 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
         'ст 160': 0,
         'ст 162': 0,
         'ст 167': 0,
+        'ст 171': 0,
         'ст 186,187': 0,
+        'ст 201': 0,
         'ст 222': 0,
         'ст 264': 0,
       },
@@ -83,7 +89,9 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
         'ст 160': 0,
         'ст 162': 0,
         'ст 167': 0,
+        'ст 171': 0,
         'ст 186,187': 0,
+        'ст 201': 0,
         'ст 222': 0,
         'ст 264': 0,
       },
@@ -563,6 +571,31 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
             articleExps.Portrait['ст 167'] += 1
           }
         }
+        if (item.getArticle() === 'ст. 171 УК РФ') {
+          articleExps.Total['Всего'] += 1
+          articleExps.Total['ст 171'] += 1
+          if (item.getTypeOfExpertise() === 'Почерковедческая') {
+            articleExps.Handwriting['Всего'] += 1
+            articleExps.Handwriting['ст 171'] += 1
+          }
+          if (
+            item.getTypeOfExpertise() === 'ТКЭД общ.' ||
+            item.getTypeOfExpertise() === 'ТКЭД ден.' ||
+            item.getTypeOfExpertise() === 'ТКЭД ден. Банк' ||
+            item.getTypeOfExpertise() === 'ТКЭД акц. марки' ||
+            item.getTypeOfExpertise() === 'ТКЭД вод. РФ' ||
+            item.getTypeOfExpertise() === 'ТКЭД вод. ИН' ||
+            item.getTypeOfExpertise() === 'ТКЭД пасп. РФ' ||
+            item.getTypeOfExpertise() === 'ТКЭД пасп. ИН'
+          ) {
+            articleExps.TCED['Всего'] += 1
+            articleExps.TCED['ст 171'] += 1
+          }
+          if (item.getTypeOfExpertise() === 'Портретная') {
+            articleExps.Portrait['Всего'] += 1
+            articleExps.Portrait['ст 171'] += 1
+          }
+        }
         if (item.getArticle() === 'ст. 186, 187 УК РФ') {
           articleExps.Total['Всего'] += 1
           articleExps.Total['ст 186,187'] += 1
@@ -586,6 +619,31 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
           if (item.getTypeOfExpertise() === 'Портретная') {
             articleExps.Portrait['Всего'] += 1
             articleExps.Portrait['ст 186,187'] += 1
+          }
+        }
+        if (item.getArticle() === 'ст. 201 УК РФ') {
+          articleExps.Total['Всего'] += 1
+          articleExps.Total['ст 201'] += 1
+          if (item.getTypeOfExpertise() === 'Почерковедческая') {
+            articleExps.Handwriting['Всего'] += 1
+            articleExps.Handwriting['ст 201'] += 1
+          }
+          if (
+            item.getTypeOfExpertise() === 'ТКЭД общ.' ||
+            item.getTypeOfExpertise() === 'ТКЭД ден.' ||
+            item.getTypeOfExpertise() === 'ТКЭД ден. Банк' ||
+            item.getTypeOfExpertise() === 'ТКЭД акц. марки' ||
+            item.getTypeOfExpertise() === 'ТКЭД вод. РФ' ||
+            item.getTypeOfExpertise() === 'ТКЭД вод. ИН' ||
+            item.getTypeOfExpertise() === 'ТКЭД пасп. РФ' ||
+            item.getTypeOfExpertise() === 'ТКЭД пасп. ИН'
+          ) {
+            articleExps.TCED['Всего'] += 1
+            articleExps.TCED['ст 201'] += 1
+          }
+          if (item.getTypeOfExpertise() === 'Портретная') {
+            articleExps.Portrait['Всего'] += 1
+            articleExps.Portrait['ст 201'] += 1
           }
         }
         if (item.getArticle() === 'ст. 222 УК РФ') {
@@ -890,7 +948,9 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
       articleExps.Handwriting['ст 160'].toString(),
       articleExps.Handwriting['ст 162'].toString(),
       articleExps.Handwriting['ст 167'].toString(),
+      articleExps.Handwriting['ст 171'].toString(),
       articleExps.Handwriting['ст 186,187'].toString(),
+      articleExps.Handwriting['ст 201'].toString(),
       articleExps.Handwriting['ст 222'].toString(),
       articleExps.Handwriting['ст 264'].toString()
     )
@@ -904,7 +964,9 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
       articleExps.TCED['ст 160'].toString(),
       articleExps.TCED['ст 162'].toString(),
       articleExps.TCED['ст 167'].toString(),
+      articleExps.TCED['ст 171'].toString(),
       articleExps.TCED['ст 186,187'].toString(),
+      articleExps.TCED['ст 201'].toString(),
       articleExps.TCED['ст 222'].toString(),
       articleExps.TCED['ст 264'].toString()
     )
@@ -918,7 +980,9 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
       articleExps.Portrait['ст 160'].toString(),
       articleExps.Portrait['ст 162'].toString(),
       articleExps.Portrait['ст 167'].toString(),
+      articleExps.Portrait['ст 171'].toString(),
       articleExps.Portrait['ст 186,187'].toString(),
+      articleExps.Portrait['ст 201'].toString(),
       articleExps.Portrait['ст 222'].toString(),
       articleExps.Portrait['ст 264'].toString()
     )
@@ -933,7 +997,9 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
       articleExps.Total['ст 160'].toString(),
       articleExps.Total['ст 162'].toString(),
       articleExps.Total['ст 167'].toString(),
+      articleExps.Total['ст 171'].toString(),
       articleExps.Total['ст 186,187'].toString(),
+      articleExps.Total['ст 201'].toString(),
       articleExps.Total['ст 222'].toString(),
       articleExps.Total['ст 264'].toString()
     )
@@ -1167,11 +1233,25 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
         <InfoText text={report.getArticleExpsPortrait('ст 167')} />
         <InfoText text='' />
         <InfoSeparator />
+        <InfoText text='ст. 171 УК РФ:' />
+        <InfoText text={report.getArticleExpsTotal('ст 171')} />
+        <InfoText text={report.getArticleExpsHandwriting('ст 171')} />
+        <InfoText text={report.getArticleExpsTCED('ст 171')} />
+        <InfoText text={report.getArticleExpsPortrait('ст 171')} />
+        <InfoText text='' />
+        <InfoSeparator />
         <InfoText text='ст. 186, 187 УК РФ:' />
         <InfoText text={report.getArticleExpsTotal('ст 186,187')} />
         <InfoText text={report.getArticleExpsHandwriting('ст 186,187')} />
         <InfoText text={report.getArticleExpsTCED('ст 186,187')} />
         <InfoText text={report.getArticleExpsPortrait('ст 186,187')} />
+        <InfoText text='' />
+        <InfoSeparator />
+        <InfoText text='ст. 201 УК РФ:' />
+        <InfoText text={report.getArticleExpsTotal('ст 201')} />
+        <InfoText text={report.getArticleExpsHandwriting('ст 201')} />
+        <InfoText text={report.getArticleExpsTCED('ст 201')} />
+        <InfoText text={report.getArticleExpsPortrait('ст 201')} />
         <InfoText text='' />
         <InfoSeparator />
         <InfoText text='ст. 222 УК РФ:' />

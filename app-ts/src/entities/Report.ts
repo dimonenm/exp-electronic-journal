@@ -57,6 +57,7 @@ export default class Report {
       'ст 201': '',
       'ст 222': '',
       'ст 264': '',
+      'ст 326': '',
     },
     TCED: {
       Всего: '',
@@ -73,6 +74,7 @@ export default class Report {
       'ст 201': '',
       'ст 222': '',
       'ст 264': '',
+      'ст 326': '',
     },
     Portrait: {
       Всего: '',
@@ -89,6 +91,7 @@ export default class Report {
       'ст 201': '',
       'ст 222': '',
       'ст 264': '',
+      'ст 326': '',
     },
     Verifications: '',
     Total: {
@@ -106,6 +109,7 @@ export default class Report {
       'ст 201': '',
       'ст 222': '',
       'ст 264': '',
+      'ст 326': '',
     },
   }
   executorExps = {
@@ -262,6 +266,7 @@ export default class Report {
     if (id === 'ст 201') return this.articleExps.Handwriting['ст 201']
     if (id === 'ст 222') return this.articleExps.Handwriting['ст 222']
     if (id === 'ст 264') return this.articleExps.Handwriting['ст 264']
+    if (id === 'ст 326') return this.articleExps.Handwriting['ст 326']
     return ''
   }
   getArticleExpsTCED(id: string): string {
@@ -277,6 +282,7 @@ export default class Report {
     if (id === 'ст 186,187') return this.articleExps.TCED['ст 186,187']
     if (id === 'ст 222') return this.articleExps.TCED['ст 222']
     if (id === 'ст 264') return this.articleExps.TCED['ст 264']
+    if (id === 'ст 326') return this.articleExps.TCED['ст 326']
     return ''
   }
   getArticleExpsPortrait(id: string): string {
@@ -294,6 +300,7 @@ export default class Report {
     if (id === 'ст 201') return this.articleExps.Portrait['ст 201']
     if (id === 'ст 222') return this.articleExps.Portrait['ст 222']
     if (id === 'ст 264') return this.articleExps.Portrait['ст 264']
+    if (id === 'ст 326') return this.articleExps.Portrait['ст 326']
     return ''
   }
   getArticleExpsVerifications(): string {
@@ -314,6 +321,7 @@ export default class Report {
     if (article === 'ст 201') return this.articleExps.Total['ст 201']
     if (article === 'ст 222') return this.articleExps.Total['ст 222']
     if (article === 'ст 264') return this.articleExps.Total['ст 264']
+    if (article === 'ст 326') return this.articleExps.Total['ст 326']
     return ''
   }
   getExecutorExpsHandwriting(id: string): string {
@@ -510,7 +518,8 @@ export default class Report {
     v11: string,
     v12: string,
     v13: string,
-    v14: string
+    v14: string,
+    v15: string
   ): void {
     this.articleExps.Handwriting['Всего'] = v1
     this.articleExps.Handwriting['ст 101'] = v2
@@ -526,6 +535,7 @@ export default class Report {
     this.articleExps.Handwriting['ст 201'] = v12
     this.articleExps.Handwriting['ст 222'] = v13
     this.articleExps.Handwriting['ст 264'] = v14
+    this.articleExps.Handwriting['ст 326'] = v15
   }
   setArticleExpsTCED(
     v1: string,
@@ -541,7 +551,8 @@ export default class Report {
     v11: string,
     v12: string,
     v13: string,
-    v14: string
+    v14: string,
+    v15: string
   ): void {
     this.articleExps.TCED['Всего'] = v1
     this.articleExps.TCED['ст 101'] = v2
@@ -557,6 +568,7 @@ export default class Report {
     this.articleExps.TCED['ст 201'] = v12
     this.articleExps.TCED['ст 222'] = v13
     this.articleExps.TCED['ст 264'] = v14
+    this.articleExps.TCED['ст 326'] = v15
   }
   setArticleExpsPortrait(
     v1: string,
@@ -572,7 +584,8 @@ export default class Report {
     v11: string,
     v12: string,
     v13: string,
-    v14: string
+    v14: string,
+    v15: string
   ): void {
     this.articleExps.Portrait['Всего'] = v1
     this.articleExps.Portrait['ст 101'] = v2
@@ -588,6 +601,7 @@ export default class Report {
     this.articleExps.Portrait['ст 201'] = v12
     this.articleExps.Portrait['ст 222'] = v13
     this.articleExps.Portrait['ст 264'] = v14
+    this.articleExps.Portrait['ст 326'] = v15
   }
   setArticleExpsVerifications(value: string): void {
     this.articleExps.Verifications = value
@@ -606,7 +620,8 @@ export default class Report {
     v11: string,
     v12: string,
     v13: string,
-    v14: string
+    v14: string,
+    v15: string
   ): void {
     this.articleExps.Total['Всего'] = v1
     this.articleExps.Total['ст 101'] = v2
@@ -622,6 +637,7 @@ export default class Report {
     this.articleExps.Total['ст 201'] = v12
     this.articleExps.Total['ст 222'] = v13
     this.articleExps.Total['ст 264'] = v14
+    this.articleExps.Total['ст 326'] = v15
   }
 
   setExecutorExpsHandwriting(

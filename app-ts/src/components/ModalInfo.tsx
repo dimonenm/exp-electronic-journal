@@ -45,6 +45,7 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
         'ст 201': 0,
         'ст 222': 0,
         'ст 264': 0,
+        'ст 326': 0,
       },
       TCED: {
         Всего: 0,
@@ -61,6 +62,7 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
         'ст 201': 0,
         'ст 222': 0,
         'ст 264': 0,
+        'ст 326': 0,
       },
       Portrait: {
         Всего: 0,
@@ -77,6 +79,7 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
         'ст 201': 0,
         'ст 222': 0,
         'ст 264': 0,
+        'ст 326': 0,
       },
       Verifications: 0,
       Total: {
@@ -94,6 +97,7 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
         'ст 201': 0,
         'ст 222': 0,
         'ст 264': 0,
+        'ст 326': 0,
       },
     }
     let executorExps = {
@@ -696,6 +700,31 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
             articleExps.Portrait['ст 264'] += 1
           }
         }
+        if (item.getArticle() === 'ст. 326 УК РФ') {
+          articleExps.Total['Всего'] += 1
+          articleExps.Total['ст 326'] += 1
+          if (item.getTypeOfExpertise() === 'Почерковедческая') {
+            articleExps.Handwriting['Всего'] += 1
+            articleExps.Handwriting['ст 326'] += 1
+          }
+          if (
+            item.getTypeOfExpertise() === 'ТКЭД общ.' ||
+            item.getTypeOfExpertise() === 'ТКЭД ден.' ||
+            item.getTypeOfExpertise() === 'ТКЭД ден. Банк' ||
+            item.getTypeOfExpertise() === 'ТКЭД акц. марки' ||
+            item.getTypeOfExpertise() === 'ТКЭД вод. РФ' ||
+            item.getTypeOfExpertise() === 'ТКЭД вод. ИН' ||
+            item.getTypeOfExpertise() === 'ТКЭД пасп. РФ' ||
+            item.getTypeOfExpertise() === 'ТКЭД пасп. ИН'
+          ) {
+            articleExps.TCED['Всего'] += 1
+            articleExps.TCED['ст 326'] += 1
+          }
+          if (item.getTypeOfExpertise() === 'Портретная') {
+            articleExps.Portrait['Всего'] += 1
+            articleExps.Portrait['ст 326'] += 1
+          }
+        }
       }
       if (item.getDateVerificationStart() !== '') {
         articleExps.Verifications += 1
@@ -952,7 +981,8 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
       articleExps.Handwriting['ст 186,187'].toString(),
       articleExps.Handwriting['ст 201'].toString(),
       articleExps.Handwriting['ст 222'].toString(),
-      articleExps.Handwriting['ст 264'].toString()
+      articleExps.Handwriting['ст 264'].toString(),
+      articleExps.Handwriting['ст 326'].toString()
     )
     report.setArticleExpsTCED(
       articleExps.TCED['Всего'].toString(),
@@ -968,7 +998,8 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
       articleExps.TCED['ст 186,187'].toString(),
       articleExps.TCED['ст 201'].toString(),
       articleExps.TCED['ст 222'].toString(),
-      articleExps.TCED['ст 264'].toString()
+      articleExps.TCED['ст 264'].toString(),
+      articleExps.TCED['ст 326'].toString()
     )
     report.setArticleExpsPortrait(
       articleExps.Portrait['Всего'].toString(),
@@ -984,7 +1015,8 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
       articleExps.Portrait['ст 186,187'].toString(),
       articleExps.Portrait['ст 201'].toString(),
       articleExps.Portrait['ст 222'].toString(),
-      articleExps.Portrait['ст 264'].toString()
+      articleExps.Portrait['ст 264'].toString(),
+      articleExps.Portrait['ст 326'].toString()
     )
     report.setArticleExpsVerifications(articleExps.Verifications.toString())
     report.setArticleExpsTotal(
@@ -1001,7 +1033,8 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
       articleExps.Total['ст 186,187'].toString(),
       articleExps.Total['ст 201'].toString(),
       articleExps.Total['ст 222'].toString(),
-      articleExps.Total['ст 264'].toString()
+      articleExps.Total['ст 264'].toString(),
+      articleExps.Total['ст 326'].toString()
     )
     report.setExecutorExpsHandwriting(
       executorExps.Handwriting['Всего'].toString(),
@@ -1266,6 +1299,13 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
         <InfoText text={report.getArticleExpsHandwriting('ст 264')} />
         <InfoText text={report.getArticleExpsTCED('ст 264')} />
         <InfoText text={report.getArticleExpsPortrait('ст 264')} />
+        <InfoText text='' />
+        <InfoSeparator />
+        <InfoText text='ст. 326 УК РФ:' />
+        <InfoText text={report.getArticleExpsTotal('ст 326')} />
+        <InfoText text={report.getArticleExpsHandwriting('ст 326')} />
+        <InfoText text={report.getArticleExpsTCED('ст 326')} />
+        <InfoText text={report.getArticleExpsPortrait('ст 326')} />
         <InfoText text='' />
         <InfoSeparator />
       </InfoTable>

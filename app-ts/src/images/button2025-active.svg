@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" height="40" width="40">
+  <style>
+    .year {
+      font-family: 'Roboto';
+      src: url('../fonts/Roboto-Regular.ttf');
+      font-weight: bold;
+      font-style: normal;
+      font-size: 12px;
+      fill: #f3f3f3;
+    }
+  </style>
+  <circle />
+  <circle cx="20" cy="20" r="17" fill="#2b579a"/>
+  <text x="6.5" y="24" class="year">2025</text>
+</svg>

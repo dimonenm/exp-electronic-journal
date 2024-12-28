@@ -426,7 +426,7 @@ const App = () => {
 
   return (
     <Container>
-      <Header logoText='Электронный журнал 0.0.2' />
+      <Header logoText='Электронный журнал 0.0.3' />
       <Main>
         <Menu type='left'>
           <Button type='create' modalType={modal.type} clickHendler={createClickHendler} />
@@ -491,6 +491,7 @@ const App = () => {
         <Menu type='right'>
           <ButtonYear year='2023' activeYear={year} setYear={setYear} />
           <ButtonYear year='2024' activeYear={year} setYear={setYear} />
+          <ButtonYear year='2025' activeYear={year} setYear={setYear} />
         </Menu>
       </Main>
     </Container>

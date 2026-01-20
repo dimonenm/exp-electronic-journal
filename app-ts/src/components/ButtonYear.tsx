@@ -43,6 +43,17 @@ const Button: FC<IButtonYearProps> = ({ year, activeYear, setYear }) => {
       );
     }
   }
+  if (year === '2026') {
+    if (activeYear === '2026') {
+      return (
+        <div className='btn btn-2026-active'></div>
+      );
+    } else {
+      return (
+        <div className='btn btn-2026' onClick={clickHendler}></div>
+      );
+    }
+  }
   return null
 };
 

@@ -116,6 +116,7 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
         'Голынков Д.Н.': 0,
         'Шулипа Е.Ю.': 0,
         'Миронова Е.С.': 0,
+        'Погорелова Н.А.': 0,
         'Киселев А.С.': 0,
         'Марчук В.А.': 0,
       },
@@ -130,6 +131,7 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
         'Голынков Д.Н.': 0,
         'Шулипа Е.Ю.': 0,
         'Миронова Е.С.': 0,
+        'Погорелова Н.А.': 0,
         'Киселев А.С.': 0,
         'Марчук В.А.': 0,
       },
@@ -144,6 +146,7 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
         'Голынков Д.Н.': 0,
         'Шулипа Е.Ю.': 0,
         'Миронова Е.С.': 0,
+        'Погорелова Н.А.': 0,
         'Киселев А.С.': 0,
         'Марчук В.А.': 0,
       },
@@ -158,6 +161,7 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
         'Голынков Д.Н.': 0,
         'Шулипа Е.Ю.': 0,
         'Миронова Е.С.': 0,
+        'Погорелова Н.А.': 0,
         'Киселев А.С.': 0,
         'Марчук В.А.': 0,
       },
@@ -172,6 +176,7 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
         'Голынков Д.Н.': 0,
         'Шулипа Е.Ю.': 0,
         'Миронова Е.С.': 0,
+        'Погорелова Н.А.': 0,
         'Киселев А.С.': 0,
         'Марчук В.А.': 0,
       },
@@ -256,6 +261,10 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
           executorExps.Handwriting['Миронова Е.С.'] += 1
           executorExps.Total['Миронова Е.С.'] += 1
         }
+        if (item.getExecutor() === 'Погорелова Н.А.') {
+          executorExps.Handwriting['Погорелова Н.А.'] += 1
+          executorExps.Total['Погорелова Н.А.'] += 1
+        }
         if (item.getExecutor() === 'Киселев А.С.') {
           executorExps.Handwriting['Киселев А.С.'] += 1
           executorExps.Total['Киселев А.С.'] += 1
@@ -317,6 +326,10 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
           executorExps.TCED['Миронова Е.С.'] += 1
           executorExps.Total['Миронова Е.С.'] += 1
         }
+        if (item.getExecutor() === 'Погорелова Н.А.') {
+          executorExps.TCED['Погорелова Н.А.'] += 1
+          executorExps.Total['Погорелова Н.А.'] += 1
+        }
         if (item.getExecutor() === 'Киселев А.С.') {
           executorExps.TCED['Киселев А.С.'] += 1
           executorExps.Total['Киселев А.С.'] += 1
@@ -368,6 +381,10 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
         if (item.getExecutor() === 'Миронова Е.С.') {
           executorExps.Portrait['Миронова Е.С.'] += 1
           executorExps.Total['Миронова Е.С.'] += 1
+        }
+        if (item.getExecutor() === 'Погорелова Н.А.') {
+          executorExps.Portrait['Погорелова Н.А.'] += 1
+          executorExps.Total['Погорелова Н.А.'] += 1
         }
         if (item.getExecutor() === 'Киселев А.С.') {
           executorExps.Portrait['Киселев А.С.'] += 1
@@ -785,6 +802,9 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
         if (item.getExecutor() === 'Миронова Е.С.') {
           executorExps.Verifications['Миронова Е.С.'] += 1
         }
+        if (item.getExecutor() === 'Погорелова Н.А.') {
+          executorExps.Verifications['Погорелова Н.А.'] += 1
+        }
         if (item.getExecutor() === 'Киселев А.С.') {
           executorExps.Verifications['Киселев А.С.'] += 1
         }
@@ -1080,6 +1100,7 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
       executorExps.Handwriting['Голынков Д.Н.'].toString(),
       executorExps.Handwriting['Шулипа Е.Ю.'].toString(),
       executorExps.Handwriting['Миронова Е.С.'].toString(),
+      executorExps.Handwriting['Погорелова Н.А.'].toString(),
       executorExps.Handwriting['Киселев А.С.'].toString(),
       executorExps.Handwriting['Марчук В.А.'].toString()
     )
@@ -1094,6 +1115,7 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
       executorExps.TCED['Голынков Д.Н.'].toString(),
       executorExps.TCED['Шулипа Е.Ю.'].toString(),
       executorExps.TCED['Миронова Е.С.'].toString(),
+      executorExps.TCED['Погорелова Н.А.'].toString(),
       executorExps.TCED['Киселев А.С.'].toString(),
       executorExps.TCED['Марчук В.А.'].toString()
     )
@@ -1108,6 +1130,7 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
       executorExps.Portrait['Голынков Д.Н.'].toString(),
       executorExps.Portrait['Шулипа Е.Ю.'].toString(),
       executorExps.Portrait['Миронова Е.С.'].toString(),
+      executorExps.Portrait['Погорелова Н.А.'].toString(),
       executorExps.Portrait['Киселев А.С.'].toString(),
       executorExps.Portrait['Марчук В.А.'].toString()
     )
@@ -1122,6 +1145,7 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
       executorExps.Verifications['Голынков Д.Н.'].toString(),
       executorExps.Verifications['Шулипа Е.Ю.'].toString(),
       executorExps.Verifications['Миронова Е.С.'].toString(),
+      executorExps.Verifications['Погорелова Н.А.'].toString(),
       executorExps.Verifications['Киселев А.С.'].toString(),
       executorExps.Verifications['Марчук В.А.'].toString()
     )
@@ -1136,6 +1160,7 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
       executorExps.Total['Голынков Д.Н.'].toString(),
       executorExps.Total['Шулипа Е.Ю.'].toString(),
       executorExps.Total['Миронова Е.С.'].toString(),
+      executorExps.Total['Погорелова Н.А.'].toString(),
       executorExps.Total['Киселев А.С.'].toString(),
       executorExps.Total['Марчук В.А.'].toString()
     )
@@ -1439,6 +1464,13 @@ const ModalInfo: FC<ModalInfoProps> = ({ dbExps, searchArr }) => {
         <InfoText text={report.getExecutorExpsTCED('Миронова Е.С.')} />
         <InfoText text={report.getExecutorExpsPortrait('Миронова Е.С.')} />
         <InfoText text={report.getExecutorExpsVerifications('Миронова Е.С.')} />
+        <InfoSeparator />
+        <InfoText text='Погорелова Н.А.:' />
+        <InfoText text={report.getExecutorExpsTotal('Погорелова Н.А.')} />
+        <InfoText text={report.getExecutorExpsHandwriting('Погорелова Н.А.')} />
+        <InfoText text={report.getExecutorExpsTCED('Погорелова Н.А.')} />
+        <InfoText text={report.getExecutorExpsPortrait('Погорелова Н.А.')} />
+        <InfoText text={report.getExecutorExpsVerifications('Погорелова Н.А.')} />
         <InfoSeparator />
         <InfoText text='Киселев А.С.:' />
         <InfoText text={report.getExecutorExpsTotal('Киселев А.С.')} />

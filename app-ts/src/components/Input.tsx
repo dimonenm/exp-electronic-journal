@@ -299,6 +299,7 @@ const Input: FC<IInputProps> = ({
         <option>Голынков Д.Н.</option>
         <option>Шулипа Е.Ю.</option>
         <option>Миронова Е.С.</option>
+        <option>Погорелова Н.А.</option>
         <option>Киселев А.С.</option>
         <option>Марчук В.А.</option>
       </select>
@@ -333,6 +334,7 @@ const Input: FC<IInputProps> = ({
           <option>Голынков Д.Н.</option>
           <option>Шулипа Е.Ю.</option>
           <option>Миронова Е.С.</option>
+          <option>Погорелова Н.А.</option>
           <option>Киселев А.С.</option>
           <option>Марчук В.А.</option>
         </select>

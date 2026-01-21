@@ -492,6 +492,7 @@ const App = () => {
           <ButtonYear year='2023' activeYear={year} setYear={setYear} />
           <ButtonYear year='2024' activeYear={year} setYear={setYear} />
           <ButtonYear year='2025' activeYear={year} setYear={setYear} />
+          <ButtonYear year='2026' activeYear={year} setYear={setYear} />
         </Menu>
       </Main>
     </Container>

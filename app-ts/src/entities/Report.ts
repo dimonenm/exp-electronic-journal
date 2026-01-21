@@ -128,6 +128,7 @@ export default class Report {
       'Голынков Д.Н.': '',
       'Шулипа Е.Ю.': '',
       'Миронова Е.С.': '',
+      'Погорелова Н.А.': '',
       'Киселев А.С.': '',
       'Марчук В.А.': '',
     },
@@ -142,6 +143,7 @@ export default class Report {
       'Голынков Д.Н.': '',
       'Шулипа Е.Ю.': '',
       'Миронова Е.С.': '',
+      'Погорелова Н.А.': '',
       'Киселев А.С.': '',
       'Марчук В.А.': '',
     },
@@ -156,6 +158,7 @@ export default class Report {
       'Голынков Д.Н.': '',
       'Шулипа Е.Ю.': '',
       'Миронова Е.С.': '',
+      'Погорелова Н.А.': '',
       'Киселев А.С.': '',
       'Марчук В.А.': '',
     },
@@ -170,6 +173,7 @@ export default class Report {
       'Голынков Д.Н.': '',
       'Шулипа Е.Ю.': '',
       'Миронова Е.С.': '',
+      'Погорелова Н.А.': '',
       'Киселев А.С.': '',
       'Марчук В.А.': '',
     },
@@ -184,6 +188,7 @@ export default class Report {
       'Голынков Д.Н.': '',
       'Шулипа Е.Ю.': '',
       'Миронова Е.С.': '',
+      'Погорелова Н.А.': '',
       'Киселев А.С.': '',
       'Марчук В.А.': '',
     },
@@ -352,6 +357,8 @@ export default class Report {
       return this.executorExps.Handwriting['Шулипа Е.Ю.']
     if (id === 'Миронова Е.С.')
       return this.executorExps.Handwriting['Миронова Е.С.']
+    if (id === 'Погорелова Н.А.')
+      return this.executorExps.Handwriting['Погорелова Н.А.']
     if (id === 'Киселев А.С.')
       return this.executorExps.Handwriting['Киселев А.С.']
     if (id === 'Марчук В.А.')
@@ -370,6 +377,7 @@ export default class Report {
     if (id === 'Голынков Д.Н.') return this.executorExps.TCED['Голынков Д.Н.']
     if (id === 'Шулипа Е.Ю.') return this.executorExps.TCED['Шулипа Е.Ю.']
     if (id === 'Миронова Е.С.') return this.executorExps.TCED['Миронова Е.С.']
+    if (id === 'Погорелова Н.А.') return this.executorExps.TCED['Погорелова Н.А.']
     if (id === 'Киселев А.С.') return this.executorExps.TCED['Киселев А.С.']
     if (id === 'Марчук В.А.') return this.executorExps.TCED['Марчук В.А.']
     return ''
@@ -390,6 +398,7 @@ export default class Report {
       return this.executorExps.Portrait['Голынков Д.Н.']
     if (id === 'Шулипа Е.Ю.') return this.executorExps.Portrait['Шулипа Е.Ю.']
     if (id === 'Миронова Е.С.') return this.executorExps.Portrait['Миронова Е.С.']
+    if (id === 'Погорелова Н.А.') return this.executorExps.Portrait['Погорелова Н.А.']
     if (id === 'Киселев А.С.') return this.executorExps.Portrait['Киселев А.С.']
     if (id === 'Марчук В.А.') return this.executorExps.Portrait['Марчук В.А.']
     return ''
@@ -414,6 +423,8 @@ export default class Report {
       return this.executorExps.Verifications['Шулипа Е.Ю.']
     if (id === 'Миронова Е.С.')
       return this.executorExps.Verifications['Миронова Е.С.']
+    if (id === 'Погорелова Н.А.')
+      return this.executorExps.Verifications['Погорелова Н.А.']
     if (id === 'Киселев А.С.')
       return this.executorExps.Verifications['Киселев А.С.']
     if (id === 'Марчук В.А.')
@@ -434,6 +445,7 @@ export default class Report {
     if (id === 'Голынков Д.Н.') return this.executorExps.Total['Голынков Д.Н.']
     if (id === 'Шулипа Е.Ю.') return this.executorExps.Total['Шулипа Е.Ю.']
     if (id === 'Миронова Е.С.') return this.executorExps.Total['Миронова Е.С.']
+    if (id === 'Погорелова Н.А.') return this.executorExps.Total['Погорелова Н.А.']
     if (id === 'Киселев А.С.') return this.executorExps.Total['Киселев А.С.']
     if (id === 'Марчук В.А.') return this.executorExps.Total['Марчук В.А.']
     return ''
@@ -668,7 +680,8 @@ export default class Report {
     v9: string,
     v10: string,
     v11: string,
-    v12: string
+    v12: string,
+    v13: string
   ): void {
     this.executorExps.Handwriting['Всего'] = v1
     this.executorExps.Handwriting['Польченко Т.В.'] = v2
@@ -680,8 +693,9 @@ export default class Report {
     this.executorExps.Handwriting['Голынков Д.Н.'] = v8
     this.executorExps.Handwriting['Шулипа Е.Ю.'] = v9
     this.executorExps.Handwriting['Миронова Е.С.'] = v10
-    this.executorExps.Handwriting['Киселев А.С.'] = v11
-    this.executorExps.Handwriting['Марчук В.А.'] = v12
+    this.executorExps.Handwriting['Погорелова Н.А.'] = v11
+    this.executorExps.Handwriting['Киселев А.С.'] = v12
+    this.executorExps.Handwriting['Марчук В.А.'] = v13
   }
   setExecutorExpsTCED(
     v1: string,
@@ -695,7 +709,8 @@ export default class Report {
     v9: string,
     v10: string,
     v11: string,
-    v12: string
+    v12: string,
+    v13: string
   ): void {
     this.executorExps.TCED['Всего'] = v1
     this.executorExps.TCED['Польченко Т.В.'] = v2
@@ -707,8 +722,9 @@ export default class Report {
     this.executorExps.TCED['Голынков Д.Н.'] = v8
     this.executorExps.TCED['Шулипа Е.Ю.'] = v9
     this.executorExps.TCED['Миронова Е.С.'] = v10
-    this.executorExps.TCED['Киселев А.С.'] = v11
-    this.executorExps.TCED['Марчук В.А.'] = v12
+    this.executorExps.TCED['Погорелова Н.А.'] = v11
+    this.executorExps.TCED['Киселев А.С.'] = v12
+    this.executorExps.TCED['Марчук В.А.'] = v13
   }
   setExecutorExpsPortrait(
     v1: string,
@@ -722,7 +738,8 @@ export default class Report {
     v9: string,
     v10: string,
     v11: string,
-    v12: string
+    v12: string,
+    v13: string
   ): void {
     this.executorExps.Portrait['Всего'] = v1
     this.executorExps.Portrait['Польченко Т.В.'] = v2
@@ -734,8 +751,9 @@ export default class Report {
     this.executorExps.Portrait['Голынков Д.Н.'] = v8
     this.executorExps.Portrait['Шулипа Е.Ю.'] = v9
     this.executorExps.Portrait['Миронова Е.С.'] = v10
-    this.executorExps.Portrait['Киселев А.С.'] = v11
-    this.executorExps.Portrait['Марчук В.А.'] = v12
+    this.executorExps.Portrait['Погорелова Н.А.'] = v11
+    this.executorExps.Portrait['Киселев А.С.'] = v12
+    this.executorExps.Portrait['Марчук В.А.'] = v13
   }
   setExecutorExpsVerifications(
     v1: string,
@@ -749,7 +767,8 @@ export default class Report {
     v9: string,
     v10: string,
     v11: string,
-    v12: string
+    v12: string,
+    v13: string
   ): void {
     this.executorExps.Verifications['Всего'] = v1
     this.executorExps.Verifications['Польченко Т.В.'] = v2
@@ -761,8 +780,9 @@ export default class Report {
     this.executorExps.Verifications['Голынков Д.Н.'] = v8
     this.executorExps.Verifications['Шулипа Е.Ю.'] = v9
     this.executorExps.Verifications['Миронова Е.С.'] = v10
-    this.executorExps.Verifications['Киселев А.С.'] = v11
-    this.executorExps.Verifications['Марчук В.А.'] = v12
+    this.executorExps.Verifications['Погорелова Н.А.'] = v11
+    this.executorExps.Verifications['Киселев А.С.'] = v12
+    this.executorExps.Verifications['Марчук В.А.'] = v13
   }
   setExecutorExpsTotal(
     v1: string,
@@ -776,7 +796,8 @@ export default class Report {
     v9: string,
     v10: string,
     v11: string,
-    v12: string
+    v12: string,
+    v13: string
   ): void {
     this.executorExps.Total['Всего'] = v1
     this.executorExps.Total['Польченко Т.В.'] = v2
@@ -788,7 +809,8 @@ export default class Report {
     this.executorExps.Total['Голынков Д.Н.'] = v8
     this.executorExps.Total['Шулипа Е.Ю.'] = v9
     this.executorExps.Total['Миронова Е.С.'] = v10
-    this.executorExps.Total['Киселев А.С.'] = v11
-    this.executorExps.Total['Марчук В.А.'] = v12
+    this.executorExps.Total['Погорелова Н.А.'] = v11
+    this.executorExps.Total['Киселев А.С.'] = v12
+    this.executorExps.Total['Марчук В.А.'] = v13
   }
 }

@@ -1,4 +1,4 @@
-import { Dispatch, FC, MouseEventHandler, SetStateAction } from 'react';
+import { Dispatch, FC, SetStateAction } from 'react';
 import './ButtonYear.scss'
 
 interface IButtonYearProps {
